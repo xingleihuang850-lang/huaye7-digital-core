@@ -1,0 +1,27 @@
+# 符号链接指向的外盘数据不入库（数据是源，git 只管代码）
+/GJ5-15data
+/nnunet_pipeline
+/data/raw_stats
+
+# DuckDB 仓库与向量库（产物，可重建）
+/data/warehouse.db
+/data/*.duckdb
+/data/*.duckdb.wal
+/vectorstore/
+
+# 大体积中间产物
+/data/parquet/
+/data/raw_las/
+*.tif
+*.tiff
+*.nii
+*.nii.gz
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store

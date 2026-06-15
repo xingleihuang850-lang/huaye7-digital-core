@@ -1,0 +1,27 @@
+# 大目录 / 二进制，避免扫描拖慢 agent
+GJ5-15data/GJ5-15-图片库/
+GJ5-15data/GJ5-15-动画库/
+GJ5-15data/nnunet_pipeline/refine_set/
+GJ5-15data/nnunet_pipeline/*.png
+nnunet_pipeline/refine_set/
+nnunet_pipeline/*.png
+
+# 体素/图像/动画产出
+*.tif
+*.tiff
+*.nii
+*.nii.gz
+*.mp4
+*.avi
+*.gif
+
+# DuckDB / 向量库二进制
+data/warehouse.db
+data/*.duckdb
+vectorstore/*.lance
+vectorstore/**/*.lance
+
+# Python
+__pycache__/
+*.pyc
+.venv/

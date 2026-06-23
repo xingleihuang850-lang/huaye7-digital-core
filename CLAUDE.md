@@ -2,6 +2,7 @@
 
 > 供编码 agent（Claude Code / Codex / Cursor 等）进入项目时自动读取，快速建立背景。
 > 交接自规划对话；2026-06-15 由 agent 核对磁盘实际情况后更新。后续如有新决策，请同步更新本文件。
+> 2026-06-23：笔记层改定为 **Obsidian（纯 Markdown）**，弃用思源（其 .sy/JSON 非纯 md，agent 不可直接读）；相应放宽 §3「重要约定」。
 
 ## 0. 环境与数据位置（**先读这条**）
 
@@ -54,12 +55,12 @@
 | 结构化数据 | DuckDB | 测井曲线、统计指标、模型评价（LAS / CSV / Parquet）→ `data/warehouse.db` |
 | 向量 / 多模态 | LanceDB | CT 切片、渲染图、曲线 embedding（agent 语义记忆）→ `vectorstore/` |
 | 文献 | Zotero | 论文、教材、标准、引用 |
-| 笔记 | 思源 或 Logseq（二选一） | 学习笔记、概念卡、公式、源码笔记 |
+| 笔记 | Obsidian（纯 md vault） | 学习笔记、概念卡、公式、源码笔记；纯 Markdown，agent 可直接读 |
 | 代码 / 实验 | Git | 代码、模型、实验配置、笔记导出 |
 
-**数据流**：结构化路径 井数据→DuckDB；语义路径 论文+笔记→导出→分块→embedding→LanceDB。两路在 **agent** 处汇合：对 DuckDB 走 SQL，对 LanceDB 走向量检索 → 解释 / 生成 / 评价。
+**数据流**：结构化路径 井数据→DuckDB；语义路径 论文（Zotero 导出）+ 笔记（Obsidian 纯 md，无需导出）→分块→embedding→LanceDB。两路在 **agent** 处汇合：对 DuckDB 走 SQL，对 LanceDB 走向量检索 → 解释 / 生成 / 评价。
 
-**重要约定**：agent 读取面是 **LanceDB（向量）+ DuckDB（SQL）**，不直接 glob 笔记裸文件（思源底层 .sy/JSON，非纯 Markdown）。
+**重要约定**：agent 有两条读取面——① **直接读 Obsidian vault（纯 md）** 做精确查找/grep；② **LanceDB（向量）+ DuckDB（SQL）** 做语义/结构化检索。笔记同时进 LanceDB 做语义查。（喂 embedding 前可轻量清理 Obsidian 自家语法：`[[双链]]`、`%%注释%%`、callout、YAML frontmatter。）
 
 ## 4. 目录与工程约定
 
@@ -73,6 +74,7 @@
 │   └── warehouse.db                 # DuckDB（产物，不入 git）
 ├── src/                            # 解释函数、模型、agent 代码
 ├── experiments/                    # 实验记录与产出
+├── notes/                          # Obsidian vault（纯 md，入 git；attachments/ 放附件）
 ├── vectorstore/                    # LanceDB 索引（产物，不入 git）
 ├── GJ5-15data -> 外盘              # 符号链接（整盘）
 └── nnunet_pipeline -> 外盘/…       # 符号链接（已有分割管线）

@@ -9,6 +9,13 @@
 /data/*.duckdb.wal
 /vectorstore/
 
+# 可重建的分析产物（由 src/make_*.py、etl 重新生成）
+/experiments/figures/
+/experiments/master_stats.json
+/experiments/hy7_figures/
+/experiments/hy7_stats.json
+/deliverables/
+
 # 大体积中间产物
 /data/parquet/
 /data/raw_las/
@@ -22,6 +29,12 @@ __pycache__/
 *.pyc
 .venv/
 .ipynb_checkpoints/
+
+# Obsidian vault（笔记 .md 入 git；本地配置/UI 状态不入）
+/notes/.obsidian/
+
+# Claude Code 个人本地配置（不入 git）
+/.claude/settings.local.json
 
 # OS
 .DS_Store

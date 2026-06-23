@@ -2,6 +2,7 @@
 /GJ5-15data
 /nnunet_pipeline
 /data/raw_stats
+/data/hy7_raw/
 
 # DuckDB 仓库与向量库（产物，可重建）
 /data/warehouse.db
@@ -19,6 +20,11 @@
 # 大体积中间产物
 /data/parquet/
 /data/raw_las/
+# 花页7 体素数据（从外盘拷入本机，git 只管代码不管 GB 级体素）
+/data/hy7_volumes/
+# 花页7 Plan B 训练 patch 产物（由 hy7_planb_dataset.py 重建）
+/data/hy7_planb/
+/experiments/hy7_planb/
 *.tif
 *.tiff
 *.nii

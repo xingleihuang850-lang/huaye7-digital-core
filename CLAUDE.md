@@ -14,6 +14,23 @@
   - `nnunet_pipeline` → 同上的 `nnunet_pipeline/` 子目录
   - `data/raw_stats` → 同上的 `GJ5-15-统计分析库/`（DuckDB 入库的小体积 xlsx）
 
+- **花页7（HuaYe7）多尺度数据** —— 当前主线研究。外置盘根目录 `/Volumes/Untitled/吉林大学数据报告归总/`（花页7井 4199.21m 页岩，~73 GB；"吉林大学"是来源单位，**非 GJ5-15**）。⚠️ **这个文件夹里只有 6 个尺度文件夹是服务商原件，其余全是用户用 AI 生成的派生物或既往工作**，三类务必别混：
+
+  | 类别 | 内容 | 谁产出 |
+  |---|---|---|
+  | **① 服务商原件**（唯一原始数据） | 6 个尺度文件夹：`Amics矿物整体扫描25um+精细扫描1um`、`微米CT柱塞扫描-14um`、`微米CT精细扫描-2p8um`、`纳米CT扫描-65nm`、`FIB-SEM聚焦离子束扫描-8p589nm`、`Maps整体扫描200nm+精细扫描10nm`。每个含：原始体素/图像(.raw/.tif)+处理图像+服务商统计 xlsx+服务商报告(.doc/.docx) | 服务商（欧勒姆能源测试） |
+  | **② AI 分析派生物** | `_analysis/`（用户早先在 **Windows(E:)** 上的分析脚本工作区：`build_excel.py`/`build_ppt.py`/`gen_charts.py`/`verify_excel.py`… 读①的统计 xlsx → 出汇总/规划/图/切片）；`花页7井_4199.21m_多尺度数据汇总.xlsx`（已删）；`花页7井_4199.21m_数据分析与AI研究规划.xlsx`（已删，由 `_analysis/build_excel.py` 产）；3 个 `花页7井_4199.21m_…pptx`（深度学习应用 / 生成式数字井筒研究方案 / 备份） | 用户用 AI 生成 |
+  | **③ 既往工作（铺垫）** | `AI-Driven Automatic Segmentation and Quantitative Characterization of Shale Microstructures.pptx` | 用户之前的工作，为花页7 + 数字井筒生成铺垫 |
+
+  - 仓库脚本只认 ① 的统计 xlsx：已把其中 7 个（~0.5 MB）拷到本地 `data/hy7_raw/`（git 忽略），`src/hy7_etl.py`/`verify_hy7.py` 路径改为本地 `B = ROOT/data/hy7_raw`，**不再依赖外盘**；改这条路径要同步 `scripts/sync_huaye7_public.sh` 的脱敏匹配串。
+  - `src/hy7_*.py` 是把 ② 那套 `_analysis` 工作**清洗重写进 git** 的版本（① 统计 xlsx → `experiments/hy7_stats.json` → `deliverables/花页7/…`）。
+  - ⚠️ `花页7井_4199.21m_多尺度数据汇总.xlsx` 已删：它是 **② 类 AI 派生物（可由 `_analysis` 脚本重生，非服务商原件）**。主数据流不依赖它——`hy7_etl.py` 直接从 ① 的各尺度统计 xlsx 出数；仅 `verify_hy7.py` 拿它做一次性"防编造"对账（曾 12/12 通过，结论已得）。
+
+- **算力机器（2026-06-23）**：
+  - Linux 台式机：SSH 别名 `hy7-linux`（Tailscale `100.127.180.10`）/ `hy7-linux-lan`（同局域网 `192.168.1.164`，传大文件走这条更快），user=`user`，密钥 `~/.ssh/hy7_linux_ed25519`。花页7 实验主力机；数据在 `/home/user/HXL/`（`HY7_source/吉林大学数据报告归总` 为数据本体，与外盘 rsync 同步；`HY7_D2_*` 为训练日志/结果/图）。
+  - 另有一台 5090 Linux 跑大规模计算。
+  - 跨机传输按既定通道：**Tailscale / LAN + rsync**（勿用 ToDesk）。
+
 ## 1. 项目目标
 
 - **主线**：完成"生成式数字井筒"研究。

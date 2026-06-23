@@ -12,7 +12,8 @@ import os, warnings
 import openpyxl
 warnings.filterwarnings("ignore")
 
-B = "/Volumes/Untitled/吉林大学数据报告归总"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+B = os.path.join(ROOT, "data", "hy7_raw")
 SUMMARY = f"{B}/花页7井_4199.21m_多尺度数据汇总.xlsx"
 PASS, FAIL, NOTE = [], [], []
 def chk(cond, label, detail=""):

@@ -1,0 +1,240 @@
+[
+  {
+    "key": "ct14_sus",
+    "role": "matrix/灰度",
+    "dims_zyx": [
+      1600,
+      1620,
+      1620
+    ],
+    "scale": "ct14",
+    "path": "/Users/hxl/Documents/claude/data/hy7_volumes/ct14_14um/202510052_1620x1620x1600_8bit_14um_SUS.raw",
+    "status": "ok",
+    "n_unique_vals": 256,
+    "is_binary_like": false,
+    "top_values": [
+      {
+        "val": 0,
+        "frac_pct": 22.428
+      },
+      {
+        "val": 130,
+        "frac_pct": 1.1948
+      },
+      {
+        "val": 128,
+        "frac_pct": 1.1893
+      },
+      {
+        "val": 129,
+        "frac_pct": 1.1883
+      },
+      {
+        "val": 131,
+        "frac_pct": 1.1872
+      },
+      {
+        "val": 127,
+        "frac_pct": 1.1845
+      }
+    ]
+  },
+  {
+    "key": "ct14_pore",
+    "role": "pore-label",
+    "dims_zyx": [
+      1600,
+      1620,
+      1620
+    ],
+    "scale": "ct14",
+    "path": "/Users/hxl/Documents/claude/data/hy7_volumes/ct14_14um/202510052_1620x1620x1600_8bit_14um_pore.raw",
+    "status": "ok",
+    "n_unique_vals": 2,
+    "is_binary_like": true,
+    "top_values": [
+      {
+        "val": 255,
+        "frac_pct": 99.2675
+      },
+      {
+        "val": 0,
+        "frac_pct": 0.7325
+      }
+    ],
+    "phase_value_guess": 0,
+    "known_porosity_pct": 1.558
+  },
+  {
+    "key": "ct14_feng",
+    "role": "fracture-label",
+    "dims_zyx": [
+      1600,
+      1620,
+      1620
+    ],
+    "scale": "ct14",
+    "path": "/Users/hxl/Documents/claude/data/hy7_volumes/ct14_14um/202510052_1620x1620x1600_8bit_14um_FENG.raw",
+    "status": "ok",
+    "n_unique_vals": 2,
+    "is_binary_like": true,
+    "top_values": [
+      {
+        "val": 255,
+        "frac_pct": 99.5442
+      },
+      {
+        "val": 0,
+        "frac_pct": 0.4558
+      }
+    ],
+    "phase_value_guess": 0,
+    "known_porosity_pct": 1.558
+  },
+  {
+    "key": "ct14_orig",
+    "role": "原始灰度(异网格)",
+    "dims_zyx": [
+      2024,
+      2024,
+      2024
+    ],
+    "scale": "ct14",
+    "path": "/Users/hxl/Documents/claude/data/hy7_volumes/ct14_14um/202510052_2024x2024x2024_8bit_14.raw",
+    "status": "ok",
+    "n_unique_vals": 256,
+    "is_binary_like": false,
+    "top_values": [
+      {
+        "val": 0,
+        "frac_pct": 40.4186
+      },
+      {
+        "val": 117,
+        "frac_pct": 0.657
+      },
+      {
+        "val": 115,
+        "frac_pct": 0.6565
+      },
+      {
+        "val": 113,
+        "frac_pct": 0.6559
+      },
+      {
+        "val": 119,
+        "frac_pct": 0.6543
+      },
+      {
+        "val": 121,
+        "frac_pct": 0.6531
+      }
+    ]
+  },
+  {
+    "key": "ct28_sus",
+    "role": "matrix/灰度",
+    "dims_zyx": [
+      1500,
+      1500,
+      1500
+    ],
+    "scale": "ct28",
+    "path": "/Users/hxl/Documents/claude/data/hy7_volumes/ct28_2p8um/202510052_5mm_1500c_8bit_2p8um_sus.raw",
+    "status": "ok",
+    "n_unique_vals": 255,
+    "is_binary_like": false,
+    "top_values": [
+      {
+        "val": 0,
+        "frac_pct": 22.5057
+      },
+      {
+        "val": 112,
+        "frac_pct": 1.2282
+      },
+      {
+        "val": 113,
+        "frac_pct": 1.2282
+      },
+      {
+        "val": 110,
+        "frac_pct": 1.2271
+      },
+      {
+        "val": 111,
+        "frac_pct": 1.2255
+      },
+      {
+        "val": 114,
+        "frac_pct": 1.2231
+      }
+    ]
+  },
+  {
+    "key": "ct28_pore",
+    "role": "pore-label",
+    "dims_zyx": [
+      1500,
+      1500,
+      1500
+    ],
+    "scale": "ct28",
+    "path": "/Users/hxl/Documents/claude/data/hy7_volumes/ct28_2p8um/202510052_5mm_1500c_8bit_2p8um_pore.raw",
+    "status": "ok",
+    "n_unique_vals": 2,
+    "is_binary_like": true,
+    "top_values": [
+      {
+        "val": 255,
+        "frac_pct": 94.4415
+      },
+      {
+        "val": 0,
+        "frac_pct": 5.5585
+      }
+    ],
+    "phase_value_guess": 0,
+    "known_porosity_pct": 7.182
+  },
+  {
+    "key": "ct28_orig",
+    "role": "原始灰度(异网格)",
+    "dims_zyx": [
+      2024,
+      2024,
+      2024
+    ],
+    "scale": "ct28",
+    "path": "/Users/hxl/Documents/claude/data/hy7_volumes/ct28_2p8um/202510052_5mm_2024x2024x2024_8bit_2p8.raw",
+    "status": "ok",
+    "n_unique_vals": 256,
+    "is_binary_like": false,
+    "top_values": [
+      {
+        "val": 0,
+        "frac_pct": 46.0704
+      },
+      {
+        "val": 101,
+        "frac_pct": 0.6642
+      },
+      {
+        "val": 97,
+        "frac_pct": 0.6633
+      },
+      {
+        "val": 99,
+        "frac_pct": 0.662
+      },
+      {
+        "val": 95,
+        "frac_pct": 0.6596
+      },
+      {
+        "val": 103,
+        "frac_pct": 0.6595
+      }
+    ]
+  }
+]

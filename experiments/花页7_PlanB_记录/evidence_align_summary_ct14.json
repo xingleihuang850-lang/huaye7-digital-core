@@ -1,0 +1,44 @@
+{
+  "scale": "ct14",
+  "shape_zyx": [
+    1600,
+    1620,
+    1620
+  ],
+  "shapes": {
+    "ct14_sus": [
+      1600,
+      1620,
+      1620
+    ],
+    "ct14_pore": [
+      1600,
+      1620,
+      1620
+    ],
+    "ct14_feng": [
+      1600,
+      1620,
+      1620
+    ]
+  },
+  "pore_value": 0,
+  "pore_frac_pct_sampled": 0.7437,
+  "known_porosity_pct": 1.558,
+  "slices": [
+    240,
+    613,
+    986,
+    1360
+  ],
+  "frac_value": 0,
+  "frac_frac_pct_sampled": 0.4729,
+  "pore_frac_overlap_pct_per_slice": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "overlap_ok": true,
+  "png_dir": "experiments/hy7_planb/align_check"
+}

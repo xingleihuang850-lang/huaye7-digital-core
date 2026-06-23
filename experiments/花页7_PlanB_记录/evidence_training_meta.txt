@@ -1,0 +1,19 @@
+# 花页7 Plan B ct14 训练 — 产物完整性与环境快照
+## 机器
+admin
+NVIDIA GeForce RTX 5090, 32607 MiB, 580.159.03
+## conda env
+torch 2.8.0+cu129 numpy 2.3.5 cuda 12.9
+## best.pt
+-rw-rw-r-- 1 user user 22401037 Jun 23 21:14 /home/user/HXL/HY7_planb/experiments/hy7_planb/train_ct14/best.pt
+## best.pt sha256
+ed6fc55e24ce69cdca1632132bb897f7cd5b760a180e35ccad4735362e56fc1f  /home/user/HXL/HY7_planb/experiments/hy7_planb/train_ct14/best.pt
+## 脚本 sha256（与本机 src/ 应一致）
+e3418757d6a0c5af81643864491d41d9d7095bb78b7de605f44ef305ef2f0c41  /home/user/HXL/HY7_planb/hy7_planb_check_alignment.py
+49fa5ffb6752051a2a8edcdd2ba624f57c92c2a023eba880abfece4434cd32bb  /home/user/HXL/HY7_planb/hy7_planb_dataset.py
+fbec888281e8962d9182d134740f48396c32fab8dd697172834fe79bf040dfcf  /home/user/HXL/HY7_planb/hy7_planb_io.py
+c11d77ef6794278174c551ba03a6dc56b6899cbb5cfc8d3f04150e8892d71a9a  /home/user/HXL/HY7_planb/hy7_planb_train.py
+## 数据源 .raw sha256（前几个，证明读的是哪份数据）
+-rwxr-xr-x 1 user user 4199040000 Nov  4  2025 /home/user/HXL/HY7_source/吉林大学数据报告归总/微米CT柱塞扫描-14um/处理图像/202510052_1620x1620x1600_8bit_14um_FENG.raw
+-rwxr-xr-x 1 user user 4199040000 Nov  3  2025 /home/user/HXL/HY7_source/吉林大学数据报告归总/微米CT柱塞扫描-14um/处理图像/202510052_1620x1620x1600_8bit_14um_SUS.raw
+-rwxr-xr-x 1 user user 4199040000 Nov  4  2025 /home/user/HXL/HY7_source/吉林大学数据报告归总/微米CT柱塞扫描-14um/处理图像/202510052_1620x1620x1600_8bit_14um_pore.raw

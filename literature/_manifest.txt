@@ -1,0 +1,9 @@
+# 花页7 文献原文清单（开放获取，本地 literature/，PDF 不入 git）
+# 生成 2026-06-23；arXiv 开放获取，按来源可复现下载
+
+本地文件                                   arXiv              sha256
+2024_digital_core_SR_paired_SEM.pdf            2409.03265         dc2af161e31d09f8c436dd849be9d457081ae2144e19ab8c2dc21828a9e8a7dc
+2025_2D_3D_registration_Berea_digital_rock.pdf 2504.06604         0b0bcfa07bf2901625d34aaf2eba00b8df538458dd1dfc430dbb43be0816009e
+Kench2021_SliceGAN_2D_to_3D.pdf                2102.07708         4e88160284e6090248338a4ced1bdc004d76121f505a8cd38e04ba995871d80a
+Liu2025_Controlled_Latent_Diffusion_3D_porous.pdf 2503.24083         d1b351821afb9e4a794dec04f9f6a36e1e5cb23cd7bce49f814e7f623e1a3ad0
+Mosser2017_3D_porous_media_GAN.pdf             1704.03225         7dcb83ef8da29eb3f578a5bec43ed37f2a169fcb818a1dc2bab30e699a8f8c81

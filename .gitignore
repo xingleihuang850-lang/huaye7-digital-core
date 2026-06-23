@@ -44,3 +44,6 @@ __pycache__/
 
 # OS
 .DS_Store
+
+# 文献原文 PDF（开放获取，本地可读；只提交书目+清单，不入大二进制）
+/literature/*.pdf

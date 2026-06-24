@@ -135,7 +135,7 @@ def main():
     dev = "cuda" if torch.cuda.is_available() else "cpu"
     sv0 = ScaleVolumes(a.scale, root=a.root, layout=a.layout)   # 主进程：拿 norm / n_cls / 相值
     n_cls, mean, std = sv0.n_cls, sv0.mean, sv0.std
-    outdir = a.out or os.path.join("experiments", "hy7_planb", f"train_{a.scale}")
+    outdir = a.out or os.path.join("runs", f"train_{a.scale}")
     os.makedirs(outdir, exist_ok=True)
     print(f"[i] scale={a.scale} dims={sv0.dims} n_cls={n_cls} pore_val={sv0.pore_val} "
           f"frac_val={sv0.frac_val} norm=({mean:.1f},{std:.1f}) dev={dev}")

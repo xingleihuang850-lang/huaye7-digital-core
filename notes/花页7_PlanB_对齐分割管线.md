@@ -67,17 +67,18 @@ tags: [花页7, 数字井筒, 分割, PlanB, 对齐]
 .venv/bin/python src/hy7_planb_check_alignment.py --scale ct14    # 对齐出图
 .venv/bin/python src/hy7_planb_io.py sample --scale ct14 --n 4    # 在线采样自检
 
-# —— 只把小脚本推到 hy7-linux（数据本来就在那，已 rsync）——
-rsync -avP src/hy7_planb_*.py hy7-linux-lan:/home/user/HXL/HY7_planb/
+# —— 只把小脚本推到 hy7-linux 的 src/（数据本来就在那，已 rsync）——
+rsync -avP src/hy7_planb_*.py hy7-linux:/home/user/HXL/HY7_planb/src/
 
 # —— hy7-linux(GPU, RTX 5090, env=nnunet_t28)：直读完整体素在线训练 ——
+# 目录结构：HY7_planb/{src,runs,logs}（见 花页7_Linux目录整理记录）
 PY=~/miniconda3/envs/nnunet_t28/bin/python        # torch 2.8+cu129, numpy 2.3.5
 SRC=~/HXL/HY7_source/吉林大学数据报告归总          # 处理 .raw 已确认齐全
 cd ~/HXL/HY7_planb
-$PY hy7_planb_io.py inspect --root "$SRC" --layout source --key ct14_sus   # 数据可达自检
-$PY hy7_planb_train.py --scale ct14 --root "$SRC" --layout source \
+$PY src/hy7_planb_io.py inspect --root "$SRC" --layout source --key ct14_sus   # 数据可达自检
+$PY src/hy7_planb_train.py --scale ct14 --root "$SRC" --layout source \
     --epochs 80 --steps 400 --bs 2 --patch 128 --base 16 --workers 6 --amp
-# 若显存吃紧：--bs 1 或 --patch 96。产物：experiments/hy7_planb/train_ct14/best.pt + trainlog.json
+# 若显存吃紧：--bs 1 或 --patch 96。产物：runs/train_ct14/best.pt + trainlog.json
 ```
 
 > **已在 5090 上冒烟通过（2026-06-23）**：1ep/8步/patch64/base8/AMP，1.7s 出 ckpt；

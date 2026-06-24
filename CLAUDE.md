@@ -98,6 +98,11 @@
 ```
 
 - Python 工具：`lasio` / `welly`（读测井）、`duckdb`、`lancedb`、`pytorch`、`openpyxl`（读 xlsx）。
+- **本机 Python 环境（2026-06-24 升级）**：`.venv/` 是 **uv 管理的 Python 3.12**（取代旧系统 3.9.6），依赖钉死在 `requirements.txt`。
+  - 跑脚本：`.venv/bin/python src/xxx.py`。
+  - 装包：用 **`uv pip install --python .venv/bin/python <包>`**（uv 在 `~/Library/Python/3.9/bin/uv`）；⚠️ `.venv` 内没有 pip，别用 `.venv/bin/python -m pip`。
+  - 重建：`uv venv --python 3.12 && uv pip install --python .venv/bin/python -r requirements.txt`。
+  - 已装：分析栈（numpy/pandas/scipy/matplotlib/openpyxl/python-docx/python-pptx/duckdb/tifffile/scikit-image）+ **torch 2.12（Apple Silicon MPS 可用）**。本机只做轻量 dev/验证，大规模训练在 5090 Linux。
 - 关键术语中英对照：含水饱和度/Sw、含油饱和度/So、孔隙度/porosity、泥质含量/Vsh(NZ)、成岩矿物/CYKW、基质/matrix、孔隙/pore、裂缝/fracture。
 
 ## 5. 建议 agent 优先做的事

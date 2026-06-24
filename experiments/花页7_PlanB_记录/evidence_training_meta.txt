@@ -17,3 +17,5 @@ c11d77ef6794278174c551ba03a6dc56b6899cbb5cfc8d3f04150e8892d71a9a  /home/user/HXL
 -rwxr-xr-x 1 user user 4199040000 Nov  4  2025 /home/user/HXL/HY7_source/吉林大学数据报告归总/微米CT柱塞扫描-14um/处理图像/202510052_1620x1620x1600_8bit_14um_FENG.raw
 -rwxr-xr-x 1 user user 4199040000 Nov  3  2025 /home/user/HXL/HY7_source/吉林大学数据报告归总/微米CT柱塞扫描-14um/处理图像/202510052_1620x1620x1600_8bit_14um_SUS.raw
 -rwxr-xr-x 1 user user 4199040000 Nov  4  2025 /home/user/HXL/HY7_source/吉林大学数据报告归总/微米CT柱塞扫描-14um/处理图像/202510052_1620x1620x1600_8bit_14um_pore.raw
+84142b600685595bff4fef61e7f517c201ee2b833113673eb621aa48901a5577  /home/user/HXL/HY7_planb/runs/train_ct14_e1/best.pt
+ed6fc55e24ce69cdca1632132bb897f7cd5b760a180e35ccad4735362e56fc1f  /home/user/HXL/HY7_planb/runs/train_ct14_baseline/best.pt

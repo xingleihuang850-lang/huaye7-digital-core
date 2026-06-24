@@ -1,0 +1,5484 @@
+{
+    "foreground_mean": {
+        "Dice": 0.2419355506447327,
+        "FN": 7173.402542372882,
+        "FP": 7110.521186440677,
+        "IoU": 0.16737119188143215,
+        "TN": 43702.713983050846,
+        "TP": 7549.362288135593,
+        "n_pred": 14659.883474576272,
+        "n_ref": 14722.764830508475
+    },
+    "mean": {
+        "1": {
+            "Dice": 0.5082243859025916,
+            "FN": 8301.864406779661,
+            "FP": 19435.177966101695,
+            "IoU": 0.3631923356160527,
+            "TN": 18339.618644067796,
+            "TP": 19459.338983050846,
+            "n_pred": 38894.516949152545,
+            "n_ref": 27761.20338983051
+        },
+        "2": {
+            "Dice": 0.4185433590596448,
+            "FN": 18639.381355932204,
+            "FP": 8907.796610169491,
+            "IoU": 0.2756232873540957,
+            "TN": 27341.661016949154,
+            "TP": 10647.161016949152,
+            "n_pred": 19554.957627118645,
+            "n_ref": 29286.542372881355
+        },
+        "3": {
+            "Dice": 0.00012727432610567513,
+            "FN": 1357.457627118644,
+            "FP": 3.1186440677966103,
+            "IoU": 6.388150522458619e-05,
+            "TN": 64175.32203389831,
+            "TP": 0.1016949152542373,
+            "n_pred": 3.2203389830508473,
+            "n_ref": 1357.5593220338983
+        },
+        "4": {
+            "Dice": 0.04084718329058879,
+            "FN": 394.90677966101697,
+            "FP": 95.99152542372882,
+            "IoU": 0.030605263050355592,
+            "TN": 64954.254237288136,
+            "TP": 90.84745762711864,
+            "n_pred": 186.83898305084745,
+            "n_ref": 485.7542372881356
+        }
+    },
+    "metric_per_case": [
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6572377287188963,
+                    "FN": 5662,
+                    "FP": 19009,
+                    "IoU": 0.4894669315454019,
+                    "TN": 17212,
+                    "TP": 23653,
+                    "n_pred": 42662,
+                    "n_ref": 29315
+                },
+                "2": {
+                    "Dice": 0.3747057017094892,
+                    "FN": 16399,
+                    "FP": 8035,
+                    "IoU": 0.2305463706502913,
+                    "TN": 33781,
+                    "TP": 7321,
+                    "n_pred": 15356,
+                    "n_ref": 23720
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_00000_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_00000_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.029237268024111255,
+                    "FN": 20297,
+                    "FP": 156,
+                    "IoU": 0.014835508886855161,
+                    "TN": 44775,
+                    "TP": 308,
+                    "n_pred": 464,
+                    "n_ref": 20605
+                },
+                "2": {
+                    "Dice": 0.4986024055564967,
+                    "FN": 467,
+                    "FP": 23211,
+                    "IoU": 0.3320921835773321,
+                    "TN": 30085,
+                    "TP": 11773,
+                    "n_pred": 34984,
+                    "n_ref": 12240
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_00000_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_00000_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6177096748758115,
+                    "FN": 4961,
+                    "FP": 24129,
+                    "IoU": 0.44687404928506236,
+                    "TN": 12944,
+                    "TP": 23502,
+                    "n_pred": 47631,
+                    "n_ref": 28463
+                },
+                "2": {
+                    "Dice": 0.4695786654596205,
+                    "FN": 22911,
+                    "FP": 5213,
+                    "IoU": 0.30682966504818476,
+                    "TN": 24963,
+                    "TP": 12449,
+                    "n_pred": 17662,
+                    "n_ref": 35360
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 3,
+                    "IoU": 0.0,
+                    "TN": 64733,
+                    "TP": 0,
+                    "n_pred": 3,
+                    "n_ref": 800
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_00256_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_00256_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.07575012297097884,
+                    "FN": 23671,
+                    "FP": 756,
+                    "IoU": 0.03936605316973415,
+                    "TN": 40108,
+                    "TP": 1001,
+                    "n_pred": 1757,
+                    "n_ref": 24672
+                },
+                "2": {
+                    "Dice": 0.5259612375991607,
+                    "FN": 892,
+                    "FP": 24863,
+                    "IoU": 0.35681642234597805,
+                    "TN": 25493,
+                    "TP": 14288,
+                    "n_pred": 39151,
+                    "n_ref": 15180
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1600,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63936,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1600
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 620,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64916,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 620
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_00256_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_00256_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5958264081255771,
+                    "FN": 8580,
+                    "FP": 24249,
+                    "IoU": 0.4243253195854595,
+                    "TN": 8509,
+                    "TP": 24198,
+                    "n_pred": 48447,
+                    "n_ref": 32778
+                },
+                "2": {
+                    "Dice": 0.34048939097086167,
+                    "FN": 22828,
+                    "FP": 8814,
+                    "IoU": 0.20517457925144436,
+                    "TN": 25726,
+                    "TP": 8168,
+                    "n_pred": 16982,
+                    "n_ref": 30996
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1040,
+                    "FP": 9,
+                    "IoU": 0.0,
+                    "TN": 64487,
+                    "TP": 0,
+                    "n_pred": 9,
+                    "n_ref": 1040
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_00512_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_00512_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.4965070608341079,
+                    "FN": 11392,
+                    "FP": 22194,
+                    "IoU": 0.3302357117217724,
+                    "TN": 15390,
+                    "TP": 16560,
+                    "n_pred": 38754,
+                    "n_ref": 27952
+                },
+                "2": {
+                    "Dice": 0.35551720921555824,
+                    "FN": 20457,
+                    "FP": 7181,
+                    "IoU": 0.2161878562718017,
+                    "TN": 30275,
+                    "TP": 7623,
+                    "n_pred": 14804,
+                    "n_ref": 28080
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1600,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63936,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1600
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 580,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64956,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 580
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_00512_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_00512_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6399717097895916,
+                    "FN": 6025,
+                    "FP": 24518,
+                    "IoU": 0.4705576453049975,
+                    "TN": 7847,
+                    "TP": 27146,
+                    "n_pred": 51664,
+                    "n_ref": 33171
+                },
+                "2": {
+                    "Dice": 0.34498855029064646,
+                    "FN": 23711,
+                    "FP": 6037,
+                    "IoU": 0.2084508541322974,
+                    "TN": 27954,
+                    "TP": 7834,
+                    "n_pred": 13871,
+                    "n_ref": 31545
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 480,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65056,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 480
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 340,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65196,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 340
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_00768_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_00768_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5630855144698729,
+                    "FN": 12392,
+                    "FP": 21094,
+                    "IoU": 0.39187127705942176,
+                    "TN": 10472,
+                    "TP": 21578,
+                    "n_pred": 42672,
+                    "n_ref": 33970
+                },
+                "2": {
+                    "Dice": 0.2934475001814092,
+                    "FN": 19478,
+                    "FP": 9733,
+                    "IoU": 0.1719533973977379,
+                    "TN": 30259,
+                    "TP": 6066,
+                    "n_pred": 15799,
+                    "n_ref": 25544
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1060,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64476,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1060
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_00768_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_00768_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6042975130558814,
+                    "FN": 8353,
+                    "FP": 26047,
+                    "IoU": 0.4329701485156675,
+                    "TN": 4869,
+                    "TP": 26267,
+                    "n_pred": 52314,
+                    "n_ref": 34620
+                },
+                "2": {
+                    "Dice": 0.22424271199316304,
+                    "FN": 24201,
+                    "FP": 8477,
+                    "IoU": 0.12628004598807518,
+                    "TN": 28135,
+                    "TP": 4723,
+                    "n_pred": 13200,
+                    "n_ref": 28924
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1992,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63544,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1992
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_01024_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_01024_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.49456399006355456,
+                    "FN": 12109,
+                    "FP": 19225,
+                    "IoU": 0.3285187725012858,
+                    "TN": 18872,
+                    "TP": 15330,
+                    "n_pred": 34555,
+                    "n_ref": 27439
+                },
+                "2": {
+                    "Dice": 0.2839206253758268,
+                    "FN": 17934,
+                    "FP": 11837,
+                    "IoU": 0.16544725702912566,
+                    "TN": 29863,
+                    "TP": 5902,
+                    "n_pred": 17739,
+                    "n_ref": 23836
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1548,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63988,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1548
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_01024_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_01024_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5134829778255721,
+                    "FN": 6811,
+                    "FP": 28930,
+                    "IoU": 0.34542690743928794,
+                    "TN": 10934,
+                    "TP": 18861,
+                    "n_pred": 47791,
+                    "n_ref": 25672
+                },
+                "2": {
+                    "Dice": 0.3516280785905359,
+                    "FN": 26965,
+                    "FP": 8180,
+                    "IoU": 0.21331841074426414,
+                    "TN": 20861,
+                    "TP": 9530,
+                    "n_pred": 17710,
+                    "n_ref": 36495
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 2688,
+                    "FP": 32,
+                    "IoU": 0.0,
+                    "TN": 62816,
+                    "TP": 0,
+                    "n_pred": 32,
+                    "n_ref": 2688
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 320,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65216,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 320
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_01280_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_01280_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.03356277948048033,
+                    "FN": 18426,
+                    "FP": 809,
+                    "IoU": 0.017067811334253155,
+                    "TN": 45967,
+                    "TP": 334,
+                    "n_pred": 1143,
+                    "n_ref": 18760
+                },
+                "2": {
+                    "Dice": 0.628053550605913,
+                    "FN": 757,
+                    "FP": 24442,
+                    "IoU": 0.457782846322675,
+                    "TN": 19062,
+                    "TP": 21275,
+                    "n_pred": 45717,
+                    "n_ref": 22032
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 3052,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 62484,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 3052
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_01280_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_01280_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6381220839813375,
+                    "FN": 6616,
+                    "FP": 23168,
+                    "IoU": 0.46856041681535937,
+                    "TN": 9492,
+                    "TP": 26260,
+                    "n_pred": 49428,
+                    "n_ref": 32876
+                },
+                "2": {
+                    "Dice": 0.391631323510122,
+                    "FN": 20703,
+                    "FP": 7125,
+                    "IoU": 0.2434959902134022,
+                    "TN": 28751,
+                    "TP": 8957,
+                    "n_pred": 16082,
+                    "n_ref": 29660
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 2920,
+                    "FP": 4,
+                    "IoU": 0.0,
+                    "TN": 62612,
+                    "TP": 0,
+                    "n_pred": 4,
+                    "n_ref": 2920
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 80,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65456,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 80
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_01536_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_01536_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.00699555490781899,
+                    "FN": 13568,
+                    "FP": 59,
+                    "IoU": 0.003510054844606947,
+                    "TN": 51861,
+                    "TP": 48,
+                    "n_pred": 107,
+                    "n_ref": 13616
+                },
+                "2": {
+                    "Dice": 0.7411557990564341,
+                    "FN": 662,
+                    "FP": 18047,
+                    "IoU": 0.5887589572251286,
+                    "TN": 20042,
+                    "TP": 26785,
+                    "n_pred": 44832,
+                    "n_ref": 27447
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_01536_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_01536_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5714285714285714,
+                    "FN": 4988,
+                    "FP": 27853,
+                    "IoU": 0.4,
+                    "TN": 10801,
+                    "TP": 21894,
+                    "n_pred": 49747,
+                    "n_ref": 26882
+                },
+                "2": {
+                    "Dice": 0.3919500768194837,
+                    "FN": 26602,
+                    "FP": 5455,
+                    "IoU": 0.2437424803604709,
+                    "TN": 23147,
+                    "TP": 10332,
+                    "n_pred": 15787,
+                    "n_ref": 36934
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1720,
+                    "FP": 2,
+                    "IoU": 0.0,
+                    "TN": 63814,
+                    "TP": 0,
+                    "n_pred": 2,
+                    "n_ref": 1720
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_01792_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_01792_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.02753152359451572,
+                    "FN": 17661,
+                    "FP": 0,
+                    "IoU": 0.01395790296465859,
+                    "TN": 47625,
+                    "TP": 250,
+                    "n_pred": 250,
+                    "n_ref": 17911
+                },
+                "2": {
+                    "Dice": 0.6950863483855975,
+                    "FN": 572,
+                    "FP": 20421,
+                    "IoU": 0.5326684624117896,
+                    "TN": 20615,
+                    "TP": 23928,
+                    "n_pred": 44349,
+                    "n_ref": 24500
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1480,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64056,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1480
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 419,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65117,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 419
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_01792_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_01792_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5439361119085523,
+                    "FN": 6912,
+                    "FP": 28038,
+                    "IoU": 0.37356610266704904,
+                    "TN": 9744,
+                    "TP": 20842,
+                    "n_pred": 48880,
+                    "n_ref": 27754
+                },
+                "2": {
+                    "Dice": 0.3593607997576492,
+                    "FN": 26671,
+                    "FP": 7165,
+                    "IoU": 0.21903706781147578,
+                    "TN": 22210,
+                    "TP": 9490,
+                    "n_pred": 16655,
+                    "n_ref": 36161
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 420,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65116,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 420
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_02048_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_02048_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.20696985313063643,
+                    "FN": 21680,
+                    "FP": 2942,
+                    "IoU": 0.1154302137596551,
+                    "TN": 37701,
+                    "TP": 3213,
+                    "n_pred": 6155,
+                    "n_ref": 24893
+                },
+                "2": {
+                    "Dice": 0.5959692592238273,
+                    "FN": 2585,
+                    "FP": 22755,
+                    "IoU": 0.42447023552658475,
+                    "TN": 21507,
+                    "TP": 18689,
+                    "n_pred": 41444,
+                    "n_ref": 21274
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 2180,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63356,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 2180
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_02048_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_02048_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.512964167651315,
+                    "FN": 3458,
+                    "FP": 33227,
+                    "IoU": 0.34495750303549744,
+                    "TN": 9532,
+                    "TP": 19319,
+                    "n_pred": 52546,
+                    "n_ref": 22777
+                },
+                "2": {
+                    "Dice": 0.33046516382017876,
+                    "FN": 31928,
+                    "FP": 4099,
+                    "IoU": 0.19793846564851508,
+                    "TN": 20618,
+                    "TP": 8891,
+                    "n_pred": 12990,
+                    "n_ref": 40819
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1200,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64336,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1200
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 740,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64796,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 740
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_02304_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_02304_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.022857142857142857,
+                    "FN": 10392,
+                    "FP": 552,
+                    "IoU": 0.011560693641618497,
+                    "TN": 54464,
+                    "TP": 128,
+                    "n_pred": 680,
+                    "n_ref": 10520
+                },
+                "2": {
+                    "Dice": 0.7747533328312118,
+                    "FN": 1852,
+                    "FP": 13101,
+                    "IoU": 0.6323243748309523,
+                    "TN": 24867,
+                    "TP": 25716,
+                    "n_pred": 38817,
+                    "n_ref": 27568
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 340,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65196,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 340
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_02304_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_02304_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5468978538946361,
+                    "FN": 9108,
+                    "FP": 24968,
+                    "IoU": 0.3763657326915686,
+                    "TN": 10895,
+                    "TP": 20565,
+                    "n_pred": 45533,
+                    "n_ref": 29673
+                },
+                "2": {
+                    "Dice": 0.3881795394015353,
+                    "FN": 21152,
+                    "FP": 10090,
+                    "IoU": 0.2408329890894953,
+                    "TN": 24383,
+                    "TP": 9911,
+                    "n_pred": 20001,
+                    "n_ref": 31063
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 3940,
+                    "FP": 2,
+                    "IoU": 0.0,
+                    "TN": 61594,
+                    "TP": 0,
+                    "n_pred": 2,
+                    "n_ref": 3940
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 860,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64676,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 860
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_02560_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_02560_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0438512869399428,
+                    "FN": 12881,
+                    "FP": 158,
+                    "IoU": 0.022417153996101363,
+                    "TN": 52198,
+                    "TP": 299,
+                    "n_pred": 457,
+                    "n_ref": 13180
+                },
+                "2": {
+                    "Dice": 0.578345006859701,
+                    "FN": 139,
+                    "FP": 23219,
+                    "IoU": 0.40681108261167687,
+                    "TN": 26159,
+                    "TP": 16019,
+                    "n_pred": 39238,
+                    "n_ref": 16158
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 7999,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 57537,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 7999
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_02560_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_02560_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5466821195622877,
+                    "FN": 6369,
+                    "FP": 27269,
+                    "IoU": 0.376161421338625,
+                    "TN": 11615,
+                    "TP": 20283,
+                    "n_pred": 47552,
+                    "n_ref": 26652
+                },
+                "2": {
+                    "Dice": 0.39225929877487953,
+                    "FN": 25741,
+                    "FP": 7297,
+                    "IoU": 0.2439816933638444,
+                    "TN": 21836,
+                    "TP": 10662,
+                    "n_pred": 17959,
+                    "n_ref": 36403
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1320,
+                    "FP": 15,
+                    "IoU": 0.0,
+                    "TN": 64201,
+                    "TP": 0,
+                    "n_pred": 15,
+                    "n_ref": 1320
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_02816_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_02816_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.368129622059534,
+                    "FN": 14399,
+                    "FP": 2604,
+                    "IoU": 0.22558753871379122,
+                    "TN": 43580,
+                    "TP": 4953,
+                    "n_pred": 7557,
+                    "n_ref": 19352
+                },
+                "2": {
+                    "Dice": 0.624414416290158,
+                    "FN": 2725,
+                    "FP": 15314,
+                    "IoU": 0.45392625779499907,
+                    "TN": 32502,
+                    "TP": 14995,
+                    "n_pred": 30309,
+                    "n_ref": 17720
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 2560,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 62976,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 2560
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_02816_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_02816_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5575019906722785,
+                    "FN": 3114,
+                    "FP": 28006,
+                    "IoU": 0.3864837157952843,
+                    "TN": 14812,
+                    "TP": 19604,
+                    "n_pred": 47610,
+                    "n_ref": 22718
+                },
+                "2": {
+                    "Dice": 0.486353389977458,
+                    "FN": 25854,
+                    "FP": 3768,
+                    "IoU": 0.32131237685011227,
+                    "TN": 21890,
+                    "TP": 14024,
+                    "n_pred": 17792,
+                    "n_ref": 39878
+                },
+                "3": {
+                    "Dice": 0.004715392388009431,
+                    "FN": 2933,
+                    "FP": 22,
+                    "IoU": 0.002363268062120189,
+                    "TN": 62574,
+                    "TP": 7,
+                    "n_pred": 29,
+                    "n_ref": 2940
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 105,
+                    "IoU": 0.0,
+                    "TN": 65431,
+                    "TP": 0,
+                    "n_pred": 105,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_03072_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_03072_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.1858432522569145,
+                    "FN": 12836,
+                    "FP": 1323,
+                    "IoU": 0.1024405705229794,
+                    "TN": 49761,
+                    "TP": 1616,
+                    "n_pred": 2939,
+                    "n_ref": 14452
+                },
+                "2": {
+                    "Dice": 0.648708639792329,
+                    "FN": 4759,
+                    "FP": 13916,
+                    "IoU": 0.48006570521743974,
+                    "TN": 29618,
+                    "TP": 17243,
+                    "n_pred": 31159,
+                    "n_ref": 22002
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 240,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65296,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 240
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_03072_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_03072_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5280159786950732,
+                    "FN": 6240,
+                    "FP": 29206,
+                    "IoU": 0.3587104010999946,
+                    "TN": 10263,
+                    "TP": 19827,
+                    "n_pred": 49033,
+                    "n_ref": 26067
+                },
+                "2": {
+                    "Dice": 0.3552949036784084,
+                    "FN": 27836,
+                    "FP": 6902,
+                    "IoU": 0.21602347099977431,
+                    "TN": 21226,
+                    "TP": 9572,
+                    "n_pred": 16474,
+                    "n_ref": 37408
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1700,
+                    "FP": 26,
+                    "IoU": 0.0,
+                    "TN": 63810,
+                    "TP": 0,
+                    "n_pred": 26,
+                    "n_ref": 1700
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_03328_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_03328_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.16571718653054318,
+                    "FN": 9363,
+                    "FP": 5428,
+                    "IoU": 0.09034440344403444,
+                    "TN": 49276,
+                    "TP": 1469,
+                    "n_pred": 6897,
+                    "n_ref": 10832
+                },
+                "2": {
+                    "Dice": 0.5399053774080831,
+                    "FN": 19715,
+                    "FP": 10043,
+                    "IoU": 0.3697742386378076,
+                    "TN": 18318,
+                    "TP": 17460,
+                    "n_pred": 27503,
+                    "n_ref": 37175
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_03328_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_03328_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5553420546971651,
+                    "FN": 7412,
+                    "FP": 26374,
+                    "IoU": 0.3844107572334378,
+                    "TN": 10652,
+                    "TP": 21098,
+                    "n_pred": 47472,
+                    "n_ref": 28510
+                },
+                "2": {
+                    "Dice": 0.39086265714231866,
+                    "FN": 24657,
+                    "FP": 7662,
+                    "IoU": 0.24290198650674663,
+                    "TN": 22848,
+                    "TP": 10369,
+                    "n_pred": 18031,
+                    "n_ref": 35026
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1880,
+                    "FP": 26,
+                    "IoU": 0.0,
+                    "TN": 63630,
+                    "TP": 0,
+                    "n_pred": 26,
+                    "n_ref": 1880
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 120,
+                    "FP": 2,
+                    "IoU": 0.0,
+                    "TN": 65414,
+                    "TP": 0,
+                    "n_pred": 2,
+                    "n_ref": 120
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_03584_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_03584_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.4139724280037286,
+                    "FN": 14371,
+                    "FP": 9519,
+                    "IoU": 0.26101212571145754,
+                    "TN": 33208,
+                    "TP": 8438,
+                    "n_pred": 17957,
+                    "n_ref": 22809
+                },
+                "2": {
+                    "Dice": 0.47553539783137594,
+                    "FN": 8957,
+                    "FP": 8504,
+                    "IoU": 0.3119360050439374,
+                    "TN": 40159,
+                    "TP": 7916,
+                    "n_pred": 16420,
+                    "n_ref": 16873
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 2240,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63296,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 2240
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_03584_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_03584_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6018884298055875,
+                    "FN": 4341,
+                    "FP": 26396,
+                    "IoU": 0.43050100051878754,
+                    "TN": 11564,
+                    "TP": 23235,
+                    "n_pred": 49631,
+                    "n_ref": 27576
+                },
+                "2": {
+                    "Dice": 0.43527450279861857,
+                    "FN": 23535,
+                    "FP": 4917,
+                    "IoU": 0.27817946571276353,
+                    "TN": 26119,
+                    "TP": 10965,
+                    "n_pred": 15882,
+                    "n_ref": 34500
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 2660,
+                    "FP": 23,
+                    "IoU": 0.0,
+                    "TN": 62853,
+                    "TP": 0,
+                    "n_pred": 23,
+                    "n_ref": 2660
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_03840_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_03840_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.520151431500907,
+                    "FN": 17719,
+                    "FP": 6617,
+                    "IoU": 0.35148963385386134,
+                    "TN": 28010,
+                    "TP": 13190,
+                    "n_pred": 19807,
+                    "n_ref": 30909
+                },
+                "2": {
+                    "Dice": 0.3417414111323382,
+                    "FN": 5899,
+                    "FP": 14430,
+                    "IoU": 0.20608451144263062,
+                    "TN": 39930,
+                    "TP": 5277,
+                    "n_pred": 19707,
+                    "n_ref": 11176
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_03840_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_03840_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5740298900712854,
+                    "FN": 5590,
+                    "FP": 23511,
+                    "IoU": 0.4025539428031781,
+                    "TN": 16827,
+                    "TP": 19608,
+                    "n_pred": 43119,
+                    "n_ref": 25198
+                },
+                "2": {
+                    "Dice": 0.5382113821138211,
+                    "FN": 22708,
+                    "FP": 5692,
+                    "IoU": 0.3681868743047831,
+                    "TN": 20586,
+                    "TP": 16550,
+                    "n_pred": 22242,
+                    "n_ref": 39258
+                },
+                "3": {
+                    "Dice": 0.009157509157509158,
+                    "FN": 1075,
+                    "FP": 7,
+                    "IoU": 0.004599816007359705,
+                    "TN": 64449,
+                    "TP": 5,
+                    "n_pred": 12,
+                    "n_ref": 1080
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 160,
+                    "IoU": 0.0,
+                    "TN": 65376,
+                    "TP": 0,
+                    "n_pred": 160,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_04096_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_04096_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5166861237470312,
+                    "FN": 12957,
+                    "FP": 11055,
+                    "IoU": 0.34833229299535917,
+                    "TN": 28689,
+                    "TP": 12835,
+                    "n_pred": 23890,
+                    "n_ref": 25792
+                },
+                "2": {
+                    "Dice": 0.46155601707099986,
+                    "FN": 10872,
+                    "FP": 12721,
+                    "IoU": 0.30001483459427386,
+                    "TN": 31831,
+                    "TP": 10112,
+                    "n_pred": 22833,
+                    "n_ref": 20984
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 520,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65016,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 520
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_04096_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_04096_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5702956575300278,
+                    "FN": 6479,
+                    "FP": 27007,
+                    "IoU": 0.3988906241585438,
+                    "TN": 9829,
+                    "TP": 22221,
+                    "n_pred": 49228,
+                    "n_ref": 28700
+                },
+                "2": {
+                    "Dice": 0.341434975775486,
+                    "FN": 24943,
+                    "FP": 7816,
+                    "IoU": 0.20586167608057987,
+                    "TN": 24285,
+                    "TP": 8492,
+                    "n_pred": 16308,
+                    "n_ref": 33435
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 2240,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63296,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 2240
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_04352_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_04352_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.4494925734256334,
+                    "FN": 1172,
+                    "FP": 31592,
+                    "IoU": 0.28990030342436063,
+                    "TN": 19396,
+                    "TP": 13376,
+                    "n_pred": 44968,
+                    "n_ref": 14548
+                },
+                "2": {
+                    "Dice": 0.21528424976700838,
+                    "FN": 33513,
+                    "FP": 1851,
+                    "IoU": 0.1206266318537859,
+                    "TN": 25321,
+                    "TP": 4851,
+                    "n_pred": 6702,
+                    "n_ref": 38364
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 3160,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 62376,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 3160
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_04352_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_04352_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5910906298003072,
+                    "FN": 6841,
+                    "FP": 23772,
+                    "IoU": 0.41953772350632357,
+                    "TN": 12797,
+                    "TP": 22126,
+                    "n_pred": 45898,
+                    "n_ref": 28967
+                },
+                "2": {
+                    "Dice": 0.4668184532696327,
+                    "FN": 21502,
+                    "FP": 7068,
+                    "IoU": 0.3044769579083185,
+                    "TN": 24459,
+                    "TP": 12507,
+                    "n_pred": 19575,
+                    "n_ref": 34009
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 2560,
+                    "FP": 57,
+                    "IoU": 0.0,
+                    "TN": 62919,
+                    "TP": 0,
+                    "n_pred": 57,
+                    "n_ref": 2560
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_04608_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_04608_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.47616116934320607,
+                    "FN": 3680,
+                    "FP": 23557,
+                    "IoU": 0.3124747576736672,
+                    "TN": 25920,
+                    "TP": 12379,
+                    "n_pred": 35936,
+                    "n_ref": 16059
+                },
+                "2": {
+                    "Dice": 0.30027278264784557,
+                    "FN": 17267,
+                    "FP": 9154,
+                    "IoU": 0.17665939545029605,
+                    "TN": 33446,
+                    "TP": 5669,
+                    "n_pred": 14823,
+                    "n_ref": 22936
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 4120,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 61416,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 4120
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_04608_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_04608_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6864771134706288,
+                    "FN": 7381,
+                    "FP": 19017,
+                    "IoU": 0.5226228796701509,
+                    "TN": 10238,
+                    "TP": 28900,
+                    "n_pred": 47917,
+                    "n_ref": 36281
+                },
+                "2": {
+                    "Dice": 0.38379449471196314,
+                    "FN": 16277,
+                    "FP": 9534,
+                    "IoU": 0.23746639487134036,
+                    "TN": 31687,
+                    "TP": 8038,
+                    "n_pred": 17572,
+                    "n_ref": 24315
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 3860,
+                    "FP": 37,
+                    "IoU": 0.0,
+                    "TN": 61639,
+                    "TP": 0,
+                    "n_pred": 37,
+                    "n_ref": 3860
+                },
+                "4": {
+                    "Dice": 0.012879484820607176,
+                    "FN": 1073,
+                    "FP": 0,
+                    "IoU": 0.006481481481481481,
+                    "TN": 64456,
+                    "TP": 7,
+                    "n_pred": 7,
+                    "n_ref": 1080
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_04864_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_04864_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6124602160238578,
+                    "FN": 5236,
+                    "FP": 25692,
+                    "IoU": 0.44140011198006035,
+                    "TN": 10169,
+                    "TP": 24439,
+                    "n_pred": 50131,
+                    "n_ref": 29675
+                },
+                "2": {
+                    "Dice": 0.30631375080697226,
+                    "FN": 21964,
+                    "FP": 4899,
+                    "IoU": 0.18085625419284015,
+                    "TN": 32742,
+                    "TP": 5931,
+                    "n_pred": 10830,
+                    "n_ref": 27895
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1200,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64336,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1200
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 1200,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64336,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1200
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_04864_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_04864_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.701392470345539,
+                    "FN": 4551,
+                    "FP": 21504,
+                    "IoU": 0.5401111993645751,
+                    "TN": 8881,
+                    "TP": 30600,
+                    "n_pred": 52104,
+                    "n_ref": 35151
+                },
+                "2": {
+                    "Dice": 0.41895716410035017,
+                    "FN": 19531,
+                    "FP": 4695,
+                    "IoU": 0.2649878640776699,
+                    "TN": 32576,
+                    "TP": 8734,
+                    "n_pred": 13429,
+                    "n_ref": 28265
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1600,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63936,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1600
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 520,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65016,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 520
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_05120_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_05120_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6426083734716561,
+                    "FN": 5902,
+                    "FP": 23036,
+                    "IoU": 0.4734141281799323,
+                    "TN": 10582,
+                    "TP": 26016,
+                    "n_pred": 49052,
+                    "n_ref": 31918
+                },
+                "2": {
+                    "Dice": 0.43344815494729894,
+                    "FN": 21511,
+                    "FP": 5956,
+                    "IoU": 0.27668931374098066,
+                    "TN": 27562,
+                    "TP": 10507,
+                    "n_pred": 16463,
+                    "n_ref": 32018
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 16,
+                    "IoU": 0.0,
+                    "TN": 64720,
+                    "TP": 0,
+                    "n_pred": 16,
+                    "n_ref": 800
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_05120_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_05120_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.7055465573287726,
+                    "FN": 5794,
+                    "FP": 20203,
+                    "IoU": 0.5450536373659066,
+                    "TN": 8393,
+                    "TP": 31146,
+                    "n_pred": 51349,
+                    "n_ref": 36940
+                },
+                "2": {
+                    "Dice": 0.39193593209205974,
+                    "FN": 17639,
+                    "FP": 6430,
+                    "IoU": 0.24373154025010998,
+                    "TN": 33710,
+                    "TP": 7757,
+                    "n_pred": 14187,
+                    "n_ref": 25396
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 2420,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63116,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 2420
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_05376_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_05376_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5727054054384059,
+                    "FN": 5093,
+                    "FP": 29902,
+                    "IoU": 0.401252416719421,
+                    "TN": 7089,
+                    "TP": 23452,
+                    "n_pred": 53354,
+                    "n_ref": 28545
+                },
+                "2": {
+                    "Dice": 0.29443648370818015,
+                    "FN": 28882,
+                    "FP": 5093,
+                    "IoU": 0.17263296317942722,
+                    "TN": 24472,
+                    "TP": 7089,
+                    "n_pred": 12182,
+                    "n_ref": 35971
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1020,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64516,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1020
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_05376_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_05376_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.34275196836974675,
+                    "FN": 11786,
+                    "FP": 7497,
+                    "IoU": 0.20681995804368392,
+                    "TN": 41225,
+                    "TP": 5028,
+                    "n_pred": 12525,
+                    "n_ref": 16814
+                },
+                "2": {
+                    "Dice": 0.6295469761214014,
+                    "FN": 9552,
+                    "FP": 13688,
+                    "IoU": 0.4593714378765673,
+                    "TN": 22549,
+                    "TP": 19747,
+                    "n_pred": 33435,
+                    "n_ref": 29299
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1600,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63936,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1600
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_05376_07424.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_05376_07424.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6823868302960326,
+                    "FN": 8082,
+                    "FP": 18601,
+                    "IoU": 0.517896182268235,
+                    "TN": 10189,
+                    "TP": 28664,
+                    "n_pred": 47265,
+                    "n_ref": 36746
+                },
+                "2": {
+                    "Dice": 0.440540847630951,
+                    "FN": 16057,
+                    "FP": 8562,
+                    "IoU": 0.28249591979482397,
+                    "TN": 31224,
+                    "TP": 9693,
+                    "n_pred": 18255,
+                    "n_ref": 25750
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 2000,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 2000
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 1040,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64496,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1040
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_05632_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_05632_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5792255161672502,
+                    "FN": 7284,
+                    "FP": 24325,
+                    "IoU": 0.40768293825541085,
+                    "TN": 12171,
+                    "TP": 21756,
+                    "n_pred": 46081,
+                    "n_ref": 29040
+                },
+                "2": {
+                    "Dice": 0.429070198365484,
+                    "FN": 20816,
+                    "FP": 8455,
+                    "IoU": 0.27313136329774024,
+                    "TN": 25266,
+                    "TP": 10999,
+                    "n_pred": 19454,
+                    "n_ref": 31815
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 3380,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 62156,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 3380
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 940,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64596,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 940
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_05632_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_05632_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6315039901780233,
+                    "FN": 9302,
+                    "FP": 20712,
+                    "IoU": 0.46145840809588745,
+                    "TN": 9804,
+                    "TP": 25718,
+                    "n_pred": 46430,
+                    "n_ref": 35020
+                },
+                "2": {
+                    "Dice": 0.3200470035252644,
+                    "FN": 19863,
+                    "FP": 9069,
+                    "IoU": 0.19050949889482666,
+                    "TN": 29795,
+                    "TP": 6809,
+                    "n_pred": 15878,
+                    "n_ref": 26672
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 8,
+                    "IoU": 0.0,
+                    "TN": 64728,
+                    "TP": 0,
+                    "n_pred": 8,
+                    "n_ref": 800
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_05632_07424.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_05632_07424.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6962340961018777,
+                    "FN": 6369,
+                    "FP": 19822,
+                    "IoU": 0.5340177205280575,
+                    "TN": 9330,
+                    "TP": 30015,
+                    "n_pred": 49837,
+                    "n_ref": 36384
+                },
+                "2": {
+                    "Dice": 0.4110895371986138,
+                    "FN": 17149,
+                    "FP": 6812,
+                    "IoU": 0.2587241678010147,
+                    "TN": 33212,
+                    "TP": 8363,
+                    "n_pred": 15175,
+                    "n_ref": 25512
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 2520,
+                    "FP": 39,
+                    "IoU": 0.0,
+                    "TN": 62977,
+                    "TP": 0,
+                    "n_pred": 39,
+                    "n_ref": 2520
+                },
+                "4": {
+                    "Dice": 0.34673366834170855,
+                    "FN": 844,
+                    "FP": 196,
+                    "IoU": 0.20972644376899696,
+                    "TN": 64220,
+                    "TP": 276,
+                    "n_pred": 472,
+                    "n_ref": 1120
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_05888_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_05888_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5997713547232647,
+                    "FN": 5655,
+                    "FP": 26553,
+                    "IoU": 0.4283381551623152,
+                    "TN": 9195,
+                    "TP": 24133,
+                    "n_pred": 50686,
+                    "n_ref": 29788
+                },
+                "2": {
+                    "Dice": 0.341063324867813,
+                    "FN": 24996,
+                    "FP": 6658,
+                    "IoU": 0.20559152738041458,
+                    "TN": 25690,
+                    "TP": 8192,
+                    "n_pred": 14850,
+                    "n_ref": 33188
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1180,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64356,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1180
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 1380,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64156,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1380
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_05888_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_05888_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5287901481111665,
+                    "FN": 4075,
+                    "FP": 29903,
+                    "IoU": 0.359425371868107,
+                    "TN": 12493,
+                    "TP": 19065,
+                    "n_pred": 48968,
+                    "n_ref": 23140
+                },
+                "2": {
+                    "Dice": 0.4148928647196096,
+                    "FN": 28262,
+                    "FP": 4834,
+                    "IoU": 0.2617443676109748,
+                    "TN": 20706,
+                    "TP": 11734,
+                    "n_pred": 16568,
+                    "n_ref": 39996
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1600,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63936,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1600
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_05888_07424.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_05888_07424.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.3600094764273869,
+                    "FN": 4341,
+                    "FP": 9166,
+                    "IoU": 0.2195192418814284,
+                    "TN": 48230,
+                    "TP": 3799,
+                    "n_pred": 12965,
+                    "n_ref": 8140
+                },
+                "2": {
+                    "Dice": 0.6126234064986101,
+                    "FN": 11961,
+                    "FP": 4205,
+                    "IoU": 0.44156965698297007,
+                    "TN": 36587,
+                    "TP": 12783,
+                    "n_pred": 16988,
+                    "n_ref": 24744
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 1980,
+                    "IoU": 0.0,
+                    "TN": 63556,
+                    "TP": 0,
+                    "n_pred": 1980,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_05888_07680.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_05888_07680.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6207632018501863,
+                    "FN": 8856,
+                    "FP": 20660,
+                    "IoU": 0.4500773200678181,
+                    "TN": 11863,
+                    "TP": 24157,
+                    "n_pred": 44817,
+                    "n_ref": 33013
+                },
+                "2": {
+                    "Dice": 0.43366270678361274,
+                    "FN": 16598,
+                    "FP": 8907,
+                    "IoU": 0.2768641905301956,
+                    "TN": 30266,
+                    "TP": 9765,
+                    "n_pred": 18672,
+                    "n_ref": 26363
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 4360,
+                    "FP": 45,
+                    "IoU": 0.0,
+                    "TN": 61131,
+                    "TP": 0,
+                    "n_pred": 45,
+                    "n_ref": 4360
+                },
+                "4": {
+                    "Dice": 0.7605333333333333,
+                    "FN": 374,
+                    "FP": 524,
+                    "IoU": 0.6135972461273667,
+                    "TN": 63212,
+                    "TP": 1426,
+                    "n_pred": 1950,
+                    "n_ref": 1800
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_06144_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_06144_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6253383865728208,
+                    "FN": 7102,
+                    "FP": 23346,
+                    "IoU": 0.454903505317054,
+                    "TN": 9678,
+                    "TP": 25410,
+                    "n_pred": 48756,
+                    "n_ref": 32512
+                },
+                "2": {
+                    "Dice": 0.3894457791400878,
+                    "FN": 22102,
+                    "FP": 7378,
+                    "IoU": 0.24180854894295561,
+                    "TN": 26654,
+                    "TP": 9402,
+                    "n_pred": 16780,
+                    "n_ref": 31504
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1120,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64416,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1120
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_06144_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_06144_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.676823133120434,
+                    "FN": 7101,
+                    "FP": 22449,
+                    "IoU": 0.5115137288611905,
+                    "TN": 5043,
+                    "TP": 30943,
+                    "n_pred": 53392,
+                    "n_ref": 38044
+                },
+                "2": {
+                    "Dice": 0.2432794314553507,
+                    "FN": 21968,
+                    "FP": 7420,
+                    "IoU": 0.13848499061913697,
+                    "TN": 31424,
+                    "TP": 4724,
+                    "n_pred": 12144,
+                    "n_ref": 26692
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_06144_07424.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_06144_07424.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.456140924777965,
+                    "FN": 8320,
+                    "FP": 24931,
+                    "IoU": 0.2954550270155737,
+                    "TN": 18341,
+                    "TP": 13944,
+                    "n_pred": 38875,
+                    "n_ref": 22264
+                },
+                "2": {
+                    "Dice": 0.4399501097270244,
+                    "FN": 26805,
+                    "FP": 8668,
+                    "IoU": 0.28201028215196533,
+                    "TN": 16130,
+                    "TP": 13933,
+                    "n_pred": 22601,
+                    "n_ref": 40738
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1600,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63936,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1600
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 3902,
+                    "IoU": 0.0,
+                    "TN": 61234,
+                    "TP": 0,
+                    "n_pred": 3902,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_06144_07680.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_06144_07680.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5858734409034783,
+                    "FN": 14562,
+                    "FP": 15287,
+                    "IoU": 0.414300571002492,
+                    "TN": 14573,
+                    "TP": 21114,
+                    "n_pred": 36401,
+                    "n_ref": 35676
+                },
+                "2": {
+                    "Dice": 0.3562807331247206,
+                    "FN": 14990,
+                    "FP": 13810,
+                    "IoU": 0.2167527875985858,
+                    "TN": 28766,
+                    "TP": 7970,
+                    "n_pred": 21780,
+                    "n_ref": 22960
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 840,
+                    "FP": 1,
+                    "IoU": 0.0,
+                    "TN": 64695,
+                    "TP": 0,
+                    "n_pred": 1,
+                    "n_ref": 840
+                },
+                "4": {
+                    "Dice": 0.8186285627882361,
+                    "FN": 646,
+                    "FP": 1753,
+                    "IoU": 0.6929476513503136,
+                    "TN": 57723,
+                    "TP": 5414,
+                    "n_pred": 7167,
+                    "n_ref": 6060
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_06400_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_06400_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5083008865270714,
+                    "FN": 5965,
+                    "FP": 32804,
+                    "IoU": 0.3407529587811182,
+                    "TN": 6728,
+                    "TP": 20039,
+                    "n_pred": 52843,
+                    "n_ref": 26004
+                },
+                "2": {
+                    "Dice": 0.26257496142050674,
+                    "FN": 31791,
+                    "FP": 5960,
+                    "IoU": 0.15112880014391078,
+                    "TN": 21064,
+                    "TP": 6721,
+                    "n_pred": 12681,
+                    "n_ref": 38512
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 640,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64896,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 640
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_06400_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_06400_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5274086907779915,
+                    "FN": 6600,
+                    "FP": 30497,
+                    "IoU": 0.35815007699361556,
+                    "TN": 7739,
+                    "TP": 20700,
+                    "n_pred": 51197,
+                    "n_ref": 27300
+                },
+                "2": {
+                    "Dice": 0.28280057943022696,
+                    "FN": 30115,
+                    "FP": 7018,
+                    "IoU": 0.16468709227516085,
+                    "TN": 21082,
+                    "TP": 7321,
+                    "n_pred": 14339,
+                    "n_ref": 37436
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_06400_07424.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_06400_07424.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5302629923241475,
+                    "FN": 6952,
+                    "FP": 30378,
+                    "IoU": 0.3607876712328767,
+                    "TN": 7136,
+                    "TP": 21070,
+                    "n_pred": 51448,
+                    "n_ref": 28022
+                },
+                "2": {
+                    "Dice": 0.27477834072197593,
+                    "FN": 29512,
+                    "FP": 7132,
+                    "IoU": 0.15927132565502683,
+                    "TN": 21950,
+                    "TP": 6942,
+                    "n_pred": 14074,
+                    "n_ref": 36454
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 220,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65316,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 220
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_06400_07680.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_06400_07680.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.696184230908246,
+                    "FN": 11065,
+                    "FP": 12471,
+                    "IoU": 0.5339590511266881,
+                    "TN": 15034,
+                    "TP": 26966,
+                    "n_pred": 39437,
+                    "n_ref": 38031
+                },
+                "2": {
+                    "Dice": 0.48198016247026615,
+                    "FN": 11725,
+                    "FP": 11359,
+                    "IoU": 0.3175058392218313,
+                    "TN": 31713,
+                    "TP": 10739,
+                    "n_pred": 22098,
+                    "n_ref": 22464
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 760,
+                    "FP": 6,
+                    "IoU": 0.0,
+                    "TN": 64770,
+                    "TP": 0,
+                    "n_pred": 6,
+                    "n_ref": 760
+                },
+                "4": {
+                    "Dice": 0.6738544474393531,
+                    "FN": 1295,
+                    "FP": 1246,
+                    "IoU": 0.508130081300813,
+                    "TN": 60370,
+                    "TP": 2625,
+                    "n_pred": 3871,
+                    "n_ref": 3920
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_06656_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_06656_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.7105071423840329,
+                    "FN": 6215,
+                    "FP": 20009,
+                    "IoU": 0.550997346117627,
+                    "TN": 7131,
+                    "TP": 32181,
+                    "n_pred": 52190,
+                    "n_ref": 38396
+                },
+                "2": {
+                    "Dice": 0.3497155972457838,
+                    "FN": 19731,
+                    "FP": 6335,
+                    "IoU": 0.21191232048374906,
+                    "TN": 32461,
+                    "TP": 7009,
+                    "n_pred": 13344,
+                    "n_ref": 26740
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_06656_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_06656_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5723275266671782,
+                    "FN": 6142,
+                    "FP": 27296,
+                    "IoU": 0.40088153085357986,
+                    "TN": 9724,
+                    "TP": 22374,
+                    "n_pred": 49670,
+                    "n_ref": 28516
+                },
+                "2": {
+                    "Dice": 0.3677343720455319,
+                    "FN": 27296,
+                    "FP": 6142,
+                    "IoU": 0.2252907650247903,
+                    "TN": 22374,
+                    "TP": 9724,
+                    "n_pred": 15866,
+                    "n_ref": 37020
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_06656_07424.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_06656_07424.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6376084630928325,
+                    "FN": 6283,
+                    "FP": 24205,
+                    "IoU": 0.46800677031530824,
+                    "TN": 8227,
+                    "TP": 26821,
+                    "n_pred": 51026,
+                    "n_ref": 33104
+                },
+                "2": {
+                    "Dice": 0.35312661945068236,
+                    "FN": 23660,
+                    "FP": 6298,
+                    "IoU": 0.21442244657139112,
+                    "TN": 27401,
+                    "TP": 8177,
+                    "n_pred": 14475,
+                    "n_ref": 31837
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 435,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65101,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 435
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 40,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65496,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 40
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_06656_07680.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_06656_07680.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6904665039327367,
+                    "FN": 8023,
+                    "FP": 19367,
+                    "IoU": 0.5272614301247864,
+                    "TN": 7597,
+                    "TP": 30549,
+                    "n_pred": 49916,
+                    "n_ref": 38572
+                },
+                "2": {
+                    "Dice": 0.3635596585269009,
+                    "FN": 17359,
+                    "FP": 8287,
+                    "IoU": 0.2221649328197507,
+                    "TN": 32565,
+                    "TP": 7325,
+                    "n_pred": 15612,
+                    "n_ref": 24684
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1800
+                },
+                "4": {
+                    "Dice": 0.03278688524590164,
+                    "FN": 472,
+                    "FP": 0,
+                    "IoU": 0.016666666666666666,
+                    "TN": 65056,
+                    "TP": 8,
+                    "n_pred": 8,
+                    "n_ref": 480
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_06912_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_06912_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.709834661748238,
+                    "FN": 6592,
+                    "FP": 19838,
+                    "IoU": 0.5501889104462371,
+                    "TN": 6778,
+                    "TP": 32328,
+                    "n_pred": 52166,
+                    "n_ref": 38920
+                },
+                "2": {
+                    "Dice": 0.33072706964179027,
+                    "FN": 18770,
+                    "FP": 6995,
+                    "IoU": 0.19812641996825495,
+                    "TN": 33405,
+                    "TP": 6366,
+                    "n_pred": 13361,
+                    "n_ref": 25136
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1160,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64376,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1160
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 320,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65216,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 320
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_06912_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_06912_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6976924525584641,
+                    "FN": 5378,
+                    "FP": 21911,
+                    "IoU": 0.5357355518127223,
+                    "TN": 6757,
+                    "TP": 31490,
+                    "n_pred": 53401,
+                    "n_ref": 36868
+                },
+                "2": {
+                    "Dice": 0.3310125030644766,
+                    "FN": 21917,
+                    "FP": 5371,
+                    "IoU": 0.19833132583213373,
+                    "TN": 31497,
+                    "TP": 6751,
+                    "n_pred": 12122,
+                    "n_ref": 28668
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_06912_07424.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_06912_07424.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5825032815998764,
+                    "FN": 5290,
+                    "FP": 27152,
+                    "IoU": 0.4109380106765443,
+                    "TN": 10462,
+                    "TP": 22632,
+                    "n_pred": 49784,
+                    "n_ref": 27922
+                },
+                "2": {
+                    "Dice": 0.3926538958658873,
+                    "FN": 25912,
+                    "FP": 5571,
+                    "IoU": 0.2442870859337494,
+                    "TN": 23876,
+                    "TP": 10177,
+                    "n_pred": 15748,
+                    "n_ref": 36089
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1445,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64091,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1445
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_06912_07680.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_06912_07680.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.19133007576097188,
+                    "FN": 17806,
+                    "FP": 233,
+                    "IoU": 0.10578496009517672,
+                    "TN": 45363,
+                    "TP": 2134,
+                    "n_pred": 2367,
+                    "n_ref": 19940
+                },
+                "2": {
+                    "Dice": 0.644781700208952,
+                    "FN": 224,
+                    "FP": 19156,
+                    "IoU": 0.47577700235332304,
+                    "TN": 28567,
+                    "TP": 17589,
+                    "n_pred": 36745,
+                    "n_ref": 17813
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 455,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65081,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 455
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_06912_07936.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_06912_07936.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.7097042802456428,
+                    "FN": 8061,
+                    "FP": 17040,
+                    "IoU": 0.5500322673167933,
+                    "TN": 9752,
+                    "TP": 30683,
+                    "n_pred": 47723,
+                    "n_ref": 38744
+                },
+                "2": {
+                    "Dice": 0.43030990563605426,
+                    "FN": 13007,
+                    "FP": 9089,
+                    "IoU": 0.27413685489964196,
+                    "TN": 35095,
+                    "TP": 8345,
+                    "n_pred": 17434,
+                    "n_ref": 21352
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 3840,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 61696,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 3840
+                },
+                "4": {
+                    "Dice": 0.13441131884790297,
+                    "FN": 1467,
+                    "FP": 246,
+                    "IoU": 0.07204767063921994,
+                    "TN": 63690,
+                    "TP": 133,
+                    "n_pred": 379,
+                    "n_ref": 1600
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_07168_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_07168_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6307921912235515,
+                    "FN": 7907,
+                    "FP": 22769,
+                    "IoU": 0.4606986515708233,
+                    "TN": 8655,
+                    "TP": 26205,
+                    "n_pred": 48974,
+                    "n_ref": 34112
+                },
+                "2": {
+                    "Dice": 0.36580205644649433,
+                    "FN": 22059,
+                    "FP": 7917,
+                    "IoU": 0.22384195127003445,
+                    "TN": 26915,
+                    "TP": 8645,
+                    "n_pred": 16562,
+                    "n_ref": 30704
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 240,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65296,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 240
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 480,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65056,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 480
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_07168_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_07168_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6337242562929062,
+                    "FN": 5858,
+                    "FP": 24874,
+                    "IoU": 0.4638333507798597,
+                    "TN": 8218,
+                    "TP": 26586,
+                    "n_pred": 51460,
+                    "n_ref": 32444
+                },
+                "2": {
+                    "Dice": 0.34120838255239094,
+                    "FN": 23846,
+                    "FP": 6270,
+                    "IoU": 0.20569695371225108,
+                    "TN": 27621,
+                    "TP": 7799,
+                    "n_pred": 14069,
+                    "n_ref": 31645
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_07168_07424.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_07168_07424.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.593386221093308,
+                    "FN": 6439,
+                    "FP": 27338,
+                    "IoU": 0.4218544066549133,
+                    "TN": 7113,
+                    "TP": 24646,
+                    "n_pred": 51984,
+                    "n_ref": 31085
+                },
+                "2": {
+                    "Dice": 0.28596522044616196,
+                    "FN": 25485,
+                    "FP": 7035,
+                    "IoU": 0.16683746669399468,
+                    "TN": 26504,
+                    "TP": 6512,
+                    "n_pred": 13547,
+                    "n_ref": 31997
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 940,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64596,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 940
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 1200,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64336,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1200
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_07168_07680.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_07168_07680.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.01483225426721601,
+                    "FN": 8177,
+                    "FP": 192,
+                    "IoU": 0.007471537001897533,
+                    "TN": 57104,
+                    "TP": 63,
+                    "n_pred": 255,
+                    "n_ref": 8240
+                },
+                "2": {
+                    "Dice": 0.8166989772043586,
+                    "FN": 1570,
+                    "FP": 9398,
+                    "IoU": 0.6901869950850235,
+                    "TN": 30134,
+                    "TP": 24434,
+                    "n_pred": 33832,
+                    "n_ref": 26004
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 260,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65276,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 260
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_07168_07936.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_07168_07936.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5684639836861992,
+                    "FN": 7650,
+                    "FP": 21130,
+                    "IoU": 0.3971007206301324,
+                    "TN": 17800,
+                    "TP": 18956,
+                    "n_pred": 40086,
+                    "n_ref": 26606
+                },
+                "2": {
+                    "Dice": 0.539451849005188,
+                    "FN": 18329,
+                    "FP": 8036,
+                    "IoU": 0.3693488972874707,
+                    "TN": 23730,
+                    "TP": 15441,
+                    "n_pred": 23477,
+                    "n_ref": 33770
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 3960,
+                    "FP": 1,
+                    "IoU": 0.0,
+                    "TN": 61575,
+                    "TP": 0,
+                    "n_pred": 1,
+                    "n_ref": 3960
+                },
+                "4": {
+                    "Dice": 0.5287941457206491,
+                    "FN": 369,
+                    "FP": 1112,
+                    "IoU": 0.3594290657439446,
+                    "TN": 63224,
+                    "TP": 831,
+                    "n_pred": 1943,
+                    "n_ref": 1200
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_07424_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_07424_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6382838686086904,
+                    "FN": 3912,
+                    "FP": 25765,
+                    "IoU": 0.4687348955442974,
+                    "TN": 9675,
+                    "TP": 26184,
+                    "n_pred": 51949,
+                    "n_ref": 30096
+                },
+                "2": {
+                    "Dice": 0.4080336012621794,
+                    "FN": 23751,
+                    "FP": 4014,
+                    "IoU": 0.25630792307280226,
+                    "TN": 28202,
+                    "TP": 9569,
+                    "n_pred": 13583,
+                    "n_ref": 33320
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1720,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63816,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1720
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_07424_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_07424_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6213283171755173,
+                    "FN": 9572,
+                    "FP": 21832,
+                    "IoU": 0.45067170445004195,
+                    "TN": 8368,
+                    "TP": 25764,
+                    "n_pred": 47596,
+                    "n_ref": 35336
+                },
+                "2": {
+                    "Dice": 0.33600372022236785,
+                    "FN": 21452,
+                    "FP": 9961,
+                    "IoU": 0.2019257640811971,
+                    "TN": 26175,
+                    "TP": 7948,
+                    "n_pred": 17909,
+                    "n_ref": 29400
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 9,
+                    "IoU": 0.0,
+                    "TN": 65127,
+                    "TP": 0,
+                    "n_pred": 9,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_07424_07424.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_07424_07424.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6491060987812082,
+                    "FN": 7202,
+                    "FP": 21905,
+                    "IoU": 0.48050116903746276,
+                    "TN": 9507,
+                    "TP": 26922,
+                    "n_pred": 48827,
+                    "n_ref": 34124
+                },
+                "2": {
+                    "Dice": 0.3985051809070834,
+                    "FN": 21008,
+                    "FP": 7320,
+                    "IoU": 0.24883326262197708,
+                    "TN": 27824,
+                    "TP": 9384,
+                    "n_pred": 16704,
+                    "n_ref": 30392
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 840,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64696,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 840
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_07424_07680.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_07424_07680.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.619847725954081,
+                    "FN": 4468,
+                    "FP": 27637,
+                    "IoU": 0.4491154618301618,
+                    "TN": 7257,
+                    "TP": 26174,
+                    "n_pred": 53811,
+                    "n_ref": 30642
+                },
+                "2": {
+                    "Dice": 0.30195518702281426,
+                    "FN": 25750,
+                    "FP": 5061,
+                    "IoU": 0.17782521681120747,
+                    "TN": 28061,
+                    "TP": 6664,
+                    "n_pred": 11725,
+                    "n_ref": 32414
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1040,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64496,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1040
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 1440,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64096,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1440
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_07680_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_07680_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6142156573116692,
+                    "FN": 6919,
+                    "FP": 25728,
+                    "IoU": 0.4432260045023535,
+                    "TN": 6900,
+                    "TP": 25989,
+                    "n_pred": 51717,
+                    "n_ref": 32908
+                },
+                "2": {
+                    "Dice": 0.2972221623601922,
+                    "FN": 25692,
+                    "FP": 6919,
+                    "IoU": 0.17455134533120714,
+                    "TN": 26029,
+                    "TP": 6896,
+                    "n_pred": 13815,
+                    "n_ref": 32588
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 40,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65496,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 40
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_07680_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_07680_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6516384790410734,
+                    "FN": 11465,
+                    "FP": 18237,
+                    "IoU": 0.48328172297414845,
+                    "TN": 8054,
+                    "TP": 27780,
+                    "n_pred": 46017,
+                    "n_ref": 39245
+                },
+                "2": {
+                    "Dice": 0.3006881948120699,
+                    "FN": 17656,
+                    "FP": 10085,
+                    "IoU": 0.17694704049844237,
+                    "TN": 31831,
+                    "TP": 5964,
+                    "n_pred": 16049,
+                    "n_ref": 23620
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 0,
+                    "FP": 11,
+                    "IoU": 0.0,
+                    "TN": 65525,
+                    "TP": 0,
+                    "n_pred": 11,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 200,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65336,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 200
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_07680_07424.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_07680_07424.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.595426949826708,
+                    "FN": 9192,
+                    "FP": 25594,
+                    "IoU": 0.42392024377318493,
+                    "TN": 5152,
+                    "TP": 25598,
+                    "n_pred": 51192,
+                    "n_ref": 34790
+                },
+                "2": {
+                    "Dice": 0.23517416356436582,
+                    "FN": 23128,
+                    "FP": 9127,
+                    "IoU": 0.13325630139194927,
+                    "TN": 28322,
+                    "TP": 4959,
+                    "n_pred": 14086,
+                    "n_ref": 28087
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1240,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64296,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1240
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 600,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64936,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 600
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_07680_07680.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_07680_07680.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.10613726352837659,
+                    "FN": 15463,
+                    "FP": 791,
+                    "IoU": 0.05604274348103839,
+                    "TN": 48317,
+                    "TP": 965,
+                    "n_pred": 1756,
+                    "n_ref": 16428
+                },
+                "2": {
+                    "Dice": 0.669412089048177,
+                    "FN": 2057,
+                    "FP": 17129,
+                    "IoU": 0.5030949729351739,
+                    "TN": 26925,
+                    "TP": 19425,
+                    "n_pred": 36554,
+                    "n_ref": 21482
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 740,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64796,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 740
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_07680_07936.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_07680_07936.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6681325091708641,
+                    "FN": 4951,
+                    "FP": 24632,
+                    "IoU": 0.501650887773323,
+                    "TN": 6174,
+                    "TP": 29779,
+                    "n_pred": 54411,
+                    "n_ref": 34730
+                },
+                "2": {
+                    "Dice": 0.2910232017988189,
+                    "FN": 23457,
+                    "FP": 5236,
+                    "IoU": 0.17029090278179398,
+                    "TN": 30954,
+                    "TP": 5889,
+                    "n_pred": 11125,
+                    "n_ref": 29346
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 1060,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64476,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1060
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_07936_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_07936_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6696142392762156,
+                    "FN": 4927,
+                    "FP": 24141,
+                    "IoU": 0.5033233660828705,
+                    "TN": 7011,
+                    "TP": 29457,
+                    "n_pred": 53598,
+                    "n_ref": 34384
+                },
+                "2": {
+                    "Dice": 0.31193500952197284,
+                    "FN": 23082,
+                    "FP": 5461,
+                    "IoU": 0.18478850712592465,
+                    "TN": 30523,
+                    "TP": 6470,
+                    "n_pred": 11931,
+                    "n_ref": 29552
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1600,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63936,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1600
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_07936_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_07936_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5778361371850542,
+                    "FN": 10833,
+                    "FP": 21639,
+                    "IoU": 0.4063077063716976,
+                    "TN": 10841,
+                    "TP": 22223,
+                    "n_pred": 43862,
+                    "n_ref": 33056
+                },
+                "2": {
+                    "Dice": 0.308429158322839,
+                    "FN": 21348,
+                    "FP": 12151,
+                    "IoU": 0.1823329834753106,
+                    "TN": 24567,
+                    "TP": 7470,
+                    "n_pred": 19621,
+                    "n_ref": 28818
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 200,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65336,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 200
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_07936_07424.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_07936_07424.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6028751011263924,
+                    "FN": 6625,
+                    "FP": 25282,
+                    "IoU": 0.43151124256137974,
+                    "TN": 9410,
+                    "TP": 24219,
+                    "n_pred": 49501,
+                    "n_ref": 30844
+                },
+                "2": {
+                    "Dice": 0.3533076939604237,
+                    "FN": 23124,
+                    "FP": 6975,
+                    "IoU": 0.21455598757861225,
+                    "TN": 27215,
+                    "TP": 8222,
+                    "n_pred": 15197,
+                    "n_ref": 31346
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1600,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63936,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1600
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_07936_07680.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_07936_07680.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.40972556571978813,
+                    "FN": 10012,
+                    "FP": 9604,
+                    "IoU": 0.2576445655464729,
+                    "TN": 39112,
+                    "TP": 6808,
+                    "n_pred": 16412,
+                    "n_ref": 16820
+                },
+                "2": {
+                    "Dice": 0.6124741447891806,
+                    "FN": 12390,
+                    "FP": 11966,
+                    "IoU": 0.44141458156548863,
+                    "TN": 21933,
+                    "TP": 19247,
+                    "n_pred": 31213,
+                    "n_ref": 31637
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1600,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63936,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1600
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_07936_07936.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_07936_07936.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6793910170550942,
+                    "FN": 6362,
+                    "FP": 22362,
+                    "IoU": 0.5144528212583251,
+                    "TN": 6378,
+                    "TP": 30434,
+                    "n_pred": 52796,
+                    "n_ref": 36796
+                },
+                "2": {
+                    "Dice": 0.2978903373469997,
+                    "FN": 21473,
+                    "FP": 6749,
+                    "IoU": 0.17501242363120817,
+                    "TN": 31327,
+                    "TP": 5987,
+                    "n_pred": 12736,
+                    "n_ref": 27460
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 480,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65056,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 480
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_08192_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_08192_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.4714550441034764,
+                    "FN": 7971,
+                    "FP": 27682,
+                    "IoU": 0.3084338751600264,
+                    "TN": 13982,
+                    "TP": 15901,
+                    "n_pred": 43583,
+                    "n_ref": 23872
+                },
+                "2": {
+                    "Dice": 0.4014358360753814,
+                    "FN": 27665,
+                    "FP": 8353,
+                    "IoU": 0.25112275449101795,
+                    "TN": 17440,
+                    "TP": 12078,
+                    "n_pred": 20431,
+                    "n_ref": 39743
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_08192_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_08192_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6060613606932962,
+                    "FN": 5142,
+                    "FP": 26496,
+                    "IoU": 0.43478338543992856,
+                    "TN": 9561,
+                    "TP": 24337,
+                    "n_pred": 50833,
+                    "n_ref": 29479
+                },
+                "2": {
+                    "Dice": 0.35168716493219804,
+                    "FN": 24512,
+                    "FP": 6325,
+                    "IoU": 0.21336190403306038,
+                    "TN": 26335,
+                    "TP": 8364,
+                    "n_pred": 14689,
+                    "n_ref": 32876
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1920,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63616,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1920
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 520,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65016,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 520
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_08192_07424.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_08192_07424.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6436425836930846,
+                    "FN": 5829,
+                    "FP": 24796,
+                    "IoU": 0.47453759308191207,
+                    "TN": 7254,
+                    "TP": 27657,
+                    "n_pred": 52453,
+                    "n_ref": 33486
+                },
+                "2": {
+                    "Dice": 0.3251356238698011,
+                    "FN": 23968,
+                    "FP": 5888,
+                    "IoU": 0.1941265385445908,
+                    "TN": 28488,
+                    "TP": 7192,
+                    "n_pred": 13080,
+                    "n_ref": 31160
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_08192_07680.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_08192_07680.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5429668310256364,
+                    "FN": 2183,
+                    "FP": 22936,
+                    "IoU": 0.37265234765234767,
+                    "TN": 25496,
+                    "TP": 14921,
+                    "n_pred": 37857,
+                    "n_ref": 17104
+                },
+                "2": {
+                    "Dice": 0.32829658636247555,
+                    "FN": 29007,
+                    "FP": 2555,
+                    "IoU": 0.19638446849140676,
+                    "TN": 26261,
+                    "TP": 7713,
+                    "n_pred": 10268,
+                    "n_ref": 36720
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1240,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64296,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1240
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_08192_07936.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_08192_07936.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6597283345624093,
+                    "FN": 3570,
+                    "FP": 25038,
+                    "IoU": 0.49223478461511155,
+                    "TN": 9195,
+                    "TP": 27733,
+                    "n_pred": 52771,
+                    "n_ref": 31303
+                },
+                "2": {
+                    "Dice": 0.3758742037507239,
+                    "FN": 23695,
+                    "FP": 4327,
+                    "IoU": 0.23143170597915524,
+                    "TN": 29076,
+                    "TP": 8438,
+                    "n_pred": 12765,
+                    "n_ref": 32133
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 2100,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63436,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 2100
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_08448_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_08448_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6592532785280877,
+                    "FN": 4529,
+                    "FP": 23325,
+                    "IoU": 0.4917060530301648,
+                    "TN": 10737,
+                    "TP": 26945,
+                    "n_pred": 50270,
+                    "n_ref": 31474
+                },
+                "2": {
+                    "Dice": 0.4388897972531066,
+                    "FN": 22925,
+                    "FP": 4529,
+                    "IoU": 0.28113953549265536,
+                    "TN": 27345,
+                    "TP": 10737,
+                    "n_pred": 15266,
+                    "n_ref": 33662
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_08448_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_08448_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6115089420146157,
+                    "FN": 4270,
+                    "FP": 27467,
+                    "IoU": 0.4404125892621,
+                    "TN": 8821,
+                    "TP": 24978,
+                    "n_pred": 52445,
+                    "n_ref": 29248
+                },
+                "2": {
+                    "Dice": 0.36504005826656954,
+                    "FN": 26197,
+                    "FP": 4316,
+                    "IoU": 0.22327156094084105,
+                    "TN": 26252,
+                    "TP": 8771,
+                    "n_pred": 13087,
+                    "n_ref": 34968
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1260,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64276,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1260
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 60,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65476,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 60
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_08448_07424.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_08448_07424.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5536955432506392,
+                    "FN": 3337,
+                    "FP": 31402,
+                    "IoU": 0.3828347072200114,
+                    "TN": 9248,
+                    "TP": 21549,
+                    "n_pred": 52951,
+                    "n_ref": 24886
+                },
+                "2": {
+                    "Dice": 0.3471011746873816,
+                    "FN": 31050,
+                    "FP": 3410,
+                    "IoU": 0.2099954149472719,
+                    "TN": 21916,
+                    "TP": 9160,
+                    "n_pred": 12570,
+                    "n_ref": 40210
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_08448_07680.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_08448_07680.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.4818306309167047,
+                    "FN": 8881,
+                    "FP": 17228,
+                    "IoU": 0.3173760719514746,
+                    "TN": 27288,
+                    "TP": 12139,
+                    "n_pred": 29367,
+                    "n_ref": 21020
+                },
+                "2": {
+                    "Dice": 0.4481849244387369,
+                    "FN": 15788,
+                    "FP": 8275,
+                    "IoU": 0.2888133589478351,
+                    "TN": 31701,
+                    "TP": 9772,
+                    "n_pred": 18047,
+                    "n_ref": 25560
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 3240,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 62296,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 3240
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_08448_07936.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_08448_07936.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.7159899111545366,
+                    "FN": 5926,
+                    "FP": 19072,
+                    "IoU": 0.5576201599773484,
+                    "TN": 9028,
+                    "TP": 31510,
+                    "n_pred": 50582,
+                    "n_ref": 37436
+                },
+                "2": {
+                    "Dice": 0.4009348493999632,
+                    "FN": 15566,
+                    "FP": 7247,
+                    "IoU": 0.2507307780733734,
+                    "TN": 35089,
+                    "TP": 7634,
+                    "n_pred": 14881,
+                    "n_ref": 23200
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 4360,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 61176,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 4360
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 540,
+                    "FP": 68,
+                    "IoU": 0.0,
+                    "TN": 64928,
+                    "TP": 0,
+                    "n_pred": 68,
+                    "n_ref": 540
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_08704_06912.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_08704_06912.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6633474986613196,
+                    "FN": 5824,
+                    "FP": 23725,
+                    "IoU": 0.49627520840081146,
+                    "TN": 6875,
+                    "TP": 29112,
+                    "n_pred": 52837,
+                    "n_ref": 34936
+                },
+                "2": {
+                    "Dice": 0.32353702440057414,
+                    "FN": 22925,
+                    "FP": 5824,
+                    "IoU": 0.19298787334381315,
+                    "TN": 29912,
+                    "TP": 6875,
+                    "n_pred": 12699,
+                    "n_ref": 29800
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_08704_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_08704_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.7098611927476601,
+                    "FN": 4522,
+                    "FP": 21146,
+                    "IoU": 0.5502207892338964,
+                    "TN": 8468,
+                    "TP": 31400,
+                    "n_pred": 52546,
+                    "n_ref": 35922
+                },
+                "2": {
+                    "Dice": 0.3910526315789474,
+                    "FN": 20641,
+                    "FP": 4813,
+                    "IoU": 0.24304874059535492,
+                    "TN": 31909,
+                    "TP": 8173,
+                    "n_pred": 12986,
+                    "n_ref": 28814
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_08704_07424.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_08704_07424.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6466840826802328,
+                    "FN": 4602,
+                    "FP": 26234,
+                    "IoU": 0.47785153075047415,
+                    "TN": 6480,
+                    "TP": 28220,
+                    "n_pred": 54454,
+                    "n_ref": 32822
+                },
+                "2": {
+                    "Dice": 0.29575724289441163,
+                    "FN": 26172,
+                    "FP": 4602,
+                    "IoU": 0.1735417338059942,
+                    "TN": 28300,
+                    "TP": 6462,
+                    "n_pred": 11064,
+                    "n_ref": 32634
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_08704_07680.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_08704_07680.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.09130838230745437,
+                    "FN": 13622,
+                    "FP": 1067,
+                    "IoU": 0.04783820574317755,
+                    "TN": 50109,
+                    "TP": 738,
+                    "n_pred": 1805,
+                    "n_ref": 14360
+                },
+                "2": {
+                    "Dice": 0.7848435096247075,
+                    "FN": 1605,
+                    "FP": 15038,
+                    "IoU": 0.6458785480233201,
+                    "TN": 18538,
+                    "TP": 30355,
+                    "n_pred": 45393,
+                    "n_ref": 31960
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 280,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65256,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 280
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_08704_07936.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_08704_07936.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.698998383039885,
+                    "FN": 5605,
+                    "FP": 21201,
+                    "IoU": 0.5372771055220866,
+                    "TN": 7605,
+                    "TP": 31125,
+                    "n_pred": 52326,
+                    "n_ref": 36730
+                },
+                "2": {
+                    "Dice": 0.3575065847234416,
+                    "FN": 19645,
+                    "FP": 5968,
+                    "IoU": 0.2176608937353004,
+                    "TN": 32797,
+                    "TP": 7126,
+                    "n_pred": 13094,
+                    "n_ref": 26771
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 759,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64777,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 759
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_08960_07424.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_08960_07424.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6138875568706799,
+                    "FN": 4946,
+                    "FP": 28067,
+                    "IoU": 0.44288438496717686,
+                    "TN": 6279,
+                    "TP": 26244,
+                    "n_pred": 54311,
+                    "n_ref": 31190
+                },
+                "2": {
+                    "Dice": 0.2887003167703299,
+                    "FN": 25783,
+                    "FP": 4980,
+                    "IoU": 0.16870237258822893,
+                    "TN": 28530,
+                    "TP": 6243,
+                    "n_pred": 11223,
+                    "n_ref": 32026
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 2200,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63336,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 2200
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_08960_07680.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_08960_07680.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 16720,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 48816,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 16720
+                },
+                "2": {
+                    "Dice": 0.6967976310406936,
+                    "FN": 1255,
+                    "FP": 18609,
+                    "IoU": 0.5346810653798403,
+                    "TN": 22847,
+                    "TP": 22825,
+                    "n_pred": 41434,
+                    "n_ref": 24080
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 920,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64616,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 920
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_08960_07936.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_08960_07936.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6432650855451431,
+                    "FN": 7365,
+                    "FP": 21680,
+                    "IoU": 0.47412731749710313,
+                    "TN": 10304,
+                    "TP": 26187,
+                    "n_pred": 47867,
+                    "n_ref": 33552
+                },
+                "2": {
+                    "Dice": 0.29520631067961167,
+                    "FN": 19629,
+                    "FP": 8247,
+                    "IoU": 0.17316248442783413,
+                    "TN": 31822,
+                    "TP": 5838,
+                    "n_pred": 14085,
+                    "n_ref": 25467
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1100,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64436,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1100
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_09216_07424.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_09216_07424.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5939162781937185,
+                    "FN": 4896,
+                    "FP": 29600,
+                    "IoU": 0.4223904088945447,
+                    "TN": 5814,
+                    "TP": 25226,
+                    "n_pred": 54826,
+                    "n_ref": 30122
+                },
+                "2": {
+                    "Dice": 0.258402228612509,
+                    "FN": 28051,
+                    "FP": 4959,
+                    "IoU": 0.14837078506746473,
+                    "TN": 26775,
+                    "TP": 5751,
+                    "n_pred": 10710,
+                    "n_ref": 33802
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_09216_07680.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_09216_07680.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.02578706891156037,
+                    "FN": 15562,
+                    "FP": 3,
+                    "IoU": 0.013061949147168855,
+                    "TN": 49765,
+                    "TP": 206,
+                    "n_pred": 209,
+                    "n_ref": 15768
+                },
+                "2": {
+                    "Dice": 0.6929490036815082,
+                    "FN": 1113,
+                    "FP": 17486,
+                    "IoU": 0.5301621785479715,
+                    "TN": 25950,
+                    "TP": 20987,
+                    "n_pred": 38473,
+                    "n_ref": 22100
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_09216_07936.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_09216_07936.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6069834229008502,
+                    "FN": 13803,
+                    "FP": 13841,
+                    "IoU": 0.4357330938335613,
+                    "TN": 16545,
+                    "TP": 21347,
+                    "n_pred": 35188,
+                    "n_ref": 35150
+                },
+                "2": {
+                    "Dice": 0.38273098442461817,
+                    "FN": 13885,
+                    "FP": 10607,
+                    "IoU": 0.23665264142122489,
+                    "TN": 33451,
+                    "TP": 7593,
+                    "n_pred": 18200,
+                    "n_ref": 21478
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_09472_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_09472_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5556137172001879,
+                    "FN": 5439,
+                    "FP": 27670,
+                    "IoU": 0.38467113944282344,
+                    "TN": 11729,
+                    "TP": 20698,
+                    "n_pred": 48368,
+                    "n_ref": 26137
+                },
+                "2": {
+                    "Dice": 0.28351613124813957,
+                    "FN": 25582,
+                    "FP": 5709,
+                    "IoU": 0.16517261618910412,
+                    "TN": 28054,
+                    "TP": 6191,
+                    "n_pred": 11900,
+                    "n_ref": 31773
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1200,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64336,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1200
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_09472_07424.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_09472_07424.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.5405558342014224,
+                    "FN": 4358,
+                    "FP": 31367,
+                    "IoU": 0.3703847306180716,
+                    "TN": 8795,
+                    "TP": 21016,
+                    "n_pred": 52383,
+                    "n_ref": 25374
+                },
+                "2": {
+                    "Dice": 0.2928448968076564,
+                    "FN": 27779,
+                    "FP": 4806,
+                    "IoU": 0.1715397132106173,
+                    "TN": 26204,
+                    "TP": 6747,
+                    "n_pred": 11553,
+                    "n_ref": 34526
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1600,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 63936,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1600
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 720,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64816,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 720
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_09472_07680.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_09472_07680.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.027419752072900417,
+                    "FN": 10057,
+                    "FP": 1790,
+                    "IoU": 0.013900449475611787,
+                    "TN": 53522,
+                    "TP": 167,
+                    "n_pred": 1957,
+                    "n_ref": 10224
+                },
+                "2": {
+                    "Dice": 0.7740452789594641,
+                    "FN": 2215,
+                    "FP": 11648,
+                    "IoU": 0.6313816209317167,
+                    "TN": 27928,
+                    "TP": 23745,
+                    "n_pred": 35393,
+                    "n_ref": 25960
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 419,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65117,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 419
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 80,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65456,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 80
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_09472_07936.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_09472_07936.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6747517969181952,
+                    "FN": 7462,
+                    "FP": 19598,
+                    "IoU": 0.5091512634003882,
+                    "TN": 10407,
+                    "TP": 28069,
+                    "n_pred": 47667,
+                    "n_ref": 35531
+                },
+                "2": {
+                    "Dice": 0.35878542705097644,
+                    "FN": 18392,
+                    "FP": 8237,
+                    "IoU": 0.21860970098887877,
+                    "TN": 31457,
+                    "TP": 7450,
+                    "n_pred": 15687,
+                    "n_ref": 25842
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 520,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65016,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 520
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_09728_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_09728_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6340928559191366,
+                    "FN": 5225,
+                    "FP": 26812,
+                    "IoU": 0.4642283764800321,
+                    "TN": 5740,
+                    "TP": 27759,
+                    "n_pred": 54571,
+                    "n_ref": 32984
+                },
+                "2": {
+                    "Dice": 0.2613949947663907,
+                    "FN": 25578,
+                    "FP": 5470,
+                    "IoU": 0.15034754529035083,
+                    "TN": 28994,
+                    "TP": 5494,
+                    "n_pred": 10964,
+                    "n_ref": 31072
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 1080,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64456,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 1080
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_09728_07424.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_09728_07424.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.6105448367916515,
+                    "FN": 4388,
+                    "FP": 21288,
+                    "IoU": 0.439413126064364,
+                    "TN": 19734,
+                    "TP": 20126,
+                    "n_pred": 41414,
+                    "n_ref": 24514
+                },
+                "2": {
+                    "Dice": 0.485179561007356,
+                    "FN": 22030,
+                    "FP": 4075,
+                    "IoU": 0.3202884965890746,
+                    "TN": 27130,
+                    "TP": 12301,
+                    "n_pred": 16376,
+                    "n_ref": 34331
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_09728_07680.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_09728_07680.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.007848266841072597,
+                    "FN": 14926,
+                    "FP": 244,
+                    "IoU": 0.003939592908732764,
+                    "TN": 50306,
+                    "TP": 60,
+                    "n_pred": 304,
+                    "n_ref": 14986
+                },
+                "2": {
+                    "Dice": 0.7002823302575403,
+                    "FN": 346,
+                    "FP": 17064,
+                    "IoU": 0.5387957296882037,
+                    "TN": 27787,
+                    "TP": 20339,
+                    "n_pred": 37403,
+                    "n_ref": 20685
+                },
+                "3": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                },
+                "4": {
+                    "Dice": NaN,
+                    "FN": 0,
+                    "FP": 0,
+                    "IoU": NaN,
+                    "TN": 65536,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 0
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_09984_07168.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_09984_07168.png"
+        },
+        {
+            "metrics": {
+                "1": {
+                    "Dice": 0.0,
+                    "FN": 14736,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 50800,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 14736
+                },
+                "2": {
+                    "Dice": 0.7027293329392058,
+                    "FN": 1500,
+                    "FP": 16602,
+                    "IoU": 0.5416983138386754,
+                    "TN": 26038,
+                    "TP": 21396,
+                    "n_pred": 37998,
+                    "n_ref": 22896
+                },
+                "3": {
+                    "Dice": 0.0,
+                    "FN": 800,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 64736,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 800
+                },
+                "4": {
+                    "Dice": 0.0,
+                    "FN": 400,
+                    "FP": 0,
+                    "IoU": 0.0,
+                    "TN": 65136,
+                    "TP": 0,
+                    "n_pred": 0,
+                    "n_ref": 400
+                }
+            },
+            "prediction_file": "/tmp/pred_730/HY7A_09984_07424.png",
+            "reference_file": "/home/user/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset730_HY7_Amics25um_5min/labelsTs/HY7A_09984_07424.png"
+        }
+    ]
+}

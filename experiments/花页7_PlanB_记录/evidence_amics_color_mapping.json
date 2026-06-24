@@ -1,0 +1,28 @@
+{
+  "_purpose": "花页7 Amics 25um Mineral_Image 颜色→矿物→论文6类 映射核验 (S3第一步)",
+  "_source_image": "hy7-linux:~/HXL/HY7_source/吉林大学数据报告归总/Amics矿物整体扫描25um+精细扫描1um/202510052_25um_Mineral_Image.tif",
+  "_image_shape": [10328, 8344, 3],
+  "_dtype": "uint8 RGB",
+  "_bse_pair": "202510052_25um_BSE_Image.tif 同尺寸(10328,8344,3) 灰度→像素级对齐",
+  "_method": "[核] 颜色像素面积% 去白后归一化 vs 粗扫矿物含量.xlsx 矿物vol% 逐项对齐, 残差<0.05%",
+  "_n_unique_colors": 23,
+  "_legend_verified": [
+    {"rgb": [0,255,255],   "name_cn": "斜长石",   "name_en": "plagioclase", "area_pct_norm": 30.9, "amics_vol_pct": 30.94, "paper_class": "长英质", "class_id": 1},
+    {"rgb": [255,192,192], "name_cn": "石英",     "name_en": "quartz",      "area_pct_norm": 23.5, "amics_vol_pct": 23.54, "paper_class": "长英质", "class_id": 1},
+    {"rgb": [192,192,255], "name_cn": "方解石",   "name_en": "calcite",     "area_pct_norm": 18.1, "amics_vol_pct": 18.08, "paper_class": "碳酸盐", "class_id": 4},
+    {"rgb": [128,128,255], "name_cn": "白云石",   "name_en": "dolomite",    "area_pct_norm": 12.3, "amics_vol_pct": 12.29, "paper_class": "碳酸盐", "class_id": 4},
+    {"rgb": [255,192,128], "name_cn": "铁白云石", "name_en": "ankerite",    "area_pct_norm": 10.9, "amics_vol_pct": 10.92, "paper_class": "碳酸盐", "class_id": 4},
+    {"rgb": [85,107,47],   "name_cn": "绿泥石",   "name_en": "chlorite",    "area_pct_norm": 1.90, "amics_vol_pct": 1.90,  "paper_class": "粘土",   "class_id": 0},
+    {"rgb": [0,192,0],     "name_cn": "伊利石",   "name_en": "illite",      "area_pct_norm": 0.78, "amics_vol_pct": 0.78,  "paper_class": "粘土",   "class_id": 0},
+    {"rgb": [255,128,128], "name_cn": "磷灰石",   "name_en": "apatite",     "area_pct_norm": 0.57, "amics_vol_pct": 0.57,  "paper_class": "未定(建议金属重矿物/其他)", "class_id": "?"},
+    {"rgb": [255,255,0],   "name_cn": "黄铁矿",   "name_en": "pyrite",      "area_pct_norm": 0.48, "amics_vol_pct": 0.48,  "paper_class": "金属重矿物", "class_id": 5},
+    {"rgb": [0,64,0],      "name_cn": "白云母",   "name_en": "muscovite",   "area_pct_norm": 0.16, "amics_vol_pct": 0.16,  "paper_class": "粘土(云母,建议)", "class_id": 0},
+    {"rgb": [0,128,128],   "name_cn": "钾长石",   "name_en": "K-feldspar",  "area_pct_norm": 0.15, "amics_vol_pct": 0.15,  "paper_class": "长英质", "class_id": 1},
+    {"rgb": [128,128,128], "name_cn": "Unknown",  "name_en": "unknown",     "area_pct_norm": 0.12, "amics_vol_pct": 0.12,  "paper_class": "忽略",   "class_id": "ignore"},
+    {"rgb": [255,0,0],     "name_cn": "金红石",   "name_en": "rutile",      "area_pct_norm": 0.035,"amics_vol_pct": 0.03,  "paper_class": "金属重矿物(Ti)", "class_id": 5},
+    {"rgb": [45,83,53],    "name_cn": "伊蒙混层", "name_en": "illite-smectite","area_pct_norm": 0.02,"amics_vol_pct": 0.02, "paper_class": "粘土",   "class_id": 0}
+  ],
+  "_background": {"rgb": [255,255,255], "area_pct_raw": 28.31, "meaning": "白=未分类=样品外背景+孔隙+环氧 混合; QEMSCAN不分孔隙; 真孔隙/有机质需从BSE灰度阈值恢复(同论文§1.1)"},
+  "_note_pore_organic": "Amics矿物表无孔隙/有机质(粗扫Organic仅0.01%). 要对齐论文6类必须用BSE阈值恢复孔隙+有机质再并入 = 用户提的阈值×AI混合的GT构造",
+  "_taxonomy_open_decisions": ["磷灰石(0.57%)归类", "白云母→粘土?", "5类纯矿物(S3a) vs 6类含孔隙有机质(S3b,需BSE阈值)"]
+}

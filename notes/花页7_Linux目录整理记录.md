@@ -29,7 +29,7 @@ tags: [花页7, Linux, 整理, 边界, codex]
 | reed2025_repro | 3.7G | 04-09 | codex | 工程引用 | 不动 |
 | shale_experiments | 345M | 04-17 | codex | 同系列 | 不动 |
 | nnunet_pipeline | 18M | 06-09 | 共享/前期汪清流程 | CLAUDE.md 提及 | 不动（待确认） |
-| **guanye15-1-1_400** | 371M | 2025-11 | **歧义** | 早于 codex；内含 X/Y/Z 体数据（官页15?） | **不动，待你确认** |
+| **guanye15-1-1_400** | 371M | 2025-11 | **用户重要数据** | 开题 PPT「已开展研究」的**官页15-1-1井 3260.9m**（孔隙18.8%/石英32.2%/长石35.6%），X/Y/Z 体数据 | **保留勿动**（非残留） |
 | 散落文件（见下） | — | 老 | 用户参考/杂项 | — | **不动，建议归档（待确认）** |
 
 散落于 `~/HXL` 根的文件：`U-Net…QEMSCAN.pdf`(参考论文,codex引用)、`nnUNetv2学习教程(Linux/Windows).docx`、`OpenAI API Key.odt`、`repomix-output-tree-master.xml`、`set_env.txt`、`eval_when_done.log`、`run_unet3plus_eval_when_done.sh`。

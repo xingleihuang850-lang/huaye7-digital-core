@@ -18,7 +18,7 @@ tags: [花页7, 实验, E3, nnU-Net, 配准, 交叉核验, 中期汇报]
 | nnU-Net（codex, Dataset712） | 3d_fullres 5ep | 2024³ 裁剪 | 错位 | **0.0** |
 | **nnU-Net（E3, 我, Dataset722）** | 3d_fullres 5ep | **同网格 sus** | 共配准 | **0.9189**（IoU 0.85） |
 | nnU-Net（codex, Dataset712） | 2d 50ep | 2024³ 裁剪 | 错位 | **0.000228** |
-| **nnU-Net（E3, 我, Dataset722）** | 2d 50ep | **同网格 sus** | 共配准 | ⏳ 跑完补 |
+| **nnU-Net（E3, 我, Dataset722）** | 2d 50ep | **同网格 sus** | 共配准 | **0.9660**（IoU 0.9342） |
 | （参考）自写 UNet（E2） | 100ep | 同网格 sus | 共配准 | 0.939 |
 
 ## 结论（airtight）
@@ -37,6 +37,8 @@ tags: [花页7, 实验, E3, nnU-Net, 配准, 交叉核验, 中期汇报]
 - 数据集：`hy7-linux:~/HXL/HY7_planb/nnunet/nnUNet_raw/Dataset722_HY7_CT2p8um_2phase_samegrid`（20×192³，孔隙 4–11%）
 - 构建脚本：`src/hy7_planb_make_nnunet.py`（同网格 sus+pore==0，独立目录）
 - 3d 结果：`experiments/花页7_PlanB_记录/evidence_e3_nnunet_3d5ep_summary.json`（foreground Dice 0.9189）
+- 2d 结果 `[测]`（2026-06-24 16:10 跑完）：`nnUNetTrainer_50epochs__nnUNetPlans__2d/fold_0/validation/summary.json`，
+  孔隙 class1 **Dice 0.9660 / IoU 0.9342**（4 例验证 HY7_003/008/013/016，192³）；"Training done." + Mean Validation Dice 0.9660。
 - 配置：`nnUNetv2_train 722 3d_fullres 0 -tr nnUNetTrainer_5epochs`（复刻 codex），CTNormalization。
 
 ## 阶段一收尾 → 转阶段二

@@ -1,0 +1,24 @@
+{
+  "n_real": 512,
+  "n_gen": 512,
+  "porosity_pct": {
+    "real_mean": 6.405,
+    "gen_mean": 23.506,
+    "real_median": 5.676,
+    "gen_median": 23.297,
+    "KS_stat": 0.7871,
+    "KS_p": 0.0,
+    "wasserstein": 17.1015
+  },
+  "euler_chi": {
+    "real_mean": 127.33,
+    "gen_mean": 146.24,
+    "KS_stat": 0.4551,
+    "wasserstein": 19.955
+  },
+  "S2_radial": {
+    "phi_at_0_real": 0.064,
+    "phi_at_0_gen": 0.2351,
+    "rmse_over_r": 0.07143
+  }
+}

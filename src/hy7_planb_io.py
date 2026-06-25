@@ -161,17 +161,22 @@ class ScaleVolumes:
         lbl = build_label(ic, pc, self.pore_val, fc, self.frac_val)
         return ic, lbl
 
-    def sample(self, P, rng, min_fg=0.005, bg_keep=0.15, max_tries=80):
-        """采一个 patch：要求有效区(非ignore)>50%，并按前景占比筛（类平衡保留少量背景）。"""
+    def sample(self, P, rng, min_fg=0.005, bg_keep=0.15, max_tries=80, require_frac=False):
+        """采一个 patch：要求有效区(非ignore)>50%，并按前景占比筛（类平衡保留少量背景）。
+        require_frac=True 时只返回含裂缝(class 2)的 patch（裂缝过采样，兜底返回最近有效 patch）。"""
+        last = None
         for _ in range(max_tries):
             ic, lbl = self._one(P, rng, min_fg, bg_keep)
             if (lbl != IGNORE).mean() < 0.5:
                 continue
+            last = (ic, lbl)
+            if require_frac and not (lbl == 2).any():
+                continue
             fg = ((lbl == 1) | (lbl == 2)).mean()
-            if fg < min_fg and rng.random() > bg_keep:
+            if not require_frac and fg < min_fg and rng.random() > bg_keep:
                 continue
             return ic, lbl
-        return ic, lbl  # 兜底：返回最后一个
+        return last if last is not None else (ic, lbl)  # 兜底
 
 
 # ----------------------------- CLI -----------------------------------------

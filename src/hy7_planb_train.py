@@ -26,7 +26,8 @@ def _need_torch():
         sys.exit("[x] 未装 torch —— 本脚本在 hy7-linux GPU 机上运行（Mac 端只用 io.py 的 numpy 工具）。")
 
 
-def make_dataset(scale, root, layout, patch, steps, min_fg, mean, std, train):
+def make_dataset(scale, root, layout, patch, steps, min_fg, mean, std, train,
+                 frac_oversample=0.0, seed=None):
     import numpy as np, torch
     from torch.utils.data import Dataset
     from hy7_planb_io import ScaleVolumes
@@ -41,13 +42,19 @@ def make_dataset(scale, root, layout, patch, steps, min_fg, mean, std, train):
         def __len__(self):
             return steps
         def __getitem__(self, i):
-            rng = np.random.default_rng()        # 现采，新随机
-            ic, lbl = self.sv().sample(patch, rng, min_fg=min_fg)
+            if seed is None:
+                rng = np.random.default_rng()    # 现采，新随机
+            else:                                # 可复现：种子 = (seed, worker_id, i)
+                wi = torch.utils.data.get_worker_info()
+                rng = np.random.default_rng([seed, wi.id if wi else 0, i])
+            req = (train and frac_oversample > 0 and self.sv().n_cls == 3
+                   and rng.random() < frac_oversample)   # 裂缝过采样
+            ic, lbl = self.sv().sample(patch, rng, min_fg=min_fg, require_frac=req)
             x = (ic.astype("float32") - mean) / std
             y = lbl.astype("int64")
             if train:
                 for ax in (0, 1, 2):
-                    if np.random.rand() < 0.5:
+                    if rng.random() < 0.5:
                         x = np.flip(x, ax); y = np.flip(y, ax)
                 x, y = np.ascontiguousarray(x), np.ascontiguousarray(y)
             return torch.from_numpy(x)[None], torch.from_numpy(y)
@@ -84,9 +91,9 @@ def make_unet(n_cls, base=16):
     return UNet3D()
 
 
-def dice_ce_loss(logits, target, n_cls):
+def dice_ce_loss(logits, target, n_cls, ce_weight=None):
     import torch, torch.nn.functional as F
-    ce = F.cross_entropy(logits, target, ignore_index=IGNORE)
+    ce = F.cross_entropy(logits, target, weight=ce_weight, ignore_index=IGNORE)
     valid = (target != IGNORE)
     t = target.clone(); t[~valid] = 0
     oh = F.one_hot(t, n_cls).permute(0, 4, 1, 2, 3).float() * valid.unsqueeze(1)
@@ -130,17 +137,27 @@ def main():
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--amp", action="store_true")
     ap.add_argument("--out", default=None)
+    ap.add_argument("--seed", type=int, default=None, help="固定则训练可复现")
+    ap.add_argument("--frac-weight", type=float, default=1.0, help="裂缝类(2) CE 权重")
+    ap.add_argument("--frac-oversample", type=float, default=0.0, help="训练强制含裂缝 patch 的比例[0,1]")
     a = ap.parse_args()
 
     dev = "cuda" if torch.cuda.is_available() else "cpu"
+    if a.seed is not None:
+        torch.manual_seed(a.seed); np.random.seed(a.seed)
     sv0 = ScaleVolumes(a.scale, root=a.root, layout=a.layout)   # 主进程：拿 norm / n_cls / 相值
     n_cls, mean, std = sv0.n_cls, sv0.mean, sv0.std
+    ce_weight = None
+    if n_cls == 3 and a.frac_weight != 1.0:
+        ce_weight = torch.tensor([1.0, 1.0, a.frac_weight], device=dev)
     outdir = a.out or os.path.join("runs", f"train_{a.scale}")
     os.makedirs(outdir, exist_ok=True)
     print(f"[i] scale={a.scale} dims={sv0.dims} n_cls={n_cls} pore_val={sv0.pore_val} "
-          f"frac_val={sv0.frac_val} norm=({mean:.1f},{std:.1f}) dev={dev}")
+          f"frac_val={sv0.frac_val} norm=({mean:.1f},{std:.1f}) dev={dev} seed={a.seed} "
+          f"frac_w={a.frac_weight} frac_os={a.frac_oversample}")
 
-    tr = make_dataset(a.scale, a.root, a.layout, a.patch, a.steps, a.min_fg, mean, std, True)
+    tr = make_dataset(a.scale, a.root, a.layout, a.patch, a.steps, a.min_fg, mean, std, True,
+                      frac_oversample=a.frac_oversample, seed=a.seed)
     dl = DataLoader(tr, batch_size=a.bs, shuffle=False, num_workers=a.workers, drop_last=True)
     vx, vy = build_val(a.scale, a.root, a.layout, a.patch, a.val_n, mean, std)
 
@@ -154,7 +171,7 @@ def main():
         for x, y in dl:
             x, y = x.to(dev), y.to(dev); opt.zero_grad()
             with torch.amp.autocast("cuda", enabled=a.amp):
-                loss, _ = dice_ce_loss(net(x), y, n_cls)
+                loss, _ = dice_ce_loss(net(x), y, n_cls, ce_weight)
             scaler.scale(loss).backward(); scaler.step(opt); scaler.update()
             tl += loss.item()
         net.eval(); dices = []
@@ -162,7 +179,7 @@ def main():
             for i in range(0, len(vx), a.bs):
                 x, y = vx[i:i+a.bs].to(dev), vy[i:i+a.bs].to(dev)
                 with torch.amp.autocast("cuda", enabled=a.amp):
-                    _, d = dice_ce_loss(net(x), y, n_cls)
+                    _, d = dice_ce_loss(net(x), y, n_cls, ce_weight)
                 dices.append(d.cpu().numpy())
         vdice = np.mean(dices, 0)
         rec = {"epoch": ep, "train_loss": round(tl / max(1, len(dl)), 4),
@@ -173,8 +190,10 @@ def main():
         if rec["val_dice_mean"] > best:
             best = rec["val_dice_mean"]
             torch.save({"model": net.state_dict(), "n_cls": n_cls, "base": a.base,
-                        "norm": [mean, std], "scale": a.scale, "epoch": ep,
-                        "pore_val": sv0.pore_val, "frac_val": sv0.frac_val},
+                        "norm": [mean, std], "scale": a.scale, "epoch": ep, "patch": a.patch,
+                        "pore_val": sv0.pore_val, "frac_val": sv0.frac_val,
+                        "seed": a.seed, "frac_weight": a.frac_weight,
+                        "frac_oversample": a.frac_oversample},
                        os.path.join(outdir, "best.pt"))
     print(f">> done. best val_dice_mean={best:.4f}  ckpt={outdir}/best.pt")
 

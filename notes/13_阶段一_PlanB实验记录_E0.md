@@ -9,7 +9,7 @@ tags: [花页7, 实验记录, 防编造, PlanB]
 
 > **原则**：每个数字/图都标来源；区分 `[测]`实测 / `[核]`交叉验证 / `[假]`假设；
 > 命令可复现；产物有路径+checksum。**不编造**——本页所有数字均来自下列证据文件或可复现命令。
-> 关联方法说明见 [[花页7_PlanB_对齐分割管线]]；Linux 环境见 memory `hy7-planb-linux-training`。
+> 关联方法说明见 [[12_阶段一_PlanB对齐分割管线]]；Linux 环境见 memory `hy7-planb-linux-training`。
 
 ## 证据清单 `experiments/花页7_PlanB_记录/`（入 git）
 

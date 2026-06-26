@@ -71,7 +71,7 @@ tags: [花页7, 数字井筒, 分割, PlanB, 对齐]
 rsync -avP src/hy7_planb_*.py hy7-linux:/home/user/HXL/HY7_planb/src/
 
 # —— hy7-linux(GPU, RTX 5090, env=nnunet_t28)：直读完整体素在线训练 ——
-# 目录结构：HY7_planb/{src,runs,logs}（见 花页7_Linux目录整理记录）
+# 目录结构：HY7_planb/{src,runs,logs}（见 90_工程_Linux目录整理记录）
 PY=~/miniconda3/envs/nnunet_t28/bin/python        # torch 2.8+cu129, numpy 2.3.5
 SRC=~/HXL/HY7_source/吉林大学数据报告归总          # 处理 .raw 已确认齐全
 cd ~/HXL/HY7_planb

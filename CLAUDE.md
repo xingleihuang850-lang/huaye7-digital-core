@@ -12,7 +12,7 @@
 
 开题四阶段（不可偏离）：**① 分割 → ② 2D 扩散生成 → ③ 多模态 3D 数字岩心 → ④ 数字井筒**。
 
-**当前进度（2026-06-25）**：阶段一已收尾（E0/E2/E3 配准+3D、S3 Amics 多矿物 1μm 丰富相 0.67–0.73），**已转阶段二**（M5 文献精读 + M6 2D DDPM 管线设计已出，见 [`notes/花页7_阶段二_2D扩散_启动设计.md`](notes/花页7_阶段二_2D扩散_启动设计.md)，M7 待执行）。
+**当前进度（2026-06-25）**：阶段一已收尾（E0/E2/E3 配准+3D、S3 Amics 多矿物 1μm 丰富相 0.67–0.73），**已转阶段二**（M5 文献精读 + M6 2D DDPM 管线设计已出，见 [`notes/20_阶段二_2D扩散启动设计.md`](notes/20_阶段二_2D扩散启动设计.md)，M7 待执行）。
 
 **工作纪律（每一步都遵守，不只 M6/M7）**：
 1. **拆小目标、逐个完成**；**每完成一个小目标给用户一条进度说明/提示**（做了什么、结论、下一步）。
@@ -107,12 +107,13 @@
 │   └── warehouse.db                 # DuckDB（产物，不入 git）
 ├── src/                            # 解释函数、模型、agent 代码
 ├── experiments/                    # 实验记录与产出
-├── notes/                          # Obsidian vault（纯 md，入 git；attachments/ 放附件）
+├── notes/                          # Obsidian vault（纯 md，入 git；NN_前缀编号排序，见下；attachments/ 放附件）
 ├── vectorstore/                    # LanceDB 索引（产物，不入 git）
 ├── GJ5-15data -> 外盘              # 符号链接（整盘）
 └── nnunet_pipeline -> 外盘/…       # 符号链接（已有分割管线）
 ```
 
+- **notes/ 笔记命名与阅读顺序约定（2026-06-25 固化，每次新建笔记都遵守）**：用 `NN_[阶段_]主题.md` 编号前缀，使 Finder/Obsidian/grep 里自动成阅读顺序。号段：`00` 总览路线图 · `01–02` 综述/工作梳理 · `1x` 阶段一(分割) · `2x` 阶段二(生成) · `3x` 阶段三(多模态3D) · `4x` 阶段四(数字井筒) · `9x` 工程/杂项。**新笔记取所属阶段下一个空号；建完在 [`notes/README.md`](notes/README.md)（阅读索引 MOC）补一行。重命名笔记须同步改所有 `[[双链]]`/链接（notes+CLAUDE.md+memory）。** 入口永远是 `notes/README.md`。
 - Python 工具：`lasio` / `welly`（读测井）、`duckdb`、`lancedb`、`pytorch`、`openpyxl`（读 xlsx）。
 - **本机 Python 环境（2026-06-24 升级）**：`.venv/` 是 **uv 管理的 Python 3.12**（取代旧系统 3.9.6），依赖钉死在 `requirements.txt`。
   - 跑脚本：`.venv/bin/python src/xxx.py`。

@@ -38,7 +38,7 @@ tags: [花页7, 实验记录, 防编造, PlanB]
 ### 2. 编码解码（防编造关键）`[测][核]`
 - **命令**：`python src/hy7_planb_io.py inspect`（产物 `evidence_inspect_volumes.json`）。
 - **结论**：`sus`=真灰度（256 级；取值 0 占 ~22.4% = 圆柱塞外方角，π/4≈78.5% 为圆、角占 21.5%，几何吻合）；`pore/feng`=二值 `{0,255}`，**相标记值=0**。
-- **相值=0 的依据**：用**已核校总孔隙度**（ct14 1.558%，源自 `src/verify_hy7.py` 逐切片复现）反推——7 切片样本 pore 0.75% + feng 0.46% ≈ 1.2%，与 1.558% 同量级。**不是猜，是与独立核校值对齐。** 印证 forensics「pore==0 是真孔隙」。
+- **相值=0 的依据**：用**已核校总孔隙度**（ct14 1.558%，源自 `src/verify_hy7.py` 逐切片复现）反推——全体反推 pore 0.73% + feng 0.46% ≈ 1.2%（`evidence_inspect_volumes.json` 全体 val=0 占比），与 1.558% 同量级。**不是猜，是与独立核校值对齐。** 印证 forensics「pore==0 是真孔隙」。
 
 ### 3. 对齐自检 `[测]`
 - **命令**：`python src/hy7_planb_check_alignment.py --scale ct14`。

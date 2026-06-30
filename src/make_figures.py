@@ -10,6 +10,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import hy7_mpl_cjk  # 统一中文字体(两机通用)，取代手写 font.sans-serif
 from matplotlib import font_manager
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -17,8 +18,6 @@ DB = os.path.join(ROOT, "data", "warehouse.db")
 FIG = os.path.join(ROOT, "experiments", "figures")
 os.makedirs(FIG, exist_ok=True)
 
-plt.rcParams["font.sans-serif"] = ["Arial Unicode MS", "Heiti TC", "STHeiti"]
-plt.rcParams["axes.unicode_minus"] = False
 plt.rcParams["figure.dpi"] = 130
 
 SEG_BOUNDS = [3439.13, 3439.89, 3440.79, 3441.70, 3442.64, 3443.52]

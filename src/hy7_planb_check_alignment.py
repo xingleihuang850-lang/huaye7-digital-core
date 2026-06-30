@@ -21,6 +21,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import hy7_mpl_cjk  # 统一中文字体(Linux/Noto · macOS/PingFang)，防 overlay 标题方框
 
 from hy7_planb_io import open_memmap, exists, KNOWN_POROSITY_PCT
 

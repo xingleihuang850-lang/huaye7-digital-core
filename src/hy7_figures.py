@@ -6,12 +6,11 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import hy7_mpl_cjk  # 统一中文字体(两机通用,自动选 Noto/PingFang)，取代手写 font.sans-serif
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ST = json.load(open(os.path.join(ROOT, "experiments", "hy7_stats.json"), encoding="utf-8"))
 FIG = os.path.join(ROOT, "experiments", "hy7_figures"); os.makedirs(FIG, exist_ok=True)
-plt.rcParams["font.sans-serif"] = ["Arial Unicode MS", "Heiti TC", "STHeiti"]
-plt.rcParams["axes.unicode_minus"] = False
 plt.rcParams["figure.dpi"] = 145
 plt.rcParams["font.size"] = 14          # 整体字号放大
 plt.rcParams["axes.titlesize"] = 16

@@ -3,6 +3,8 @@
 /nnunet_pipeline
 /data/raw_stats
 /data/hy7_raw/
+# Amics 局部核查原始/半原始材料（正式证据入 experiments/花页7_PlanB_记录/）
+/data/hy7_amics_inspect/
 
 # DuckDB 仓库与向量库（产物，可重建）
 /data/warehouse.db

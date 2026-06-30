@@ -32,7 +32,7 @@ tags: [花页7, Linux, 整理, 边界, codex]
 | **guanye15-1-1_400** | 371M | 2025-11 | **用户重要数据** | 开题 PPT「已开展研究」的**官页15-1-1井 3260.9m**（孔隙18.8%/石英32.2%/长石35.6%），X/Y/Z 体数据 | **保留勿动**（非残留） |
 | 散落文件（见下） | — | 老 | 用户参考/杂项 | — | **不动，建议归档（待确认）** |
 
-散落于 `~/HXL` 根的文件：`U-Net…QEMSCAN.pdf`(参考论文,codex引用)、`nnUNetv2学习教程(Linux/Windows).docx`、`OpenAI API Key.odt`、`repomix-output-tree-master.xml`、`set_env.txt`、`eval_when_done.log`、`run_unet3plus_eval_when_done.sh`。
+散落于 `~/HXL` 根的文件：`U-Net…QEMSCAN.pdf`(参考论文,codex引用)、`nnUNetv2学习教程(Linux/Windows).docx`、某凭据命名文档、`repomix-output-tree-master.xml`、`set_env.txt`、`eval_when_done.log`、`run_unet3plus_eval_when_done.sh`。
 
 ## 我做了什么（仅 HY7_planb）
 
@@ -61,3 +61,10 @@ HY7_planb/
 3. `nnunet_pipeline`(前期汪清流程)：保留原位还是归档？
 
 > 在你确认前，除 `HY7_planb` 外**一切原位不动**。
+
+## 已执行（2026-06-27，用户拍板「只归档零散文件」）
+- 新建 `~/HXL/_refs/`，`mv`（可逆）进 5 个**经 grep 确认无脚本引用**的零散文件：
+  `nnUNetv2学习教程(Linux/Windows).docx` · 某凭据命名文档 · `repomix-output-tree-master.xml` · `eval_when_done.log`。
+- **大目录全部原位不动**——确认了硬约束：除 `HY7_planb`（我的，且是 rsync 目标）外几乎全是 codex 绝对路径引用或共享只读数据，物理移动会断 codex 工程/我的 rsync，不可逆。故"大目录分组重排"与"codex 不动"本质冲突，只能靠 `00_README_INDEX.md` 索引归类。
+- 仍留根目录（codex 引用，勿动）：`run_dataset712_*.sh`×3、`run_unet3plus_eval_when_done.sh`、`set_env.txt`（nnUNet env 变量）、`U-Net…QEMSCAN.pdf`。
+- 待办项 1（guanye15-1-1_400）、3（nnunet_pipeline）：用户选择暂不动（非 codex 但归属待定，无脚本引用风险时再议）。

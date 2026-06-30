@@ -12,13 +12,14 @@
 
 开题四阶段（不可偏离）：**① 分割 → ② 2D 扩散生成 → ③ 多模态 3D 数字岩心 → ④ 数字井筒**。
 
-**当前进度（2026-06-25）**：阶段一已收尾（E0/E2/E3 配准+3D、S3 Amics 多矿物 1μm 丰富相 0.67–0.73）。**阶段二进行中**：M5 文献精读 + M6 管线设计 + M7-pre 三段依据已出（见 [`notes/20_阶段二_2D扩散启动设计.md`](notes/20_阶段二_2D扩散启动设计.md)）；**M7 已跑首基线**——2D DDPM MVP 流水线通，但**过度生成孔隙 ~3.7×**（gen 23.5% vs real 6.4%），见 [`notes/21_阶段二_M7_DDPM_MVP结果.md`](notes/21_阶段二_M7_DDPM_MVP结果.md)。
-> **下一步岔路（待用户定）**：① **M7-v2 阈值标定诊断**（重采样存连续值→阈值标定到真实孔隙度→重评 S₂/Euler，分离"二值化伪影 vs 结构真错"，~15min）；或 ② **起草中期汇报 PPT**（按 [`notes/01_中期汇报_工作梳理.md`](notes/01_中期汇报_工作梳理.md) 的 4 块故事线）。
-> **接力提示**：新会话先读本★节 + [`notes/README.md`](notes/README.md) + 21 号笔记，即可精确接续。远程长任务先开 caffeinate（见 memory [[remote-job-no-sleep]]）。
+**当前进度（2026-06-28）**：阶段一已收尾（E0/E2/E3 配准+3D、S3 Amics 多矿物 1μm 丰富相 0.67–0.73；官页15-1-1 T0613论文修改版基准入档见 [`notes/19_阶段一_官页15-1-1_T0613分割基准.md`](notes/19_阶段一_官页15-1-1_T0613分割基准.md)）。**阶段二 M7-v2 已完成**：见 [`notes/22_阶段二_M7v2_阈值标定诊断.md`](notes/22_阶段二_M7v2_阈值标定诊断.md)。
+> **M7-v2 结论**：T*=0.9873 标定后分离出两个独立问题——① **阈值伪影（已修）**：S₂ rmse 下降97%（0.071→0.002）；② **连通性真错（待迭代）**：Euler 207→真实127，孤立散点≠成簇孔隙。
+> **下一步（M7-v3）**：见 [`notes/24_阶段二_M7v3_连通性迭代设计.md`](notes/24_阶段二_M7v3_连通性迭代设计.md)。先做 **50→200ep 对照** 验证欠训练；根本方向是 **生成灰度介质 sus 本身**（B1）或 **[sus,pore] 双通道联合生成**（B2）。注意：真实 sus 输入→pore 输出是分割，不是生成。
+> **接力提示**：新会话先读本★节 + [`notes/README.md`](notes/README.md) + 22/24 号笔记。远程长任务先开 caffeinate（见 memory [[remote-job-no-sleep]]）。
 
 **工作纪律（每一步都遵守，不只 M6/M7）**：
 1. **拆小目标、逐个完成**；**每完成一个小目标给用户一条进度说明/提示**（做了什么、结论、下一步）。
-2. **设计任何新步骤前，先查文献（`literature/` + Zotero）+ 核物理原理 + 核地质意义**，把依据写进设计笔记再动手——**禁止无根据闷头做**。
+2. **设计任何新步骤前，先查文献（`literature/` + Zotero）+ 核物理原理 + 核地质意义**，把依据写进设计笔记再动手——**禁止无根据闷头做**。付费/墙外文献**不得自行绕过**：发现需要时直接告知用户（用户有学校数据库访问权限，可代为下载；获取后归档到 `literature/`，在 `_manifest.txt` 记 doi+sha256+来源"★学校访问"）。
 3. **设计下一步前先读本节 + 路线图笔记**，确认仍在主线四阶段内，发现偏离立即纠正。
 4. **每步留痕（防编造）**：数据分析/文献在先 → 做 → 结果即时入档 + sha256（见 memory [[provenance-no-fabrication]]、[[grounding-before-each-step]]）。
 
@@ -43,6 +44,7 @@
   - 仓库脚本只认 ① 的统计 xlsx：已把其中 7 个（~0.5 MB）拷到本地 `data/hy7_raw/`（git 忽略），`src/hy7_etl.py`/`verify_hy7.py` 路径改为本地 `B = ROOT/data/hy7_raw`，**不再依赖外盘**；改这条路径要同步 `scripts/sync_huaye7_public.sh` 的脱敏匹配串。
   - `src/hy7_*.py` 是把 ② 那套 `_analysis` 工作**清洗重写进 git** 的版本（① 统计 xlsx → `experiments/hy7_stats.json` → `deliverables/花页7/…`）。
   - ⚠️ `花页7井_4199.21m_多尺度数据汇总.xlsx` 已删：它是 **② 类 AI 派生物（可由 `_analysis` 脚本重生，非服务商原件）**。主数据流不依赖它——`hy7_etl.py` 直接从 ① 的各尺度统计 xlsx 出数；仅 `verify_hy7.py` 拿它做一次性"防编造"对账（曾 12/12 通过，结论已得）。
+  - `data/hy7_amics_inspect/` 是 Amics 局部核查材料（BSE/矿物图、服务商报告/表格），按原始/半原始检查材料处理，**不入 git**；正式可复现证据与图放 `experiments/花页7_PlanB_记录/`。
 
 - **算力机器（2026-06-23）**：
   - Linux 台式机：SSH 别名 `hy7-linux`（Tailscale `100.127.180.10`）/ `hy7-linux-lan`（同局域网 `192.168.1.164`，传大文件走这条更快），user=`user`，密钥 `~/.ssh/hy7_linux_ed25519`。花页7 实验主力机；数据在 `/home/user/HXL/`（`HY7_source/吉林大学数据报告归总` 为数据本体，与外盘 rsync 同步；`HY7_D2_*` 为训练日志/结果/图）。
@@ -117,11 +119,16 @@
 
 - **notes/ 笔记命名与阅读顺序约定（2026-06-25 固化，每次新建笔记都遵守）**：用 `NN_[阶段_]主题.md` 编号前缀，使 Finder/Obsidian/grep 里自动成阅读顺序。号段：`00` 总览路线图 · `01–02` 综述/工作梳理 · `1x` 阶段一(分割) · `2x` 阶段二(生成) · `3x` 阶段三(多模态3D) · `4x` 阶段四(数字井筒) · `9x` 工程/杂项。**新笔记取所属阶段下一个空号；建完在 [`notes/README.md`](notes/README.md)（阅读索引 MOC）补一行。重命名笔记须同步改所有 `[[双链]]`/链接（notes+CLAUDE.md+memory）。** 入口永远是 `notes/README.md`。
 - Python 工具：`lasio` / `welly`（读测井）、`duckdb`、`lancedb`、`pytorch`、`openpyxl`（读 xlsx）。
+- **⚠️ Matplotlib 中文字体规范（必须遵守，违者图中汉字变方框）**：
+  - **hy7-linux（远程 Linux）**：系统默认无中文字体，生成图的所有 `title/xlabel/ylabel/label/suptitle` **一律用英文**；若必须中文，需先 `ssh hy7-linux-lan "fc-list | grep -i noto"` 确认字体存在，并在脚本开头加 `matplotlib.rcParams['font.sans-serif'] = ['Noto Sans CJK SC', 'WenQuanYi Micro Hei', 'DejaVu Sans']`。
+  - **本机 macOS**：可用 `matplotlib.rcParams['font.sans-serif'] = ['PingFang SC', 'Heiti SC', 'Arial Unicode MS', 'DejaVu Sans']`；同时加 `matplotlib.rcParams['axes.unicode_minus'] = False`。
+  - **最安全做法**：凡脚本可能在 Linux 上跑，图表标签一律英文——这是科学图表惯例，不影响论文质量。
 - **本机 Python 环境（2026-06-24 升级）**：`.venv/` 是 **uv 管理的 Python 3.12**（取代旧系统 3.9.6），依赖钉死在 `requirements.txt`。
   - 跑脚本：`.venv/bin/python src/xxx.py`。
   - 装包：用 **`uv pip install --python .venv/bin/python <包>`**（uv 在 `~/Library/Python/3.9/bin/uv`）；⚠️ `.venv` 内没有 pip，别用 `.venv/bin/python -m pip`。
   - 重建：`uv venv --python 3.12 && uv pip install --python .venv/bin/python -r requirements.txt`。
   - 已装：分析栈（numpy/pandas/scipy/matplotlib/openpyxl/python-docx/python-pptx/duckdb/tifffile/scikit-image）+ **torch 2.12（Apple Silicon MPS 可用）**。本机只做轻量 dev/验证，大规模训练在 5090 Linux。
+  - **阶段二 DDPM 训练/采样脚本当前按远程 GPU 环境运行**：`src/hy7_phase2_ddpm.py` 需要 `diffusers`，本机 `.venv` 暂未钉该包；在未核实远程 `diffusers` 版本前，不把猜测版本写入 `requirements.txt`。若要本地复现，先从远程环境记录 `diffusers.__version__`，再补钉依赖。
 - 关键术语中英对照：含水饱和度/Sw、含油饱和度/So、孔隙度/porosity、泥质含量/Vsh(NZ)、成岩矿物/CYKW、基质/matrix、孔隙/pore、裂缝/fracture。
 
 ## 5. 建议 agent 优先做的事

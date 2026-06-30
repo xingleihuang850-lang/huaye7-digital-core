@@ -7,6 +7,10 @@
 子命令：
   train  —— 训练 + 存 best/final + 末尾出样本网格 png
   sample —— 载模型生成 N 张二值孔隙图 → samples.npy（供 M7.3 参数评估）
+
+运行环境：
+  目前按 hy7-linux/5090 GPU 环境运行，需要 diffusers；本机 requirements.txt
+  暂不钉 diffusers，待记录远程 diffusers.__version__ 后再补本地复现依赖。
 """
 import argparse, json, os, time
 import numpy as np
@@ -37,9 +41,13 @@ def load_binary(npy):
 
 
 @torch.no_grad()
-def sample(model, sched, n, size, dev, bs=64):
+def sample(model, sched, n, size, dev, bs=64, save_continuous=False):
+    """反向扩散采样。
+    save_continuous=True 时同时返回连续值数组（float32, 同 [-1,1] 尺度），
+    用于 M7-v2 阈值标定诊断。
+    """
     model.eval()
-    outs = []
+    outs_bin, outs_cont = [], []
     done = 0
     while done < n:
         b = min(bs, n - done)
@@ -47,9 +55,15 @@ def sample(model, sched, n, size, dev, bs=64):
         for t in sched.timesteps:
             pred = model(x, t).sample
             x = sched.step(pred, t, x).prev_sample
-        outs.append((x[:, 0] > 0).to(torch.uint8).cpu().numpy())   # 阈 0 → 二值孔隙
+        cont = x[:, 0].cpu().numpy().astype(np.float32)   # [-1,1] 连续输出
+        outs_bin.append((cont > 0).astype(np.uint8))
+        if save_continuous:
+            outs_cont.append(cont)
         done += b
-    return np.concatenate(outs)[:n]
+    binary = np.concatenate(outs_bin)[:n]
+    if save_continuous:
+        return binary, np.concatenate(outs_cont)[:n]
+    return binary
 
 
 def save_grid(binimgs, path, k=8):
@@ -112,7 +126,14 @@ def cmd_sample(a):
     size = a.size
     model = build_model(size, a.base).to(dev)
     model.load_state_dict(torch.load(a.ckpt, map_location=dev))
-    g = sample(model, make_sched(), a.n, size, dev, bs=a.bs)
+    result = sample(model, make_sched(), a.n, size, dev, bs=a.bs,
+                    save_continuous=getattr(a, "continuous", False))
+    if isinstance(result, tuple):
+        g, cont = result
+        np.save(os.path.join(a.out, "samples_continuous.npy"), cont)
+        print(f"[info] 连续值已保存 -> {a.out}/samples_continuous.npy  (float32, [-1,1])")
+    else:
+        g = result
     np.save(os.path.join(a.out, "samples.npy"), g)
     save_grid(g, os.path.join(a.out, "samples_grid.png"))
     por = g.reshape(len(g), -1).mean(1) * 100
@@ -134,6 +155,7 @@ if __name__ == "__main__":
     s.add_argument("--n", type=int, default=512); s.add_argument("--size", type=int, default=128)
     s.add_argument("--base", type=int, default=64); s.add_argument("--bs", type=int, default=64)
     s.add_argument("--seed", type=int, default=123)
+    s.add_argument("--continuous", action="store_true", help="同时保存连续值 samples_continuous.npy（M7-v2 用）")
     s.set_defaults(func=cmd_sample)
     a = ap.parse_args()
     a.func(a)

@@ -1,0 +1,29 @@
+{
+  "T_star": 0.98732,
+  "target_phi_pct": 6.4,
+  "n": 512,
+  "real": {
+    "phi_mean": 6.405,
+    "euler_mean": 127.33,
+    "S2_at0": 0.064
+  },
+  "T0": {
+    "phi_mean": 23.506,
+    "phi_median": 23.297,
+    "phi_KS_p": 0.0,
+    "phi_wasserstein": 17.1015,
+    "euler_mean": 146.24,
+    "euler_wasserstein": 19.955,
+    "S2_rmse": 0.07143
+  },
+  "Tstar": {
+    "phi_mean": 6.4,
+    "phi_median": 6.326,
+    "phi_KS_p": 0.0,
+    "phi_wasserstein": 2.9967,
+    "euler_mean": 207.92,
+    "euler_wasserstein": 142.113,
+    "S2_rmse": 0.00242
+  },
+  "verdict": "阈值伪影已修但连通性真错仍在：S₂ 明显改善，Euler 变差 → 下一步修聚集/连通性"
+}

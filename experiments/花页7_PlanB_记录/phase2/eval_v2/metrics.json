@@ -1,0 +1,36 @@
+{
+  "n_real": 512,
+  "n_gen": 512,
+  "porosity_pct": {
+    "real_mean": 6.405,
+    "gen_mean": 23.506,
+    "naive_mean": 6.408,
+    "KS_stat": 0.7871,
+    "KS_p": 0.0,
+    "wasserstein": 17.1015
+  },
+  "euler_chi": {
+    "real_mean": 127.33,
+    "gen_mean": 146.24,
+    "naive_mean": 890.16,
+    "KS_stat": 0.4551,
+    "wasserstein": 19.955
+  },
+  "S2_radial": {
+    "phi_at_0_real": 0.064,
+    "phi_at_0_gen": 0.2351,
+    "rmse_gen": 0.07143,
+    "rmse_naive": 0.00493
+  },
+  "connectivity": {
+    "max_cc_frac_real": 0.0597,
+    "max_cc_frac_gen": 0.1588,
+    "max_cc_frac_naive": 0.0048,
+    "x_penetrate_real": 0.0,
+    "x_penetrate_gen": 0.0117,
+    "x_penetrate_naive": 0.0,
+    "y_penetrate_real": 0.0,
+    "y_penetrate_gen": 0.0117,
+    "y_penetrate_naive": 0.0
+  }
+}

@@ -1,5 +1,10 @@
-# 花页7 文献原文清单（开放获取，本地 literature/，PDF 不入 git）
-# 更新 2026-06-23；arXiv/开放课程存档，按来源可复现
+# 花页7 文献原文清单（本地 literature/，PDF 不入 git）
+# 更新 2026-06-26；arXiv/开放课程存档 + 学校访问获取，按来源可复现
+# ★ 标注"学校访问"者为付费文献，由用户通过学校数据库下载提供
+
+Andra2013_DRP_benchmark_PartI_imaging_segmentation.pdf   doi:10.1016/j.cageo.2012.09.005  ★学校访问  35a27e9ce2f24d8e234d8e32026ce331d4a1a510458739cdc144dc574c5a6add
+Andra2013_DRP_benchmark_PartII_effective_properties.pdf  doi:10.1016/j.cageo.2012.09.008  ★学校访问  dce6a07f20b393ccd45e51e38f7a1ccbdb5a8dc33287f9070725092caf3254af
+Blunt2013_pore_scale_imaging_modelling.pdf               doi:10.1016/j.advwatres.2012.03.003  ★学校访问  f298dc4df9e5324e1a41f01b51d042fcef4d43ca7cf86f759cb6f5ebeb212119
 
 2024_digital_core_SR_paired_SEM.pdf                arXiv:2409.03265             dc2af161e31d09f8c436dd849be9d457081ae2144e19ab8c2dc21828a9e8a7dc
 2025_2D_3D_registration_Berea_digital_rock.pdf     arXiv:2504.06604             0b0bcfa07bf2901625d34aaf2eba00b8df538458dd1dfc430dbb43be0816009e
@@ -12,3 +17,14 @@ Liu2025_Controlled_Latent_Diffusion_3D_porous.pdf  arXiv:2503.24083             
 Loucks2012_mudrock_pore_types.pdf                  AAPG-Bull-96-1071(open-archive) eeadf9bf252867f0f99a223747e4d4e13ffe6231b32afd8a4964e1294c021fc5
 Mosser2017_3D_porous_media_GAN.pdf                 arXiv:1704.03225             7dcb83ef8da29eb3f578a5bec43ed37f2a169fcb818a1dc2bab30e699a8f8c81
 Ronneberger2015_UNet.pdf                           arXiv:1505.04597             a3172b2124f38e260dc2c7ed968d87c31bc94dbc19a42a7ab3dcbd7534319c44
+
+# 2026-06-26 新增（开放获取，自动下载归档）：生成式岩心综述 + 条件GAN(井深+孔隙度) + 多尺度超分
+Sadeghkhani2026_GAN_decade_porous_review.pdf       arXiv:2603.11836             db573757298035b4023f168c4d7dc5897e0a5069919abd3a044dd36ccb124ed7
+Sadeghkhani2025_PCP-GAN_porosity_depth_cGAN.pdf    arXiv:2510.19465             b928f050a92dfb5aef66db4afc8987eacba3fb583f7ba3a8066698aec35ab138
+Shan2024_MSResUnet_microCT_SR.pdf                  Appl.Comput.Geosci.22(2024)100165(NSF-PAR开放获取)  3075b81cc645b8d550f3a158119dbf0f8020e608937f9be086221413c01b2fbd
+
+# 2026-06-26 用户经学校访问下载提供（已规整去重，原件已删）：
+Zhu2025_diffusion_3D_multiphase_poreImages.pdf     doi:10.1007/s11242-025-02158-4  ★学校访问  1b6ab874930a1586ebe7e7a18e7cb10b6ac15b5dca24a444076ada7eda65b073
+Hou2026_limited_core_multimodal_diffusion_3D.pdf   doi:10.1016/j.geoen.2025.214309(Geoenergy258)  ★学校访问  6dfebe717ae7196a763e7beb90256afaa491724d329fc9f94887bfaf55cdfb0e
+Hamidian2026_PPD-GAN_subsurface_SR.pdf             Adv.Water.Resour.207(2026)105184  ★学校访问  9611079f6f3816da91f3429aae83490b0fb8f191d17d823362b20d50ed7cf1e9
+Shan2022_RDCA-SRGAN_rockCT_SR.pdf                  Energies15(14):5115,2022,doi:10.3390/en15145115  ★学校访问  b4f85b42cfe2cae9b93bc4f390c8574afa20b3ea4339847173ac0c4de4ab7b46

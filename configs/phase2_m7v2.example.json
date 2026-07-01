@@ -1,0 +1,279 @@
+{
+  "schema": "hy7_phase2_run_config.example.v1",
+  "status": "example_template",
+  "generated_at": "2026-07-01T00:33:57+08:00",
+  "run_id": "phase2_m7v2_ct28_ddpm_threshold_calib_example",
+  "stage": "phase2_2d_diffusion_generation",
+  "milestone": "M7-v2 threshold calibration diagnostic",
+  "objective": "复现 M7-v2：用 ct28 2.8um 二值孔隙切片训练/采样 DDPM，保存连续输出，并标定阈值 T* 到真实孔隙度，分离二值化伪影与连通性真错。",
+  "seed": {
+    "slice_seed": 42,
+    "train_seed": 42,
+    "sample_seed": 123,
+    "eval_seed": 0,
+    "calibration_seed": 0,
+    "notes": "脚本内分别设置 numpy/torch seed；若正式复现需同时记录 CUDA/cuDNN/torch/diffusers 版本。"
+  },
+  "environment": {
+    "preferred_runtime": "remote_gpu_linux",
+    "remote_host_aliases": [
+      "hy7-linux",
+      "hy7-linux-lan"
+    ],
+    "remote_user": "user",
+    "python_env_note": "阶段二 DDPM 脚本按远程 GPU 环境运行；本机 requirements.txt 暂未钉 diffusers，需先记录远程 diffusers.__version__ 后再固化。",
+    "required_python_packages_from_imports": [
+      "numpy",
+      "torch",
+      "diffusers",
+      "scipy",
+      "scikit-image",
+      "matplotlib"
+    ]
+  },
+  "dataset": {
+    "well": "花页7井",
+    "sample_depth_m": 4199.21,
+    "scale": "ct28",
+    "voxel_size_um": 2.8,
+    "source_kind": "same-grid ct28 sus+pore volumes",
+    "root": "/home/user/HXL/HY7_source/吉林大学数据报告归总",
+    "layout": "source",
+    "registered_inputs": {
+      "sus": "微米CT精细扫描-2p8um/处理图像/202510052_5mm_1500c_8bit_2p8um_sus.raw",
+      "pore": "微米CT精细扫描-2p8um/处理图像/202510052_5mm_1500c_8bit_2p8um_pore.raw"
+    },
+    "dims_zyx": [
+      1500,
+      1500,
+      1500
+    ],
+    "label_semantics": {
+      "0": "matrix / non-pore",
+      "1": "pore",
+      "255": "ignore outside plug, used during slicing before output binary tiles"
+    },
+    "split": {
+      "method": "top_z_holdout",
+      "test_frac": 0.2,
+      "z_step": 4,
+      "axes": "z",
+      "leakage_guard": "测试集为 z 顶部留出块的 z 向切片；训练/测试空间分离。"
+    },
+    "slice_outputs": {
+      "directory": "/home/user/HXL/HY7_planb/phase2/slices_ct28_128",
+      "train_file": "train.npy",
+      "test_file": "test.npy",
+      "meta_file": "meta.json",
+      "expected_from_M7_note": {
+        "n_train": 16600,
+        "n_test": 4150,
+        "train_porosity_mean_pct": 7.29,
+        "test_porosity_mean_pct": 6.4,
+        "test_porosity_median_pct": 5.67
+      }
+    }
+  },
+  "tile_size": {
+    "height_px": 128,
+    "width_px": 128,
+    "source_arg_name": "--tile",
+    "note": "M7 记录为 128^2；hy7_phase2_make_slices.py 默认是 256，复现 M7/M7-v2 时必须显式传 --tile 128。"
+  },
+  "epochs": {
+    "m7_baseline_epochs": 50,
+    "m7v3_control_epochs_candidate": 200,
+    "this_example_epochs": 50,
+    "note": "M7-v2 使用 M7 的 50ep best.pt 做阈值标定；200ep 属 M7-v3 欠训练对照。"
+  },
+  "model": {
+    "implementation": "diffusers.UNet2DModel",
+    "script": "src/hy7_phase2_ddpm.py",
+    "input_channels": 1,
+    "output_channels": 1,
+    "sample_size": 128,
+    "base_channels_arg": 64,
+    "layers_per_block": 2,
+    "block_out_channels_formula": [
+      "base",
+      "base*2",
+      "base*4",
+      "base*8"
+    ],
+    "down_block_types": [
+      "DownBlock2D",
+      "DownBlock2D",
+      "AttnDownBlock2D",
+      "AttnDownBlock2D"
+    ],
+    "up_block_types": [
+      "AttnUpBlock2D",
+      "AttnUpBlock2D",
+      "UpBlock2D",
+      "UpBlock2D"
+    ],
+    "data_scaling": "binary uint8 {0,1} -> float32 [-1,1] via x*2-1",
+    "reported_params_M_from_M7_note": 63.1
+  },
+  "scheduler": {
+    "implementation": "diffusers.DDPMScheduler",
+    "num_train_timesteps": 1000,
+    "beta_schedule": "linear",
+    "beta_start": 0.0001,
+    "beta_end": 0.02,
+    "prediction_target": "epsilon / noise",
+    "training_loss": "F.mse_loss(predicted_noise, noise), Ho2020 L_simple"
+  },
+  "training": {
+    "command_template": "python src/hy7_phase2_ddpm.py train --data {dataset.slice_outputs.directory} --out {ckpt.directory} --epochs {epochs.this_example_epochs} --bs 64 --base 64 --lr 1e-4 --amp --seed 42 --sample-every 20",
+    "batch_size": 64,
+    "learning_rate": 0.0001,
+    "amp": true,
+    "sample_every_epochs": 20,
+    "outputs": [
+      "best.pt",
+      "final.pt",
+      "train_meta.json",
+      "grid_ep*.png"
+    ],
+    "reported_M7_best_Lsimple": 0.019
+  },
+  "ckpt": {
+    "directory": "/home/user/HXL/HY7_planb/phase2/ddpm_ct28",
+    "preferred_checkpoint": "best.pt",
+    "reported_sha256_from_note": "ee15bb0ab5a67c1d22ad38b9bbd4f870f42ebb8ed4c41053da8989143449bb98",
+    "sha256_policy": "正式复现时重新 sha256sum best.pt 并写入 run artifact；不要凭笔记值覆盖实测值。"
+  },
+  "sample": {
+    "command_template": "python src/hy7_phase2_ddpm.py sample --ckpt {ckpt.directory}/best.pt --out {sample.output_directory} --n 512 --size 128 --base 64 --bs 64 --seed 123 --continuous",
+    "n_samples": 512,
+    "reverse_steps": 1000,
+    "batch_size": 64,
+    "binary_threshold_initial": 0.0,
+    "save_continuous": true,
+    "output_directory": "/home/user/HXL/HY7_planb/phase2/ddpm_ct28",
+    "outputs": [
+      "samples.npy",
+      "samples_continuous.npy",
+      "samples_grid.png"
+    ],
+    "notes": "samples.npy 使用 T=0；samples_continuous.npy 用于 M7-v2 阈值标定。",
+    "output_directory_note": "M7/M7-v2 复用 ddpm_ct28 目录保存 ckpt 与 samples；后续 M7-v3 建议新建独立输出目录。"
+  },
+  "threshold": {
+    "method": "calibrate_continuous_output_to_target_mean_porosity",
+    "script": "src/hy7_phase2_threshold_calib.py",
+    "target_phi_pct": 6.4,
+    "reported_T_star_from_M7v2_note": 0.9873,
+    "search": {
+      "algorithm": "binary_search",
+      "iterations": 50,
+      "initial_bounds": "continuous.min() to continuous.max()"
+    },
+    "command_template": "python src/hy7_phase2_threshold_calib.py --real {dataset.slice_outputs.directory}/test.npy --cont {sample.output_directory}/samples_continuous.npy --out {threshold.output_directory} --target_phi 6.4 --n 512 --rmax 48 --seed 0",
+    "output_directory": "/home/user/HXL/HY7_planb/phase2/m7v2_calib",
+    "outputs": [
+      "calib_result.json",
+      "fig_calib.png"
+    ],
+    "interpretation_from_M7v2_note": {
+      "T0_phi_mean_pct": 23.51,
+      "Tstar_phi_mean_pct": 6.4,
+      "S2_rmse_T0": 0.0714,
+      "S2_rmse_Tstar": 0.0024,
+      "Euler_real_mean": 127.3,
+      "Euler_T0_mean": 146.2,
+      "Euler_Tstar_mean": 207.9,
+      "verdict": "阈值伪影已修但连通性真错仍在。"
+    }
+  },
+  "eval": {
+    "script": "src/hy7_phase2_eval.py",
+    "metrics": [
+      "porosity_pct",
+      "S2_radial",
+      "Euler_chi",
+      "max_cc_frac",
+      "x_penetrate",
+      "y_penetrate",
+      "naive_baseline"
+    ],
+    "rmax_px": 48,
+    "n_eval": 512,
+    "command_template_T0": "python src/hy7_phase2_eval.py --real {dataset.slice_outputs.directory}/test.npy --gen {sample.output_directory}/samples.npy --out {eval.output_directory_T0} --n 512 --rmax 48 --seed 0",
+    "output_directory_T0": "/home/user/HXL/HY7_planb/phase2/eval_v2",
+    "outputs": [
+      "metrics.json",
+      "fig_eval.png"
+    ],
+    "reported_eval_v2_from_note": {
+      "porosity_real_mean_pct": 6.4,
+      "porosity_gen_T0_mean_pct": 23.51,
+      "porosity_naive_mean_pct": 6.41,
+      "S2_rmse_gen_T0": 0.0714,
+      "S2_rmse_naive": 0.0049,
+      "Euler_real_mean": 127.3,
+      "Euler_gen_T0_mean": 146.2,
+      "Euler_naive_mean": 890.2,
+      "max_cc_frac_real": 0.06,
+      "max_cc_frac_gen_T0": 0.159,
+      "max_cc_frac_naive": 0.005,
+      "x_penetrate_real": 0.0,
+      "x_penetrate_gen_T0": 0.012,
+      "x_penetrate_naive": 0.0
+    }
+  },
+  "output": {
+    "local_review_artifacts_expected": [
+      "experiments/花页7_PlanB_记录/phase2/metrics.json",
+      "experiments/花页7_PlanB_记录/phase2/fig_eval.png",
+      "experiments/花页7_PlanB_记录/phase2/samples_grid.png",
+      "experiments/花页7_PlanB_记录/phase2/real_grid.png",
+      "experiments/花页7_PlanB_记录/phase2/m7v2_calib/calib_result.json",
+      "experiments/花页7_PlanB_记录/phase2/m7v2_calib/fig_calib.png",
+      "experiments/花页7_PlanB_记录/phase2/eval_v2/metrics.json",
+      "experiments/花页7_PlanB_记录/phase2/eval_v2/fig_eval.png"
+    ],
+    "remote_large_artifacts_expected": [
+      "/home/user/HXL/HY7_planb/phase2/slices_ct28_128/train.npy",
+      "/home/user/HXL/HY7_planb/phase2/slices_ct28_128/test.npy",
+      "/home/user/HXL/HY7_planb/phase2/ddpm_ct28/best.pt",
+      "/home/user/HXL/HY7_planb/phase2/ddpm_ct28/final.pt",
+      "/home/user/HXL/HY7_planb/phase2/ddpm_ct28/samples.npy",
+      "/home/user/HXL/HY7_planb/phase2/ddpm_ct28/samples_continuous.npy"
+    ],
+    "git_policy": "大体积训练/采样产物不入 git；小型 metrics/json/png 可按项目约定入 experiments 证据目录。"
+  },
+  "provenance": {
+    "sources_read_for_template": [
+      "CLAUDE.md current-progress section for M7-v2 conclusion and M7-v3 direction",
+      "src/hy7_phase2_make_slices.py CLI and meta outputs",
+      "src/hy7_phase2_ddpm.py train/sample CLI, model and scheduler definitions",
+      "src/hy7_phase2_eval.py metrics and naive baseline",
+      "src/hy7_phase2_threshold_calib.py threshold calibration logic",
+      "notes/21_阶段二_M7_DDPM_MVP结果.md for measured M7 baseline values",
+      "notes/22_阶段二_M7v2_阈值标定诊断.md for measured threshold-calibration values",
+      "notes/24_阶段二_M7v3_连通性迭代设计.md for 50ep->200ep control context"
+    ],
+    "anti_fabrication_policy": [
+      "本模板中的 reported_* 数值来自已读笔记，正式复现必须以实际 metrics/calib_result/train_meta/sha256 输出覆盖。",
+      "如果远程文件缺失或外盘未挂载，应标记 missing/TODO，不得补写看似合理的假路径或假 hash。",
+      "记录 diffusers/torch/CUDA 版本后再把依赖钉入 requirements.txt。"
+    ],
+    "commands_to_record_in_formal_run": [
+      "python src/hy7_phase2_make_slices.py --scale ct28 --root /home/user/HXL/HY7_source/吉林大学数据报告归总 --layout source --tile 128 --z-step 4 --axes z --min-valid 0.999 --test-frac 0.2 --out /home/user/HXL/HY7_planb/phase2/slices_ct28_128 --seed 42",
+      "python src/hy7_phase2_ddpm.py train --data /home/user/HXL/HY7_planb/phase2/slices_ct28_128 --out /home/user/HXL/HY7_planb/phase2/ddpm_ct28 --epochs 50 --bs 64 --base 64 --lr 1e-4 --amp --seed 42 --sample-every 20",
+      "python src/hy7_phase2_ddpm.py sample --ckpt /home/user/HXL/HY7_planb/phase2/ddpm_ct28/best.pt --out /home/user/HXL/HY7_planb/phase2/ddpm_ct28 --n 512 --size 128 --base 64 --bs 64 --seed 123 --continuous",
+      "python src/hy7_phase2_threshold_calib.py --real /home/user/HXL/HY7_planb/phase2/slices_ct28_128/test.npy --cont /home/user/HXL/HY7_planb/phase2/ddpm_ct28/samples_continuous.npy --out /home/user/HXL/HY7_planb/phase2/m7v2_calib --target_phi 6.4 --n 512 --rmax 48 --seed 0",
+      "python src/hy7_phase2_eval.py --real /home/user/HXL/HY7_planb/phase2/slices_ct28_128/test.npy --gen /home/user/HXL/HY7_planb/phase2/ddpm_ct28/samples.npy --out /home/user/HXL/HY7_planb/phase2/eval_v2 --n 512 --rmax 48 --seed 0"
+    ]
+  },
+  "review_todos": [
+    "确认 run_config schema 是否要拆分为 slice/train/sample/eval 多个配置，还是保持单文件端到端模板。",
+    "确认正式路径使用远程 /home/user/HXL/HY7_planb/phase2 还是本地 experiments/花页7_PlanB_记录/phase2 的镜像路径。",
+    "正式运行前记录 python、torch、diffusers、CUDA、GPU 型号、git commit、ckpt sha256。"
+  ],
+  "template_notes": {
+    "command_template_placeholders": "command_template 中的 {dataset.slice_outputs.directory} 等为文档型点路径占位，方便人工阅读；不保证可直接用 Python str.format(**dict) 执行。"
+  }
+}

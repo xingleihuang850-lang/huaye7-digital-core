@@ -1,0 +1,317 @@
+{
+  "schema": "hy7_data_manifest_draft.v1",
+  "status": "active_baseline",
+  "generated_at": "2026-07-01T00:33:57+08:00",
+  "repository": {
+    "path": "/Users/hxl/Documents/Hermes工作区/01_Claude接管剩余工作/claude",
+    "policy_for_this_draft": "read_only_repository_write_only_to_handoff_drafts"
+  },
+  "well": {
+    "name": "花页7井",
+    "alias": "HuaYe7 / HY7",
+    "sample_depth_m": 4199.21,
+    "description": "花页7井 4199.21m 页岩多尺度数据；当前主线阶段二 2D 扩散生成使用 ct28 2.8um 同网格 sus+pore 体。"
+  },
+  "source_roots": {
+    "external_disk_root": {
+      "path": "/Volumes/Untitled/吉林大学数据报告归总",
+      "kind": "removable_external_disk",
+      "availability": "may_be_unmounted",
+      "note": "服务商原始数据根目录；只有下列 6 个尺度目录视为服务商原件。"
+    },
+    "repo_small_stats_copy": {
+      "path": "/Users/hxl/Documents/Hermes工作区/01_Claude接管剩余工作/claude/data/hy7_raw",
+      "kind": "local_small_file_copy",
+      "git_policy": "ignored_by_.gitignore",
+      "note": "从服务商原件抽取/拷贝的小体积统计 xlsx，本地脚本 hy7_etl.py/verify_hy7.py 读取该目录。"
+    },
+    "repo_local_voxel_copy": {
+      "path": "/Users/hxl/Documents/Hermes工作区/01_Claude接管剩余工作/claude/data/hy7_volumes",
+      "kind": "local_large_voxel_copy",
+      "git_policy": "ignored_by_.gitignore",
+      "note": "GB 级体素/图像中间数据，本地可存在但不纳入 git。"
+    },
+    "remote_source_root": {
+      "host_aliases": [
+        "hy7-linux",
+        "hy7-linux-lan"
+      ],
+      "path": "/home/user/HXL/HY7_source/吉林大学数据报告归总",
+      "kind": "remote_synced_source_copy",
+      "note": "Linux 训练机上的服务商数据本体同步副本；阶段二大规模训练/采样主要在远程运行。"
+    },
+    "remote_phase2_work_root": {
+      "host_aliases": [
+        "hy7-linux",
+        "hy7-linux-lan"
+      ],
+      "path": "/home/user/HXL/HY7_planb/phase2",
+      "kind": "remote_experiment_workdir",
+      "note": "M7/M7-v2 DDPM 切片、训练、采样、评估工作目录。"
+    }
+  },
+  "vendor_original_scale_directories": [
+    {
+      "name": "Amics矿物整体扫描25um+精细扫描1um",
+      "modality": "AMICS mineral scan",
+      "scales": [
+        "25um overall",
+        "1um fine"
+      ],
+      "expected_under_external_disk": "/Volumes/Untitled/吉林大学数据报告归总/Amics矿物整体扫描25um+精细扫描1um",
+      "expected_under_remote_source": "/home/user/HXL/HY7_source/吉林大学数据报告归总/Amics矿物整体扫描25um+精细扫描1um",
+      "local_small_stats_subdir": "data/hy7_raw/Amics矿物整体扫描25um+精细扫描1um"
+    },
+    {
+      "name": "微米CT柱塞扫描-14um",
+      "modality": "micro-CT plug scan",
+      "scales": [
+        "14um"
+      ],
+      "expected_under_external_disk": "/Volumes/Untitled/吉林大学数据报告归总/微米CT柱塞扫描-14um",
+      "expected_under_remote_source": "/home/user/HXL/HY7_source/吉林大学数据报告归总/微米CT柱塞扫描-14um",
+      "local_small_stats_subdir": "data/hy7_raw/微米CT柱塞扫描-14um"
+    },
+    {
+      "name": "微米CT精细扫描-2p8um",
+      "modality": "micro-CT fine scan",
+      "scales": [
+        "2.8um"
+      ],
+      "expected_under_external_disk": "/Volumes/Untitled/吉林大学数据报告归总/微米CT精细扫描-2p8um",
+      "expected_under_remote_source": "/home/user/HXL/HY7_source/吉林大学数据报告归总/微米CT精细扫描-2p8um",
+      "local_small_stats_subdir": "data/hy7_raw/微米CT精细扫描-2p8um",
+      "phase2_registered_volumes": [
+        "ct28_sus",
+        "ct28_pore",
+        "ct28_orig"
+      ]
+    },
+    {
+      "name": "纳米CT扫描-65nm",
+      "modality": "nano-CT scan",
+      "scales": [
+        "65nm"
+      ],
+      "expected_under_external_disk": "/Volumes/Untitled/吉林大学数据报告归总/纳米CT扫描-65nm",
+      "expected_under_remote_source": "/home/user/HXL/HY7_source/吉林大学数据报告归总/纳米CT扫描-65nm",
+      "local_small_stats_subdir": "data/hy7_raw/纳米CT扫描-65nm"
+    },
+    {
+      "name": "FIB-SEM聚焦离子束扫描-8p589nm",
+      "modality": "FIB-SEM",
+      "scales": [
+        "8.589nm"
+      ],
+      "expected_under_external_disk": "/Volumes/Untitled/吉林大学数据报告归总/FIB-SEM聚焦离子束扫描-8p589nm",
+      "expected_under_remote_source": "/home/user/HXL/HY7_source/吉林大学数据报告归总/FIB-SEM聚焦离子束扫描-8p589nm",
+      "local_small_stats_subdir": "data/hy7_raw/FIB-SEM聚焦离子束扫描-8p589nm"
+    },
+    {
+      "name": "Maps整体扫描200nm+精细扫描10nm",
+      "modality": "MAPS scan",
+      "scales": [
+        "200nm overall",
+        "10nm fine"
+      ],
+      "expected_under_external_disk": "/Volumes/Untitled/吉林大学数据报告归总/Maps整体扫描200nm+精细扫描10nm",
+      "expected_under_remote_source": "/home/user/HXL/HY7_source/吉林大学数据报告归总/Maps整体扫描200nm+精细扫描10nm",
+      "local_small_stats_subdir": "data/hy7_raw/Maps整体扫描200nm+精细扫描10nm"
+    }
+  ],
+  "explicitly_excluded_from_hy7_original_manifest": [
+    {
+      "pattern_or_name": "_analysis/",
+      "reason": "用户早先用 AI 生成的分析脚本工作区，不是服务商原件。"
+    },
+    {
+      "pattern_or_name": "花页7井_4199.21m_多尺度数据汇总.xlsx",
+      "reason": "AI 派生汇总，可重生；不是服务商原件。"
+    },
+    {
+      "pattern_or_name": "花页7井_4199.21m_数据分析与AI研究规划.xlsx",
+      "reason": "AI 派生规划/汇总，可重生；不是服务商原件。"
+    },
+    {
+      "pattern_or_name": "花页7井_4199.21m_*.pptx",
+      "reason": "用户 AI 生成汇报/方案材料，不作为服务商原始数据。"
+    },
+    {
+      "pattern_or_name": "AI-Driven Automatic Segmentation and Quantitative Characterization of Shale Microstructures.pptx",
+      "reason": "既往工作/铺垫材料，不是花页7服务商原始数据。"
+    }
+  ],
+  "repo_data_directory_observed": {
+    "path": "data",
+    "observed_children": [
+      {
+        "name": ".DS_Store",
+        "type": "file",
+        "size_bytes": 10244,
+        "git_policy": "ignored_os_metadata"
+      },
+      {
+        "name": "hy7_amics_inspect",
+        "type": "dir",
+        "git_policy": "ignored_by_.gitignore",
+        "note": "Amics 局部核查原始/半原始材料。"
+      },
+      {
+        "name": "hy7_planb",
+        "type": "dir",
+        "git_policy": "ignored_derived_or_large_intermediate_in_practice"
+      },
+      {
+        "name": "hy7_raw",
+        "type": "dir",
+        "git_policy": "ignored_by_.gitignore"
+      },
+      {
+        "name": "hy7_volumes",
+        "type": "dir",
+        "git_policy": "ignored_by_.gitignore"
+      },
+      {
+        "name": "parquet",
+        "type": "dir",
+        "git_policy": "ignored_by_.gitignore"
+      },
+      {
+        "name": "raw_las",
+        "type": "dir",
+        "git_policy": "ignored_by_.gitignore"
+      },
+      {
+        "name": "raw_stats",
+        "type": "symlink",
+        "git_policy": "ignored_by_.gitignore",
+        "note": "GJ5-15 统计库软链接，不属于 HY7 manifest 主体。"
+      },
+      {
+        "name": "warehouse.db",
+        "type": "file",
+        "size_bytes": 2895872,
+        "git_policy": "ignored_by_.gitignore"
+      }
+    ],
+    "inventory_note": "observed_children 记录的是 manifest 写入前的 data/ 快照，因此未列出 MANIFEST.hy7.json 自身。"
+  },
+  "hy7_raw_small_file_inventory": {
+    "path": "data/hy7_raw",
+    "observed_note": "本次只读扫描实际看到 7 个 xlsx 统计文件和 1 个 .DS_Store；未编造缺失文件。",
+    "files": [
+      {
+        "relative_path": "data/hy7_raw/.DS_Store",
+        "kind": "os_metadata",
+        "size_bytes": 12292,
+        "sha256": "6cea8654ca4d92f0139130e8df53500da67f3c338658e570597b3e2013846dee",
+        "git_policy": "ignored_os_metadata",
+        "todo": "正式 manifest 可选择排除该条或保留为 observed_non_data_file。"
+      },
+      {
+        "relative_path": "data/hy7_raw/Amics矿物整体扫描25um+精细扫描1um/粗扫矿物元素含量.xlsx",
+        "kind": "vendor_stats_xlsx_copy",
+        "size_bytes": 12334,
+        "sha256": "5af22b1dd3aae87074d3556185bb10ef63009f70de812fa0546dd6869680915a"
+      },
+      {
+        "relative_path": "data/hy7_raw/Amics矿物整体扫描25um+精细扫描1um/精扫矿物元素含量.xlsx",
+        "kind": "vendor_stats_xlsx_copy",
+        "size_bytes": 12335,
+        "sha256": "4d460861a92df16f6f57487be13fe5de48e0e0bdc3fa2381193ba16fdd0c3c3f"
+      },
+      {
+        "relative_path": "data/hy7_raw/FIB-SEM聚焦离子束扫描-8p589nm/孔隙喉道、裂缝统计数据.xlsx",
+        "kind": "vendor_stats_xlsx_copy",
+        "size_bytes": 46768,
+        "sha256": "ce0350a8dcaeb81be949e9a567446fdbdfe32aec16945ea74fffa09db36dda44"
+      },
+      {
+        "relative_path": "data/hy7_raw/Maps整体扫描200nm+精细扫描10nm/孔隙、裂缝计算结果.xlsx",
+        "kind": "vendor_stats_xlsx_copy",
+        "size_bytes": 28024,
+        "sha256": "7d7e1f108a676105f75345e8786b543886fdec0b1e730fe21c3b0dedb4843c45"
+      },
+      {
+        "relative_path": "data/hy7_raw/微米CT柱塞扫描-14um/孔隙喉道、裂缝统计数据.xlsx",
+        "kind": "vendor_stats_xlsx_copy",
+        "size_bytes": 158784,
+        "sha256": "545095973b87cdc51ec08a75cf0310430bbf92b17bd201db1f9bc1c29bd92e75"
+      },
+      {
+        "relative_path": "data/hy7_raw/微米CT精细扫描-2p8um/孔隙喉道、裂缝统计数据.xlsx",
+        "kind": "vendor_stats_xlsx_copy",
+        "size_bytes": 119085,
+        "sha256": "d8caaeb7d6bdce1feaa6d2a005b0ee65085d842d8ff0c183ca72038afc18479b"
+      },
+      {
+        "relative_path": "data/hy7_raw/纳米CT扫描-65nm/孔隙喉道、裂缝统计数据.xlsx",
+        "kind": "vendor_stats_xlsx_copy",
+        "size_bytes": 106738,
+        "sha256": "2789f58d9ad69890a9130a756a0311d19dd61ae5cc5e79583a6da35174c8e73e"
+      }
+    ]
+  },
+  "phase2_registered_voxel_paths_from_code": {
+    "default_local_root": "data/hy7_volumes",
+    "remote_source_root_env_example": {
+      "HY7_VOL_ROOT": "/home/user/HXL/HY7_source/吉林大学数据报告归总",
+      "HY7_VOL_LAYOUT": "source"
+    },
+    "ct28_source_layout": {
+      "ct28_sus": "微米CT精细扫描-2p8um/处理图像/202510052_5mm_1500c_8bit_2p8um_sus.raw",
+      "ct28_pore": "微米CT精细扫描-2p8um/处理图像/202510052_5mm_1500c_8bit_2p8um_pore.raw",
+      "ct28_orig": "微米CT精细扫描-2p8um/202510052_5mm_2024x2024x2024_8bit_2p8.raw"
+    },
+    "ct28_dims_zyx": [
+      1500,
+      1500,
+      1500
+    ],
+    "ct28_known_porosity_pct_for_phase_value_decode": 7.182,
+    "ct14_source_layout": {
+      "ct14_sus": "微米CT柱塞扫描-14um/处理图像/202510052_1620x1620x1600_8bit_14um_SUS.raw",
+      "ct14_pore": "微米CT柱塞扫描-14um/处理图像/202510052_1620x1620x1600_8bit_14um_pore.raw",
+      "ct14_feng": "微米CT柱塞扫描-14um/处理图像/202510052_1620x1620x1600_8bit_14um_FENG.raw",
+      "ct14_orig": "微米CT柱塞扫描-14um/202510052_2024x2024x2024_8bit_14.raw"
+    },
+    "ct14_dims_zyx": [
+      1600,
+      1620,
+      1620
+    ],
+    "ct14_known_porosity_pct_for_phase_value_decode": 1.558
+  },
+  "ignore_strategy": {
+    "from_gitignore": [
+      "/data/hy7_raw/",
+      "/data/hy7_amics_inspect/",
+      "/data/warehouse.db",
+      "/data/*.duckdb",
+      "/data/*.duckdb.wal",
+      "/data/parquet/",
+      "/data/raw_las/",
+      "/data/hy7_volumes/",
+      "/data/hy7_planb/",
+      "/experiments/hy7_planb/",
+      "*.tif",
+      "*.tiff",
+      "*.nii",
+      "*.nii.gz",
+      ".DS_Store"
+    ],
+    "manifest_principle": "Git 只管代码、笔记和可复现脚本；服务商原始大数据/小统计副本/体素/训练产物均通过 manifest 记录路径、来源和 hash，不直接入库。",
+    "do_not_include": "用户 AI 派生物、汇报 pptx、可重建 excel、临时分析工作区不得混入服务商原始数据清单。"
+  },
+  "provenance_sources_read": [
+    "CLAUDE.md lines 36-50 for HY7 roots, six vendor directories, derived-data exclusion, remote host paths",
+    ".gitignore lines 5-31 and 48 for HY7 data ignore policy",
+    "src/hy7_planb_io.py lines 30-70 and 74-85 for registered ct14/ct28 volumes and source/local path layouts",
+    "read-only filesystem inventory of data/ and data/hy7_raw/ with sha256 computed for observed small files"
+  ],
+  "todos_for_formalization": [
+    "如需正式纳入仓库，建议由 Claude/用户确认 manifest schema 名称与字段稳定性。",
+    "如需记录远程大体素文件 sha256，应在 hy7-linux 上分批计算，避免本机外盘未挂载时误判缺失。",
+    "如需记录外盘完整 6 尺度目录树，应仅枚举服务商原件目录，继续排除 _analysis 与 AI 派生物。"
+  ]
+}

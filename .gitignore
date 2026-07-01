@@ -20,6 +20,14 @@
 /deliverables/
 
 # 大体积中间产物
+
+# 模型权重与大数组产物（只在 manifest 记录路径/sha256，不入 git）
+*.pt
+*.pth
+*.ckpt
+*.npy
+*.npz
+
 /data/parquet/
 /data/raw_las/
 # 花页7 体素数据（从外盘拷入本机，git 只管代码不管 GB 级体素）

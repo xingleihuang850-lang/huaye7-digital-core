@@ -1,0 +1,15 @@
+
+#######################################################################
+Please cite the following paper when using nnU-Net:
+Isensee, F., Jaeger, P. F., Kohl, S. A., Petersen, J., & Maier-Hein, K. H. (2021). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nature methods, 18(2), 203-211.
+#######################################################################
+
+There are 1 cases in the source folder
+I am processing 0 out of 1 (max process ID is 0, we start counting with 0!)
+There are 1 cases that I would like to predict
+
+Predicting REALTEST:
+perform_everything_on_device: True
+  0%|          | 0/512 [00:00<?, ?it/s]  0%|          | 1/512 [00:00<02:03,  4.13it/s] 19%|█▉        | 98/512 [00:00<00:01, 361.93it/s] 38%|███▊      | 196/512 [00:00<00:00, 575.39it/s] 57%|█████▋    | 294/512 [00:00<00:00, 708.15it/s] 77%|███████▋  | 392/512 [00:00<00:00, 794.71it/s] 96%|█████████▌| 490/512 [00:00<00:00, 852.09it/s]100%|██████████| 512/512 [00:00<00:00, 668.07it/s]
+sending off prediction to background worker for resampling and export
+done with REALTEST

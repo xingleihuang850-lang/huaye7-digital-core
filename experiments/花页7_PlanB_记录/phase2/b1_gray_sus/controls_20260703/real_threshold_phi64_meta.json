@@ -1,0 +1,9 @@
+{
+  "method": "real-gray-threshold: real test gray <= percentile threshold",
+  "target_phi_pct": 6.4,
+  "threshold_norm": -0.612500011920929,
+  "n": 512,
+  "phi_pct_mean": 6.742072105407715,
+  "phi_pct_median": 6.0211181640625,
+  "source": "slices_ct28_gray_128/test.npy first 512"
+}

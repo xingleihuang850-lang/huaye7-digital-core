@@ -1,0 +1,16 @@
+{
+  "method": "B1-reference-real: real test gray through same nnUNetv2 2d downstream extraction",
+  "trainer": "nnUNetTrainer_50epochs__nnUNetPlans__2d fold_0 checkpoint_best",
+  "n": 512,
+  "shape": [
+    512,
+    128,
+    128
+  ],
+  "phi_pct_mean": 5.688738822937012,
+  "phi_pct_median": 5.1055908203125,
+  "unique": [
+    0,
+    1
+  ]
+}

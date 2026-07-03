@@ -23,6 +23,7 @@
 | `experiments/hy7_planb/align_check/ct14_z*.png` | ct14 灰度+标签叠加切片核查图 | 中间证据；正式引用用 `花页7_PlanB_记录/ct14_z*.png` | 被 `.gitignore` 忽略，未跟踪 | 同上 | 可重建；正式证据区已有对应副本。 |
 | `experiments/花页7_PlanB_记录/` | 花页7阶段一 Plan B 对齐+分割正式证据包；也承载阶段二轻量证据 | 是 | 已跟踪（例外：`figs_ppt/` 未跟踪且已 `.gitignore` 屏蔽） | README 指向 `notes/13` 等阶段一笔记；阶段二见 `phase2/README.md`、`notes/21_*`、`notes/22_*`、`notes/24_*` | 作为论文/汇报数字与图的主要可追溯证据区；大权重不入 git，仅记录路径/sha。 |
 | `experiments/花页7_PlanB_记录/README.md` | 阶段一证据包说明：inspect、alignment、trainlog、meta、脚本 sha 等 | 是 | 已跟踪 | `src/hy7_planb_io.py inspect`、`src/hy7_planb_check_alignment.py`、训练命令见阶段一实验记录 | 入口说明文件；记录 ct14 `best.pt` 远程路径与 sha256。 |
+| `experiments/花页7_PlanB_记录/remote_data_manifest/` | hy7-linux 花页7远程数据 manifest 与全量 inventory TSV | 是 | 待跟踪 | `MANIFEST_huaye7_remote_20260703.txt`、`MANIFEST_huaye7_remote_20260703_inventory.tsv` | 证明远程 Linux 主工作副本中 6 个服务商原始尺度目录均可访问；`_analysis` 明确标为派生目录；大 raw/image 记录 path/size/mtime，小型服务商文档/统计表按策略 sha256。 |
 | `experiments/花页7_PlanB_记录/evidence_inspect_volumes.json` | 7 体素取值分布 + 相值反推 | 是 | 已跟踪 | `python src/hy7_planb_io.py inspect` | 可由原始体素与脚本重建；证明 sus=灰度、相值=0 等基础事实。 |
 | `experiments/花页7_PlanB_记录/evidence_align_summary_ct14.json` + `ct14_z*.png` | ct14 同网格对齐核查与叠加图 | 是 | 已跟踪 | `python src/hy7_planb_check_alignment.py --scale ct14`；`notes/13` | 可重建；用于钉住同 shape、孔隙∩裂缝重叠等事实。 |
 | `experiments/花页7_PlanB_记录/evidence_trainlog_ct14*.json`、`evidence_trainlog_ct28_e2.json` | 阶段一训练曲线/指标记录 | 是 | 已跟踪 | `src/hy7_planb_train.py`；`notes/13/14/15` | 轻量训练日志可入 git；权重另记 manifest。 |
@@ -35,7 +36,7 @@
 | `experiments/花页7_PlanB_记录/fig_E2_vs_codex_ct28.png` | E2 ct28 配准对照图 | 是 | 已跟踪 | `notes/15_阶段一_E2_ct28配准对照.md` | 正式图；用于说明配准修复效果。 |
 | `experiments/花页7_PlanB_记录/phase2/` | 阶段二 DDPM 生成轻量证据区 | 是 | 已跟踪 | `src/hy7_phase2_make_slices.py`、`src/hy7_phase2_ddpm.py`、`src/hy7_phase2_eval.py`、`notes/21_*`、`notes/22_*`、`notes/24_*` | 大文件如 `samples.npy`、`samples_continuous.npy`、`ckpt/*.pt` 不入 git；仅存指标/图/README。 |
 | `experiments/花页7_PlanB_记录/phase2/README.md` | 阶段二证据说明，防止阈值口径混读 | 是 | 已跟踪 | `notes/21_*`、`notes/22_*`、`notes/24_*` | 必读入口；明确 `eval_v2` 是 T=0，`m7v2_calib` 是 T* 标定。 |
-| `experiments/花页7_PlanB_记录/phase2/m7v3_200ep/` | M7-v3 200ep cheap control 轻量证据 | 是 | 待跟踪 | `notes/25_阶段二_M7v3_200ep评估与B1决策.md` | 入 git轻量文件：eval/calib JSON+PNG、samples_grid.png、remote_run 日志/hash；大文件 samples.npy/samples_continuous.npy 只记远程 sha。 |
+| `experiments/花页7_PlanB_记录/phase2/m7v3_200ep/` | M7-v3 200ep cheap control 轻量证据 | 是 | 已跟踪 | `notes/25_阶段二_M7v3_200ep评估与B1决策.md` | 入 git轻量文件：eval/calib JSON+PNG、samples_grid.png、remote_run 日志/hash；大文件 samples.npy/samples_continuous.npy 只记远程 sha。 |
 | `experiments/花页7_PlanB_记录/phase2/metrics.json` | M7 首基线评估：DDPM 50ep，T=0 二值化 | 是 | 已跟踪 | `src/hy7_phase2_eval.py`；`notes/21` | 真实 512 vs 生成 512；φ gen 23.506% vs real 6.405%，S₂ rmse 0.07143，Euler gen 146.24 vs real 127.33。 |
 | `experiments/花页7_PlanB_记录/phase2/{samples_grid,real_grid,fig_eval}.png` | M7 首基线可视化/评估图 | 是 | 已跟踪 | `src/hy7_phase2_ddpm.py sample`、`src/hy7_phase2_eval.py`；`notes/21` | 图为轻量证据；原始 samples 大文件另记 manifest。 |
 | `experiments/花页7_PlanB_记录/phase2/eval_v2/` | M7 原始 T=0 评估补充版：增加 naive baseline 与连通指标 | 是 | 已跟踪 | `src/hy7_phase2_eval.py` 扩展版；`notes/22` §5 | 重要：仍是 T=0 口径，不是 T* 标定后结果；不能用来声称阈值已修。 |

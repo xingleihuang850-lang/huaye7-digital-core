@@ -1,0 +1,73 @@
+# Huaye7 remote data manifest (20260703)
+
+generated_at: 2026-07-03T15:40:49
+host: admin
+root: /home/user/HXL/HY7_source/吉林大学数据报告归总
+disk_df_h: /dev/nvme1n1p2  1.9T  205G  1.6T   12% /
+inventory_tsv: /home/user/HXL/HY7_source/MANIFEST_huaye7_remote_20260703_inventory.tsv
+
+## classification
+Vendor-original directories are the six service-provider scale folders listed below. `_analysis` and underscore-prefixed folders are AI/user-derived and are not treated as service-provider originals.
+
+## vendor original directories
+- Amics矿物整体扫描25um+精细扫描1um: exists=True, files=12, size_bytes=542141530
+- 微米CT柱塞扫描-14um: exists=True, files=6, size_bytes=20926870964
+- 微米CT精细扫描-2p8um: exists=True, files=5, size_bytes=15081527981
+- 纳米CT扫描-65nm: exists=True, files=1026, size_bytes=3895541946
+- FIB-SEM聚焦离子束扫描-8p589nm: exists=True, files=828, size_bytes=18422260216
+- Maps整体扫描200nm+精细扫描10nm: exists=True, files=11, size_bytes=19007594286
+
+## derived / non-original directories explicitly excluded from original-data claims
+- _analysis: exists=True, files=195, size_bytes=173730092
+
+## totals by class
+- derived: files=195, size_bytes=173730092, sha256_hashed_files=0
+- other: files=4, size_bytes=79704536, sha256_hashed_files=0
+- vendor_original: files=1888, size_bytes=77875936923, sha256_hashed_files=12
+
+## top 40 largest vendor-original files (size/mtime; sha skipped unless small document)
+- Maps整体扫描200nm+精细扫描10nm/202510052_131200x82000_10nm_8bit.raw	size=10758400000	mtime=2026-01-27T11:54:24	sha256=SKIP_LARGE_OR_BINARY
+- 微米CT柱塞扫描-14um/202510052_2024x2024x2024_8bit_14.raw	size=8291469824	mtime=2025-10-30T17:34:47	sha256=SKIP_LARGE_OR_BINARY
+- 微米CT精细扫描-2p8um/202510052_5mm_2024x2024x2024_8bit_2p8.raw	size=8291469824	mtime=2025-12-22T18:13:21	sha256=SKIP_LARGE_OR_BINARY
+- 微米CT柱塞扫描-14um/处理图像/202510052_1620x1620x1600_8bit_14um_FENG.raw	size=4199040000	mtime=2025-11-04T10:04:28	sha256=SKIP_LARGE_OR_BINARY
+- 微米CT柱塞扫描-14um/处理图像/202510052_1620x1620x1600_8bit_14um_SUS.raw	size=4199040000	mtime=2025-11-03T11:23:50	sha256=SKIP_LARGE_OR_BINARY
+- 微米CT柱塞扫描-14um/处理图像/202510052_1620x1620x1600_8bit_14um_pore.raw	size=4199040000	mtime=2025-11-04T18:10:31	sha256=SKIP_LARGE_OR_BINARY
+- FIB-SEM聚焦离子束扫描-8p589nm/处理图像/2700x1560x821_8p589nm_8bit_SUS.raw	size=3458052000	mtime=2026-05-07T09:14:33	sha256=SKIP_LARGE_OR_BINARY
+- FIB-SEM聚焦离子束扫描-8p589nm/处理图像/2700x1560x821_8p589nm_8bit_feng.raw	size=3458052000	mtime=2026-05-08T11:21:08	sha256=SKIP_LARGE_OR_BINARY
+- FIB-SEM聚焦离子束扫描-8p589nm/处理图像/2700x1560x821_8p589nm_8bit_pore.raw	size=3458052000	mtime=2026-05-08T11:20:06	sha256=SKIP_LARGE_OR_BINARY
+- FIB-SEM聚焦离子束扫描-8p589nm/处理图像/2700x1560x821_8p589nm_8bit_youjizhi.raw	size=3458052000	mtime=2026-05-07T16:51:49	sha256=SKIP_LARGE_OR_BINARY
+- 微米CT精细扫描-2p8um/处理图像/202510052_5mm_1500c_8bit_2p8um_pore.raw	size=3375000000	mtime=2025-12-23T10:10:47	sha256=SKIP_LARGE_OR_BINARY
+- 微米CT精细扫描-2p8um/处理图像/202510052_5mm_1500c_8bit_2p8um_sus.raw	size=3375000000	mtime=2025-12-23T10:07:51	sha256=SKIP_LARGE_OR_BINARY
+- Maps整体扫描200nm+精细扫描10nm/202510052_65600x45000_200nm_8bit.raw	size=2952000000	mtime=2026-01-27T09:58:20	sha256=SKIP_LARGE_OR_BINARY
+- Maps整体扫描200nm+精细扫描10nm/处理图像/202510052_30000x30000_10nm_8bit_sus.raw	size=900000000	mtime=2026-01-27T11:55:22	sha256=SKIP_LARGE_OR_BINARY
+- Maps整体扫描200nm+精细扫描10nm/处理图像/202510052_30000x30000_10nm_8bit_wuji_feng.raw	size=900000000	mtime=2026-01-27T16:47:21	sha256=SKIP_LARGE_OR_BINARY
+- Maps整体扫描200nm+精细扫描10nm/处理图像/202510052_30000x30000_10nm_8bit_wuji_pore.raw	size=900000000	mtime=2026-01-27T16:47:09	sha256=SKIP_LARGE_OR_BINARY
+- Maps整体扫描200nm+精细扫描10nm/处理图像/202510052_30000x30000_10nm_8bit_youji_feng.raw	size=900000000	mtime=2026-01-27T16:54:50	sha256=SKIP_LARGE_OR_BINARY
+- Maps整体扫描200nm+精细扫描10nm/处理图像/202510052_30000x30000_10nm_8bit_youji_pore.raw	size=900000000	mtime=2026-01-27T16:54:42	sha256=SKIP_LARGE_OR_BINARY
+- Maps整体扫描200nm+精细扫描10nm/处理PPT.pptx	size=466842173	mtime=2026-01-27T18:06:45	sha256=SKIP_LARGE_OR_BINARY
+- 纳米CT扫描-65nm/处理图像/750x750x790_8bit_65nm_feng.raw	size=444375000	mtime=2026-05-07T11:13:14	sha256=SKIP_LARGE_OR_BINARY
+- 纳米CT扫描-65nm/处理图像/750x750x790_8bit_65nm_pore.raw	size=444375000	mtime=2026-05-07T11:11:24	sha256=SKIP_LARGE_OR_BINARY
+- 纳米CT扫描-65nm/处理图像/750x750x790_8bit_65nm_sus.raw	size=444375000	mtime=2026-05-06T14:54:42	sha256=SKIP_LARGE_OR_BINARY
+- 纳米CT扫描-65nm/处理图像/750x750x790_8bit_65nm_youjizhi.raw	size=444375000	mtime=2026-05-09T10:13:13	sha256=SKIP_LARGE_OR_BINARY
+- Amics矿物整体扫描25um+精细扫描1um/202510052_25um_BSE_Image.tif	size=258530800	mtime=2026-02-26T16:32:55	sha256=SKIP_LARGE_OR_BINARY
+- Amics矿物整体扫描25um+精细扫描1um/202510052_25um_Mineral_Image.tif	size=258530800	mtime=2026-02-26T16:33:14	sha256=SKIP_LARGE_OR_BINARY
+- Maps整体扫描200nm+精细扫描10nm/Maps精扫位置.pptx	size=257474411	mtime=2026-02-25T13:33:03	sha256=SKIP_LARGE_OR_BINARY
+- Maps整体扫描200nm+精细扫描10nm/花页7井_4199.21mMaps精扫实验报告.docx	size=72849678	mtime=2026-01-28T10:18:15	sha256=SKIP_LARGE_OR_BINARY
+- 微米CT精细扫描-2p8um/花页7井-4199.21m-5mm岩心微米CT扫描报告.doc	size=39939072	mtime=2025-12-23T15:03:33	sha256=1315b045c82c35abc3826c617708fef51f54ca58d0c3cacde5274487862ac085
+- 微米CT柱塞扫描-14um/花页7井-4199.21m岩心微米CT扫描报告.doc	size=38122356	mtime=2025-11-05T15:11:46	sha256=58ece79a23bbe66d0b336d455938e8436cb4ec9b74291e9d44f59415a9f70365
+- 纳米CT扫描-65nm/花页7井-4199.21m岩心纳米CT扫描报告.doc	size=21998512	mtime=2026-05-09T08:35:13	sha256=1c52763f67519ae5095f85954027e3c2f674f104e0943ce400f7cdd2ba47ea34
+- Amics矿物整体扫描25um+精细扫描1um/202510052_1um_BSE_Image.tif	size=7891432	mtime=2026-02-26T16:36:55	sha256=SKIP_LARGE_OR_BINARY
+- Amics矿物整体扫描25um+精细扫描1um/202510052_1um_Mineral_Image.tif	size=7891432	mtime=2026-02-26T16:37:18	sha256=SKIP_LARGE_OR_BINARY
+- FIB-SEM聚焦离子束扫描-8p589nm/FIBSEM/8p589nm_0000.tif	size=5587948	mtime=2026-05-06T13:21:14	sha256=SKIP_LARGE_OR_BINARY
+- FIB-SEM聚焦离子束扫描-8p589nm/FIBSEM/8p589nm_0001.tif	size=5587948	mtime=2026-05-06T13:21:11	sha256=SKIP_LARGE_OR_BINARY
+- FIB-SEM聚焦离子束扫描-8p589nm/FIBSEM/8p589nm_0002.tif	size=5587948	mtime=2026-05-06T13:21:14	sha256=SKIP_LARGE_OR_BINARY
+- FIB-SEM聚焦离子束扫描-8p589nm/FIBSEM/8p589nm_0003.tif	size=5587948	mtime=2026-05-06T13:21:14	sha256=SKIP_LARGE_OR_BINARY
+- FIB-SEM聚焦离子束扫描-8p589nm/FIBSEM/8p589nm_0004.tif	size=5587948	mtime=2026-05-06T13:21:14	sha256=SKIP_LARGE_OR_BINARY
+- FIB-SEM聚焦离子束扫描-8p589nm/FIBSEM/8p589nm_0005.tif	size=5587948	mtime=2026-05-06T13:21:14	sha256=SKIP_LARGE_OR_BINARY
+- FIB-SEM聚焦离子束扫描-8p589nm/FIBSEM/8p589nm_0006.tif	size=5587948	mtime=2026-05-06T13:21:14	sha256=SKIP_LARGE_OR_BINARY
+- FIB-SEM聚焦离子束扫描-8p589nm/FIBSEM/8p589nm_0007.tif	size=5587948	mtime=2026-05-06T13:21:14	sha256=SKIP_LARGE_OR_BINARY
+
+## sha256 policy
+- Hashed vendor-original document/table/text metadata files with suffix in ['.csv', '.doc', '.docx', '.json', '.md', '.pdf', '.txt', '.xls', '.xlsx', '.xml'] and size <= 52428800 bytes.
+- Large raw/image/binary files are recorded by path, size, and mtime in the TSV; full sha256 can be added later per scale if needed.
+- Derived `_analysis` files are inventoried but not used as original-data provenance.

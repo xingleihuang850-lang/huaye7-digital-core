@@ -1,0 +1,135 @@
+[done] porosity real=6.40% gen=5.00% naive=6.41%
+       S2 rmse gen=0.0029 naive=0.0049
+       Euler real=127.3 gen=114.4 naive=890.2
+       max-CC-frac real=0.060 gen=0.082 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_orig_threshold_phi5p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=5.50% naive=6.41%
+       S2 rmse gen=0.0017 naive=0.0049
+       Euler real=127.3 gen=113.3 naive=890.2
+       max-CC-frac real=0.060 gen=0.083 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_orig_threshold_phi5p5/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=6.00% naive=6.41%
+       S2 rmse gen=0.0008 naive=0.0049
+       Euler real=127.3 gen=111.9 naive=890.2
+       max-CC-frac real=0.060 gen=0.086 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_orig_threshold_phi6p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=6.40% naive=6.41%
+       S2 rmse gen=0.0010 naive=0.0049
+       Euler real=127.3 gen=111.0 naive=890.2
+       max-CC-frac real=0.060 gen=0.088 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_orig_threshold_phi6p4/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=7.00% naive=6.41%
+       S2 rmse gen=0.0025 naive=0.0049
+       Euler real=127.3 gen=110.4 naive=890.2
+       max-CC-frac real=0.060 gen=0.090 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_orig_threshold_phi7p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=7.50% naive=6.41%
+       S2 rmse gen=0.0039 naive=0.0049
+       Euler real=127.3 gen=110.7 naive=890.2
+       max-CC-frac real=0.060 gen=0.090 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_orig_threshold_phi7p5/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=8.00% naive=6.41%
+       S2 rmse gen=0.0054 naive=0.0049
+       Euler real=127.3 gen=111.4 naive=890.2
+       max-CC-frac real=0.060 gen=0.090 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_orig_threshold_phi8p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=5.00% naive=6.41%
+       S2 rmse gen=0.0029 naive=0.0049
+       Euler real=127.3 gen=114.4 naive=890.2
+       max-CC-frac real=0.060 gen=0.082 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_affine_threshold_phi5p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=5.50% naive=6.41%
+       S2 rmse gen=0.0017 naive=0.0049
+       Euler real=127.3 gen=113.3 naive=890.2
+       max-CC-frac real=0.060 gen=0.083 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_affine_threshold_phi5p5/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=6.00% naive=6.41%
+       S2 rmse gen=0.0008 naive=0.0049
+       Euler real=127.3 gen=111.9 naive=890.2
+       max-CC-frac real=0.060 gen=0.086 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_affine_threshold_phi6p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=6.40% naive=6.41%
+       S2 rmse gen=0.0010 naive=0.0049
+       Euler real=127.3 gen=111.0 naive=890.2
+       max-CC-frac real=0.060 gen=0.088 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_affine_threshold_phi6p4/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=7.00% naive=6.41%
+       S2 rmse gen=0.0025 naive=0.0049
+       Euler real=127.3 gen=110.4 naive=890.2
+       max-CC-frac real=0.060 gen=0.090 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_affine_threshold_phi7p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=7.50% naive=6.41%
+       S2 rmse gen=0.0039 naive=0.0049
+       Euler real=127.3 gen=110.7 naive=890.2
+       max-CC-frac real=0.060 gen=0.090 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_affine_threshold_phi7p5/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=8.00% naive=6.41%
+       S2 rmse gen=0.0054 naive=0.0049
+       Euler real=127.3 gen=111.4 naive=890.2
+       max-CC-frac real=0.060 gen=0.090 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_affine_threshold_phi8p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=5.18% naive=6.41%
+       S2 rmse gen=0.0025 naive=0.0049
+       Euler real=127.3 gen=114.0 naive=890.2
+       max-CC-frac real=0.060 gen=0.082 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_qmatch_threshold_phi5p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=5.57% naive=6.41%
+       S2 rmse gen=0.0016 naive=0.0049
+       Euler real=127.3 gen=113.1 naive=890.2
+       max-CC-frac real=0.060 gen=0.083 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_qmatch_threshold_phi5p5/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=6.30% naive=6.41%
+       S2 rmse gen=0.0009 naive=0.0049
+       Euler real=127.3 gen=111.3 naive=890.2
+       max-CC-frac real=0.060 gen=0.088 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_qmatch_threshold_phi6p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=6.74% naive=6.41%
+       S2 rmse gen=0.0018 naive=0.0049
+       Euler real=127.3 gen=110.4 naive=890.2
+       max-CC-frac real=0.060 gen=0.090 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_qmatch_threshold_phi6p4/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=7.18% naive=6.41%
+       S2 rmse gen=0.0030 naive=0.0049
+       Euler real=127.3 gen=110.5 naive=890.2
+       max-CC-frac real=0.060 gen=0.089 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_qmatch_threshold_phi7p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=7.62% naive=6.41%
+       S2 rmse gen=0.0043 naive=0.0049
+       Euler real=127.3 gen=110.9 naive=890.2
+       max-CC-frac real=0.060 gen=0.090 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_qmatch_threshold_phi7p5/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=8.11% naive=6.41%
+       S2 rmse gen=0.0058 naive=0.0049
+       Euler real=127.3 gen=111.6 naive=890.2
+       max-CC-frac real=0.060 gen=0.090 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703/eval_qmatch_threshold_phi8p0/metrics.json  fig_eval.png
+{
+  "done": true,
+  "out": "/home/user/HXL/HY7_planb/phase2/b1_gray_sus_correction_sensitivity_20260703",
+  "variants": [
+    "orig",
+    "affine",
+    "qmatch"
+  ]
+}

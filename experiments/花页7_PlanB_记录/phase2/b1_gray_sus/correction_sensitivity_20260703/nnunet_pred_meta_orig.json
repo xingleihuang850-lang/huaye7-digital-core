@@ -1,0 +1,18 @@
+{
+  "variant": "orig",
+  "method": "corrected/generated gray through nnUNetv2 2d 50ep",
+  "seg_path": "/home/user/HXL/HY7_planb/phase2/ddpm_ct28_gray/nnunet_corrected_pred/ORIG.nii.gz",
+  "npy": "/home/user/HXL/HY7_planb/phase2/ddpm_ct28_gray/samples_pore_nnunet2d_orig.npy",
+  "n": 512,
+  "shape": [
+    512,
+    128,
+    128
+  ],
+  "phi_pct_mean": 20.64870595932007,
+  "phi_pct_median": 22.81494140625,
+  "unique": [
+    0,
+    1
+  ]
+}

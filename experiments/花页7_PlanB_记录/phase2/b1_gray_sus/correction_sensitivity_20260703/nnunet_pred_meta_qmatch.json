@@ -1,0 +1,18 @@
+{
+  "variant": "qmatch",
+  "method": "corrected/generated gray through nnUNetv2 2d 50ep",
+  "seg_path": "/home/user/HXL/HY7_planb/phase2/ddpm_ct28_gray/nnunet_corrected_pred/QMATCH.nii.gz",
+  "npy": "/home/user/HXL/HY7_planb/phase2/ddpm_ct28_gray/samples_pore_nnunet2d_qmatch.npy",
+  "n": 512,
+  "shape": [
+    512,
+    128,
+    128
+  ],
+  "phi_pct_mean": 5.711066722869873,
+  "phi_pct_median": 4.7943115234375,
+  "unique": [
+    0,
+    1
+  ]
+}

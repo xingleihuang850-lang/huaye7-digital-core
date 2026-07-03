@@ -1,0 +1,27 @@
+
+#######################################################################
+Please cite the following paper when using nnU-Net:
+Isensee, F., Jaeger, P. F., Kohl, S. A., Petersen, J., & Maier-Hein, K. H. (2021). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nature methods, 18(2), 203-211.
+#######################################################################
+
+There are 3 cases in the source folder
+I am processing 0 out of 1 (max process ID is 0, we start counting with 0!)
+There are 3 cases that I would like to predict
+
+Predicting AFFINE:
+perform_everything_on_device: True
+  0%|          | 0/512 [00:00<?, ?it/s]  0%|          | 1/512 [00:00<02:09,  3.95it/s] 19%|█▉        | 99/512 [00:00<00:01, 354.99it/s] 39%|███▊      | 198/512 [00:00<00:00, 570.19it/s] 58%|█████▊    | 297/512 [00:00<00:00, 706.25it/s] 77%|███████▋  | 396/512 [00:00<00:00, 795.71it/s] 97%|█████████▋| 495/512 [00:00<00:00, 855.71it/s]100%|██████████| 512/512 [00:00<00:00, 662.87it/s]
+sending off prediction to background worker for resampling and export
+done with AFFINE
+
+Predicting ORIG:
+perform_everything_on_device: True
+  0%|          | 0/512 [00:00<?, ?it/s] 19%|█▊        | 95/512 [00:00<00:00, 946.06it/s] 38%|███▊      | 194/512 [00:00<00:00, 969.21it/s] 57%|█████▋    | 293/512 [00:00<00:00, 976.03it/s] 77%|███████▋  | 392/512 [00:00<00:00, 979.24it/s] 96%|█████████▌| 491/512 [00:00<00:00, 980.47it/s]100%|██████████| 512/512 [00:00<00:00, 976.64it/s]
+sending off prediction to background worker for resampling and export
+done with ORIG
+
+Predicting QMATCH:
+perform_everything_on_device: True
+  0%|          | 0/512 [00:00<?, ?it/s] 19%|█▉        | 97/512 [00:00<00:00, 960.47it/s] 38%|███▊      | 197/512 [00:00<00:00, 977.99it/s] 58%|█████▊    | 297/512 [00:00<00:00, 986.85it/s] 78%|███████▊  | 397/512 [00:00<00:00, 990.86it/s] 97%|█████████▋| 497/512 [00:00<00:00, 993.55it/s]100%|██████████| 512/512 [00:00<00:00, 988.68it/s]
+sending off prediction to background worker for resampling and export
+done with QMATCH

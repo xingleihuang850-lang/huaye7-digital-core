@@ -1,0 +1,18 @@
+{
+  "variant": "affine",
+  "method": "corrected/generated gray through nnUNetv2 2d 50ep",
+  "seg_path": "/home/user/HXL/HY7_planb/phase2/ddpm_ct28_gray/nnunet_corrected_pred/AFFINE.nii.gz",
+  "npy": "/home/user/HXL/HY7_planb/phase2/ddpm_ct28_gray/samples_pore_nnunet2d_affine.npy",
+  "n": 512,
+  "shape": [
+    512,
+    128,
+    128
+  ],
+  "phi_pct_mean": 2.5966763496398926,
+  "phi_pct_median": 2.7069091796875,
+  "unique": [
+    0,
+    1
+  ]
+}

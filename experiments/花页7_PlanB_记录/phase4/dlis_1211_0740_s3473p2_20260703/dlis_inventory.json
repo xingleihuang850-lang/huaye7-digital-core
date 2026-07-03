@@ -1,0 +1,2669 @@
+{
+  "purpose": "HY7 electrical imaging/log DLIS inventory and target-depth preview",
+  "source_path": "/Users/hxl/Documents/1211_0740_s3473.2.dlis",
+  "source_size_bytes": 161411598,
+  "source_sha256": "95b58c8e8f081cfce05e8e97163dcbfeb5d7d7493fef02ad36c97180039353ab",
+  "target_depth_m": 4199.21,
+  "target_window_m": 2.0,
+  "logical_files": [
+    {
+      "index": 0,
+      "description": "LogicalFile(GEOLOAD.1)",
+      "frames": [
+        {
+          "name": "50",
+          "description": "Frame(50)",
+          "index_type": "BOREHOLE-DEPTH",
+          "spacing": -0.1,
+          "rows": 4401,
+          "depth_min_m": 3873.100097655663,
+          "depth_max_m": 4313.10009765625,
+          "contains_target_depth": true,
+          "channels": [
+            {
+              "name": "TDEP",
+              "long_name": "DEPT/",
+              "units": "m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float64",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": 3873.100097655663,
+                "max": 4313.10009765625,
+                "mean": 4093.1000976557066,
+                "std": 127.04592345569083,
+                "p1": 3877.500097655659,
+                "p50": 4093.100097655463,
+                "p99": 4308.700097656234
+              }
+            },
+            {
+              "name": "TENS",
+              "long_name": "TENS/CABLE TENSION",
+              "units": "lbs",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -3116.0,
+                "max": -999.25,
+                "mean": -3115.5190297659624,
+                "std": 31.90395603265073,
+                "p1": -3116.0,
+                "p50": -3116.0,
+                "p99": -3116.0
+              }
+            },
+            {
+              "name": "MMRK",
+              "long_name": "MMRK/DEPTH PANEL MAGNETIC MARK",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 0.0,
+                "mean": -0.22705067030220405,
+                "std": 15.06083763582201,
+                "p1": 0.0,
+                "p50": 0.0,
+                "p99": 0.0
+              }
+            },
+            {
+              "name": "MINM",
+              "long_name": "MINM/MINUTE MARK FLAG",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 1.0,
+                "mean": -0.21000908884344466,
+                "std": 15.06165064206242,
+                "p1": 0.0,
+                "p50": 0.0,
+                "p99": 1.0
+              }
+            },
+            {
+              "name": "CS",
+              "long_name": "CS/CABLE SPEED",
+              "units": "m/min",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 8.258673667907715,
+                "mean": 6.3327736154086915,
+                "std": 15.231946659260307,
+                "p1": 2.189795970916748,
+                "p50": 7.208163738250732,
+                "p99": 8.129591941833496
+              }
+            },
+            {
+              "name": "ETIME",
+              "long_name": "ETIME/TIME FROM LOG BEGIN (MS)",
+              "units": "mS",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 4666950.0,
+                "mean": 2093131.5770847534,
+                "std": 1237444.088064549,
+                "p1": 64210.0,
+                "p50": 1920450.0,
+                "p99": 4431710.0
+              }
+            },
+            {
+              "name": "SPDCOR",
+              "long_name": "SPDCOR/IS SPEED CORRECTION ENABLED?",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "int16",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.0,
+                "max": 0.0,
+                "mean": -0.22699386503067484,
+                "std": 15.057069600386477,
+                "p1": 0.0,
+                "p50": 0.0,
+                "p99": 0.0
+              }
+            },
+            {
+              "name": "MMRKT",
+              "long_name": "MMRKT/MAGNETIC MARK TICK",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 1.0,
+                "mean": -0.22682344921608724,
+                "std": 15.060848603031943,
+                "p1": 0.0,
+                "p50": 0.0,
+                "p99": 0.0
+              }
+            },
+            {
+              "name": "STUCK",
+              "long_name": "STUCK/STUCK FLAG",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 0.0,
+                "mean": -0.22705067030220405,
+                "std": 15.06083763582201,
+                "p1": 0.0,
+                "p50": 0.0,
+                "p99": 0.0
+              }
+            },
+            {
+              "name": "DVARC",
+              "long_name": "DVARC/SPEED CORR. DEPTH VAR. CLASS",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 0.0,
+                "mean": -0.22705067030220405,
+                "std": 15.06083763582201,
+                "p1": 0.0,
+                "p50": 0.0,
+                "p99": 0.0
+              }
+            },
+            {
+              "name": "GRU",
+              "long_name": "GRU/UNFILTERED GAMMA",
+              "units": "gAPI",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 152.4766845703125,
+                "mean": 99.6774558639613,
+                "std": 22.601062824232066,
+                "p1": 58.641841888427734,
+                "p50": 101.3818130493164,
+                "p99": 136.00335693359375
+              }
+            },
+            {
+              "name": "EMIM",
+              "long_name": "EMIM/XRMI LAST TOOL COMMAND",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 227.0,
+                "mean": 226.38258350374915,
+                "std": 18.483166543445623,
+                "p1": 226.0,
+                "p50": 227.0,
+                "p99": 227.0
+              }
+            },
+            {
+              "name": "EMIAZ",
+              "long_name": "EMIAZ/XRMI AZIMUTH",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 359.88812255859375,
+                "mean": 181.31909256671193,
+                "std": 100.00905426391479,
+                "p1": 1.99480140209198,
+                "p50": 172.6377410888672,
+                "p99": 356.10162353515625
+              }
+            },
+            {
+              "name": "ACXU",
+              "long_name": "ACXU/ACCELEROMETER X UNFILTERED",
+              "units": "G",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 0.11626086384057999,
+                "mean": -0.22389683437635147,
+                "std": 15.060956213132476,
+                "p1": -0.09943638741970062,
+                "p50": 0.006199829746037722,
+                "p99": 0.09591686725616455
+              }
+            },
+            {
+              "name": "ACYU",
+              "long_name": "ACYU/ACCELEROMETER Y UNFILTERED",
+              "units": "G",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 0.102737195789814,
+                "mean": -0.23880609053903848,
+                "std": 15.060753868994873,
+                "p1": -0.11631681770086288,
+                "p50": -0.008544479496777058,
+                "p99": 0.084478460252285
+              }
+            },
+            {
+              "name": "ACZU",
+              "long_name": "ACZU/ACCELEROMETER Z UNFILTERED",
+              "units": "G",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 1.2526012659072876,
+                "mean": 0.7701453331708096,
+                "std": 15.075876927784266,
+                "p1": 0.9673783779144287,
+                "p50": 0.997487485408783,
+                "p99": 1.041532278060913
+              }
+            },
+            {
+              "name": "NTEMP",
+              "long_name": "NTEMP/NAVIGATION TEMPERATURE",
+              "units": "degF",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 91.41232299804688,
+                "mean": 82.26454065171623,
+                "std": 16.826622103461215,
+                "p1": 75.93666076660156,
+                "p50": 81.80938720703125,
+                "p99": 90.66302490234375
+              }
+            },
+            {
+              "name": "MGXU",
+              "long_name": "MGXU/MAGNETOMETER X UNFILTERED",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 0.6849742531776428,
+                "mean": -0.2297175266464671,
+                "std": 15.067484156215942,
+                "p1": -0.6756306886672974,
+                "p50": 0.013412977568805218,
+                "p99": 0.6645781397819519
+              }
+            },
+            {
+              "name": "MGYU",
+              "long_name": "MGYU/MAGNETOMETER Y UNFILTERED",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 0.6879950165748596,
+                "mean": -0.2716109365184909,
+                "std": 15.066719250061169,
+                "p1": -0.6541349291801453,
+                "p50": -0.12173042446374893,
+                "p99": 0.685728132724762
+              }
+            },
+            {
+              "name": "MGZU",
+              "long_name": "MGZU/MAGNETOMETER Z UNFILTERED",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 0.8461111187934875,
+                "mean": 0.5605782041141213,
+                "std": 15.072743951693534,
+                "p1": 0.743694543838501,
+                "p50": 0.7820055484771729,
+                "p99": 0.8425194621086121
+              }
+            },
+            {
+              "name": "EMMR",
+              "long_name": "EMMR/REAL PART PHASOR VOLTAGE",
+              "units": "V",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 3.4641261100769043,
+                "mean": 2.4173071671550694,
+                "std": 15.112884683714094,
+                "p1": 1.2477103471755981,
+                "p50": 2.975309371948242,
+                "p99": 3.4239494800567627
+              }
+            },
+            {
+              "name": "DLOD",
+              "long_name": "DLOD/DOWNHOLE TENSION (DTDD)",
+              "units": "lb",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 31118.67578125,
+                "mean": 26846.655971742926,
+                "std": 2620.3069195785024,
+                "p1": 22004.181640625,
+                "p50": 27182.87109375,
+                "p99": 30758.078125
+              }
+            },
+            {
+              "name": "PLOC",
+              "long_name": "PLOC/PAD LOCATOR (DTDD)",
+              "units": "deg",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 0.0,
+                "mean": -0.22705067030220405,
+                "std": 15.06083763582201,
+                "p1": 0.0,
+                "p50": 0.0,
+                "p99": 0.0
+              }
+            },
+            {
+              "name": "D4INC",
+              "long_name": "D4INC/D4TG INCLINATION",
+              "units": "deg",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 0.0,
+                "mean": -0.22705067030220405,
+                "std": 15.06083763582201,
+                "p1": 0.0,
+                "p50": 0.0,
+                "p99": 0.0
+              }
+            },
+            {
+              "name": "GR",
+              "long_name": "GR/NATURAL GAMMA",
+              "units": "gAPI",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 142.71188354492188,
+                "mean": 99.67146406236547,
+                "std": 21.736075469477967,
+                "p1": 60.05375671386719,
+                "p50": 101.34109497070312,
+                "p99": 132.60205078125
+              }
+            },
+            {
+              "name": "GRCO",
+              "long_name": "GRCO/NATURAL GAMMA CORRECTED",
+              "units": "gAPI",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 127.62806701660156,
+                "mean": 89.11277353555012,
+                "std": 20.67766835430211,
+                "p1": 53.706424713134766,
+                "p50": 90.62992858886719,
+                "p99": 118.58678436279297
+              }
+            },
+            {
+              "name": "ACCQ",
+              "long_name": "ACCQ/ACCELEROMETER SUM OF SQUARES",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 1.007778525352478,
+                "mean": 0.772613926249129,
+                "std": 15.075908185119415,
+                "p1": 0.9973701238632202,
+                "p50": 0.9998692274093628,
+                "p99": 1.002763032913208
+              }
+            },
+            {
+              "name": "ACCX",
+              "long_name": "ACCX/ACCELEROMETER X-AXIS",
+              "units": "G",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 0.11553345620632172,
+                "mean": -0.22394448996923147,
+                "std": 15.060954583213075,
+                "p1": -0.09927316009998322,
+                "p50": 0.006320474203675985,
+                "p99": 0.09493514895439148
+              }
+            },
+            {
+              "name": "ACCY",
+              "long_name": "ACCY/ACCELEROMETER Y-AXIS",
+              "units": "G",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 0.10098312050104141,
+                "mean": -0.23871487613313888,
+                "std": 15.060754851426589,
+                "p1": -0.1163191869854927,
+                "p50": -0.00849953293800354,
+                "p99": 0.085005983710289
+              }
+            },
+            {
+              "name": "ACCZ",
+              "long_name": "ACCZ/ACCELEROMETER Z-AXIS",
+              "units": "G",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 1.0104153156280518,
+                "mean": 0.7701019329987882,
+                "std": 15.075870480640727,
+                "p1": 0.9915687441825867,
+                "p50": 0.9976294636726379,
+                "p99": 1.0033636093139648
+              }
+            },
+            {
+              "name": "MAGQ",
+              "long_name": "MAGQ/MAGNETOMETER SUM OF SQUARES",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 1.0244131088256836,
+                "mean": 0.7823642021930914,
+                "std": 15.076058549049693,
+                "p1": 0.9908783435821533,
+                "p50": 1.0083826780319214,
+                "p99": 1.0240590572357178
+              }
+            },
+            {
+              "name": "MAGX",
+              "long_name": "MAGX/MAGNETOMETER X-AXIS",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 0.6821433305740356,
+                "mean": -0.23118034192440082,
+                "std": 15.06740732487857,
+                "p1": -0.6739290952682495,
+                "p50": 0.008458880707621574,
+                "p99": 0.6615012288093567
+              }
+            },
+            {
+              "name": "MAGY",
+              "long_name": "MAGY/MAGNETOMETER Y-AXIS",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 0.687583327293396,
+                "mean": -0.2711465470975424,
+                "std": 15.066675489206508,
+                "p1": -0.6535449624061584,
+                "p50": -0.12010115385055542,
+                "p99": 0.683830201625824
+              }
+            },
+            {
+              "name": "MAGZ",
+              "long_name": "MAGZ/MAGNETOMETER Z-AXIS",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 0.8458605408668518,
+                "mean": 0.5604634148861651,
+                "std": 15.072742159947037,
+                "p1": 0.7437781095504761,
+                "p50": 0.7818359732627869,
+                "p99": 0.8421499133110046
+              }
+            },
+            {
+              "name": "DEVI",
+              "long_name": "DEVI/DRIFT ANGLE",
+              "units": "deg",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 7.427319049835205,
+                "mean": 3.576439017397359,
+                "std": 15.192475197804987,
+                "p1": 2.0336129665374756,
+                "p50": 3.368687629699707,
+                "p99": 7.126195907592773
+              }
+            },
+            {
+              "name": "HAZI",
+              "long_name": "HAZI/DRIFT AZIMUTH",
+              "units": "deg",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 338.0205383300781,
+                "mean": 287.87148685537665,
+                "std": 43.60883470087604,
+                "p1": 234.9039764404297,
+                "p50": 293.94305419921875,
+                "p99": 337.4839782714844
+              }
+            },
+            {
+              "name": "AZI1",
+              "long_name": "AZI1/PAD #1 AZIMUTH",
+              "units": "deg",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 359.88812255859375,
+                "mean": 181.31909256671193,
+                "std": 100.00905426391479,
+                "p1": 1.99480140209198,
+                "p50": 172.6377410888672,
+                "p99": 356.10162353515625
+              }
+            },
+            {
+              "name": "RB",
+              "long_name": "RB/PAD #1 ROTATION",
+              "units": "deg",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 359.7296447753906,
+                "mean": 170.27694560599087,
+                "std": 98.86590805916228,
+                "p1": 4.07745885848999,
+                "p50": 173.28038024902344,
+                "p99": 352.85296630859375
+              }
+            },
+            {
+              "name": "TEMP",
+              "long_name": "TEMP/NAVIGATION TEMPERATURE",
+              "units": "degC",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 91.41232299804688,
+                "mean": 82.26454065171623,
+                "std": 16.826622103461215,
+                "p1": 75.93666076660156,
+                "p50": 81.80938720703125,
+                "p99": 90.66302490234375
+              }
+            },
+            {
+              "name": "LOSIDE",
+              "long_name": "LOSIDE/LOW SIDE OF HOLE",
+              "units": "deg",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 158.02052307128906,
+                "mean": 107.91238666821327,
+                "std": 42.471222525711305,
+                "p1": 54.90397644042969,
+                "p50": 113.94305419921875,
+                "p99": 157.4839630126953
+              }
+            },
+            {
+              "name": "CALA",
+              "long_name": "CALA/XRMI AVERAGE CALIPER",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 11.353241920471191,
+                "mean": 7.884422966849395,
+                "std": 15.204410875291213,
+                "p1": 5.8057732582092285,
+                "p50": 8.117239952087402,
+                "p99": 10.392187118530273
+              }
+            },
+            {
+              "name": "DMIN",
+              "long_name": "DMIN/XRMI MINIMUM CALIPER PAIR",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 10.41054916381836,
+                "mean": 6.995587958446608,
+                "std": 15.23399709142991,
+                "p1": 3.510564088821411,
+                "p50": 7.800656318664551,
+                "p99": 9.539356231689453
+              }
+            },
+            {
+              "name": "DMAX",
+              "long_name": "DMAX/XRMI MAXIMUM CALIPER PAIR",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 11.963224411010742,
+                "mean": 8.523733702444861,
+                "std": 15.21325933884178,
+                "p1": 8.034441947937012,
+                "p50": 8.463876724243164,
+                "p99": 11.462074279785156
+              }
+            },
+            {
+              "name": "CAL1",
+              "long_name": "CAL1/XRMI CALIPER ARM #1 (DIAMETER)",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 12.109360694885254,
+                "mean": 8.43494129614298,
+                "std": 15.227172619763616,
+                "p1": 6.707361698150635,
+                "p50": 8.555362701416016,
+                "p99": 11.377063751220703
+              }
+            },
+            {
+              "name": "CAL2",
+              "long_name": "CAL2/XRMI CALIPER ARM #2 (DIAMETER)",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 14.2490234375,
+                "mean": 7.48695656728322,
+                "std": 15.23426766209624,
+                "p1": 3.5,
+                "p50": 7.701313018798828,
+                "p99": 11.202290534973145
+              }
+            },
+            {
+              "name": "CAL3",
+              "long_name": "CAL3/XRMI CALIPER ARM #3 (DIAMETER)",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 11.81784725189209,
+                "mean": 7.538757867906289,
+                "std": 15.197921310824906,
+                "p1": 6.527562618255615,
+                "p50": 7.704599380493164,
+                "p99": 10.698881149291992
+              }
+            },
+            {
+              "name": "CAL4",
+              "long_name": "CAL4/XRMI CALIPER ARM #4 (DIAMETER)",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 12.217531204223633,
+                "mean": 8.376397932261073,
+                "std": 15.216470279376377,
+                "p1": 7.095223903656006,
+                "p50": 8.50190258026123,
+                "p99": 11.630655288696289
+              }
+            },
+            {
+              "name": "CAL5",
+              "long_name": "CAL5/XRMI CALIPER ARM #5 (DIAMETER)",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 13.303075790405273,
+                "mean": 6.796423925320903,
+                "std": 15.348657795869862,
+                "p1": 3.5209803581237793,
+                "p50": 7.849963188171387,
+                "p99": 12.301396369934082
+              }
+            },
+            {
+              "name": "CAL6",
+              "long_name": "CAL6/XRMI CALIPER ARM #6 (DIAMETER)",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 13.21529769897461,
+                "mean": 8.673060206764532,
+                "std": 15.226854254596685,
+                "p1": 4.77545166015625,
+                "p50": 8.802334785461426,
+                "p99": 11.505621910095215
+              }
+            },
+            {
+              "name": "C14",
+              "long_name": "C14/XRMI CALIPER PAIR 1-4",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 11.963224411010742,
+                "mean": 8.405669616043934,
+                "std": 15.204370903699976,
+                "p1": 8.01272964477539,
+                "p50": 8.451604843139648,
+                "p99": 11.06473159790039
+              }
+            },
+            {
+              "name": "C25",
+              "long_name": "C25/XRMI CALIPER PAIR 2-5",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 11.911038398742676,
+                "mean": 7.141690243539201,
+                "std": 15.256653969581919,
+                "p1": 3.510564088821411,
+                "p50": 7.801275730133057,
+                "p99": 11.282825469970703
+              }
+            },
+            {
+              "name": "C36",
+              "long_name": "C36/XRMI CALIPER PAIR 3-6",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 11.609833717346191,
+                "mean": 8.105909036035241,
+                "std": 15.199444603792704,
+                "p1": 5.737340450286865,
+                "p50": 8.229415893554688,
+                "p99": 10.519098281860352
+              }
+            },
+            {
+              "name": "DCAL",
+              "long_name": "DCAL/XRMI DIFFERENTIAL CALIPER",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 3.4782419204711914,
+                "mean": 0.011212332902564646,
+                "std": 15.085885251639706,
+                "p1": -2.0692267417907715,
+                "p50": 0.24223995208740234,
+                "p99": 2.5171871185302734
+              }
+            },
+            {
+              "name": "BHVT",
+              "long_name": "BHVT/BOREHOLE VOLUME TOTAL",
+              "units": "ft3",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 533.3040161132812,
+                "mean": 245.61446134961753,
+                "std": 156.59846638461536,
+                "p1": 3.3531949520111084,
+                "p50": 236.7447509765625,
+                "p99": 527.8670043945312
+              }
+            },
+            {
+              "name": "AHVT",
+              "long_name": "AHVT/ANNULAR HOLE VOLUME TOTAL",
+              "units": "ft3",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 294.93707275390625,
+                "mean": 126.20263104407226,
+                "std": 88.6423505326958,
+                "p1": 0.64667147397995,
+                "p50": 117.33301544189453,
+                "p99": 291.7496643066406
+              }
+            },
+            {
+              "name": "BHV",
+              "long_name": "BHV/BOREHOLE VOLUME MARK",
+              "units": "ft3",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 15.0,
+                "mean": -0.13366280390820268,
+                "std": 15.088159737713438,
+                "p1": 0.0,
+                "p50": 0.0,
+                "p99": 7.0
+              }
+            },
+            {
+              "name": "AHV",
+              "long_name": "AHV/ANNULAR HOLE VOLUME MARK",
+              "units": "ft3",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 15.0,
+                "mean": -0.17728925244262667,
+                "std": 15.074873591713159,
+                "p1": 0.0,
+                "p50": 0.0,
+                "p99": 0.0
+              }
+            },
+            {
+              "name": "PRES",
+              "long_name": "PRES/XRMI PAD FORCE",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 0.729241132736206,
+                "mean": 0.38924467403710844,
+                "std": 15.070281795378325,
+                "p1": 0.3293662369251251,
+                "p50": 0.6312397122383118,
+                "p99": 0.7250790596008301
+              }
+            },
+            {
+              "name": "RAD1",
+              "long_name": "RAD1/XRMI CALIPER ARM #1 (RADIUS)",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 6.054680347442627,
+                "mean": 4.103945312920388,
+                "std": 15.135113965825665,
+                "p1": 3.3536808490753174,
+                "p50": 4.277681350708008,
+                "p99": 5.688531875610352
+              }
+            },
+            {
+              "name": "RAD2",
+              "long_name": "RAD2/XRMI CALIPER ARM #2 (RADIUS)",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 7.12451171875,
+                "mean": 3.6299529484905078,
+                "std": 15.13334350950071,
+                "p1": 1.75,
+                "p50": 3.850656509399414,
+                "p99": 5.601145267486572
+              }
+            },
+            {
+              "name": "RAD3",
+              "long_name": "RAD3/XRMI CALIPER ARM #3 (RADIUS)",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 5.908923625946045,
+                "mean": 3.6558535988020426,
+                "std": 15.124398889839238,
+                "p1": 3.2637813091278076,
+                "p50": 3.852299690246582,
+                "p99": 5.349440574645996
+              }
+            },
+            {
+              "name": "RAD4",
+              "long_name": "RAD4/XRMI CALIPER ARM #4 (RADIUS)",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 6.108765602111816,
+                "mean": 4.074673630979435,
+                "std": 15.132203211901826,
+                "p1": 3.547611951828003,
+                "p50": 4.250951290130615,
+                "p99": 5.8153276443481445
+              }
+            },
+            {
+              "name": "RAD5",
+              "long_name": "RAD5/XRMI CALIPER ARM #5 (RADIUS)",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 6.651537895202637,
+                "mean": 3.2846866275093496,
+                "std": 15.159626943316153,
+                "p1": 1.7604901790618896,
+                "p50": 3.9249815940856934,
+                "p99": 6.150698184967041
+              }
+            },
+            {
+              "name": "RAD6",
+              "long_name": "RAD6/XRMI CALIPER ARM #6 (RADIUS)",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 6.607648849487305,
+                "mean": 4.2230047682311636,
+                "std": 15.13592690958594,
+                "p1": 2.387725830078125,
+                "p50": 4.401167392730713,
+                "p99": 5.752810955047607
+              }
+            },
+            {
+              "name": "P1B1",
+              "long_name": "P1B1/PAD #1 RESISTIVITY",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 2000.0,
+                "mean": 60.549567458901016,
+                "std": 65.94999052667569,
+                "p1": 6.104167938232422,
+                "p50": 51.803749084472656,
+                "p99": 258.6485595703125
+              }
+            },
+            {
+              "name": "P2B1",
+              "long_name": "P2B1/PAD #2 RESISTIVITY",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 914.3434448242188,
+                "mean": 45.039647178151775,
+                "std": 42.619544546748514,
+                "p1": 0.3502231240272522,
+                "p50": 41.76007843017578,
+                "p99": 164.90029907226562
+              }
+            },
+            {
+              "name": "P3B1",
+              "long_name": "P3B1/PAD #3 RESISTIVITY",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 2000.0,
+                "mean": 57.04076405672343,
+                "std": 64.4517220672083,
+                "p1": 6.868738174438477,
+                "p50": 48.052024841308594,
+                "p99": 202.65086364746094
+              }
+            },
+            {
+              "name": "P4B1",
+              "long_name": "P4B1/PAD #4 RESISTIVITY",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 2000.0,
+                "mean": 63.515289436549224,
+                "std": 73.18924563146957,
+                "p1": 5.665353298187256,
+                "p50": 53.80940628051758,
+                "p99": 263.6519470214844
+              }
+            },
+            {
+              "name": "P5B1",
+              "long_name": "P5B1/PAD #5 RESISTIVITY",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 2000.0,
+                "mean": 53.80688242152777,
+                "std": 61.44347762258516,
+                "p1": 5.4760942459106445,
+                "p50": 45.336029052734375,
+                "p99": 232.52700805664062
+              }
+            },
+            {
+              "name": "P6B1",
+              "long_name": "P6B1/PAD #6 RESISTIVITY",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 2000.0,
+                "mean": 61.793036015893456,
+                "std": 66.46221584006855,
+                "p1": 7.353302478790283,
+                "p50": 51.80730056762695,
+                "p99": 254.17391967773438
+              }
+            },
+            {
+              "name": "RHOA",
+              "long_name": "RHOA/AVERAGE  RESISTIVITY",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 2000.0,
+                "mean": 51.27883428834942,
+                "std": 56.36936765917941,
+                "p1": 1.8040685653686523,
+                "p50": 48.21036911010742,
+                "p99": 173.89492797851562
+              }
+            },
+            {
+              "name": "RHOC",
+              "long_name": "RHOC/BHC CORR. RESISTIVITY",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": -999.25,
+                "mean": -999.25,
+                "std": 0.0,
+                "p1": -999.25,
+                "p50": -999.25,
+                "p99": -999.25
+              }
+            },
+            {
+              "name": "PDDV",
+              "long_name": "PDDV/XRMI RELATIVE  PAD VOLTAGE",
+              "units": "V",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 0.47557133436203003,
+                "mean": 0.13590251970456368,
+                "std": 15.066539495544372,
+                "p1": 0.1712583750486374,
+                "p50": 0.4083547294139862,
+                "p99": 0.4699648320674896
+              }
+            },
+            {
+              "name": "ITMP",
+              "long_name": "ITMP/INTERNAL TEMPERATURE",
+              "units": "degF",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 273.0275573730469,
+                "mean": 267.30039935381785,
+                "std": 20.47512475720717,
+                "p1": 243.80545043945312,
+                "p50": 270.8304138183594,
+                "p99": 273.0275573730469
+              }
+            },
+            {
+              "name": "INCL",
+              "long_name": "INCL/INCLINATION",
+              "units": "deg",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 0.0,
+                "mean": -0.22705067030220405,
+                "std": 15.06083763582201,
+                "p1": 0.0,
+                "p50": 0.0,
+                "p99": 0.0
+              }
+            },
+            {
+              "name": "BS",
+              "long_name": "BS/BIT SIZE",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 7.875,
+                "mean": 7.646159963644626,
+                "std": 15.179530752041273,
+                "p1": 7.875,
+                "p50": 7.875,
+                "p99": 7.875
+              }
+            },
+            {
+              "name": "DIAM",
+              "long_name": "DIAM/DIAMETER (English)",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 11.353241920471191,
+                "mean": 7.884422966849395,
+                "std": 15.204410875291213,
+                "p1": 5.8057732582092285,
+                "p50": 8.117239952087402,
+                "p99": 10.392187118530273
+              }
+            },
+            {
+              "name": "MAXCAL",
+              "long_name": "MAXCAL/MAXIMUM CALIPER READING",
+              "units": "in",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                4401
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 11.963224411010742,
+                "mean": 8.523733702444861,
+                "std": 15.21325933884178,
+                "p1": 8.034441947937012,
+                "p50": 8.463876724243164,
+                "p99": 11.462074279785156
+              }
+            }
+          ]
+        },
+        {
+          "name": "51",
+          "description": "Frame(51)",
+          "index_type": "BOREHOLE-DEPTH",
+          "spacing": -0.025,
+          "rows": 17604,
+          "depth_min_m": 3873.025097655663,
+          "depth_max_m": 4313.10009765625,
+          "contains_target_depth": true,
+          "channels": [
+            {
+              "name": "TDEP",
+              "long_name": "DEPT/",
+              "units": "m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float64",
+              "shape": [
+                17604
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": 3873.025097655663,
+                "max": 4313.10009765625,
+                "mean": 4093.062597655706,
+                "std": 127.04592653036646,
+                "p1": 3877.4258476556593,
+                "p50": 4093.062597655463,
+                "p99": 4308.699347656234
+              }
+            },
+            {
+              "name": "ACC_0_T",
+              "long_name": "ACC_0_T/SLOW ACCELEROMETER",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "uint16",
+              "shape": [
+                17604
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": 0.0,
+                "max": 8365.0,
+                "mean": 8140.207339241081,
+                "std": 143.7702783404582,
+                "p1": 8033.0,
+                "p50": 8128.0,
+                "p99": 8295.0
+              }
+            },
+            {
+              "name": "RGR_T",
+              "long_name": "RGR_T/NATURAL GAMMA RAY",
+              "units": "gAPI",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                17604
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 590.0,
+                "mean": 337.79649275450566,
+                "std": 67.46948500642645,
+                "p1": 178.6142835998535,
+                "p50": 340.0,
+                "p99": 488.0
+              }
+            },
+            {
+              "name": "TVETM_T",
+              "long_name": "TVETM_T/TRANSMITTER INPUT VOLTAGE ETM",
+              "units": "Volt",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                17604
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 31.006200790405273,
+                "mean": 30.03447263204518,
+                "std": 15.52024896852986,
+                "p1": 29.67259979248047,
+                "p50": 30.339399337768555,
+                "p99": 31.006200790405273
+              }
+            },
+            {
+              "name": "TXDC_T",
+              "long_name": "TXDC_T/TRANSMITTER DUTY CYCLE",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "int32",
+              "shape": [
+                17604
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.0,
+                "max": 404.0,
+                "mean": 403.6812088161781,
+                "std": 21.14621486420644,
+                "p1": 404.0,
+                "p50": 404.0,
+                "p99": 404.0
+              }
+            },
+            {
+              "name": "TXIOUT_T",
+              "long_name": "TXIOUT_T/TRANSMITTER OUTPUT CURRENT",
+              "units": "Amps",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                17604
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 3.377500057220459,
+                "mean": 2.710661714536389,
+                "std": 15.106423877095093,
+                "p1": 2.6440999507904053,
+                "p50": 2.8564000129699707,
+                "p99": 3.377500057220459
+              }
+            },
+            {
+              "name": "TXPOUT_T",
+              "long_name": "TXPOUT_T/TRANSMITTER OUTPUT POWER",
+              "units": "Amps",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                17604
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 10.642513275146484,
+                "mean": 8.662118606609639,
+                "std": 15.280861153816405,
+                "p1": 4.800103187561035,
+                "p50": 9.736544609069824,
+                "p99": 10.50698184967041
+              }
+            },
+            {
+              "name": "TXVOUT_T",
+              "long_name": "TXVOUT_T/TRANSMITTER OUTPUT VOLTAGE",
+              "units": "Volt",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                17604
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 4.054599761962891,
+                "mean": 2.8452778185762835,
+                "std": 15.12389280987968,
+                "p1": 1.4212000370025635,
+                "p50": 3.469399929046631,
+                "p99": 3.9709999561309814
+              }
+            }
+          ]
+        },
+        {
+          "name": "52",
+          "description": "Frame(52)",
+          "index_type": "BOREHOLE-DEPTH",
+          "spacing": -0.0025,
+          "rows": 176040,
+          "depth_min_m": 3873.002597655663,
+          "depth_max_m": 4313.10009765625,
+          "contains_target_depth": true,
+          "channels": [
+            {
+              "name": "TDEP",
+              "long_name": "DEPT/",
+              "units": "m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float64",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": 3873.002597655663,
+                "max": 4313.10009765625,
+                "mean": 4093.0513476557066,
+                "std": 127.04592673329498,
+                "p1": 3877.403572655659,
+                "p50": 4093.0513476554625,
+                "p99": 4308.699122656234
+              }
+            },
+            {
+              "name": "FACCZ",
+              "long_name": "FACCZ/FAST ACCELEROMETER",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 1.8622844219207764,
+                "mean": 1.5873996429411126,
+                "std": 15.088203625773312,
+                "p1": 1.7757138013839722,
+                "p50": 1.818360686302185,
+                "p99": 1.8428763151168823
+              }
+            },
+            {
+              "name": "D4TM",
+              "long_name": "D4TM/ACCELEROMETER TIME",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 65535.0,
+                "mean": 32730.037906157693,
+                "std": 18925.93685369651,
+                "p1": 635.3900000000001,
+                "p50": 32726.5,
+                "p99": 64874.0
+              }
+            },
+            {
+              "name": "XPAD1",
+              "long_name": "XPAD1/XPAD #1 - FAST DATA ARRAY",
+              "units": null,
+              "dimension": [
+                25
+              ],
+              "dtype": "int32",
+              "shape": [
+                176040,
+                25
+              ]
+            },
+            {
+              "name": "XPAD2",
+              "long_name": "XPAD2/XPAD #2 - FAST DATA ARRAY",
+              "units": null,
+              "dimension": [
+                25
+              ],
+              "dtype": "int32",
+              "shape": [
+                176040,
+                25
+              ]
+            },
+            {
+              "name": "XPAD3",
+              "long_name": "XPAD3/XPAD #3 - FAST DATA ARRAY",
+              "units": null,
+              "dimension": [
+                25
+              ],
+              "dtype": "int32",
+              "shape": [
+                176040,
+                25
+              ]
+            },
+            {
+              "name": "XPAD4",
+              "long_name": "XPAD4/XPAD #4 - FAST DATA ARRAY",
+              "units": null,
+              "dimension": [
+                25
+              ],
+              "dtype": "int32",
+              "shape": [
+                176040,
+                25
+              ]
+            },
+            {
+              "name": "XPAD5",
+              "long_name": "XPAD5/XPAD #5 - FAST DATA ARRAY",
+              "units": null,
+              "dimension": [
+                25
+              ],
+              "dtype": "int32",
+              "shape": [
+                176040,
+                25
+              ]
+            },
+            {
+              "name": "XPAD6",
+              "long_name": "XPAD6/XPAD #6 - FAST DATA ARRAY",
+              "units": null,
+              "dimension": [
+                25
+              ],
+              "dtype": "int32",
+              "shape": [
+                176040,
+                25
+              ]
+            },
+            {
+              "name": "XPADS",
+              "long_name": "XPADS/VIEW BUTTONS IMAGE (N-E-S-W-N)",
+              "units": "NESW",
+              "dimension": [
+                200
+              ],
+              "dtype": "uint8",
+              "shape": [
+                176040,
+                200
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": 0.0,
+                "max": 255.0,
+                "mean": 97.73248122585775,
+                "std": 74.87203689872757,
+                "p1": 0.0,
+                "p50": 94.0,
+                "p99": 255.0
+              }
+            },
+            {
+              "name": "ZACC",
+              "long_name": "ZACC/Z ACCELEROMETER (FAST)",
+              "units": "G",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 1.2793536186218262,
+                "mean": 0.7677583640219948,
+                "std": 15.075840614543441,
+                "p1": 0.9651405215263367,
+                "p50": 0.9953513741493225,
+                "p99": 1.0375651121139526
+              }
+            },
+            {
+              "name": "ZAC2",
+              "long_name": "ZAC2/Z ACCELEROMETER (FAST)",
+              "units": "G",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 1.2793536186218262,
+                "mean": 0.7677583640219948,
+                "std": 15.075840614543441,
+                "p1": 0.9651405215263367,
+                "p50": 0.9953513741493225,
+                "p99": 1.0375651121139526
+              }
+            },
+            {
+              "name": "DXTM",
+              "long_name": "DXTM/Z ACCELEROMETER (FAST) TIME",
+              "units": "08.3",
+              "dimension": [
+                1
+              ],
+              "dtype": "uint16",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": 0.0,
+                "max": 65535.0,
+                "mean": 32630.90923653715,
+                "std": 19051.438949663905,
+                "p1": 571.0,
+                "p50": 32635.0,
+                "p99": 64891.0
+              }
+            },
+            {
+              "name": "DXT2",
+              "long_name": "DXT2/Z ACCELEROMETER (FAST) TIME",
+              "units": "08.3",
+              "dimension": [
+                1
+              ],
+              "dtype": "uint16",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": 0.0,
+                "max": 65534.0,
+                "mean": 32629.675335151103,
+                "std": 19051.423251996137,
+                "p1": 570.0,
+                "p50": 32634.0,
+                "p99": 64890.0
+              }
+            },
+            {
+              "name": "F1B1",
+              "long_name": "F1B1/SED PAD #1, PROFILE 1 (FAST)",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "int16",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.0,
+                "max": 791.0,
+                "mean": 417.1679163826403,
+                "std": 111.53559864866149,
+                "p1": 137.0,
+                "p50": 420.0,
+                "p99": 640.0
+              }
+            },
+            {
+              "name": "F2B1",
+              "long_name": "F2B1/SED PAD #2, PROFILE 1 (FAST)",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "int16",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.0,
+                "max": 1020.0,
+                "mean": 492.8141558736651,
+                "std": 177.4914753550059,
+                "p1": 188.0,
+                "p50": 463.0,
+                "p99": 1020.0
+              }
+            },
+            {
+              "name": "F3B1",
+              "long_name": "F3B1/SED PAD #3, PROFILE 1 (FAST)",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "int16",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.0,
+                "max": 757.0,
+                "mean": 424.28420245398775,
+                "std": 104.60866498840176,
+                "p1": 161.0,
+                "p50": 431.0,
+                "p99": 628.0
+              }
+            },
+            {
+              "name": "F4B1",
+              "long_name": "F4B1/SED PAD #4, PROFILE 1 (FAST)",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "int16",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.0,
+                "max": 786.0,
+                "mean": 417.3422801635992,
+                "std": 112.25571009800161,
+                "p1": 135.0,
+                "p50": 423.0,
+                "p99": 638.0
+              }
+            },
+            {
+              "name": "F5B1",
+              "long_name": "F5B1/SED PAD #5, PROFILE 1 (FAST)",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "int16",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.0,
+                "max": 893.0,
+                "mean": 434.3860883890025,
+                "std": 108.94620843972854,
+                "p1": 153.0,
+                "p50": 439.0,
+                "p99": 669.0
+              }
+            },
+            {
+              "name": "F6B1",
+              "long_name": "F6B1/SED PAD #6, PROFILE 1 (FAST)",
+              "units": null,
+              "dimension": [
+                1
+              ],
+              "dtype": "int16",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.0,
+                "max": 832.0,
+                "mean": 411.736701885935,
+                "std": 107.16803594419514,
+                "p1": 139.0,
+                "p50": 417.0,
+                "p99": 636.0
+              }
+            },
+            {
+              "name": "EDD1",
+              "long_name": "EDD1/PAD #1 RESISTIVITY (FAST)",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 166406.4375,
+                "mean": 161.94550772695698,
+                "std": 1155.693133777893,
+                "p1": 5.110584001541138,
+                "p50": 52.44471549987793,
+                "p99": 1937.888260498017
+              }
+            },
+            {
+              "name": "EDD2",
+              "long_name": "EDD2/PAD #2 RESISTIVITY (FAST)",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 13006.626953125,
+                "mean": 68.64171201220238,
+                "std": 176.5819197122371,
+                "p1": 0.3494209051132202,
+                "p50": 39.64210510253906,
+                "p99": 606.7153479003877
+              }
+            },
+            {
+              "name": "EDD3",
+              "long_name": "EDD3/PAD #3 RESISTIVITY (FAST)",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 50156.5390625,
+                "mean": 116.56803187581659,
+                "std": 481.2696459747799,
+                "p1": 6.111836500167847,
+                "p50": 48.339752197265625,
+                "p99": 1043.5756066894503
+              }
+            },
+            {
+              "name": "EDD4",
+              "long_name": "EDD4/PAD #4 RESISTIVITY (FAST)",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 240814.015625,
+                "mean": 185.8788334581736,
+                "std": 1688.0951282708781,
+                "p1": 4.982606930732727,
+                "p50": 53.24777793884277,
+                "p99": 2150.788994140613
+              }
+            },
+            {
+              "name": "EDD5",
+              "long_name": "EDD5/PAD #5 RESISTIVITY (FAST)",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 146921.171875,
+                "mean": 122.83012214767557,
+                "std": 709.0582454635489,
+                "p1": 4.879695892333984,
+                "p50": 45.39895820617676,
+                "p99": 1234.7850451660152
+              }
+            },
+            {
+              "name": "EDD6",
+              "long_name": "EDD6/PAD #6 RESISTIVITY (FAST)",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 186926.484375,
+                "mean": 194.46367165903644,
+                "std": 1956.7100562260616,
+                "p1": 5.8291215896606445,
+                "p50": 54.2475528717041,
+                "p99": 1863.708150634755
+              }
+            },
+            {
+              "name": "ERD1",
+              "long_name": "ERD1/PAD #1 RESISTIVITY FAST UNDELY",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 166406.4375,
+                "mean": 161.93569063619168,
+                "std": 1155.69408882051,
+                "p1": 5.110584001541138,
+                "p50": 52.42403602600098,
+                "p99": 1937.888260498017
+              }
+            },
+            {
+              "name": "ERD2",
+              "long_name": "ERD2/PAD #2 RESISTIVITY FAST UNDELY",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 13006.626953125,
+                "mean": 68.62460449455449,
+                "std": 176.65382273647953,
+                "p1": 0.3494209051132202,
+                "p50": 39.60455513000488,
+                "p99": 606.2501519775368
+              }
+            },
+            {
+              "name": "ERD3",
+              "long_name": "ERD3/PAD #3 RESISTIVITY FAST UNDELY",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 50156.5390625,
+                "mean": 116.55874037459151,
+                "std": 481.2709222559128,
+                "p1": 6.111836500167847,
+                "p50": 48.32980728149414,
+                "p99": 1043.5756066894503
+              }
+            },
+            {
+              "name": "ERD4",
+              "long_name": "ERD4/PAD #4 RESISTIVITY FAST UNDELY",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 240643.609375,
+                "mean": 185.89214150129163,
+                "std": 1688.3734371674245,
+                "p1": 4.984524354934693,
+                "p50": 53.24416923522949,
+                "p99": 2148.0683447265087
+              }
+            },
+            {
+              "name": "ERD5",
+              "long_name": "ERD5/PAD #5 RESISTIVITY FAST UNDELY",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 146921.171875,
+                "mean": 122.82230316279315,
+                "std": 709.0591491642296,
+                "p1": 4.879695892333984,
+                "p50": 45.3868293762207,
+                "p99": 1234.7850451660152
+              }
+            },
+            {
+              "name": "ERD6",
+              "long_name": "ERD6/PAD #6 RESISTIVITY FAST UNDELY",
+              "units": "ohm.m",
+              "dimension": [
+                1
+              ],
+              "dtype": "float32",
+              "shape": [
+                176040
+              ],
+              "stats": {
+                "finite_frac": 1.0,
+                "min": -999.25,
+                "max": 186654.59375,
+                "mean": 194.45268246893096,
+                "std": 1956.5908922983685,
+                "p1": 5.826159329414368,
+                "p50": 54.22086143493652,
+                "p99": 1865.1090930175424
+              }
+            }
+          ]
+        }
+      ],
+      "origins": [
+        {
+          "name": "0",
+          "origin": "Origin(0)",
+          "well_name": null,
+          "field_name": null,
+          "company": null,
+          "producer_name": "Halliburton",
+          "creation_time": "2019-12-11 10:00:58"
+        }
+      ],
+      "tools": [
+        {
+          "name": "DITSHD",
+          "description": "Tool(DITSHD)",
+          "trademark_name": "DITSHD",
+          "generic_name": "DITSHD"
+        },
+        {
+          "name": "GR_D4 ",
+          "description": "Tool(GR_D4 )",
+          "trademark_name": "GR_D4",
+          "generic_name": "GR_D4"
+        },
+        {
+          "name": "XRMIDB",
+          "description": "Tool(XRMIDB)",
+          "trademark_name": "XRMIDB",
+          "generic_name": "XRMIDB"
+        },
+        {
+          "name": "XRMIAC",
+          "description": "Tool(XRMIAC)",
+          "trademark_name": "XRMIAC",
+          "generic_name": "XRMIAC"
+        },
+        {
+          "name": "XRMIMG",
+          "description": "Tool(XRMIMG)",
+          "trademark_name": "XRMIMG",
+          "generic_name": "XRMIMG"
+        },
+        {
+          "name": "XRMIDP",
+          "description": "Tool(XRMIDP)",
+          "trademark_name": "XRMIDP",
+          "generic_name": "XRMIDP"
+        },
+        {
+          "name": "DTDD  ",
+          "description": "Tool(DTDD  )",
+          "trademark_name": "DTDD",
+          "generic_name": "DTDD"
+        },
+        {
+          "name": "D4TG  ",
+          "description": "Tool(D4TG  )",
+          "trademark_name": "D4TG",
+          "generic_name": "D4TG"
+        },
+        {
+          "name": "XRMICL",
+          "description": "Tool(XRMICL)",
+          "trademark_name": "XRMICL",
+          "generic_name": "XRMICL"
+        },
+        {
+          "name": "SHARED",
+          "description": "Tool(SHARED)",
+          "trademark_name": "SHARED",
+          "generic_name": "SHARED"
+        }
+      ],
+      "parameters_count": 11
+    }
+  ]
+}

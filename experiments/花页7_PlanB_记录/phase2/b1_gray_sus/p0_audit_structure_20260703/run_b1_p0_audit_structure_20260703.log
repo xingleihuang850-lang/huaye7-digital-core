@@ -1,0 +1,7 @@
+{
+  "out": "/home/user/HXL/HY7_planb/phase2/b1_gray_sus_p0_audit_structure_20260703",
+  "generated_minus_train_mean": -0.33930753916502,
+  "generated_minus_test512_mean": -0.3329927772283554,
+  "generated_minus1_saturation": 0.02545034885406494,
+  "loader_ok": true
+}

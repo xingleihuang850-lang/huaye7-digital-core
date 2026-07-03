@@ -87,6 +87,45 @@ def postprocess_samples(cont, mode="binary"):
     raise ValueError(f"unknown sample mode: {mode}")
 
 
+def make_intensity_calibration(reference, mode="none"):
+    """Build an affine output-intensity calibration from reference gray data.
+
+    mode="train-moments" matches generated gray samples to the reference mean/std.
+    This is an explicit post-sampling calibration for B1.1 diagnostics, not a pure
+    generation-quality metric. It uses only the train split when called from CLI.
+    """
+    ref = np.asarray(reference, dtype=np.float32)
+    if mode == "none":
+        return {"mode": "none", "reference_mean": float(ref.mean()), "reference_std": float(ref.std())}
+    if mode != "train-moments":
+        raise ValueError(f"unknown intensity calibration mode: {mode}")
+    std = float(ref.std())
+    if not np.isfinite(std) or std <= 1e-8:
+        raise ValueError("reference std must be finite and positive for train-moments calibration")
+    return {"mode": mode, "reference_mean": float(ref.mean()), "reference_std": std}
+
+
+def apply_intensity_calibration(samples, calibration):
+    """Apply B1.1 output calibration to gray samples and keep [-1,1] semantics."""
+    arr = np.asarray(samples, dtype=np.float32)
+    mode = calibration.get("mode", "none")
+    if mode == "none":
+        return np.clip(arr, -1.0, 1.0).astype(np.float32)
+    if mode != "train-moments":
+        raise ValueError(f"unknown intensity calibration mode: {mode}")
+    mean = float(arr.mean())
+    std = float(arr.std())
+    if not np.isfinite(std) or std <= 1e-8:
+        raise ValueError("sample std must be finite and positive for train-moments calibration")
+    out = (arr - mean) / std * float(calibration["reference_std"]) + float(calibration["reference_mean"])
+    return np.clip(out, -1.0, 1.0).astype(np.float32)
+
+
+def invert_intensity_calibration(samples, calibration):
+    """Compatibility hook for future train-space transforms; current modes are output-only."""
+    return np.asarray(samples, dtype=np.float32)
+
+
 @torch.no_grad()
 def sample(model, sched, n, size, dev, bs=64, save_continuous=False, mode="binary"):
     """反向扩散采样。
@@ -188,6 +227,20 @@ def cmd_sample(a):
         print(f"[info] 连续值已保存 -> {a.out}/samples_continuous.npy  (float32, [-1,1])")
     else:
         g = result
+    calibration_mode = getattr(a, "intensity_calibration", "none")
+    if a.sample_mode == "gray" and calibration_mode != "none":
+        if not getattr(a, "calibration_data", None):
+            raise ValueError("--calibration-data is required when --intensity-calibration is not none")
+        ref = np.load(os.path.join(a.calibration_data, "train.npy"))
+        calibration = make_intensity_calibration(ref, mode=calibration_mode)
+        calibration["sample_mean_before"] = float(np.asarray(g, dtype=np.float32).mean())
+        calibration["sample_std_before"] = float(np.asarray(g, dtype=np.float32).std())
+        g = apply_intensity_calibration(g, calibration)
+        calibration["sample_mean_after"] = float(np.asarray(g, dtype=np.float32).mean())
+        calibration["sample_std_after"] = float(np.asarray(g, dtype=np.float32).std())
+        calibration["calibration_data"] = a.calibration_data
+        json.dump(calibration, open(os.path.join(a.out, "sample_intensity_calibration.json"), "w"), indent=2)
+        print(f"[info] intensity calibration {calibration_mode} -> {a.out}/sample_intensity_calibration.json")
     sample_name = "samples_gray.npy" if a.sample_mode == "gray" else "samples.npy"
     np.save(os.path.join(a.out, sample_name), g)
     save_grid(g, os.path.join(a.out, "samples_grid.png"), mode=a.sample_mode)
@@ -218,6 +271,10 @@ if __name__ == "__main__":
     s.add_argument("--continuous", action="store_true", help="同时保存连续值 samples_continuous.npy（M7-v2 用）")
     s.add_argument("--sample-mode", choices=["binary", "gray"], default="binary",
                    help="primary saved sample representation: samples.npy for binary, samples_gray.npy for gray")
+    s.add_argument("--intensity-calibration", choices=["none", "train-moments"], default="none",
+                   help="gray samples only: optional output calibration; train-moments uses --calibration-data/train.npy")
+    s.add_argument("--calibration-data", default=None,
+                   help="dataset directory containing train.npy for --intensity-calibration train-moments")
     s.set_defaults(func=cmd_sample)
     a = ap.parse_args()
     a.func(a)

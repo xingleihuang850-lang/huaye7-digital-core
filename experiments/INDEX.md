@@ -37,6 +37,7 @@
 | `experiments/花页7_PlanB_记录/phase2/` | 阶段二 DDPM 生成轻量证据区 | 是 | 已跟踪 | `src/hy7_phase2_make_slices.py`、`src/hy7_phase2_ddpm.py`、`src/hy7_phase2_eval.py`、`notes/21_*`、`notes/22_*`、`notes/24_*` | 大文件如 `samples.npy`、`samples_continuous.npy`、`ckpt/*.pt` 不入 git；仅存指标/图/README。 |
 | `experiments/花页7_PlanB_记录/phase2/README.md` | 阶段二证据说明，防止阈值口径混读 | 是 | 已跟踪 | `notes/21_*`、`notes/22_*`、`notes/24_*` | 必读入口；明确 `eval_v2` 是 T=0，`m7v2_calib` 是 T* 标定。 |
 | `experiments/花页7_PlanB_记录/phase2/m7v3_200ep/` | M7-v3 200ep cheap control 轻量证据 | 是 | 已跟踪 | `notes/25_阶段二_M7v3_200ep评估与B1决策.md` | 入 git轻量文件：eval/calib JSON+PNG、samples_grid.png、remote_run 日志/hash；大文件 samples.npy/samples_continuous.npy 只记远程 sha。 |
+| `experiments/花页7_PlanB_记录/phase2/b1_gray_sus/probe_20260703/` | B1 灰度介质生成前的 ct28 `sus` 只读分布探针 | 是 | 待跟踪 | `notes/26_阶段二_B1灰度介质生成设计.md` | 无训练；记录 valid mask、histogram、percentiles、min/max、M7 tile-compatible 20,750 tiles 分布；建议首版归一化 p1–p99 `[45,205]`。 |
 | `experiments/花页7_PlanB_记录/phase2/metrics.json` | M7 首基线评估：DDPM 50ep，T=0 二值化 | 是 | 已跟踪 | `src/hy7_phase2_eval.py`；`notes/21` | 真实 512 vs 生成 512；φ gen 23.506% vs real 6.405%，S₂ rmse 0.07143，Euler gen 146.24 vs real 127.33。 |
 | `experiments/花页7_PlanB_记录/phase2/{samples_grid,real_grid,fig_eval}.png` | M7 首基线可视化/评估图 | 是 | 已跟踪 | `src/hy7_phase2_ddpm.py sample`、`src/hy7_phase2_eval.py`；`notes/21` | 图为轻量证据；原始 samples 大文件另记 manifest。 |
 | `experiments/花页7_PlanB_记录/phase2/eval_v2/` | M7 原始 T=0 评估补充版：增加 naive baseline 与连通指标 | 是 | 已跟踪 | `src/hy7_phase2_eval.py` 扩展版；`notes/22` §5 | 重要：仍是 T=0 口径，不是 T* 标定后结果；不能用来声称阈值已修。 |

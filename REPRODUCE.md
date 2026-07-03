@@ -291,6 +291,54 @@ python src/hy7_phase2_ddpm.py train \
 experiments/花页7_PlanB_记录/phase2/m7v3_200ep/
 ```
 
+#### 6.1.1 200ep 采样/评估/标定命令模板（2026-07-03 预登记，待远程执行）
+
+前置：先把修复过 `cmd_sample` 输出目录创建的脚本同步到远程（本仓 commit `44f6d0a`）：
+
+```bash
+rsync -av src/hy7_phase2_ddpm.py hy7-linux:~/HXL/HY7_planb/src/
+```
+
+远程（cwd=`~/HXL/HY7_planb`；长任务建议 `nohup`/`tmux`，本机保持 `caffeinate` 防休眠断连）：
+
+```bash
+# ① 采样：--out 用 200ep 训练目录本身；严禁指向 ddpm_ct28（会覆盖 M7-v2 的 samples.npy 证据）
+python src/hy7_phase2_ddpm.py sample \
+  --ckpt /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/best.pt \
+  --out /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep \
+  --n 512 --size 128 --base 64 --bs 64 --seed 123 --continuous
+
+# ② T=0 口径评估（与 50ep eval_v2 同口径）
+python src/hy7_phase2_eval.py \
+  --real /home/user/HXL/HY7_planb/phase2/slices_ct28_128/test.npy \
+  --gen /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/samples.npy \
+  --out /home/user/HXL/HY7_planb/phase2/eval_200ep
+
+# ③ T* 阈值标定（target_phi 保持 6.4，与 50ep m7v2_calib 同口径；
+#    口径备注：6.4=标定取整目标，6.405%=512 评估子集实测，6.443%=全测试集4150张 meta 实测）
+python src/hy7_phase2_threshold_calib.py \
+  --real /home/user/HXL/HY7_planb/phase2/slices_ct28_128/test.npy \
+  --cont /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/samples_continuous.npy \
+  --out /home/user/HXL/HY7_planb/phase2/m7v3_200ep_calib \
+  --target_phi 6.4
+```
+
+回传轻量证据（⚠️ 只拉新目录，**不要整目录反向 rsync**——远程 `m7v2_calib/calib_result.json` 两份副本的
+`verdict` 仍是修正前旧错判，整目录回传会覆盖本地修正版；回传前或同一会话顺手修正远程旧 verdict）：
+
+```bash
+mkdir -p experiments/花页7_PlanB_记录/phase2/m7v3_200ep
+rsync -av hy7-linux:~/HXL/HY7_planb/phase2/eval_200ep/ \
+  experiments/花页7_PlanB_记录/phase2/m7v3_200ep/eval/
+rsync -av hy7-linux:~/HXL/HY7_planb/phase2/m7v3_200ep_calib/ \
+  experiments/花页7_PlanB_记录/phase2/m7v3_200ep/calib/
+rsync -av hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_200ep/samples_grid.png \
+  experiments/花页7_PlanB_记录/phase2/m7v3_200ep/
+```
+
+入档后待办：50ep/200ep/real 三方对比（φ/S₂ rmse/Euler/max_cc_frac/贯通率）→ 判定欠训练假设 →
+`WEIGHTS_MANIFEST` 补 200ep samples 条目（sha256）→ 回写 `notes/24` §4、`notes/00`、`CLAUDE.md` ★。
+
 ### 6.2 步 B：灰度介质生成或双通道联合生成
 
 方向：

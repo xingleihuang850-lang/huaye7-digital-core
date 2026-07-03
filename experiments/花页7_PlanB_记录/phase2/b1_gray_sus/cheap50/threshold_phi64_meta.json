@@ -1,0 +1,12 @@
+{
+  "method": "B1-threshold: generated gray <= percentile threshold",
+  "target_phi_pct": 6.4,
+  "threshold_norm": -0.97492915391922,
+  "n": 512,
+  "gray_min": -1.0,
+  "gray_max": 1.0,
+  "gray_mean": -0.43188536167144775,
+  "phi_pct_mean": 6.400024890899658,
+  "phi_pct_median": 5.46875,
+  "notes": "First cheap B1 threshold proxy; nnUNet downstream requires separate generated-slice inference adapter."
+}

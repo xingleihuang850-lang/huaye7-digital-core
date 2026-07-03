@@ -1,0 +1,14 @@
+{
+  "source": "samples_gray.npy",
+  "inverse_norm": "raw=(clip(gray,-1,1)+1)/2*(205-45)+45",
+  "shape_zyx": [
+    512,
+    128,
+    128
+  ],
+  "dtype": "float32",
+  "raw_min": 45.0,
+  "raw_max": 205.0,
+  "raw_mean": 90.44917297363281,
+  "output": "/home/user/HXL/HY7_planb/phase2/ddpm_ct28_gray/nnunet_in/B1GEN_0000.nii.gz"
+}

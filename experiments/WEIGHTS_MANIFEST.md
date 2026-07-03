@@ -185,7 +185,7 @@ Run config：`src/hy7_phase2_make_gray_slices.py --root /home/user/HXL/HY7_sourc
 
 | id | 预期路径 | 目的 | 当前状态 |
 |---|---|---|---|
-| `B1-DDPM-ct28-gray-50ep-best` | `hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_gray/best.pt` | B1 灰度 sus 介质生成 50ep cheap run | `dataset_ready_train_next`，训练需使用 `--sample-mode gray`，见 `REPRODUCE.md` §9.1 |
+| `B1-DDPM-ct28-gray-50ep-best` | `hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_gray/best.pt` | B1 灰度 sus 介质生成 50ep cheap run | `sampled_evaluated`，best_Lsimple=0.04448；B1-threshold φ=6.400%、S₂ rmse=0.00105、Euler=111.00、maxCC=0.0880；B1-nnUNetv2-2d φ=20.649%，过分割；证据 `phase2/b1_gray_sus/cheap50/` |
 | `B2-DDPM-ct28-sus-pore-2ch-best` | `hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_sus_pore_2ch/best.pt` 或后续实际目录 | B2 `[sus,pore]` 双通道联合生成 | `backup_design`，待 B1 50ep 结果决定是否推进 |
 
 ## 3. 后续补证命令清单（只读/校验，不提交大文件）

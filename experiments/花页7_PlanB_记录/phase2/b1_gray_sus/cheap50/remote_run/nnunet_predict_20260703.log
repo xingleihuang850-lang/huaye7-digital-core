@@ -1,0 +1,15 @@
+
+#######################################################################
+Please cite the following paper when using nnU-Net:
+Isensee, F., Jaeger, P. F., Kohl, S. A., Petersen, J., & Maier-Hein, K. H. (2021). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nature methods, 18(2), 203-211.
+#######################################################################
+
+There are 1 cases in the source folder
+I am processing 0 out of 1 (max process ID is 0, we start counting with 0!)
+There are 1 cases that I would like to predict
+
+Predicting B1GEN:
+perform_everything_on_device: True
+  0%|          | 0/512 [00:00<?, ?it/s]  0%|          | 1/512 [00:00<02:03,  4.14it/s] 19%|█▉        | 97/512 [00:00<00:01, 358.50it/s] 38%|███▊      | 194/512 [00:00<00:00, 569.57it/s] 57%|█████▋    | 291/512 [00:00<00:00, 700.76it/s] 76%|███████▌  | 388/512 [00:00<00:00, 786.81it/s] 95%|█████████▍| 486/512 [00:00<00:00, 845.38it/s]100%|██████████| 512/512 [00:00<00:00, 664.24it/s]
+sending off prediction to background worker for resampling and export
+done with B1GEN

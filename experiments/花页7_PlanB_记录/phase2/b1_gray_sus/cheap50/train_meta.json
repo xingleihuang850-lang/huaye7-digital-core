@@ -1,0 +1,12 @@
+{
+  "size": 128,
+  "n_train": 16600,
+  "epochs": 50,
+  "base": 64,
+  "bs": 64,
+  "lr": 0.0001,
+  "seed": 42,
+  "sample_mode": "gray",
+  "best_Lsimple": 0.04448,
+  "params_M": 63.15
+}

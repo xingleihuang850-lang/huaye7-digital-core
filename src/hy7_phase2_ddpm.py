@@ -49,20 +49,52 @@ def make_sched():
                          beta_start=1e-4, beta_end=0.02)
 
 
+def load_train_array(npy):
+    """Load DDPM train.npy as (N,1,H,W) float tensor in [-1,1].
+
+    Supports both legacy binary pore masks stored as uint8 {0,1} and B1 gray
+    sus slices already stored as float32 in [-1,1].
+    """
+    a = np.load(npy)                          # (N,H,W)
+    if a.ndim != 3:
+        raise ValueError(f"expected train.npy shape (N,H,W), got {a.shape}")
+    if np.issubdtype(a.dtype, np.integer):
+        vals = np.unique(a)
+        if not set(vals.tolist()).issubset({0, 1}):
+            raise ValueError(f"integer train.npy must be binary {{0,1}}, got values {vals[:10]}")
+        arr = a.astype(np.float32) * 2.0 - 1.0
+    elif np.issubdtype(a.dtype, np.floating):
+        mn, mx = float(np.nanmin(a)), float(np.nanmax(a))
+        if not np.isfinite(mn) or not np.isfinite(mx) or mn < -1.0001 or mx > 1.0001:
+            raise ValueError(f"float train.npy must already be scaled to [-1,1], got min={mn}, max={mx}")
+        arr = a.astype(np.float32, copy=False)
+    else:
+        raise ValueError(f"unsupported train.npy dtype: {a.dtype}")
+    return torch.from_numpy(arr)[:, None]
+
+
+# Backward-compatible name for M7 binary pore-mask runs.
 def load_binary(npy):
-    a = np.load(npy)                          # (N,H,W) uint8 {0,1}
-    x = torch.from_numpy(a.astype(np.float32) * 2.0 - 1.0)[:, None]   # → [-1,1]
-    return x
+    return load_train_array(npy)
+
+
+def postprocess_samples(cont, mode="binary"):
+    """Convert continuous DDPM output to the requested saved sample representation."""
+    if mode == "binary":
+        return (cont > 0).astype(np.uint8)
+    if mode == "gray":
+        return np.clip(cont, -1.0, 1.0).astype(np.float32)
+    raise ValueError(f"unknown sample mode: {mode}")
 
 
 @torch.no_grad()
-def sample(model, sched, n, size, dev, bs=64, save_continuous=False):
+def sample(model, sched, n, size, dev, bs=64, save_continuous=False, mode="binary"):
     """反向扩散采样。
     save_continuous=True 时同时返回连续值数组（float32, 同 [-1,1] 尺度），
-    用于 M7-v2 阈值标定诊断。
+    用于 M7-v2 阈值标定诊断；mode="gray" 时主输出保留灰度介质。
     """
     model.eval()
-    outs_bin, outs_cont = [], []
+    outs_primary, outs_cont = [], []
     done = 0
     while done < n:
         b = min(bs, n - done)
@@ -71,31 +103,36 @@ def sample(model, sched, n, size, dev, bs=64, save_continuous=False):
             pred = model(x, t).sample
             x = sched.step(pred, t, x).prev_sample
         cont = x[:, 0].cpu().numpy().astype(np.float32)   # [-1,1] 连续输出
-        outs_bin.append((cont > 0).astype(np.uint8))
+        outs_primary.append(postprocess_samples(cont, mode))
         if save_continuous:
             outs_cont.append(cont)
         done += b
-    binary = np.concatenate(outs_bin)[:n]
+    primary = np.concatenate(outs_primary)[:n]
     if save_continuous:
-        return binary, np.concatenate(outs_cont)[:n]
-    return binary
+        return primary, np.concatenate(outs_cont)[:n]
+    return primary
 
 
-def save_grid(binimgs, path, k=8):
+def save_grid(imgs, path, k=8, mode="binary"):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
-    k = min(k, len(binimgs))
+    k = min(k, len(imgs))
     fig, ax = plt.subplots(1, k, figsize=(2 * k, 2))
+    axes = np.atleast_1d(ax)
     for i in range(k):
-        ax[i].imshow(binimgs[i], cmap="gray_r", vmin=0, vmax=1); ax[i].axis("off")
+        if mode == "gray":
+            axes[i].imshow(imgs[i], cmap="gray", vmin=-1, vmax=1)
+        else:
+            axes[i].imshow(imgs[i], cmap="gray_r", vmin=0, vmax=1)
+        axes[i].axis("off")
     plt.tight_layout(); plt.savefig(path, dpi=110); plt.close()
 
 
 def cmd_train(a):
     dev = "cuda" if torch.cuda.is_available() else "cpu"
     torch.manual_seed(a.seed); np.random.seed(a.seed)
-    x = load_binary(os.path.join(a.data, "train.npy"))
+    x = load_train_array(os.path.join(a.data, "train.npy"))
     size = x.shape[-1]
     dl = DataLoader(TensorDataset(x), batch_size=a.bs, shuffle=True,
                     num_workers=4, drop_last=True, pin_memory=True)
@@ -126,11 +163,12 @@ def cmd_train(a):
             best = avg
             torch.save(model.state_dict(), os.path.join(a.out, "best.pt"))
         if ep % a.sample_every == 0 or ep == a.epochs:
-            g = sample(model, sched, 8, size, dev)
-            save_grid(g, os.path.join(a.out, f"grid_ep{ep:03d}.png"))
+            g = sample(model, sched, 8, size, dev, mode=a.sample_mode)
+            save_grid(g, os.path.join(a.out, f"grid_ep{ep:03d}.png"), mode=a.sample_mode)
     torch.save(model.state_dict(), os.path.join(a.out, "final.pt"))
     json.dump({"size": size, "n_train": len(x), "epochs": a.epochs, "base": a.base,
-               "bs": a.bs, "lr": a.lr, "best_Lsimple": round(best, 5), "params_M": round(npar, 2)},
+               "bs": a.bs, "lr": a.lr, "seed": a.seed, "sample_mode": a.sample_mode,
+               "best_Lsimple": round(best, 5), "params_M": round(npar, 2)},
               open(os.path.join(a.out, "train_meta.json"), "w"), indent=2)
     print(f"[done] best L_simple={best:.4f} -> {a.out}")
 
@@ -143,17 +181,21 @@ def cmd_sample(a):
     model = build_model(size, a.base).to(dev)
     model.load_state_dict(torch.load(a.ckpt, map_location=dev))
     result = sample(model, make_sched(), a.n, size, dev, bs=a.bs,
-                    save_continuous=getattr(a, "continuous", False))
+                    save_continuous=getattr(a, "continuous", False), mode=a.sample_mode)
     if isinstance(result, tuple):
         g, cont = result
         np.save(os.path.join(a.out, "samples_continuous.npy"), cont)
         print(f"[info] 连续值已保存 -> {a.out}/samples_continuous.npy  (float32, [-1,1])")
     else:
         g = result
-    np.save(os.path.join(a.out, "samples.npy"), g)
-    save_grid(g, os.path.join(a.out, "samples_grid.png"))
-    por = g.reshape(len(g), -1).mean(1) * 100
-    print(f"[done] {a.n} samples 孔隙度 均值={por.mean():.2f}% 中位={np.median(por):.2f}% -> {a.out}/samples.npy")
+    sample_name = "samples_gray.npy" if a.sample_mode == "gray" else "samples.npy"
+    np.save(os.path.join(a.out, sample_name), g)
+    save_grid(g, os.path.join(a.out, "samples_grid.png"), mode=a.sample_mode)
+    if a.sample_mode == "gray":
+        print(f"[done] {a.n} gray samples min={float(g.min()):.3f} max={float(g.max()):.3f} mean={float(g.mean()):.3f} -> {a.out}/{sample_name}")
+    else:
+        por = g.reshape(len(g), -1).mean(1) * 100
+        print(f"[done] {a.n} samples 孔隙度 均值={por.mean():.2f}% 中位={np.median(por):.2f}% -> {a.out}/{sample_name}")
 
 
 if __name__ == "__main__":
@@ -165,6 +207,8 @@ if __name__ == "__main__":
     p.add_argument("--base", type=int, default=64); p.add_argument("--lr", type=float, default=1e-4)
     p.add_argument("--amp", action="store_true"); p.add_argument("--seed", type=int, default=42)
     p.add_argument("--sample-every", type=int, default=20)
+    p.add_argument("--sample-mode", choices=["binary", "gray"], default="binary",
+                   help="checkpoint grid sample representation: binary for pore masks, gray for B1 sus")
     p.set_defaults(func=cmd_train)
     s = sub.add_parser("sample")
     s.add_argument("--ckpt", required=True); s.add_argument("--out", required=True)
@@ -172,6 +216,8 @@ if __name__ == "__main__":
     s.add_argument("--base", type=int, default=64); s.add_argument("--bs", type=int, default=64)
     s.add_argument("--seed", type=int, default=123)
     s.add_argument("--continuous", action="store_true", help="同时保存连续值 samples_continuous.npy（M7-v2 用）")
+    s.add_argument("--sample-mode", choices=["binary", "gray"], default="binary",
+                   help="primary saved sample representation: samples.npy for binary, samples_gray.npy for gray")
     s.set_defaults(func=cmd_sample)
     a = ap.parse_args()
     a.func(a)

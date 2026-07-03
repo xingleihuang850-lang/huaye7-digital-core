@@ -410,3 +410,46 @@ python src/hy7_phase2_make_gray_slices.py \
 输出：`train.npy` float32 `[-1,1]` shape=(16600,128,128)，`test.npy` float32 `[-1,1]` shape=(4150,128,128)，`test_pore.npy` uint8 `{0,1}` shape=(4150,128,128)，`meta.json`。
 
 轻量证据：`experiments/花页7_PlanB_记录/phase2/b1_gray_sus/slices_ct28_gray_128/`。大 `.npy` 不入 git，只在该目录 `sha256.txt` 与 README 中记录远程 sha256。
+
+### 9.1 B1 50ep cheap run（灰度 sus，待/正在远程训练）
+
+B1 数据集 `train.npy` 已是 float32 `[-1,1]`，不能再按二值 `{0,1}` 重新缩放。`src/hy7_phase2_ddpm.py` 已支持：
+
+- integer `{0,1}`：旧 M7 二值 pore mask，自动映射到 `[-1,1]`；
+- float `[-1,1]`：B1 灰度 sus，原样读入；
+- `--sample-mode gray`：训练过程 checkpoint grid 与正式采样保留灰度，而不是阈值二值化。
+
+训练命令模板：
+
+```bash
+cd /home/user/HXL/HY7_planb
+source ~/miniconda3/bin/activate nnunet_t28
+python src/hy7_phase2_ddpm.py train \
+  --data /home/user/HXL/HY7_planb/phase2/slices_ct28_gray_128 \
+  --out /home/user/HXL/HY7_planb/phase2/ddpm_ct28_gray \
+  --epochs 50 \
+  --bs 64 \
+  --base 64 \
+  --lr 1e-4 \
+  --amp \
+  --seed 42 \
+  --sample-every 10 \
+  --sample-mode gray
+```
+
+训练完成后的采样命令模板：
+
+```bash
+python src/hy7_phase2_ddpm.py sample \
+  --ckpt /home/user/HXL/HY7_planb/phase2/ddpm_ct28_gray/best.pt \
+  --out /home/user/HXL/HY7_planb/phase2/ddpm_ct28_gray \
+  --n 512 \
+  --size 128 \
+  --base 64 \
+  --bs 64 \
+  --seed 123 \
+  --sample-mode gray \
+  --continuous
+```
+
+预期大文件（不入 git）：`best.pt`、`final.pt`、`samples_gray.npy`、`samples_continuous.npy`。轻量证据回传后放入 `experiments/花页7_PlanB_记录/phase2/b1_gray_sus/cheap50/`。

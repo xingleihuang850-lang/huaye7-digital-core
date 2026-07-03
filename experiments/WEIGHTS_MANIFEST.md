@@ -168,12 +168,25 @@ Run config：200ep train_meta 记录 size=128、n_train=16600、epochs=200、bas
 
 结论：200ep T=0 φ=4.960%、S₂ rmse=0.00372、Euler=120.88、maxCC=0.0467；T* φ=6.4 后 S₂ rmse=0.01010、Euler=119.58。单纯加 epoch 不闭合，转 B1 灰度介质生成。
 
-### 2.2 后续 B1/B2 预留条目（尚未训练）
+### 2.2 B1/B2 条目
+
+#### 2.2.1 B1 灰度 `sus` 数据集（已生成，未训练）
+
+| id | artifact_type | remote_path | sha256 | size_bytes | evidence | status |
+|---|---|---|---|---:|---|---|
+| `B1-dataset-slices-ct28-gray-128-train` | `dataset_array` | `hy7-linux:~/HXL/HY7_planb/phase2/slices_ct28_gray_128/train.npy` | `7ee29988dd647945f44d2e2a559fc759a2eef0fa70bd072279f8bdd44e13ef46` | `1087897728` | `phase2/b1_gray_sus/slices_ct28_gray_128/` | `dataset_ready_remote_verified` |
+| `B1-dataset-slices-ct28-gray-128-test` | `dataset_array` | `hy7-linux:~/HXL/HY7_planb/phase2/slices_ct28_gray_128/test.npy` | `e858583c2015a100879d6c45c438073931884cd63ad8fc7eb35e6b5735b3d9c9` | `271974528` | same | `dataset_ready_remote_verified` |
+| `B1-dataset-slices-ct28-gray-128-test-pore` | `dataset_array` | `hy7-linux:~/HXL/HY7_planb/phase2/slices_ct28_gray_128/test_pore.npy` | `6ad7f625e044d2fc20c6264d54afcd0387a7ac929fc975c3410f7a362d197f7a` | `67993728` | same | `dataset_ready_remote_verified` |
+| `B1-dataset-slices-ct28-gray-128-meta` | `dataset_meta` | `hy7-linux:~/HXL/HY7_planb/phase2/slices_ct28_gray_128/meta.json` | `801e3b2b62890ba7f594748c49fdc6764b924966baf22a6a274f4b57ca8b2f85` | `3662` | same | `dataset_ready_remote_verified` |
+
+Run config：`src/hy7_phase2_make_gray_slices.py --root /home/user/HXL/HY7_source/吉林大学数据报告归总 --layout source --tile 128 --z-step 6 --axes z --min-valid 0.999 --test-frac 0.2 --clip-low 45 --clip-high 205 --seed 42 --out /home/user/HXL/HY7_planb/phase2/slices_ct28_gray_128`。输出：train=(16600,128,128) float32 `[-1,1]`，test=(4150,128,128) float32 `[-1,1]`，test_pore=(4150,128,128) uint8 `{0,1}`，test_pore φ mean=6.4426549%。
+
+#### 2.2.2 后续 B1/B2 权重预留条目（B1 cheap run 尚未入档）
 
 | id | 预期路径 | 目的 | 当前状态 |
 |---|---|---|---|
-| `M7-v4-DDPM-ct28-gray-best` | `hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_gray/best.pt` 或后续实际目录 | B1 灰度 sus 介质生成 | `design_next`，见 `notes/25` |
-| `M7-v4-DDPM-ct28-sus-pore-2ch-best` | `hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_sus_pore_2ch/best.pt` 或后续实际目录 | B2 `[sus,pore]` 双通道联合生成 | `backup_design`，见 `notes/25` |
+| `B1-DDPM-ct28-gray-50ep-best` | `hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_gray/best.pt` | B1 灰度 sus 介质生成 50ep cheap run | `dataset_ready_train_next`，训练需使用 `--sample-mode gray`，见 `REPRODUCE.md` §9.1 |
+| `B2-DDPM-ct28-sus-pore-2ch-best` | `hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_sus_pore_2ch/best.pt` 或后续实际目录 | B2 `[sus,pore]` 双通道联合生成 | `backup_design`，待 B1 50ep 结果决定是否推进 |
 
 ## 3. 后续补证命令清单（只读/校验，不提交大文件）
 

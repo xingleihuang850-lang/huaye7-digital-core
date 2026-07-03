@@ -60,3 +60,6 @@ __pycache__/
 
 # PPT/汇报展示图：暂缓入库（防误提交；逐图补来源脚本+sha256 后移除本条并单独提交，见 experiments/INDEX.md §4）
 /experiments/花页7_PlanB_记录/figs_ppt/
+
+# 阶段一 CT14 三相 nnU-Netv2 helper：暂缓/隔离，不属于当前 B1 灰度生成主线；满足 INDEX 升级条件后再单独入库
+/src/hy7_ct14_make_nnunet_3phase.py

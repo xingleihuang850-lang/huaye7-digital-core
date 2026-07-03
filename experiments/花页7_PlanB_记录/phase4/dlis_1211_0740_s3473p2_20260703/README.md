@@ -22,4 +22,4 @@ Important channels observed:
 - Frame 51: slow channels including `RGR_T` natural gamma and transmitter current/voltage/power.
 - Frame 52: high-resolution electrical imaging / XRMI-style arrays: `XPAD1`–`XPAD6` dimension 25 and `XPADS` dimension 200, plus fast accelerometer and pad profile channels.
 
-Preview artifacts around 4199.21 ±2 m were exported as CSV/PNG/NPZ. The NPZ is a lightweight local evidence artifact, not the full DLIS.
+Preview artifacts around 4199.21 ±2 m were exported as CSV/PNG. A local compressed `NPZ` preview was also generated, but `*.npz` is globally gitignored and is not committed; authoritative lightweight evidence is CSV/PNG/JSON/hash.

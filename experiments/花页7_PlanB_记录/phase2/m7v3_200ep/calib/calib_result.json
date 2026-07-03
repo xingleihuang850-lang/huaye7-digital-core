@@ -1,0 +1,30 @@
+{
+  "command": "src/hy7_phase2_threshold_calib.py --real /home/user/HXL/HY7_planb/phase2/slices_ct28_128/test.npy --cont /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/samples_continuous.npy --out /home/user/HXL/HY7_planb/phase2/m7v3_200ep_calib --target_phi 6.4 --n 512 --rmax 48 --seed 0",
+  "T_star": -0.99443,
+  "target_phi_pct": 6.4,
+  "n": 512,
+  "real": {
+    "phi_mean": 6.405,
+    "euler_mean": 127.33,
+    "S2_at0": 0.064
+  },
+  "T0": {
+    "phi_mean": 4.96,
+    "phi_median": 4.59,
+    "phi_KS_p": 0.0,
+    "phi_wasserstein": 1.4446,
+    "euler_mean": 120.88,
+    "euler_wasserstein": 6.473,
+    "S2_rmse": 0.00372
+  },
+  "Tstar": {
+    "phi_mean": 6.4,
+    "phi_median": 4.678,
+    "phi_KS_p": 0.0,
+    "phi_wasserstein": 2.3495,
+    "euler_mean": 119.58,
+    "euler_wasserstein": 10.979,
+    "S2_rmse": 0.0101
+  },
+  "verdict": "结构真错为主：标定后改善有限 → 需加 epoch / 改表征 / 换损失"
+}

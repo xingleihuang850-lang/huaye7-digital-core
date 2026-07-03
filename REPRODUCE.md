@@ -291,7 +291,7 @@ python src/hy7_phase2_ddpm.py train \
 experiments/花页7_PlanB_记录/phase2/m7v3_200ep/
 ```
 
-#### 6.1.1 200ep 采样/评估/标定命令模板（2026-07-03 预登记，待远程执行）
+#### 6.1.1 200ep 采样/评估/标定命令模板（2026-07-03 已远程执行）
 
 前置：先把修复过 `cmd_sample` 输出目录创建的脚本同步到远程（本仓 commit `44f6d0a`）：
 
@@ -378,6 +378,6 @@ rsync -av hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_200ep/samples_grid.png \
 ## 8. 待补齐 TODO
 
 1. 训练 seed 仍未在 `train_meta.json` 中记录；当前 `--seed 42` 来自既有命令模板/记录，若能从 shell history 找到原始命令，应再核一次。
-2. 200ep 已训练完成但尚未采样/评估；下一步不是再训练，而是对 `ddpm_ct28_200ep/best.pt` 执行同 seed/同口径采样，生成 `samples.npy`/`samples_continuous.npy` 后跑 eval/calib。
+2. 200ep 已训练、采样、评估、标定完成；轻量证据见 `experiments/花页7_PlanB_记录/phase2/m7v3_200ep/`，结论见 `notes/25_阶段二_M7v3_200ep评估与B1决策.md`。
 3. 本机 `.venv` 仍缺 diffusers；如需本地完整复现 DDPM，先确认远程 `diffusers==0.38.0` 与本机 Python 3.12/torch 2.12.1 兼容，再更新依赖策略。
 4. 若 `hy7-linux-lan` 恢复，记录 LAN 传输路径；否则继续使用 `hy7-linux` Tailscale 通道。

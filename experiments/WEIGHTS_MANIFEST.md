@@ -153,16 +153,27 @@
 | `P1-PlanB-ct14-e1-best` | `phase1` | `weight` | `hy7-linux:~/HXL/HY7_planb/runs/train_ct14_e1/best.pt` | `84142b600685595bff4fef61e7f517c201ee2b833113673eb621aa48901a5577` | `TBD` | `evidence_training_meta.txt`、`evidence_trainlog_ct14_e1.json`、`notes/14` | `needs_remote_verify` |
 | `P1-PlanB-ct28-e2-best` | `phase1` | `weight` | `hy7-linux:~/HXL/HY7_planb/runs/train_ct28_e2/best.pt` | `f5685b4a244c97cf327ab34af24383c416f7f7a2da20032dc72a551c6fa6ea1f` | `TBD` | `evidence_training_meta.txt`、`evidence_trainlog_ct28_e2.json`、`notes/15` | `needs_remote_verify` |
 
-## 2. M7-v3 预留条目（尚未补证据）
+## 2. M7-v3 / 后续 B1-B2 条目
 
-以下仅作 manifest 骨架，不表示实验已经完成：
+### 2.1 M7-v3 200ep cheap control（已采样评估）
+
+| id | artifact_type | remote_path | sha256 | size_bytes | mtime | evidence | status |
+|---|---|---|---|---:|---|---|---|
+| `M7-v3-DDPM-ct28-200ep-best` | `weight` | `hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_200ep/best.pt` | `f009973ce37228644e6158ed46d9e08b1dfdb8c892754b6e327933b970646a6d` | `252713143` | `2026-06-27 20:46:19 +0800` | `remote_provenance_20260701/`；`notes/24` | `trained_remote_verified` |
+| `M7-v3-DDPM-ct28-200ep-final` | `weight` | `hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_200ep/final.pt` | `4975ed241dc4af15178199ee32370ad39a45763e745fbdda285fc2484634ae78` | `252713531` | `2026-06-27 21:51:10 +0800` | `remote_provenance_20260701/` | `trained_remote_verified` |
+| `M7-v3-DDPM-ct28-200ep-samples-T0` | `sample` | `hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_200ep/samples.npy` | `42101fdd97f531608d33f6c7a7b2be649b777210d36d48ef63aa7a2a47331288` | `8388736` | `2026-07-03 15:20:26 +0800` | `phase2/m7v3_200ep/eval/metrics.json`；`notes/25` | `sampled_evaluated` |
+| `M7-v3-DDPM-ct28-200ep-samples-continuous` | `continuous_sample` | `hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_200ep/samples_continuous.npy` | `7184d08955c36137da82632b2a2d0028abc1d8e9de8e8e4490806b563ba9de61` | `33554560` | `2026-07-03 15:20:26 +0800` | `phase2/m7v3_200ep/calib/calib_result.json`；`notes/25` | `sampled_calibrated` |
+
+Run config：200ep train_meta 记录 size=128、n_train=16600、epochs=200、base=64、bs=64、lr=1e-4、best_Lsimple=0.01881；采样命令为 `src/hy7_phase2_ddpm.py sample --ckpt .../ddpm_ct28_200ep/best.pt --out .../ddpm_ct28_200ep --n 512 --size 128 --base 64 --bs 64 --seed 123 --continuous`。评估为 `--n 512 --rmax 48 --seed 0`，标定 `target_phi=6.4`。
+
+结论：200ep T=0 φ=4.960%、S₂ rmse=0.00372、Euler=120.88、maxCC=0.0467；T* φ=6.4 后 S₂ rmse=0.01010、Euler=119.58。单纯加 epoch 不闭合，转 B1 灰度介质生成。
+
+### 2.2 后续 B1/B2 预留条目（尚未训练）
 
 | id | 预期路径 | 目的 | 当前状态 |
 |---|---|---|---|
-| `M7-v3-DDPM-ct28-200ep-best` | `hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_200ep/best.pt` | 50→200ep 欠训练对照，复用 eval_v2 判据 | `trained_needs_sampling_eval`；2026-07-01 远程实测 size=252713143, mtime=2026-06-27 20:46:19 +0800, sha256=`f009973ce37228644e6158ed46d9e08b1dfdb8c892754b6e327933b970646a6d`；train_meta best_Lsimple=0.01881 |
-| `M7-v3-DDPM-ct28-200ep-samples` | `hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_200ep/samples.npy` | 200ep T=0/或统一口径采样 | `missing_on_remote_20260701`; 远程只读核验未发现 `samples.npy` / `samples_continuous.npy`，下一步需采样后再评估 |
-| `M7-v3-DDPM-ct28-gray-best` | `hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_gray/best.pt` 或后续实际目录 | B1 灰度 sus 介质生成 | `design_only`，见 `notes/24` |
-| `M7-v3-DDPM-ct28-sus-pore-2ch-best` | `hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_sus_pore_2ch/best.pt` 或后续实际目录 | B2 `[sus,pore]` 双通道联合生成 | `design_only`，见 `notes/24` |
+| `M7-v4-DDPM-ct28-gray-best` | `hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_gray/best.pt` 或后续实际目录 | B1 灰度 sus 介质生成 | `design_next`，见 `notes/25` |
+| `M7-v4-DDPM-ct28-sus-pore-2ch-best` | `hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_sus_pore_2ch/best.pt` 或后续实际目录 | B2 `[sus,pore]` 双通道联合生成 | `backup_design`，见 `notes/25` |
 
 ## 3. 后续补证命令清单（只读/校验，不提交大文件）
 
@@ -182,7 +193,7 @@ git status --short 2>/dev/null || true
 补字段时优先补：
 1. M7 50ep 原始 shell 命令或 shell history，用于二次确认 `--seed 42` 与完整 `--sample-every 10`。
 2. 本地代码同步到远程时的 commit/rsync 时间；远程 `/home/user/HXL/HY7_planb` 当前不是 git 工作树。
-3. M7-v3 200ep 采样与评估结果；采样产物应新增独立条目，不覆盖 M7 50ep 条目。
+3. B1/B2 后续训练开始后，新增对应权重、采样、eval/calib 条目；不要覆盖 M7 50ep 与 M7-v3 200ep 条目。
 
 ## 4. 口径警告
 

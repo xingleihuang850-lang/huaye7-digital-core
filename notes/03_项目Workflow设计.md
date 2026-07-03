@@ -133,13 +133,13 @@ notes/03_项目Workflow设计.md
 
 ```text
 阶段二：2D 扩散生成
-M7-v3：200ep 已训练，待采样评估
+M7-v3：200ep cheap control 已采样评估，单纯加 epoch 不闭合
 ```
 
 下一主线节点不是重训，而是：
 
 ```text
-M7-v3-200ep-sampling-eval
+M7-v4/B1-gray-sus-design
 ```
 
 ## 4. WF-02：实验节点 Workflow

@@ -1,0 +1,24 @@
+[START] 2026-07-03T14:54:22+08:00 host=admin cwd=/home/user/HXL/HY7_planb
+[PY] Python 3.11.15
+[VERSIONS] torch 2.8.0+cu129 diffusers 0.38.0 numpy 2.3.5 scipy 1.17.1 skimage 0.26.0
+[info] 连续值已保存 -> /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/samples_continuous.npy  (float32, [-1,1])
+[done] 512 samples 孔隙度 均值=4.96% 中位=4.59% -> /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/samples.npy
+[done] porosity real=6.40% gen=4.96% | S2 rmse=0.0037 | Euler real=127.3 gen=120.9
+[done] -> /home/user/HXL/HY7_planb/phase2/eval_200ep
+[calib] T*=-0.9944  (target φ=6.40%)
+[verdict] 结构真错为主：标定后改善有限 → 需加 epoch / 改表征 / 换损失
+
+[summary]
+  real   φ=6.40%  Euler=127.3
+  T=0    φ=4.96%   Euler=120.9  S2 rmse=0.0037
+  T*     φ=6.40%   Euler=119.6  S2 rmse=0.0101
+  → /home/user/HXL/HY7_planb/phase2/m7v3_200ep_calib/calib_result.json  fig_calib.png
+
+42101fdd97f531608d33f6c7a7b2be649b777210d36d48ef63aa7a2a47331288  phase2/ddpm_ct28_200ep/samples.npy
+7184d08955c36137da82632b2a2d0028abc1d8e9de8e8e4490806b563ba9de61  phase2/ddpm_ct28_200ep/samples_continuous.npy
+8ab0db9d1d527778a1e71ff34caa988048baac33840870a7b832a0caeb18323e  phase2/ddpm_ct28_200ep/samples_grid.png
+832c054baebc9dd708589ff99e0a59acf4fab20dab6c72f07abb5f943c0483f0  phase2/eval_200ep/fig_eval.png
+59daa986fd826966a6f1444794309036a14baee9a64f81c8ae3a70e52fc3c25e  phase2/eval_200ep/metrics.json
+326a7b8543018636831bc50b8327bc848696ef64e32a616be250b2d756abe999  phase2/m7v3_200ep_calib/calib_result.json
+dcf29686f54fe6f721bfd98c47b34996f7540cfd5dae8a6f77b0d65d06b38d8c  phase2/m7v3_200ep_calib/fig_calib.png
+[END] 2026-07-03T15:20:30+08:00

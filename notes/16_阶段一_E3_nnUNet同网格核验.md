@@ -39,6 +39,7 @@ tags: [花页7, 实验, E3, nnU-Netv2, 配准, 交叉核验, 中期汇报]
 - 3d 结果：`experiments/花页7_PlanB_记录/evidence_e3_nnunet_3d5ep_summary.json`（foreground Dice 0.9189）
 - 2d 结果 `[测]`（2026-06-24 16:10 跑完）：`nnUNetTrainer_50epochs__nnUNetPlans__2d/fold_0/validation/summary.json`，
   孔隙 class1 **Dice 0.9660 / IoU 0.9342**（4 例验证 HY7_003/008/013/016，192³）；"Training done." + Mean Validation Dice 0.9660。
+  本地证据副本：`experiments/花页7_PlanB_记录/evidence_e3_nnunet_2d50ep_summary.json`，sha256 `ab7b6151cde35a573b77184e28387179098374fad47c4ed2ce169d309f43a51e`。
 - 配置：`nnUNetv2_train 722 3d_fullres 0 -tr nnUNetTrainer_5epochs`（复刻 codex），CTNormalization。
 
 ## 阶段一收尾 → 转阶段二

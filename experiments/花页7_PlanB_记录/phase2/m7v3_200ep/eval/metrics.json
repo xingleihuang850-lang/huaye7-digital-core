@@ -1,0 +1,37 @@
+{
+  "command": "src/hy7_phase2_eval.py --real /home/user/HXL/HY7_planb/phase2/slices_ct28_128/test.npy --gen /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/samples.npy --out /home/user/HXL/HY7_planb/phase2/eval_200ep --n 512 --rmax 48 --seed 0",
+  "n_real": 512,
+  "n_gen": 512,
+  "porosity_pct": {
+    "real_mean": 6.405,
+    "gen_mean": 4.96,
+    "naive_mean": 6.408,
+    "KS_stat": 0.2812,
+    "KS_p": 0.0,
+    "wasserstein": 1.4446
+  },
+  "euler_chi": {
+    "real_mean": 127.33,
+    "gen_mean": 120.88,
+    "naive_mean": 890.16,
+    "KS_stat": 0.1855,
+    "wasserstein": 6.473
+  },
+  "S2_radial": {
+    "phi_at_0_real": 0.064,
+    "phi_at_0_gen": 0.0496,
+    "rmse_gen": 0.00372,
+    "rmse_naive": 0.00493
+  },
+  "connectivity": {
+    "max_cc_frac_real": 0.0597,
+    "max_cc_frac_gen": 0.0467,
+    "max_cc_frac_naive": 0.0048,
+    "x_penetrate_real": 0.0,
+    "x_penetrate_gen": 0.0,
+    "x_penetrate_naive": 0.0,
+    "y_penetrate_real": 0.0,
+    "y_penetrate_gen": 0.0,
+    "y_penetrate_naive": 0.0
+  }
+}

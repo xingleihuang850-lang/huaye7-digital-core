@@ -138,6 +138,7 @@ def cmd_train(a):
 def cmd_sample(a):
     dev = "cuda" if torch.cuda.is_available() else "cpu"
     torch.manual_seed(a.seed)
+    os.makedirs(a.out, exist_ok=True)
     size = a.size
     model = build_model(size, a.base).to(dev)
     model.load_state_dict(torch.load(a.ckpt, map_location=dev))

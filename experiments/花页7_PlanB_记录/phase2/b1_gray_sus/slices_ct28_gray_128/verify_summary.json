@@ -1,0 +1,39 @@
+{
+  "train_shape": [
+    16600,
+    128,
+    128
+  ],
+  "test_shape": [
+    4150,
+    128,
+    128
+  ],
+  "test_pore_shape": [
+    4150,
+    128,
+    128
+  ],
+  "train_dtype": "float32",
+  "test_dtype": "float32",
+  "test_pore_dtype": "uint8",
+  "train_minmax": [
+    -1.0,
+    1.0
+  ],
+  "test_minmax": [
+    -1.0,
+    1.0
+  ],
+  "test_pore_unique": [
+    0,
+    1
+  ],
+  "test_pore_phi_pct": 6.442654896931475,
+  "meta_n_train": 16600,
+  "meta_n_test": 4150,
+  "clip": [
+    45.0,
+    205.0
+  ]
+}

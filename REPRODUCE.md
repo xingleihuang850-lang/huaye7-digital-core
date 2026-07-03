@@ -381,3 +381,32 @@ rsync -av hy7-linux:~/HXL/HY7_planb/phase2/ddpm_ct28_200ep/samples_grid.png \
 2. 200ep 已训练、采样、评估、标定完成；轻量证据见 `experiments/花页7_PlanB_记录/phase2/m7v3_200ep/`，结论见 `notes/25_阶段二_M7v3_200ep评估与B1决策.md`。
 3. 本机 `.venv` 仍缺 diffusers；如需本地完整复现 DDPM，先确认远程 `diffusers==0.38.0` 与本机 Python 3.12/torch 2.12.1 兼容，再更新依赖策略。
 4. 若 `hy7-linux-lan` 恢复，记录 LAN 传输路径；否则继续使用 `hy7-linux` Tailscale 通道。
+
+## 9. B1 灰度介质 sus 数据集（已生成，未训练）
+
+远程数据集：
+
+```text
+hy7-linux:/home/user/HXL/HY7_planb/phase2/slices_ct28_gray_128/
+```
+
+生成命令：
+
+```bash
+python src/hy7_phase2_make_gray_slices.py \
+  --root /home/user/HXL/HY7_source/吉林大学数据报告归总 \
+  --layout source \
+  --tile 128 \
+  --z-step 6 \
+  --axes z \
+  --min-valid 0.999 \
+  --test-frac 0.2 \
+  --clip-low 45 \
+  --clip-high 205 \
+  --seed 42 \
+  --out /home/user/HXL/HY7_planb/phase2/slices_ct28_gray_128
+```
+
+输出：`train.npy` float32 `[-1,1]` shape=(16600,128,128)，`test.npy` float32 `[-1,1]` shape=(4150,128,128)，`test_pore.npy` uint8 `{0,1}` shape=(4150,128,128)，`meta.json`。
+
+轻量证据：`experiments/花页7_PlanB_记录/phase2/b1_gray_sus/slices_ct28_gray_128/`。大 `.npy` 不入 git，只在该目录 `sha256.txt` 与 README 中记录远程 sha256。

@@ -1,0 +1,150 @@
+{
+  "task": "B1 gray sus slices",
+  "generated_at": "2026-07-03T17:07:49+0800",
+  "scale": "ct28",
+  "source": {
+    "sus_path": "/home/user/HXL/HY7_source/吉林大学数据报告归总/微米CT精细扫描-2p8um/处理图像/202510052_5mm_1500c_8bit_2p8um_sus.raw",
+    "sus_size_bytes": 3375000000,
+    "sus_mtime": "2025-12-23T10:07:51+0800",
+    "sus_sha256_first_mib": 256,
+    "sus_sha256_first": "2698e1c4b3e5fbd21b371edeeec4822f7eb7166a6d0b97e71a710d3f1c556c11",
+    "pore_path": "/home/user/HXL/HY7_source/吉林大学数据报告归总/微米CT精细扫描-2p8um/处理图像/202510052_5mm_1500c_8bit_2p8um_pore.raw",
+    "pore_size_bytes": 3375000000,
+    "pore_mtime": "2025-12-23T10:10:47+0800",
+    "pore_sha256_first_mib": 256,
+    "pore_sha256_first": "e82e1964697ed90d973eea0c6770776964386dc594cd615db3545a62bed268d6"
+  },
+  "volume": {
+    "dims_zyx": [
+      1500,
+      1500,
+      1500
+    ],
+    "dtype": "uint8"
+  },
+  "valid_mask_rule": "(sus != 0) OR (pore == pore_val); pore overrides outside-air zeros",
+  "pore_val": 0,
+  "split": {
+    "tile": 128,
+    "z_step": 6,
+    "axes": "z",
+    "min_valid": 0.999,
+    "test_frac": 0.2,
+    "seed": 42,
+    "z_test_start": 1200
+  },
+  "normalization": {
+    "policy": "clip then linear map to [-1,1]",
+    "clip_low": 45.0,
+    "clip_high": 205.0,
+    "source_probe": "experiments/花页7_PlanB_记录/phase2/b1_gray_sus/probe_20260703/"
+  },
+  "outputs": {
+    "train": {
+      "path": "/home/user/HXL/HY7_planb/phase2/slices_ct28_gray_128/train.npy",
+      "shape": [
+        16600,
+        128,
+        128
+      ],
+      "dtype": "float32"
+    },
+    "test": {
+      "path": "/home/user/HXL/HY7_planb/phase2/slices_ct28_gray_128/test.npy",
+      "shape": [
+        4150,
+        128,
+        128
+      ],
+      "dtype": "float32"
+    },
+    "test_pore": {
+      "path": "/home/user/HXL/HY7_planb/phase2/slices_ct28_gray_128/test_pore.npy",
+      "shape": [
+        4150,
+        128,
+        128
+      ],
+      "dtype": "uint8"
+    }
+  },
+  "gray_summary": {
+    "train": {
+      "n": 16600,
+      "global_min": -1.0,
+      "global_max": 1.0,
+      "tile_mean": {
+        "0": -0.353542,
+        "1": -0.276583,
+        "5": -0.228556,
+        "50": -0.091114,
+        "95": 0.032416,
+        "99": 0.061759,
+        "100": 0.154646
+      },
+      "tile_std": {
+        "0": 0.258771,
+        "1": 0.282616,
+        "5": 0.304155,
+        "50": 0.360572,
+        "95": 0.425297,
+        "99": 0.480013,
+        "100": 0.570561
+      }
+    },
+    "test": {
+      "n": 4150,
+      "global_min": -1.0,
+      "global_max": 1.0,
+      "tile_mean": {
+        "0": -0.356218,
+        "1": -0.283626,
+        "5": -0.242165,
+        "50": -0.092502,
+        "95": 0.026619,
+        "99": 0.050597,
+        "100": 0.156551
+      },
+      "tile_std": {
+        "0": 0.249577,
+        "1": 0.26803,
+        "5": 0.283455,
+        "50": 0.340919,
+        "95": 0.397302,
+        "99": 0.426032,
+        "100": 0.527786
+      }
+    }
+  },
+  "pore_summary": {
+    "train_reference": {
+      "n": 16600,
+      "phi_pct_mean": 7.293883,
+      "phi_pct_median": 6.488037,
+      "phi_pct": {
+        "0": 2.105713,
+        "1": 3.015076,
+        "5": 3.588867,
+        "50": 6.488037,
+        "95": 13.757629,
+        "99": 17.322144,
+        "100": 31.811523
+      }
+    },
+    "test_pore": {
+      "n": 4150,
+      "phi_pct_mean": 6.442655,
+      "phi_pct_median": 5.67627,
+      "phi_pct": {
+        "0": 1.806641,
+        "1": 2.81958,
+        "5": 3.192139,
+        "50": 5.67627,
+        "95": 13.022766,
+        "99": 16.009644,
+        "100": 23.303223
+      }
+    }
+  },
+  "elapsed_sec": 1.654
+}

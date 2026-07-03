@@ -1,6 +1,6 @@
 {
   "schema": "hy7_phase2_run_config.example.v1",
-  "status": "example_template",
+  "status": "remote_verified_20260701_with_remaining_seed_gap",
   "generated_at": "2026-07-01T00:33:57+08:00",
   "run_id": "phase2_m7v2_ct28_ddpm_threshold_calib_example",
   "stage": "phase2_2d_diffusion_generation",
@@ -21,7 +21,7 @@
       "hy7-linux-lan"
     ],
     "remote_user": "user",
-    "python_env_note": "阶段二 DDPM 脚本按远程 GPU 环境运行；本机 requirements.txt 暂未钉 diffusers，需先记录远程 diffusers.__version__ 后再固化。",
+    "python_env_note": "阶段二 DDPM 脚本按远程 GPU 环境运行；2026-07-01 已核实远程 nnunet_t28 环境为 diffusers==0.38.0。本机 requirements.txt 暂未钉 diffusers；若要本机复现 DDPM train/sample，需按远程版本策略补依赖并记录。",
     "required_python_packages_from_imports": [
       "numpy",
       "torch",
@@ -56,9 +56,9 @@
     "split": {
       "method": "top_z_holdout",
       "test_frac": 0.2,
-      "z_step": 4,
+      "z_step": 6,
       "axes": "z",
-      "leakage_guard": "测试集为 z 顶部留出块的 z 向切片；训练/测试空间分离。"
+      "leakage_guard": "测试集为 z 顶部留出块的 z 向切片；训练/测试空间分离。2026-07-01 远程 meta 实测为 tile=128, z_step=6, axes=z。"
     },
     "slice_outputs": {
       "directory": "/home/user/HXL/HY7_planb/phase2/slices_ct28_128",
@@ -68,9 +68,9 @@
       "expected_from_M7_note": {
         "n_train": 16600,
         "n_test": 4150,
-        "train_porosity_mean_pct": 7.29,
-        "test_porosity_mean_pct": 6.4,
-        "test_porosity_median_pct": 5.67
+        "train_porosity_mean_pct": 7.294,
+        "test_porosity_mean_pct": 6.443,
+        "test_porosity_median_pct": 5.676
       }
     }
   },
@@ -125,11 +125,11 @@
     "training_loss": "F.mse_loss(predicted_noise, noise), Ho2020 L_simple"
   },
   "training": {
-    "command_template": "python src/hy7_phase2_ddpm.py train --data {dataset.slice_outputs.directory} --out {ckpt.directory} --epochs {epochs.this_example_epochs} --bs 64 --base 64 --lr 1e-4 --amp --seed 42 --sample-every 20",
+    "command_template": "python src/hy7_phase2_ddpm.py train --data {dataset.slice_outputs.directory} --out {ckpt.directory} --epochs {epochs.this_example_epochs} --bs 64 --base 64 --lr 1e-4 --amp --seed 42 --sample-every 10",
     "batch_size": 64,
     "learning_rate": 0.0001,
     "amp": true,
-    "sample_every_epochs": 20,
+    "sample_every_epochs": 10,
     "outputs": [
       "best.pt",
       "final.pt",
@@ -164,7 +164,7 @@
     "method": "calibrate_continuous_output_to_target_mean_porosity",
     "script": "src/hy7_phase2_threshold_calib.py",
     "target_phi_pct": 6.4,
-    "reported_T_star_from_M7v2_note": 0.9873,
+    "reported_T_star_from_M7v2_note": 0.98732,
     "search": {
       "algorithm": "binary_search",
       "iterations": 50,
@@ -179,11 +179,11 @@
     "interpretation_from_M7v2_note": {
       "T0_phi_mean_pct": 23.51,
       "Tstar_phi_mean_pct": 6.4,
-      "S2_rmse_T0": 0.0714,
-      "S2_rmse_Tstar": 0.0024,
-      "Euler_real_mean": 127.3,
-      "Euler_T0_mean": 146.2,
-      "Euler_Tstar_mean": 207.9,
+      "S2_rmse_T0": 0.07143,
+      "S2_rmse_Tstar": 0.00242,
+      "Euler_real_mean": 127.33,
+      "Euler_T0_mean": 146.24,
+      "Euler_Tstar_mean": 207.92,
       "verdict": "阈值伪影已修但连通性真错仍在。"
     }
   },
@@ -210,11 +210,11 @@
       "porosity_real_mean_pct": 6.4,
       "porosity_gen_T0_mean_pct": 23.51,
       "porosity_naive_mean_pct": 6.41,
-      "S2_rmse_gen_T0": 0.0714,
-      "S2_rmse_naive": 0.0049,
-      "Euler_real_mean": 127.3,
-      "Euler_gen_T0_mean": 146.2,
-      "Euler_naive_mean": 890.2,
+      "S2_rmse_gen_T0": 0.07143,
+      "S2_rmse_naive": 0.00493,
+      "Euler_real_mean": 127.33,
+      "Euler_gen_T0_mean": 146.24,
+      "Euler_naive_mean": 890.16,
       "max_cc_frac_real": 0.06,
       "max_cc_frac_gen_T0": 0.159,
       "max_cc_frac_naive": 0.005,
@@ -258,11 +258,11 @@
     "anti_fabrication_policy": [
       "本模板中的 reported_* 数值来自已读笔记，正式复现必须以实际 metrics/calib_result/train_meta/sha256 输出覆盖。",
       "如果远程文件缺失或外盘未挂载，应标记 missing/TODO，不得补写看似合理的假路径或假 hash。",
-      "记录 diffusers/torch/CUDA 版本后再把依赖钉入 requirements.txt。"
+      "远程已核实 nnunet_t28 环境 diffusers==0.38.0；若本机复现 DDPM train/sample，再按远程版本策略补钉 requirements.txt。"
     ],
     "commands_to_record_in_formal_run": [
-      "python src/hy7_phase2_make_slices.py --scale ct28 --root /home/user/HXL/HY7_source/吉林大学数据报告归总 --layout source --tile 128 --z-step 4 --axes z --min-valid 0.999 --test-frac 0.2 --out /home/user/HXL/HY7_planb/phase2/slices_ct28_128 --seed 42",
-      "python src/hy7_phase2_ddpm.py train --data /home/user/HXL/HY7_planb/phase2/slices_ct28_128 --out /home/user/HXL/HY7_planb/phase2/ddpm_ct28 --epochs 50 --bs 64 --base 64 --lr 1e-4 --amp --seed 42 --sample-every 20",
+      "python src/hy7_phase2_make_slices.py --scale ct28 --root /home/user/HXL/HY7_source/吉林大学数据报告归总 --layout source --tile 128 --z-step 6 --axes z --min-valid 0.999 --test-frac 0.2 --out /home/user/HXL/HY7_planb/phase2/slices_ct28_128 --seed 42",
+      "python src/hy7_phase2_ddpm.py train --data /home/user/HXL/HY7_planb/phase2/slices_ct28_128 --out /home/user/HXL/HY7_planb/phase2/ddpm_ct28 --epochs 50 --bs 64 --base 64 --lr 1e-4 --amp --seed 42 --sample-every 10",
       "python src/hy7_phase2_ddpm.py sample --ckpt /home/user/HXL/HY7_planb/phase2/ddpm_ct28/best.pt --out /home/user/HXL/HY7_planb/phase2/ddpm_ct28 --n 512 --size 128 --base 64 --bs 64 --seed 123 --continuous",
       "python src/hy7_phase2_threshold_calib.py --real /home/user/HXL/HY7_planb/phase2/slices_ct28_128/test.npy --cont /home/user/HXL/HY7_planb/phase2/ddpm_ct28/samples_continuous.npy --out /home/user/HXL/HY7_planb/phase2/m7v2_calib --target_phi 6.4 --n 512 --rmax 48 --seed 0",
       "python src/hy7_phase2_eval.py --real /home/user/HXL/HY7_planb/phase2/slices_ct28_128/test.npy --gen /home/user/HXL/HY7_planb/phase2/ddpm_ct28/samples.npy --out /home/user/HXL/HY7_planb/phase2/eval_v2 --n 512 --rmax 48 --seed 0"

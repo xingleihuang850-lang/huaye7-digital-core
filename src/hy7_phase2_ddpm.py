@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """M7.2/7.3 阶段二：2D DDPM 生成 ct28 孔隙结构（diffusers 实现 = Ho2020）。
 
-依据精读卡①(notes/花页7_文献综述.md)：ε-预测 L_simple、T=1000、β 线性 1e-4→0.02、
+依据精读卡①(notes/02_文献综述.md)：ε-预测 L_simple、T=1000、β 线性 1e-4→0.02、
 数据缩放 [-1,1]、U-Net backbone。DDPMScheduler 即 Ho2020 的前向/反向过程。
 
 子命令：
@@ -9,18 +9,32 @@
   sample —— 载模型生成 N 张二值孔隙图 → samples.npy（供 M7.3 参数评估）
 
 运行环境：
-  目前按 hy7-linux/5090 GPU 环境运行，需要 diffusers；本机 requirements.txt
-  暂不钉 diffusers，待记录远程 diffusers.__version__ 后再补本地复现依赖。
+  目前按 hy7-linux/5090 GPU 环境运行，需要 diffusers；2026-07-01 已核实
+  远程 nnunet_t28 环境为 diffusers==0.38.0。本机未安装 diffusers 时仍允许
+  查看 --help，但执行 train/sample 会提示安装或切换远程环境。
 """
 import argparse, json, os, time
 import numpy as np
 import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader, TensorDataset
-from diffusers import UNet2DModel, DDPMScheduler
+
+
+def require_diffusers():
+    """Import diffusers lazily so CLI --help works on lightweight local envs."""
+    try:
+        from diffusers import UNet2DModel, DDPMScheduler
+    except ModuleNotFoundError as e:
+        raise ModuleNotFoundError(
+            "src/hy7_phase2_ddpm.py train/sample requires diffusers. "
+            "Use the verified remote nnunet_t28 environment (diffusers==0.38.0) "
+            "or install a compatible local diffusers version before running."
+        ) from e
+    return UNet2DModel, DDPMScheduler
 
 
 def build_model(size, base=64):
+    UNet2DModel, _ = require_diffusers()
     return UNet2DModel(
         sample_size=size, in_channels=1, out_channels=1, layers_per_block=2,
         block_out_channels=(base, base * 2, base * 4, base * 8),
@@ -30,6 +44,7 @@ def build_model(size, base=64):
 
 
 def make_sched():
+    _, DDPMScheduler = require_diffusers()
     return DDPMScheduler(num_train_timesteps=1000, beta_schedule="linear",
                          beta_start=1e-4, beta_end=0.02)
 

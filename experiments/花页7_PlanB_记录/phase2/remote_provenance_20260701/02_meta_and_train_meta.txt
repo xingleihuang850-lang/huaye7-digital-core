@@ -1,0 +1,28 @@
+===== /home/user/HXL/HY7_planb/phase2/slices_ct28_128/meta.json =====
+-rw-r--r-- 1 user user 506  6月 25 09:45 /home/user/HXL/HY7_planb/phase2/slices_ct28_128/meta.json
+993b1d3220fd81c37aebfe15d4be13cad332f5c49cdf48cc5d0a0d4424ad4c9d  /home/user/HXL/HY7_planb/phase2/slices_ct28_128/meta.json
+===== /home/user/HXL/HY7_planb/phase2/slices_ct28/meta.json =====
+-rw-r--r-- 1 user user 501  6月 25 09:42 /home/user/HXL/HY7_planb/phase2/slices_ct28/meta.json
+91f443009fc980af8e4e481ff47e30efa1f43079857af9efffb1287287b83123  /home/user/HXL/HY7_planb/phase2/slices_ct28/meta.json
+===== /home/user/HXL/HY7_planb/phase2/ddpm_ct28/train_meta.json =====
+-rw-r--r-- 1 user user 143  6月 25 10:55 /home/user/HXL/HY7_planb/phase2/ddpm_ct28/train_meta.json
+/bin/bash: 行 9: python: 未找到命令
+/bin/bash: 行 9: python: 未找到命令
+1d04c071f3efe1edb4b356fb609966d254d74e3e26c938ed097da5f5b17c4325  /home/user/HXL/HY7_planb/phase2/ddpm_ct28/train_meta.json
+===== /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/train_meta.json =====
+-rw-rw-r-- 1 user user 144  6月 27 21:51 /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/train_meta.json
+6670df671d08be425fc957e7358d21a4c445c0b2685fbb9cba9470b8aced335f  /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/train_meta.json
+===== /home/user/HXL/HY7_planb/phase2/ddpm_smoke/train_meta.json =====
+-rw-r--r-- 1 user user 142  6月 25 09:47 /home/user/HXL/HY7_planb/phase2/ddpm_smoke/train_meta.json
+2f2916ba0c24671c46e01cd8eb759f508df1c3ca37cc7a35dc429a28b5bc4d6a  /home/user/HXL/HY7_planb/phase2/ddpm_smoke/train_meta.json
+/bin/bash: 行 9: python: 未找到命令
+/bin/bash: 行 9: python: 未找到命令
+===== /home/user/HXL/HY7_planb/phase2/m7v2_calib/calib_result.json =====
+-rw-r--r-- 1 user user 651  6月 27 15:43 /home/user/HXL/HY7_planb/phase2/m7v2_calib/calib_result.json
+ef98d35a3f22258359703e072f7e811ff5daec6ce9ecc49c89d80ccfcf51af30  /home/user/HXL/HY7_planb/phase2/m7v2_calib/calib_result.json
+===== /home/user/HXL/HY7_planb/phase2/eval_ct28/metrics.json =====
+-rw-r--r-- 1 user user 452  6月 25 15:23 /home/user/HXL/HY7_planb/phase2/eval_ct28/metrics.json
+c98fdf3816a2ca8fd506e08f50e2ac6224399ff29e6568f7b076faa0886f1c9d  /home/user/HXL/HY7_planb/phase2/eval_ct28/metrics.json
+/bin/bash: 行 9: python: 未找到命令
+/bin/bash: 行 9: python: 未找到命令
+/bin/bash: 行 9: python: 未找到命令

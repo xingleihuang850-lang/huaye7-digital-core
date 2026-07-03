@@ -15,7 +15,7 @@
 
 输出（--out 目录）：
     calib_result.json   标定阈值 + 两套指标对比
-    fig_calib.png       孔隙度分布/S2(r)/Euler 三联图（T=0 vs T* vs real）
+    fig_calib.png       孔隙度分布/S₂(r)/Euler 三联图（T=0 vs T* vs real）
 """
 import argparse
 import json
@@ -136,8 +136,8 @@ def main():
         "verdict": None,   # 填写后
     }
 
-    # 判读：phi 对齐后 S2/Euler 分别改善多少。S2 改善只能说明阈值伪影被修复；
-    # 若 Euler 同时变差，必须保留“连通性真错”的结论，不能写成 S2/Euler 都改善。
+    # 判读：φ 对齐后 S₂/Euler 分别改善多少。S₂ 改善只能说明阈值伪影被修复；
+    # 若 Euler 同时变差，必须保留“连通性真错”的结论，不能写成 S₂/Euler 都改善。
     s2_improve = result["T0"]["S2_rmse"] - result["Tstar"]["S2_rmse"]
     euler_improve = abs(result["T0"]["euler_wasserstein"]) - abs(result["Tstar"]["euler_wasserstein"])
     if s2_improve > 0.001 and euler_improve <= -1:

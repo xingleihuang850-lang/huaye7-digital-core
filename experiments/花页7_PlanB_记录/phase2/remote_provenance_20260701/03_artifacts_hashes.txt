@@ -1,0 +1,73 @@
+--- ddpm_ct28 listing ---
+总计 524M
+-rw-r--r-- 1 user user 242M  6月 25 10:50 best.pt
+drwxrwxr-x 2 user user 4.0K  6月 26 17:24 eval_v2
+-rw-r--r-- 1 user user 242M  6月 25 10:55 final.pt
+-rw-r--r-- 1 user user 170K  6月 25 10:03 grid_ep010.png
+-rw-r--r-- 1 user user 145K  6月 25 10:16 grid_ep020.png
+-rw-r--r-- 1 user user 220K  6月 25 10:29 grid_ep030.png
+-rw-r--r-- 1 user user 157K  6月 25 10:42 grid_ep040.png
+-rw-r--r-- 1 user user 152K  6月 25 10:55 grid_ep050.png
+drwxrwxr-x 2 user user 4.0K  6月 26 17:15 m7v2_calib
+-rw-rw-r-- 1 user user  33M  6月 26 17:14 samples_continuous.npy
+-rw-rw-r-- 1 user user 199K  6月 26 17:14 samples_grid.png
+-rw-rw-r-- 1 user user 8.1M  6月 26 17:14 samples.npy
+-rw-r--r-- 1 user user  143  6月 25 10:55 train_meta.json
+--- ddpm_ct28_200ep listing ---
+总计 483M
+-rw-rw-r-- 1 user user 242M  6月 27 20:46 best.pt
+-rw-rw-r-- 1 user user 242M  6月 27 21:51 final.pt
+-rw-rw-r-- 1 user user 155K  6月 27 18:05 grid_ep025.png
+-rw-rw-r-- 1 user user 150K  6月 27 18:37 grid_ep050.png
+-rw-rw-r-- 1 user user 129K  6月 27 19:10 grid_ep075.png
+-rw-rw-r-- 1 user user 107K  6月 27 19:42 grid_ep100.png
+-rw-rw-r-- 1 user user 135K  6月 27 20:14 grid_ep125.png
+-rw-rw-r-- 1 user user  74K  6月 27 20:46 grid_ep150.png
+-rw-rw-r-- 1 user user 112K  6月 27 21:18 grid_ep175.png
+-rw-rw-r-- 1 user user 123K  6月 27 21:51 grid_ep200.png
+-rw-rw-r-- 1 user user  144  6月 27 21:51 train_meta.json
+--- hashes known artifacts ---
+===== /home/user/HXL/HY7_planb/phase2/ddpm_ct28/best.pt =====
+-rw-r--r-- 1 user user 242M  6月 25 10:50 /home/user/HXL/HY7_planb/phase2/ddpm_ct28/best.pt
+size_bytes=252713143 mtime=2026-06-25 10:50:14.159346673 +0800
+ee15bb0ab5a67c1d22ad38b9bbd4f870f42ebb8ed4c41053da8989143449bb98  /home/user/HXL/HY7_planb/phase2/ddpm_ct28/best.pt
+===== /home/user/HXL/HY7_planb/phase2/ddpm_ct28/final.pt =====
+-rw-r--r-- 1 user user 242M  6月 25 10:55 /home/user/HXL/HY7_planb/phase2/ddpm_ct28/final.pt
+size_bytes=252713531 mtime=2026-06-25 10:55:46.149004802 +0800
+12665a44821b59e858640332986fb226d8aa07559e678ddbe58ac42a4b852ba9  /home/user/HXL/HY7_planb/phase2/ddpm_ct28/final.pt
+===== /home/user/HXL/HY7_planb/phase2/ddpm_ct28/samples.npy =====
+-rw-rw-r-- 1 user user 8.1M  6月 26 17:14 /home/user/HXL/HY7_planb/phase2/ddpm_ct28/samples.npy
+size_bytes=8388736 mtime=2026-06-26 17:14:56.671636381 +0800
+bc7cfecb572cc250341dbe077f36da802e98f3453f8ec073b0510ed39dfa7a0e  /home/user/HXL/HY7_planb/phase2/ddpm_ct28/samples.npy
+===== /home/user/HXL/HY7_planb/phase2/ddpm_ct28/samples_continuous.npy =====
+-rw-rw-r-- 1 user user 33M  6月 26 17:14 /home/user/HXL/HY7_planb/phase2/ddpm_ct28/samples_continuous.npy
+size_bytes=33554560 mtime=2026-06-26 17:14:56.665636319 +0800
+fdd2f264fdfb5127843b38f9e869fb9fb5c7747ac0036dbefb0b4c5b2032996d  /home/user/HXL/HY7_planb/phase2/ddpm_ct28/samples_continuous.npy
+===== /home/user/HXL/HY7_planb/phase2/slices_ct28_128/train.npy =====
+-rw-r--r-- 1 user user 260M  6月 25 09:45 /home/user/HXL/HY7_planb/phase2/slices_ct28_128/train.npy
+size_bytes=271974528 mtime=2026-06-25 09:45:21.684356819 +0800
+18ac6f6b15695c707a561235af28164a0d36c1776f438811f8f597cc40baac74  /home/user/HXL/HY7_planb/phase2/slices_ct28_128/train.npy
+===== /home/user/HXL/HY7_planb/phase2/slices_ct28_128/test.npy =====
+-rw-r--r-- 1 user user 65M  6月 25 09:45 /home/user/HXL/HY7_planb/phase2/slices_ct28_128/test.npy
+size_bytes=67993728 mtime=2026-06-25 09:45:21.734357121 +0800
+6ad7f625e044d2fc20c6264d54afcd0387a7ac929fc975c3410f7a362d197f7a  /home/user/HXL/HY7_planb/phase2/slices_ct28_128/test.npy
+===== /home/user/HXL/HY7_planb/phase2/slices_ct28/train.npy =====
+-rw-r--r-- 1 user user 301M  6月 25 09:42 /home/user/HXL/HY7_planb/phase2/slices_ct28/train.npy
+size_bytes=314572928 mtime=2026-06-25 09:42:21.521285857 +0800
+c2117696e0a2b11581618c318520ef7cffd81de65f89dc3c449fbfd3c2a65eb1  /home/user/HXL/HY7_planb/phase2/slices_ct28/train.npy
+===== /home/user/HXL/HY7_planb/phase2/slices_ct28/test.npy =====
+-rw-r--r-- 1 user user 76M  6月 25 09:42 /home/user/HXL/HY7_planb/phase2/slices_ct28/test.npy
+size_bytes=78643328 mtime=2026-06-25 09:42:21.577286183 +0800
+aa056143bb4a20b7129c505576b1570f64ea299d71b11e56e8a8d9fc6b202b38  /home/user/HXL/HY7_planb/phase2/slices_ct28/test.npy
+===== /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/best.pt =====
+-rw-rw-r-- 1 user user 242M  6月 27 20:46 /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/best.pt
+size_bytes=252713143 mtime=2026-06-27 20:46:19.139070104 +0800
+f009973ce37228644e6158ed46d9e08b1dfdb8c892754b6e327933b970646a6d  /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/best.pt
+===== /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/final.pt =====
+-rw-rw-r-- 1 user user 242M  6月 27 21:51 /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/final.pt
+size_bytes=252713531 mtime=2026-06-27 21:51:10.964674134 +0800
+4975ed241dc4af15178199ee32370ad39a45763e745fbdda285fc2484634ae78  /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/final.pt
+===== /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/samples.npy =====
+MISSING
+===== /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/samples_continuous.npy =====
+MISSING

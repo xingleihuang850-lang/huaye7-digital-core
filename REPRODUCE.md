@@ -1,6 +1,7 @@
 # 复现指南：花页7阶段二 M7-v2/M7-v3
 
-> 约束：本草稿依据只读检查 `CLAUDE.md`、`notes/22_阶段二_M7v2_阈值标定诊断.md`、`notes/24_阶段二_M7v3_连通性迭代设计.md`、`experiments/花页7_PlanB_记录/phase2/README.md`、`src/hy7_phase2_*.py`、`.gitignore`、`requirements.txt`。未在仓库中找到的具体历史运行命令不编造，以下命令链按脚本 argparse 给出；待从远程 shell history / run log 核对后可去掉 TODO。
+> 约束：本草稿依据只读检查 `CLAUDE.md`、`notes/22_阶段二_M7v2_阈值标定诊断.md`、`notes/24_阶段二_M7v3_连通性迭代设计.md`、`experiments/花页7_PlanB_记录/phase2/README.md`、`src/hy7_phase2_*.py`、`.gitignore`、`requirements.txt`。未在仓库中找到的具体历史运行命令不编造。
+> 2026-07-01 更新：已通过 `hy7-linux` 做只读远程核验，原始 stdout 保存在 `experiments/花页7_PlanB_记录/phase2/remote_provenance_20260701/`。已核实 M7 主链使用 `slices_ct28_128`（tile=128, z_step=6, axes=z），50ep/200ep 训练 meta 与关键 `.pt/.npy` sha256；仍未从 train_meta 中核到训练 seed，seed=42 暂来自既有命令模板/记录。
 
 ## 1. 主线与当前阶段
 
@@ -16,7 +17,7 @@
 M7-v2 已确认结论：
 
 - T* = 0.98732
-- S2 rmse：0.07143 → 0.00242，说明 T=0 二值化导致的阈值伪影已基本修复
+- S₂ rmse：0.07143 → 0.00242，说明 T=0 二值化导致的阈值伪影已基本修复
 - Euler：T* 下 207.92 vs real 127.33，说明孔隙连通性/聚集仍是真问题
 - 下一步 M7-v3：先做 50ep → 200ep 对照验证欠训练；根本方向是生成灰度介质 sus 本身，或生成 `[sus,pore]` 双通道，而不是把真实 sus 作为条件输入去分割 pore
 
@@ -48,7 +49,7 @@ cd /Users/hxl/Documents/Hermes工作区/01_Claude接管剩余工作/claude
 - duckdb 1.5.4
 - tifffile 2026.6.1
 
-注意：`src/hy7_phase2_ddpm.py` 需要 `diffusers`，但本机 `requirements.txt` 尚未钉 diffusers；不要在未核实远程版本前猜测写入。
+注意：`src/hy7_phase2_ddpm.py` 需要 `diffusers`；远程 `nnunet_t28` 已核实为 `diffusers==0.38.0`，但本机 `.venv` 仍未安装/钉死 diffusers。本机若只做轻量 eval/calib 可暂不装；若要本机跑 DDPM train/sample，需另建最小依赖或同步远程版本策略。
 
 ## 3. 远程 GPU 环境（训练/采样主环境）
 
@@ -136,15 +137,15 @@ python src/hy7_phase2_make_slices.py \
   --root /home/user/HXL/HY7_source/吉林大学数据报告归总 \
   --layout source \
   --tile 128 \
-  --z-step <TODO: M7 实际 z-step> \
-  --axes <TODO: M7 实际 axes，例如 z 或 zyx> \
+  --z-step 6 \
+  --axes z \
   --min-valid 0.999 \
   --test-frac 0.2 \
-  --out /home/user/HXL/HY7_planb/phase2/ct28_tiles \
+  --out /home/user/HXL/HY7_planb/phase2/slices_ct28_128 \
   --seed 42
 ```
 
-TODO：从远程实际 `meta.json` 或历史日志补齐 M7 当时的 `--z-step`、`--axes`、`--out` 精确值。本草稿不猜。
+远程只读核验：`slices_ct28_128/meta.json` sha256 `993b1d3220fd81c37aebfe15d4be13cad332f5c49cdf48cc5d0a0d4424ad4c9d`，记录 `tile=128`、`z_step=6`、`axes=z`、`n_train=16600`、`n_test=4150`、test φ mean `6.443%` / median `5.676%`。注意另有旧/备用 `slices_ct28/` 为 tile=256、z_step=4，不是 M7 128² DDPM 主链。
 
 ### 5.2 训练 M7 二值孔隙 DDPM
 
@@ -163,18 +164,18 @@ TODO：从远程实际 `meta.json` 或历史日志补齐 M7 当时的 `--z-step`
 
 ```bash
 python src/hy7_phase2_ddpm.py train \
-  --data /home/user/HXL/HY7_planb/phase2/ct28_tiles \
+  --data /home/user/HXL/HY7_planb/phase2/slices_ct28_128 \
   --out /home/user/HXL/HY7_planb/phase2/ddpm_ct28 \
   --epochs 50 \
-  --bs <TODO: M7 实际 batch size> \
+  --bs 64 \
   --base 64 \
   --lr 1e-4 \
   --amp \
-  --seed <TODO: M7 训练 seed> \
-  --sample-every <TODO: M7 实际 sample interval>
+  --seed 42 \
+  --sample-every 10
 ```
 
-TODO：从远程 `train_meta.json`、日志或 shell history 补齐 `--bs`、训练 seed、`--sample-every`。
+远程 `ddpm_ct28/train_meta.json` 已核实：`epochs=50`、`bs=64`、`base=64`、`lr=1e-4`、`n_train=16600`、`best_Lsimple=0.01938`、`params_M=63.15`，sha256 `1d04c071f3efe1edb4b356fb609966d254d74e3e26c938ed097da5f5b17c4325`。`train_meta.json` 未记录 seed；上方 `--seed 42` 来自既有命令模板/记录，后续若找到 shell history 再复核。目录内存在 `grid_ep010/020/030/040/050.png`，说明 50ep run 的可视化间隔为 10。
 
 ### 5.3 采样 512 张并保存连续输出
 
@@ -191,7 +192,7 @@ python src/hy7_phase2_ddpm.py sample \
   --n 512 \
   --size 128 \
   --base 64 \
-  --bs <TODO: M7 实际 sampling batch size> \
+  --bs 64 \
   --seed 123 \
   --continuous
 ```
@@ -210,7 +211,7 @@ python src/hy7_phase2_ddpm.py sample \
 
 ```bash
 python src/hy7_phase2_eval.py \
-  --real /home/user/HXL/HY7_planb/phase2/ct28_tiles/test.npy \
+  --real /home/user/HXL/HY7_planb/phase2/slices_ct28_128/test.npy \
   --gen /home/user/HXL/HY7_planb/phase2/ddpm_ct28/samples.npy \
   --out experiments/花页7_PlanB_记录/phase2/eval_v2 \
   --n 512 \
@@ -225,8 +226,8 @@ python src/hy7_phase2_eval.py \
 - real φ mean = 6.405%
 - gen φ mean = 23.506%
 - naive φ mean = 6.408%
-- S2 rmse gen = 0.07143
-- S2 rmse naive = 0.00493
+- S₂ rmse gen = 0.07143
+- S₂ rmse naive = 0.00493
 - Euler real = 127.33
 - Euler gen = 146.24
 - Euler naive = 890.16
@@ -240,7 +241,7 @@ python src/hy7_phase2_eval.py \
 
 ```bash
 python src/hy7_phase2_threshold_calib.py \
-  --real /home/user/HXL/HY7_planb/phase2/ct28_tiles/test.npy \
+  --real /home/user/HXL/HY7_planb/phase2/slices_ct28_128/test.npy \
   --cont /home/user/HXL/HY7_planb/phase2/ddpm_ct28/samples_continuous.npy \
   --out experiments/花页7_PlanB_记录/phase2/m7v2_calib \
   --target_phi 6.4 \
@@ -255,8 +256,8 @@ python src/hy7_phase2_threshold_calib.py \
 
 - T_star = 0.98732
 - target_phi_pct = 6.4
-- T=0：φ mean 23.506%，Euler 146.24，S2 rmse 0.07143
-- T*：φ mean 6.4%，Euler 207.92，S2 rmse 0.00242
+- T=0：φ mean 23.506%，Euler 146.24，S₂ rmse 0.07143
+- T*：φ mean 6.4%，Euler 207.92，S₂ rmse 0.00242
 - verdict：阈值伪影已修但连通性真错仍在；下一步修聚集/连通性
 
 ## 6. M7-v3 入口
@@ -271,16 +272,18 @@ M7-v3 设计见 `notes/24_阶段二_M7v3_连通性迭代设计.md`。
 
 ```bash
 python src/hy7_phase2_ddpm.py train \
-  --data /home/user/HXL/HY7_planb/phase2/ct28_tiles \
+  --data /home/user/HXL/HY7_planb/phase2/slices_ct28_128 \
   --out /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep \
   --epochs 200 \
-  --bs <同 M7> \
+  --bs 64 \
   --base 64 \
   --lr 1e-4 \
   --amp \
-  --seed <同 M7> \
-  --sample-every <TODO>
+  --seed 42 \
+  --sample-every 25
 ```
+
+远程只读核验发现该 200ep 训练已经完成：`ddpm_ct28_200ep/train_meta.json` 记录 `epochs=200`、`bs=64`、`base=64`、`lr=1e-4`、`n_train=16600`、`best_Lsimple=0.01881`，sha256 `6670df671d08be425fc957e7358d21a4c445c0b2685fbb9cba9470b8aced335f`；日志 `ddpm_ct28_200ep.log` 末行 `[done] best L_simple=0.0188 -> ddpm_ct28_200ep`。目录内已有 `best.pt`/`final.pt` 和 `grid_ep025...grid_ep200.png`，但未发现 `samples.npy` 或 `samples_continuous.npy`，因此尚不能评价 200ep 的 S₂/Euler/连通性。
 
 之后复用采样、`hy7_phase2_eval.py`、`hy7_phase2_threshold_calib.py`，新轻量证据建议放：
 
@@ -292,7 +295,7 @@ experiments/花页7_PlanB_记录/phase2/m7v3_200ep/
 
 方向：
 
-- B1 灰度生成：DDPM 从噪声生成连续灰度 ct28 sus 切片；下游再阈值/分割得到 pore，并用 φ/S2/Euler/连通簇评估
+- B1 灰度生成：DDPM 从噪声生成连续灰度 ct28 sus 切片；下游再阈值/分割得到 pore，并用 φ/S₂/Euler/连通簇评估
 - B2 双通道联合生成：DDPM 从噪声联合生成 `[sus,pore]`，让孔隙与灰度语境绑定
 
 注意：真实 sus 输入 → pore 输出是分割，不是生成；不应作为阶段二生成式贡献的主路线。
@@ -326,7 +329,7 @@ experiments/花页7_PlanB_记录/phase2/m7v3_200ep/
 
 ## 8. 待补齐 TODO
 
-1. 从远程实际 `meta.json` / `train_meta.json` / 日志补齐 M7 精确命令参数：`--z-step`、`--axes`、`--bs`、训练 seed、`--sample-every`。
-2. 给 `samples.npy`、`samples_continuous.npy`、`best.pt`、`final.pt` 等远程大文件补 sha256、文件大小、生成日期。
-3. 如需本地完整复现 DDPM，先确认远程 `diffusers==0.38.0` 与本机 Python 3.12/torch 2.12.1 兼容，再更新依赖策略。
+1. 训练 seed 仍未在 `train_meta.json` 中记录；当前 `--seed 42` 来自既有命令模板/记录，若能从 shell history 找到原始命令，应再核一次。
+2. 200ep 已训练完成但尚未采样/评估；下一步不是再训练，而是对 `ddpm_ct28_200ep/best.pt` 执行同 seed/同口径采样，生成 `samples.npy`/`samples_continuous.npy` 后跑 eval/calib。
+3. 本机 `.venv` 仍缺 diffusers；如需本地完整复现 DDPM，先确认远程 `diffusers==0.38.0` 与本机 Python 3.12/torch 2.12.1 兼容，再更新依赖策略。
 4. 若 `hy7-linux-lan` 恢复，记录 LAN 传输路径；否则继续使用 `hy7-linux` Tailscale 通道。

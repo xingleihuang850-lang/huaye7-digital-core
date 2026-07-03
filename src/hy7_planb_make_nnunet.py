@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-花页7 Plan B —— E3：把同网格 sus+pore 做成 nnU-Net v2 数据集（受控对照）。
+花页7 Plan B —— E3：把同网格 sus+pore 做成 nnU-Netv2 数据集（受控对照）。
 
 目的：复刻 codex 的 nnU-Net 协议（同样 N 个 192³ 子块、2 相 background/pore），
 **只把图像源从 2024³裁剪 换成同网格 sus.raw** → 看 nnU-Net 是否也从 dice≈0 翻身。

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-S3a: 花页7 Amics 25μm 多矿物 2D 分割 — 构建 nnU-Net v2 数据集。
+S3a: 花页7 Amics 25μm 多矿物 2D 分割 — 构建 nnU-Netv2 数据集。
 
 输入（服务商 Amics «处理图像» 同尺寸配对）:
   202510052_25um_BSE_Image.tif      (H,W,3) 灰度→取通道0 = 训练输入

@@ -176,12 +176,12 @@ def main():
     ax[0].set_title(f"Porosity % (KS p={ks_por.pvalue:.3f})")
     ax[0].set_xlabel("porosity %"); ax[0].legend(fontsize=8)
 
-    # S2(r)
+    # S₂(r)
     r = np.arange(a.rmax + 1)
     for s2, lbl, c in [(s2r, "real", "#4f81bd"), (s2g, f"gen(rmse={s2_rmse:.4f})", "#c0504d"),
                        (s2n, f"naive(rmse={s2_rmse_naive:.4f})", "#9bbb59")]:
         ax[1].plot(r, s2, label=lbl, color=c)
-    ax[1].set_title("Two-point S2(r)"); ax[1].set_xlabel("r (px, 1px=2.8um)"); ax[1].legend(fontsize=7)
+    ax[1].set_title("Two-point S₂(r)"); ax[1].set_xlabel("r (px, 1px=2.8um)"); ax[1].legend(fontsize=7)
 
     # Euler
     for eul, lbl, c in [(er, "real", "#4f81bd"), (eg, "gen", "#c0504d"), (en, "naive", "#9bbb59")]:

@@ -12,7 +12,7 @@ warnings.filterwarnings("ignore")
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 B = os.path.join(ROOT, "data", "hy7_raw")
-SUMMARY = f"{B}/花页7井_4199.21m_多尺度数据汇总.xlsx"
+# 已不再依赖派生汇总 xlsx；只从服务商原始 xlsx 读取。
 OUT = os.path.join(ROOT, "experiments", "hy7_stats.json")
 
 # 6 个成像尺度元数据（来自已核验的「数据总览」）

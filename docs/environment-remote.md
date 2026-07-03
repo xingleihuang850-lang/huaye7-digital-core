@@ -80,24 +80,7 @@ GPU/驱动：
 | Driver | 580.159.03 |
 | 显存 | 32607 MiB |
 
-TODO：从远程补一份机器生成的完整环境快照，例如：
-
-```bash
-python --version
-python - <<'PY'
-import torch, diffusers, numpy, scipy, skimage, SimpleITK
-print('torch', torch.__version__)
-print('cuda available', torch.cuda.is_available())
-print('cuda', torch.version.cuda)
-print('diffusers', diffusers.__version__)
-print('numpy', numpy.__version__)
-print('scipy', scipy.__version__)
-print('skimage', skimage.__version__)
-print('SimpleITK', SimpleITK.Version())
-PY
-python -m nnunetv2 --version 2>/dev/null || nnUNetv2_plan_and_preprocess --version 2>/dev/null || true
-nvidia-smi
-```
+2026-07-01 已保存一份机器生成的完整环境快照到 `experiments/花页7_PlanB_记录/phase2/remote_provenance_20260701/04_environment_snapshot.txt`。后续每次正式训练/采样仍建议随 run 再保存一次同类 stdout。
 
 ## 4. 与本机环境的差异
 
@@ -137,36 +120,77 @@ nvidia-smi
 
 结果口径：
 
-- 原始 `T=0`：φ gen 23.506% vs real 6.405%，S2 rmse 0.07143，Euler gen 146.24 vs real 127.33
-- 标定 `T*=0.98732`：φ 对齐到 6.4%，S2 rmse 0.00242，但 Euler 207.92 vs real 127.33
+- 原始 `T=0`：φ gen 23.506% vs real 6.405%，S₂ rmse 0.07143，Euler gen 146.24 vs real 127.33
+- 标定 `T*=0.98732`：φ 对齐到 6.4%，S₂ rmse 0.00242，但 Euler 207.92 vs real 127.33
 - 解释：阈值伪影已修；连通性/聚集是真问题，进入 M7-v3
 
-## 6. 建议补充的远程 provenance
+## 6. 2026-07-01 远程 provenance 核验结果
 
-后续建议在不提交大文件的前提下补齐：
+原始 stdout 已保存到：`experiments/花页7_PlanB_记录/phase2/remote_provenance_20260701/`。
 
-```bash
-sha256sum /home/user/HXL/HY7_planb/phase2/ddpm_ct28/samples.npy
-sha256sum /home/user/HXL/HY7_planb/phase2/ddpm_ct28/samples_continuous.npy
-sha256sum /home/user/HXL/HY7_planb/phase2/ddpm_ct28/best.pt
-sha256sum /home/user/HXL/HY7_planb/phase2/ddpm_ct28/final.pt
-ls -lh /home/user/HXL/HY7_planb/phase2/ddpm_ct28/
+### 6.1 M7 128² 切片数据集
+
+主链数据集为：
+
+```text
+/home/user/HXL/HY7_planb/phase2/slices_ct28_128/
 ```
 
-并记录：
+`meta.json`：
 
-- 生成命令
-- 生成日期
-- 训练日志路径
-- `train_meta.json` 内容
-- 切片数据 `meta.json` 内容
-- 远程环境快照命令输出
+- sha256：`993b1d3220fd81c37aebfe15d4be13cad332f5c49cdf48cc5d0a0d4424ad4c9d`
+- size：506 B
+- mtime：2026-06-25 09:45 +0800
+- 关键内容：`tile=128`、`z_step=6`、`axes=z`、`min_valid=0.999`、`test_frac=0.2`、`seed=42`、`n_train=16600`、`n_test=4150`、test φ mean `6.443%`、test φ median `5.676%`
+
+注意：远程另有 `/home/user/HXL/HY7_planb/phase2/slices_ct28/`，但它是 `tile=256`、`z_step=4`、`n_train=4800`、`n_test=1200` 的旧/备用数据集，不应与 M7 128² DDPM 主链混用。
+
+### 6.2 M7 50ep DDPM 大文件
+
+| 文件 | size_bytes | mtime (+0800) | sha256 |
+|---|---:|---|---|
+| `/home/user/HXL/HY7_planb/phase2/ddpm_ct28/best.pt` | 252713143 | 2026-06-25 10:50:14 | `ee15bb0ab5a67c1d22ad38b9bbd4f870f42ebb8ed4c41053da8989143449bb98` |
+| `/home/user/HXL/HY7_planb/phase2/ddpm_ct28/final.pt` | 252713531 | 2026-06-25 10:55:46 | `12665a44821b59e858640332986fb226d8aa07559e678ddbe58ac42a4b852ba9` |
+| `/home/user/HXL/HY7_planb/phase2/ddpm_ct28/samples.npy` | 8388736 | 2026-06-26 17:14:56 | `bc7cfecb572cc250341dbe077f36da802e98f3453f8ec073b0510ed39dfa7a0e` |
+| `/home/user/HXL/HY7_planb/phase2/ddpm_ct28/samples_continuous.npy` | 33554560 | 2026-06-26 17:14:56 | `fdd2f264fdfb5127843b38f9e869fb9fb5c7747ac0036dbefb0b4c5b2032996d` |
+
+`ddpm_ct28/train_meta.json` sha256：`1d04c071f3efe1edb4b356fb609966d254d74e3e26c938ed097da5f5b17c4325`，记录 `epochs=50`、`bs=64`、`base=64`、`lr=1e-4`、`best_Lsimple=0.01938`、`params_M=63.15`。该 meta 未记录 seed。
+
+### 6.3 M7-v3 200ep 训练状态
+
+远程已存在并完成训练：
+
+```text
+/home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/
+```
+
+| 文件 | size_bytes | mtime (+0800) | sha256 |
+|---|---:|---|---|
+| `/home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/best.pt` | 252713143 | 2026-06-27 20:46:19 | `f009973ce37228644e6158ed46d9e08b1dfdb8c892754b6e327933b970646a6d` |
+| `/home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/final.pt` | 252713531 | 2026-06-27 21:51:10 | `4975ed241dc4af15178199ee32370ad39a45763e745fbdda285fc2484634ae78` |
+
+`ddpm_ct28_200ep/train_meta.json` sha256：`6670df671d08be425fc957e7358d21a4c445c0b2685fbb9cba9470b8aced335f`，记录 `epochs=200`、`bs=64`、`base=64`、`lr=1e-4`、`best_Lsimple=0.01881`、`params_M=63.15`。
+
+日志 `/home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep.log` sha256：`01a6dc7eb837b4df8397bb379bbc7c2e16d0249258ed7f5ac659d22d5d79a2f5`；末行为 `[done] best L_simple=0.0188 -> ddpm_ct28_200ep`。
+
+尚未发现：
+
+```text
+/home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/samples.npy
+/home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/samples_continuous.npy
+```
+
+因此 200ep 目前只能说明训练已完成，不能说明 S₂/Euler/连通性是否改善。下一步应采样和评估，而不是重跑训练。
+
+### 6.4 远程 JSON verdict 警告
+
+远程 `/home/user/HXL/HY7_planb/phase2/m7v2_calib/calib_result.json` 与 `ddpm_ct28/m7v2_calib/calib_result.json` 的 verdict 仍是旧错判：写作“标定后 S₂/Euler 明显改善”。本地入库版本已修正为“S₂ 明显改善，Euler 变差”。后续同步远程文件时不能用远程旧 verdict 覆盖本地修正版。
 
 ## 7. M7-v3 远程运行提醒
 
-M7-v3 第一步为 cheap control：二值 DDPM 从 50ep 加到 200ep，仅改变 epoch，其余 data/seed/base/bs/lr/amp 尽量保持不变。
+M7-v3 第一步 cheap control（50ep→200ep）已完成训练；当前缺口是对 `ddpm_ct28_200ep/best.pt` 采样并复用 eval/calib 口径验证 S₂/Euler/连通性。若继续执行，应优先采样评估，不要重复启动 200ep 训练。
 
-建议输出目录：
+已核实输出目录：
 
 ```text
 /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/
@@ -180,6 +204,6 @@ experiments/花页7_PlanB_记录/phase2/m7v3_200ep/
 
 远程长任务注意：先使用防睡眠/断连策略（例如 caffeinate/setsid 或远程等价方案），并把 stdout/stderr 保存到日志文件；不要只依赖终端滚动输出。
 
-## 7. requirements-remote.txt 说明
+## 8. requirements-remote.txt 说明
 
 `requirements-remote.txt` 是远程 `nnunet_t28` 环境的完整 `pip freeze` 快照，不等同于最小可移植安装文件。`torch==2.8.0+cu129`、`torchvision==0.23.0+cu129`、`torchaudio==2.8.0+cu129` 复建时可能需要指定 PyTorch CUDA wheel 源或复用 conda 环境；后续可另建最小 `requirements-m7-minimal.txt`。

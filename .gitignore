@@ -57,3 +57,6 @@ __pycache__/
 
 # 文献原文 PDF（开放获取，本地可读；只提交书目+清单，不入大二进制）
 /literature/*.pdf
+
+# PPT/汇报展示图：暂缓入库（防误提交；逐图补来源脚本+sha256 后移除本条并单独提交，见 experiments/INDEX.md §4）
+/experiments/花页7_PlanB_记录/figs_ppt/

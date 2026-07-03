@@ -1,0 +1,9 @@
+===== /home/user/HXL/HY7_planb =====
+/home/user/HXL/HY7_planb
+no_git_repo
+===== /home/user/HXL/HY7_planb/phase2 =====
+/home/user/HXL/HY7_planb/phase2
+no_git_repo
+===== /home/user/HXL =====
+/home/user/HXL
+no_git_repo

@@ -15,6 +15,10 @@ warnings.filterwarnings("ignore")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 B = os.path.join(ROOT, "data", "hy7_raw")
 SUMMARY = f"{B}/花页7井_4199.21m_多尺度数据汇总.xlsx"
+LEGACY_SUMMARY_NOTE = (
+    "verify_hy7.py 是早期一次性对账工具，依赖已删除的派生汇总 xlsx；"
+    "当前主线数字源改为 src/hy7_etl.py 从服务商原始 xlsx 生成 experiments/hy7_stats.json。"
+)
 PASS, FAIL, NOTE = [], [], []
 def chk(cond, label, detail=""):
     (PASS if cond else FAIL).append(label)
@@ -49,6 +53,9 @@ def minerals(path):
         if row[1] and isinstance(row[2], (int, float)):
             out[str(row[1]).strip()] = round(float(row[2]), 3)
     return out
+
+if not os.path.exists(SUMMARY):
+    raise FileNotFoundError(f"{LEGACY_SUMMARY_NOTE} 缺失文件: {SUMMARY}")
 
 print("=== (A) 矿物含量：源 vs 汇总 ===")
 src_coarse = minerals(f"{B}/Amics矿物整体扫描25um+精细扫描1um/粗扫矿物元素含量.xlsx")

@@ -1,0 +1,442 @@
+===== /home/user/HXL/HY7_planb/phase2/slices_ct28_128/meta.json =====
+-rw-r--r-- 1 user user 506  6月 25 09:45 /home/user/HXL/HY7_planb/phase2/slices_ct28_128/meta.json
+993b1d3220fd81c37aebfe15d4be13cad332f5c49cdf48cc5d0a0d4424ad4c9d  /home/user/HXL/HY7_planb/phase2/slices_ct28_128/meta.json
+{
+    "scale": "ct28",
+    "tile": 128,
+    "z_step": 6,
+    "axes": "z",
+    "min_valid": 0.999,
+    "test_frac": 0.2,
+    "seed": 42,
+    "n_train": 16600,
+    "n_test": 4150,
+    "porosity_pct_train": {
+        "mean": 7.294,
+        "median": 6.488,
+        "min": 2.106,
+        "max": 31.812
+    },
+    "porosity_pct_test": {
+        "mean": 6.443,
+        "median": 5.676
+    },
+    "porosity_hist_train_pct": {
+        "0-1": 0,
+        "1-2": 0,
+        "2-4": 1634,
+        "4-6": 5306,
+        "6-8": 4524,
+        "8-10": 2224,
+        "10-15": 2404,
+        "15-100": 508
+    }
+}
+===== /home/user/HXL/HY7_planb/phase2/slices_ct28/meta.json =====
+-rw-r--r-- 1 user user 501  6月 25 09:42 /home/user/HXL/HY7_planb/phase2/slices_ct28/meta.json
+91f443009fc980af8e4e481ff47e30efa1f43079857af9efffb1287287b83123  /home/user/HXL/HY7_planb/phase2/slices_ct28/meta.json
+{
+    "scale": "ct28",
+    "tile": 256,
+    "z_step": 4,
+    "axes": "z",
+    "min_valid": 0.999,
+    "test_frac": 0.2,
+    "seed": 42,
+    "n_train": 4800,
+    "n_test": 1200,
+    "porosity_pct_train": {
+        "mean": 6.613,
+        "median": 6.357,
+        "min": 3.107,
+        "max": 22.145
+    },
+    "porosity_pct_test": {
+        "mean": 5.671,
+        "median": 5.405
+    },
+    "porosity_hist_train_pct": {
+        "0-1": 0,
+        "1-2": 0,
+        "2-4": 381,
+        "4-6": 1597,
+        "6-8": 2003,
+        "8-10": 490,
+        "10-15": 291,
+        "15-100": 38
+    }
+}
+===== /home/user/HXL/HY7_planb/phase2/ddpm_ct28/train_meta.json =====
+-rw-r--r-- 1 user user 143  6月 25 10:55 /home/user/HXL/HY7_planb/phase2/ddpm_ct28/train_meta.json
+1d04c071f3efe1edb4b356fb609966d254d74e3e26c938ed097da5f5b17c4325  /home/user/HXL/HY7_planb/phase2/ddpm_ct28/train_meta.json
+{
+    "size": 128,
+    "n_train": 16600,
+    "epochs": 50,
+    "base": 64,
+    "bs": 64,
+    "lr": 0.0001,
+    "best_Lsimple": 0.01938,
+    "params_M": 63.15
+}
+===== /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/train_meta.json =====
+-rw-rw-r-- 1 user user 144  6月 27 21:51 /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/train_meta.json
+6670df671d08be425fc957e7358d21a4c445c0b2685fbb9cba9470b8aced335f  /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/train_meta.json
+{
+    "size": 128,
+    "n_train": 16600,
+    "epochs": 200,
+    "base": 64,
+    "bs": 64,
+    "lr": 0.0001,
+    "best_Lsimple": 0.01881,
+    "params_M": 63.15
+}
+===== /home/user/HXL/HY7_planb/phase2/ddpm_smoke/train_meta.json =====
+-rw-r--r-- 1 user user 142  6月 25 09:47 /home/user/HXL/HY7_planb/phase2/ddpm_smoke/train_meta.json
+2f2916ba0c24671c46e01cd8eb759f508df1c3ca37cc7a35dc429a28b5bc4d6a  /home/user/HXL/HY7_planb/phase2/ddpm_smoke/train_meta.json
+{
+    "size": 128,
+    "n_train": 16600,
+    "epochs": 1,
+    "base": 64,
+    "bs": 64,
+    "lr": 0.0001,
+    "best_Lsimple": 0.09389,
+    "params_M": 63.15
+}
+===== /home/user/HXL/HY7_planb/phase2/ddpm_ct28/eval_v2/metrics.json =====
+-rw-rw-r-- 1 user user 775  6月 26 17:24 /home/user/HXL/HY7_planb/phase2/ddpm_ct28/eval_v2/metrics.json
+5e68ee862a564372f2fb953cb4ec8f2ae23a3fcaf344966e0a85fdbccc94192d  /home/user/HXL/HY7_planb/phase2/ddpm_ct28/eval_v2/metrics.json
+{
+    "n_real": 512,
+    "n_gen": 512,
+    "porosity_pct": {
+        "real_mean": 6.405,
+        "gen_mean": 23.506,
+        "naive_mean": 6.408,
+        "KS_stat": 0.7871,
+        "KS_p": 0.0,
+        "wasserstein": 17.1015
+    },
+    "euler_chi": {
+        "real_mean": 127.33,
+        "gen_mean": 146.24,
+        "naive_mean": 890.16,
+        "KS_stat": 0.4551,
+        "wasserstein": 19.955
+    },
+    "S2_radial": {
+        "phi_at_0_real": 0.064,
+        "phi_at_0_gen": 0.2351,
+        "rmse_gen": 0.07143,
+        "rmse_naive": 0.00493
+    },
+    "connectivity": {
+        "max_cc_frac_real": 0.0597,
+        "max_cc_frac_gen": 0.1588,
+        "max_cc_frac_naive": 0.0048,
+        "x_penetrate_real": 0.0,
+        "x_penetrate_gen": 0.0117,
+        "x_penetrate_naive": 0.0,
+        "y_penetrate_real": 0.0,
+        "y_penetrate_gen": 0.0117,
+        "y_penetrate_naive": 0.0
+    }
+}
+===== /home/user/HXL/HY7_planb/phase2/ddpm_ct28/m7v2_calib/calib_result.json =====
+-rw-rw-r-- 1 user user 651  6月 26 17:15 /home/user/HXL/HY7_planb/phase2/ddpm_ct28/m7v2_calib/calib_result.json
+ef98d35a3f22258359703e072f7e811ff5daec6ce9ecc49c89d80ccfcf51af30  /home/user/HXL/HY7_planb/phase2/ddpm_ct28/m7v2_calib/calib_result.json
+{
+    "T_star": 0.98732,
+    "target_phi_pct": 6.4,
+    "n": 512,
+    "real": {
+        "phi_mean": 6.405,
+        "euler_mean": 127.33,
+        "S2_at0": 0.064
+    },
+    "T0": {
+        "phi_mean": 23.506,
+        "phi_median": 23.297,
+        "phi_KS_p": 0.0,
+        "phi_wasserstein": 17.1015,
+        "euler_mean": 146.24,
+        "euler_wasserstein": 19.955,
+        "S2_rmse": 0.07143
+    },
+    "Tstar": {
+        "phi_mean": 6.4,
+        "phi_median": 6.326,
+        "phi_KS_p": 0.0,
+        "phi_wasserstein": 2.9967,
+        "euler_mean": 207.92,
+        "euler_wasserstein": 142.113,
+        "S2_rmse": 0.00242
+    },
+    "verdict": "\u9608\u503c\u4f2a\u5f71\u4e3a\u4e3b\uff1a\u6807\u5b9a\u540e S\u2082/Euler \u660e\u663e\u6539\u5584 \u2192 \u5148\u4fee\u4e8c\u503c\u5316\u518d\u51b3\u5b9a\u52a0\u8bad"
+}
+===== /home/user/HXL/HY7_planb/phase2/m7v2_calib/calib_result.json =====
+-rw-r--r-- 1 user user 651  6月 27 15:43 /home/user/HXL/HY7_planb/phase2/m7v2_calib/calib_result.json
+ef98d35a3f22258359703e072f7e811ff5daec6ce9ecc49c89d80ccfcf51af30  /home/user/HXL/HY7_planb/phase2/m7v2_calib/calib_result.json
+{
+    "T_star": 0.98732,
+    "target_phi_pct": 6.4,
+    "n": 512,
+    "real": {
+        "phi_mean": 6.405,
+        "euler_mean": 127.33,
+        "S2_at0": 0.064
+    },
+    "T0": {
+        "phi_mean": 23.506,
+        "phi_median": 23.297,
+        "phi_KS_p": 0.0,
+        "phi_wasserstein": 17.1015,
+        "euler_mean": 146.24,
+        "euler_wasserstein": 19.955,
+        "S2_rmse": 0.07143
+    },
+    "Tstar": {
+        "phi_mean": 6.4,
+        "phi_median": 6.326,
+        "phi_KS_p": 0.0,
+        "phi_wasserstein": 2.9967,
+        "euler_mean": 207.92,
+        "euler_wasserstein": 142.113,
+        "S2_rmse": 0.00242
+    },
+    "verdict": "\u9608\u503c\u4f2a\u5f71\u4e3a\u4e3b\uff1a\u6807\u5b9a\u540e S\u2082/Euler \u660e\u663e\u6539\u5584 \u2192 \u5148\u4fee\u4e8c\u503c\u5316\u518d\u51b3\u5b9a\u52a0\u8bad"
+}
+===== /home/user/HXL/HY7_planb/phase2/eval_ct28/metrics.json =====
+-rw-r--r-- 1 user user 452  6月 25 15:23 /home/user/HXL/HY7_planb/phase2/eval_ct28/metrics.json
+c98fdf3816a2ca8fd506e08f50e2ac6224399ff29e6568f7b076faa0886f1c9d  /home/user/HXL/HY7_planb/phase2/eval_ct28/metrics.json
+{
+    "n_real": 512,
+    "n_gen": 512,
+    "porosity_pct": {
+        "real_mean": 6.405,
+        "gen_mean": 23.506,
+        "real_median": 5.676,
+        "gen_median": 23.297,
+        "KS_stat": 0.7871,
+        "KS_p": 0.0,
+        "wasserstein": 17.1015
+    },
+    "euler_chi": {
+        "real_mean": 127.33,
+        "gen_mean": 146.24,
+        "KS_stat": 0.4551,
+        "wasserstein": 19.955
+    },
+    "S2_radial": {
+        "phi_at_0_real": 0.064,
+        "phi_at_0_gen": 0.2351,
+        "rmse_over_r": 0.07143
+    }
+}
+===== ddpm_ct28_200ep.log tail/head =====
+-rw-rw-r-- 1 user user 6.4K  6月 27 21:51 /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep.log
+01a6dc7eb837b4df8397bb379bbc7c2e16d0249258ed7f5ac659d22d5d79a2f5  /home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep.log
+--- HEAD ---
+[i] size=128 tiles=16600 params=63.1M bs=64 epochs=200 dev=cuda
+[ep   1] L_simple=0.0936  76.3s
+[ep   2] L_simple=0.0405  76.1s
+[ep   3] L_simple=0.0287  76.1s
+[ep   4] L_simple=0.0253  76.2s
+[ep   5] L_simple=0.0244  76.3s
+[ep   6] L_simple=0.0233  76.2s
+[ep   7] L_simple=0.0230  76.2s
+[ep   8] L_simple=0.0219  76.2s
+[ep   9] L_simple=0.0219  76.2s
+[ep  10] L_simple=0.0215  76.2s
+[ep  11] L_simple=0.0214  76.3s
+[ep  12] L_simple=0.0213  76.2s
+[ep  13] L_simple=0.0214  76.2s
+[ep  14] L_simple=0.0209  76.2s
+[ep  15] L_simple=0.0209  76.2s
+[ep  16] L_simple=0.0207  76.3s
+[ep  17] L_simple=0.0209  76.2s
+[ep  18] L_simple=0.0202  76.2s
+[ep  19] L_simple=0.0206  76.2s
+[ep  20] L_simple=0.0206  76.2s
+[ep  21] L_simple=0.0204  76.2s
+[ep  22] L_simple=0.0200  76.3s
+[ep  23] L_simple=0.0203  76.2s
+[ep  24] L_simple=0.0201  76.2s
+[ep  25] L_simple=0.0199  76.2s
+[ep  26] L_simple=0.0202  76.2s
+[ep  27] L_simple=0.0203  76.3s
+[ep  28] L_simple=0.0201  76.2s
+[ep  29] L_simple=0.0203  76.2s
+[ep  30] L_simple=0.0200  76.2s
+[ep  31] L_simple=0.0201  76.4s
+[ep  32] L_simple=0.0199  76.2s
+[ep  33] L_simple=0.0200  76.2s
+[ep  34] L_simple=0.0197  76.2s
+[ep  35] L_simple=0.0199  76.2s
+[ep  36] L_simple=0.0204  76.2s
+[ep  37] L_simple=0.0196  76.2s
+[ep  38] L_simple=0.0198  76.4s
+[ep  39] L_simple=0.0203  76.3s
+[ep  40] L_simple=0.0196  76.3s
+[ep  41] L_simple=0.0197  76.2s
+[ep  42] L_simple=0.0196  76.2s
+[ep  43] L_simple=0.0200  76.2s
+[ep  44] L_simple=0.0197  76.4s
+[ep  45] L_simple=0.0199  76.2s
+[ep  46] L_simple=0.0198  76.2s
+[ep  47] L_simple=0.0201  76.3s
+[ep  48] L_simple=0.0198  76.3s
+[ep  49] L_simple=0.0195  76.3s
+[ep  50] L_simple=0.0191  76.3s
+[ep  51] L_simple=0.0196  76.2s
+[ep  52] L_simple=0.0197  76.2s
+[ep  53] L_simple=0.0191  76.2s
+[ep  54] L_simple=0.0196  76.2s
+[ep  55] L_simple=0.0194  76.2s
+[ep  56] L_simple=0.0195  76.3s
+[ep  57] L_simple=0.0197  76.2s
+[ep  58] L_simple=0.0199  76.2s
+[ep  59] L_simple=0.0196  76.2s
+[ep  60] L_simple=0.0193  76.2s
+[ep  61] L_simple=0.0198  76.2s
+[ep  62] L_simple=0.0195  76.4s
+[ep  63] L_simple=0.0195  76.2s
+[ep  64] L_simple=0.0198  76.2s
+[ep  65] L_simple=0.0195  76.2s
+[ep  66] L_simple=0.0197  76.3s
+[ep  67] L_simple=0.0197  76.3s
+[ep  68] L_simple=0.0197  76.4s
+[ep  69] L_simple=0.0196  76.3s
+[ep  70] L_simple=0.0193  76.2s
+[ep  71] L_simple=0.0194  76.2s
+[ep  72] L_simple=0.0195  76.2s
+[ep  73] L_simple=0.0193  76.2s
+[ep  74] L_simple=0.0193  76.3s
+[ep  75] L_simple=0.0195  76.2s
+[ep  76] L_simple=0.0198  76.2s
+[ep  77] L_simple=0.0196  76.2s
+[ep  78] L_simple=0.0195  76.2s
+[ep  79] L_simple=0.0194  76.2s
+--- TAIL ---
+[ep  82] L_simple=0.0192  76.2s
+[ep  83] L_simple=0.0196  76.2s
+[ep  84] L_simple=0.0196  76.2s
+[ep  85] L_simple=0.0192  76.2s
+[ep  86] L_simple=0.0197  76.4s
+[ep  87] L_simple=0.0193  76.2s
+[ep  88] L_simple=0.0193  76.2s
+[ep  89] L_simple=0.0195  76.2s
+[ep  90] L_simple=0.0194  76.2s
+[ep  91] L_simple=0.0191  76.2s
+[ep  92] L_simple=0.0195  76.2s
+[ep  93] L_simple=0.0193  76.4s
+[ep  94] L_simple=0.0195  76.3s
+[ep  95] L_simple=0.0193  76.3s
+[ep  96] L_simple=0.0199  76.2s
+[ep  97] L_simple=0.0196  76.3s
+[ep  98] L_simple=0.0192  76.2s
+[ep  99] L_simple=0.0194  76.4s
+[ep 100] L_simple=0.0195  76.2s
+[ep 101] L_simple=0.0197  76.2s
+[ep 102] L_simple=0.0192  76.2s
+[ep 103] L_simple=0.0200  76.2s
+[ep 104] L_simple=0.0194  76.3s
+[ep 105] L_simple=0.0193  76.2s
+[ep 106] L_simple=0.0196  76.2s
+[ep 107] L_simple=0.0193  76.2s
+[ep 108] L_simple=0.0191  76.2s
+[ep 109] L_simple=0.0196  76.2s
+[ep 110] L_simple=0.0194  76.2s
+[ep 111] L_simple=0.0190  76.4s
+[ep 112] L_simple=0.0194  76.2s
+[ep 113] L_simple=0.0194  76.2s
+[ep 114] L_simple=0.0197  76.2s
+[ep 115] L_simple=0.0194  76.2s
+[ep 116] L_simple=0.0192  76.2s
+[ep 117] L_simple=0.0192  76.4s
+[ep 118] L_simple=0.0195  76.2s
+[ep 119] L_simple=0.0194  76.2s
+[ep 120] L_simple=0.0196  76.2s
+[ep 121] L_simple=0.0195  76.2s
+[ep 122] L_simple=0.0194  76.2s
+[ep 123] L_simple=0.0191  76.4s
+[ep 124] L_simple=0.0195  76.2s
+[ep 125] L_simple=0.0193  76.2s
+[ep 126] L_simple=0.0193  76.2s
+[ep 127] L_simple=0.0194  76.2s
+[ep 128] L_simple=0.0191  76.2s
+[ep 129] L_simple=0.0196  76.3s
+[ep 130] L_simple=0.0199  76.2s
+[ep 131] L_simple=0.0194  76.2s
+[ep 132] L_simple=0.0194  76.3s
+[ep 133] L_simple=0.0191  76.2s
+[ep 134] L_simple=0.0191  76.3s
+[ep 135] L_simple=0.0195  76.4s
+[ep 136] L_simple=0.0192  76.2s
+[ep 137] L_simple=0.0191  76.2s
+[ep 138] L_simple=0.0191  76.2s
+[ep 139] L_simple=0.0195  76.3s
+[ep 140] L_simple=0.0191  76.2s
+[ep 141] L_simple=0.0192  76.3s
+[ep 142] L_simple=0.0198  76.2s
+[ep 143] L_simple=0.0193  76.2s
+[ep 144] L_simple=0.0196  76.2s
+[ep 145] L_simple=0.0195  76.2s
+[ep 146] L_simple=0.0192  76.2s
+[ep 147] L_simple=0.0194  76.3s
+[ep 148] L_simple=0.0191  76.2s
+[ep 149] L_simple=0.0194  76.2s
+[ep 150] L_simple=0.0188  76.2s
+[ep 151] L_simple=0.0196  76.2s
+[ep 152] L_simple=0.0195  76.2s
+[ep 153] L_simple=0.0192  76.4s
+[ep 154] L_simple=0.0191  76.2s
+[ep 155] L_simple=0.0192  76.2s
+[ep 156] L_simple=0.0192  76.2s
+[ep 157] L_simple=0.0196  76.2s
+[ep 158] L_simple=0.0193  76.2s
+[ep 159] L_simple=0.0197  76.3s
+[ep 160] L_simple=0.0191  76.2s
+[ep 161] L_simple=0.0194  76.2s
+[ep 162] L_simple=0.0194  76.2s
+[ep 163] L_simple=0.0194  76.2s
+[ep 164] L_simple=0.0195  76.2s
+[ep 165] L_simple=0.0189  76.4s
+[ep 166] L_simple=0.0193  76.2s
+[ep 167] L_simple=0.0191  76.2s
+[ep 168] L_simple=0.0190  76.2s
+[ep 169] L_simple=0.0192  76.2s
+[ep 170] L_simple=0.0194  76.2s
+[ep 171] L_simple=0.0193  76.2s
+[ep 172] L_simple=0.0195  76.4s
+[ep 173] L_simple=0.0194  76.3s
+[ep 174] L_simple=0.0193  76.2s
+[ep 175] L_simple=0.0195  76.2s
+[ep 176] L_simple=0.0192  76.2s
+[ep 177] L_simple=0.0191  76.3s
+[ep 178] L_simple=0.0189  76.2s
+[ep 179] L_simple=0.0192  76.2s
+[ep 180] L_simple=0.0196  76.2s
+[ep 181] L_simple=0.0191  76.2s
+[ep 182] L_simple=0.0192  76.2s
+[ep 183] L_simple=0.0191  76.4s
+[ep 184] L_simple=0.0194  76.2s
+[ep 185] L_simple=0.0194  76.3s
+[ep 186] L_simple=0.0191  76.2s
+[ep 187] L_simple=0.0194  76.2s
+[ep 188] L_simple=0.0193  76.2s
+[ep 189] L_simple=0.0194  76.2s
+[ep 190] L_simple=0.0194  76.4s
+[ep 191] L_simple=0.0191  76.3s
+[ep 192] L_simple=0.0190  76.2s
+[ep 193] L_simple=0.0191  76.2s
+[ep 194] L_simple=0.0194  76.2s
+[ep 195] L_simple=0.0192  76.2s
+[ep 196] L_simple=0.0191  76.4s
+[ep 197] L_simple=0.0192  76.2s
+[ep 198] L_simple=0.0190  76.2s
+[ep 199] L_simple=0.0194  76.2s
+[ep 200] L_simple=0.0189  76.2s
+[done] best L_simple=0.0188 -> ddpm_ct28_200ep

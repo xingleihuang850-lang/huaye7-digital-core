@@ -12,10 +12,10 @@
 
 开题四阶段（不可偏离）：**① 分割 → ② 2D 扩散生成 → ③ 多模态 3D 数字岩心 → ④ 数字井筒**。
 
-**当前进度（2026-06-28）**：阶段一已收尾（E0/E2/E3 配准+3D、S3 Amics 多矿物 1μm 丰富相 0.67–0.73；官页15-1-1 T0613论文修改版基准入档见 [`notes/19_阶段一_官页15-1-1_T0613分割基准.md`](notes/19_阶段一_官页15-1-1_T0613分割基准.md)）。**阶段二 M7-v2 已完成**：见 [`notes/22_阶段二_M7v2_阈值标定诊断.md`](notes/22_阶段二_M7v2_阈值标定诊断.md)。
-> **M7-v2 结论**：T*=0.9873 标定后分离出两个独立问题——① **阈值伪影（已修）**：S₂ rmse 下降97%（0.071→0.002）；② **连通性真错（待迭代）**：Euler 207→真实127，孤立散点≠成簇孔隙。
-> **下一步（M7-v3）**：见 [`notes/24_阶段二_M7v3_连通性迭代设计.md`](notes/24_阶段二_M7v3_连通性迭代设计.md)。先做 **50→200ep 对照** 验证欠训练；根本方向是 **生成灰度介质 sus 本身**（B1）或 **[sus,pore] 双通道联合生成**（B2）。注意：真实 sus 输入→pore 输出是分割，不是生成。
-> **接力提示**：新会话先读本★节 + [`notes/README.md`](notes/README.md) + 22/24 号笔记。远程长任务先开 caffeinate（见 memory [[remote-job-no-sleep]]）。
+**当前进度（2026-07-01）**：阶段一已收尾（E0/E2/E3 配准+3D、S3 Amics 多矿物 1μm 丰富相 0.67–0.73；官页15-1-1 T0613论文修改版基准入档见 [`notes/19_阶段一_官页15-1-1_T0613分割基准.md`](notes/19_阶段一_官页15-1-1_T0613分割基准.md)）。**阶段二 M7-v2 已完成**：见 [`notes/22_阶段二_M7v2_阈值标定诊断.md`](notes/22_阶段二_M7v2_阈值标定诊断.md)。
+> **M7-v2 结论**：T*=0.98732 标定后分离出两个独立问题——① **阈值伪影（已修）**：S₂ rmse 下降约97%（0.07143→0.00242）；② **连通性真错（待迭代）**：Euler 207.92→真实127.33，孤立散点≠成簇孔隙。
+> **M7-v3 当前状态**：见 [`notes/24_阶段二_M7v3_连通性迭代设计.md`](notes/24_阶段二_M7v3_连通性迭代设计.md)。远程 `ddpm_ct28_200ep` 已完成 200ep 训练（best_Lsimple=0.01881），但尚未采样/评估；下一步应对 200ep best.pt 生成 `samples.npy`/`samples_continuous.npy` 并复用 eval/calib 比较 S₂/Euler/连通簇。根本方向仍是 **生成灰度介质 sus 本身**（B1）或 **[sus,pore] 双通道联合生成**（B2）。注意：真实 sus 输入→pore 输出是分割，不是生成。
+> **接力提示**：新会话先读本★节 + [`notes/README.md`](notes/README.md) + [`notes/03_项目Workflow设计.md`](notes/03_项目Workflow设计.md) + [`notes/04_项目术语表与写法规范.md`](notes/04_项目术语表与写法规范.md) + 22/24 号笔记。远程长任务先开 caffeinate（见 memory [[remote-job-no-sleep]]）。
 
 **工作纪律（每一步都遵守，不只 M6/M7）**：
 1. **拆小目标、逐个完成**；**每完成一个小目标给用户一条进度说明/提示**（做了什么、结论、下一步）。
@@ -74,14 +74,14 @@
 | `data/raw_stats/`（=统计分析库） | 按属性分目录的逐深度段 xlsx | **DuckDB 入库金矿** |
 | `GJ5-15data/GJ5-15-图片库/` | CT 2D切片、3D岩心/孔隙/矿物/裂缝渲染图、岩心剖面展开图 | 大，LanceDB 多模态索引对象 |
 | `GJ5-15data/GJ5-15-动画库/` | 含油/孔隙/成岩矿物/纹夹层/裂缝 3D 动画 | 大，已 .claudeignore |
-| `nnunet_pipeline/` | nnU-Net v2 分割管线脚本 + 少量弱标注样本 | **判别式分割，非生成** |
+| `nnunet_pipeline/` | nnU-Netv2 分割管线脚本 + 少量弱标注样本 | **判别式分割，非生成** |
 
 **统计分析库子目录**（每个下含 5 个深度段 xlsx）：泥质含量(NZ)、成岩矿物含量(CYKW)、基质孔隙度、裂缝孔隙度、含油率、含油饱和度、孔洞缝充填率、总孔洞缝率、孔隙直径、综合柱状图数据。
 - ⚠️ 库根目录有一批带 `(1)` 后缀的**重复文件**（如 `…基质孔隙度(1).xlsx`），入库前去重。
 
 **nnunet_pipeline 要点**（详见其 `README_PIPELINE.txt`）：
 - 分割 3 类：`0=基质 / 1=孔隙 / 2=裂缝`。
-- 设计为整包 scp 到 Linux GPU 机训练（step0 诊断 → step1 转 nnU-Net 格式 → step2 训练 → step3 推理）。
+- 设计为整包 scp 到 Linux GPU 机训练（step0 诊断 → step1 转 nnU-Netv2 格式 → step2 训练 → step3 推理）。
 - 此目录只有脚本 + `refine_set/`（弱标注 tif 样本）+ `reference_porosity_curve.csv`。
 - ⚠️ **真正的大体积 CT 训练数据不在这 18G 内**——需确认它在哪台机器/盘上。
 
@@ -128,7 +128,7 @@
   - 装包：用 **`uv pip install --python .venv/bin/python <包>`**（uv 在 `~/Library/Python/3.9/bin/uv`）；⚠️ `.venv` 内没有 pip，别用 `.venv/bin/python -m pip`。
   - 重建：`uv venv --python 3.12 && uv pip install --python .venv/bin/python -r requirements.txt`。
   - 已装：分析栈（numpy/pandas/scipy/matplotlib/openpyxl/python-docx/python-pptx/duckdb/tifffile/scikit-image）+ **torch 2.12（Apple Silicon MPS 可用）**。本机只做轻量 dev/验证，大规模训练在 5090 Linux。
-  - **阶段二 DDPM 训练/采样脚本当前按远程 GPU 环境运行**：`src/hy7_phase2_ddpm.py` 需要 `diffusers`，本机 `.venv` 暂未钉该包；在未核实远程 `diffusers` 版本前，不把猜测版本写入 `requirements.txt`。若要本地复现，先从远程环境记录 `diffusers.__version__`，再补钉依赖。
+  - **阶段二 DDPM 训练/采样脚本当前按远程 GPU 环境运行**：`src/hy7_phase2_ddpm.py` 需要 `diffusers`；2026-07-01 已核实远程 `nnunet_t28` 环境为 `diffusers==0.38.0`。本机 `.venv` 暂未钉该包；若要本机复现 DDPM train/sample，先按远程版本策略补依赖并记录。
 - 关键术语中英对照：含水饱和度/Sw、含油饱和度/So、孔隙度/porosity、泥质含量/Vsh(NZ)、成岩矿物/CYKW、基质/matrix、孔隙/pore、裂缝/fracture。
 
 ## 5. 建议 agent 优先做的事

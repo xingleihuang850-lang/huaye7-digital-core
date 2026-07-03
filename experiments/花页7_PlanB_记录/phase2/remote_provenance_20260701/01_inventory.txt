@@ -1,0 +1,25 @@
+HOST=admin
+2026-07-01T17:19:28+08:00
+PHASE2=/home/user/HXL/HY7_planb/phase2
+--- dirs ---
+/home/user/HXL/HY7_planb/phase2
+/home/user/HXL/HY7_planb/phase2/ddpm_ct28
+/home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep
+/home/user/HXL/HY7_planb/phase2/ddpm_ct28/eval_v2
+/home/user/HXL/HY7_planb/phase2/ddpm_ct28/m7v2_calib
+/home/user/HXL/HY7_planb/phase2/ddpm_smoke
+/home/user/HXL/HY7_planb/phase2/eval_ct28
+/home/user/HXL/HY7_planb/phase2/m7v2_calib
+/home/user/HXL/HY7_planb/phase2/slices_ct28
+/home/user/HXL/HY7_planb/phase2/slices_ct28_128
+--- json files ---
+/home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep.log
+/home/user/HXL/HY7_planb/phase2/ddpm_ct28_200ep/train_meta.json
+/home/user/HXL/HY7_planb/phase2/ddpm_ct28/eval_v2/metrics.json
+/home/user/HXL/HY7_planb/phase2/ddpm_ct28/m7v2_calib/calib_result.json
+/home/user/HXL/HY7_planb/phase2/ddpm_ct28/train_meta.json
+/home/user/HXL/HY7_planb/phase2/ddpm_smoke/train_meta.json
+/home/user/HXL/HY7_planb/phase2/eval_ct28/metrics.json
+/home/user/HXL/HY7_planb/phase2/m7v2_calib/calib_result.json
+/home/user/HXL/HY7_planb/phase2/slices_ct28_128/meta.json
+/home/user/HXL/HY7_planb/phase2/slices_ct28/meta.json

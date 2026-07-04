@@ -39,7 +39,7 @@
 | 27 | [B1 校正敏感性与 B1.1 决策](27_阶段二_B1校正敏感性与B11决策.md) | qmatch/affine 灰度校正、φ=5–8% 敏感性、Fable5 复核与 B1.1/200ep/B2 决策。 |
 | 28 | [B1 理论文献支撑](28_阶段二_B1理论文献支撑.md) | S₂不充分、拓扑/连通指标、domain shift/qmatch、B1.1 决策的文献支撑与写作边界。 |
 | 29 | [B1.1 P0审计与花页7DLIS盘点](29_阶段二_B11_P0审计与花页7DLIS盘点.md) | 归一化链条审计、灰度功率谱/自相关诊断、花页7 DLIS 电成像覆盖确认与 B1.1 cheap50 设计。 |
-| 30 | [B1.1 输出校准与 checkpoint 选择](30_阶段二_B11输出校准与checkpoint选择.md) | train-moments 输出校准、best/final checkpoint 对比、nnUNet 复测与 metric-aware checkpoint selection 结论。 |
+| 30 | [B1.1 输出校准与 checkpoint 选择](30_阶段二_B11输出校准与checkpoint选择.md) | train-moments 输出校准、best/final checkpoint 对比、nnUNet 复测、metric-aware checkpoint selection 与 periodic validation sampling 框架。 |
 
 ## 9x · 工程 / 杂项
 | 编号 | 笔记 | 一句话 |

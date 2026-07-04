@@ -159,16 +159,28 @@ B1.1 下一步应改为：
 metric-aware checkpoint selection + periodic validation sampling
 ```
 
-若要继续训练改造，最小代码方向是：
+本轮继续把训练期 periodic validation sampling 的本地框架落到 `hy7_phase2_ddpm.py train`：
 
 ```text
-hy7_phase2_ddpm.py train 增加：
 --save-every 10
 --eval-every 10
---eval-real test_pore.npy
+--eval-n <small_n>
 --eval-gray-test test.npy
+--eval-real test_pore.npy
+--eval-porosity-targets 6.0,6.4
 --select-metric composite
 ```
+
+已实现的轻量指标：
+
+- 每 `save_every` 存 `ckpt_epXXX.pt`；
+- 每 `eval_every` 对当前 checkpoint 生成小样本 gray；
+- gray mean/std/min/max + two-sample KS；
+- lower-tail threshold 到预注册 φ 目标（默认 6.0/6.4）；
+- pore proxy：φ、S₂ RMSE、Euler、maxCC；
+- 调用 `score_checkpoint_metrics` / `select_metric_aware_checkpoint` 写出 `validation_epXXX.json` 与 `periodic_validation_summary.json`。
+
+本地验证：`python3 -m pytest tests -q` → `18 passed in 0.09s`；另用 `/var/folders/.../T/hermes-verify-*.py` 临时脚本完成 ad-hoc verification，并已清理脚本。
 
 执行前先固定以下 gate，避免看结果后调参：
 

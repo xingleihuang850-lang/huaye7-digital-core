@@ -215,6 +215,148 @@ def select_metric_aware_checkpoint(candidates, target, weights=None, gates=None)
     return best
 
 
+def _ks_2sample(a, b):
+    a = np.sort(np.asarray(a, dtype=np.float32).ravel())
+    b = np.sort(np.asarray(b, dtype=np.float32).ravel())
+    if len(a) == 0 or len(b) == 0:
+        raise ValueError("KS inputs must be non-empty")
+    x = np.sort(np.concatenate([a, b]))
+    ca = np.searchsorted(a, x, side="right") / len(a)
+    cb = np.searchsorted(b, x, side="right") / len(b)
+    return float(np.max(np.abs(ca - cb)))
+
+
+def gray_validation_stats(generated, reference):
+    """Gray-domain validation stats for periodic B1.1 checkpoint sampling."""
+    g = np.asarray(generated, dtype=np.float32)
+    r = np.asarray(reference, dtype=np.float32)
+    if g.ndim != 3 or r.ndim != 3:
+        raise ValueError("gray validation arrays must have shape (N,H,W)")
+    return {
+        "n": int(g.shape[0]),
+        "mean": float(g.mean()),
+        "std": float(g.std()),
+        "min": float(g.min()),
+        "max": float(g.max()),
+        "ks": _ks_2sample(g, r),
+    }
+
+
+def threshold_for_porosity(gray, porosity_percent):
+    """Return lower-tail gray threshold whose pore fraction approximates porosity_percent."""
+    arr = np.asarray(gray, dtype=np.float32).ravel()
+    if len(arr) == 0:
+        raise ValueError("gray array must be non-empty")
+    q = min(max(float(porosity_percent) / 100.0, 0.0), 1.0)
+    idx = int(np.ceil(q * len(arr)) - 1)
+    idx = min(max(idx, 0), len(arr) - 1)
+    return float(np.partition(arr, idx)[idx])
+
+
+def _component_sizes(mask, value=True):
+    m = np.asarray(mask, dtype=bool) == bool(value)
+    seen = np.zeros(m.shape, dtype=bool)
+    sizes = []
+    h, w = m.shape
+    for y in range(h):
+        for x in range(w):
+            if seen[y, x] or not m[y, x]:
+                continue
+            stack = [(y, x)]; seen[y, x] = True; n = 0
+            while stack:
+                cy, cx = stack.pop(); n += 1
+                for ny, nx in ((cy - 1, cx), (cy + 1, cx), (cy, cx - 1), (cy, cx + 1)):
+                    if 0 <= ny < h and 0 <= nx < w and not seen[ny, nx] and m[ny, nx]:
+                        seen[ny, nx] = True; stack.append((ny, nx))
+            sizes.append(n)
+    return sizes
+
+
+def _hole_count(mask):
+    pore = np.asarray(mask, dtype=bool)
+    bg = ~pore
+    seen = np.zeros(bg.shape, dtype=bool)
+    h, w = bg.shape
+    holes = 0
+    for y in range(h):
+        for x in range(w):
+            if seen[y, x] or not bg[y, x]:
+                continue
+            stack = [(y, x)]; seen[y, x] = True; touches_border = False
+            while stack:
+                cy, cx = stack.pop()
+                touches_border |= cy in (0, h - 1) or cx in (0, w - 1)
+                for ny, nx in ((cy - 1, cx), (cy + 1, cx), (cy, cx - 1), (cy, cx + 1)):
+                    if 0 <= ny < h and 0 <= nx < w and not seen[ny, nx] and bg[ny, nx]:
+                        seen[ny, nx] = True; stack.append((ny, nx))
+            holes += 0 if touches_border else 1
+    return holes
+
+
+def _two_point_curve(mask):
+    m = np.asarray(mask, dtype=bool)
+    max_lag = min(16, m.shape[-2] - 1, m.shape[-1] - 1)
+    vals = []
+    for lag in range(1, max_lag + 1):
+        vals.append(float((m[:, :, :-lag] & m[:, :, lag:]).mean()))
+        vals.append(float((m[:, :-lag, :] & m[:, lag:, :]).mean()))
+    return np.asarray(vals, dtype=np.float32)
+
+
+def binary_pore_metrics(generated, real):
+    """Compute lightweight pore metrics: φ, S2 RMSE, Euler, max connected component."""
+    g = np.asarray(generated, dtype=bool)
+    r = np.asarray(real, dtype=bool)
+    if g.ndim == 2:
+        g = g[None]
+    if r.ndim == 2:
+        r = r[None]
+    if g.ndim != 3 or r.ndim != 3:
+        raise ValueError("pore arrays must have shape (N,H,W) or (H,W)")
+    eulers, maxccs = [], []
+    for sl in g:
+        sizes = _component_sizes(sl, True)
+        eulers.append(float(len(sizes) - _hole_count(sl)))
+        maxccs.append(float(max(sizes, default=0)) / sl.size)
+    sg, sr = _two_point_curve(g), _two_point_curve(r)
+    n = min(len(sg), len(sr))
+    s2 = float(np.sqrt(np.mean((sg[:n] - sr[:n]) ** 2))) if n else 0.0
+    return {"phi": float(g.mean() * 100.0), "s2_rmse": s2,
+            "euler": float(np.mean(eulers)), "maxcc": float(np.mean(maxccs))}
+
+
+def periodic_validation_summary(gray_samples, gray_reference, real_pore, checkpoint, epoch,
+                                porosity_targets=(6.0, 6.4), metric_target=None,
+                                weights=None, gates=None):
+    """Score one checkpoint's gray samples across pre-registered porosity thresholds."""
+    gray = np.asarray(gray_samples, dtype=np.float32)
+    real = np.asarray(real_pore, dtype=bool)
+    if metric_target is None:
+        rm = binary_pore_metrics(real, real)
+        metric_target = {"phi": rm["phi"], "s2_rmse": 0.0, "euler": rm["euler"], "maxcc": rm["maxcc"]}
+    candidates = []
+    for por in porosity_targets:
+        thr = threshold_for_porosity(gray, por)
+        pore = gray <= thr
+        metrics = binary_pore_metrics(pore, real)
+        candidate = {
+            **metrics,
+            "name": f"{checkpoint}@phi{float(por):.3g}",
+            "checkpoint": checkpoint,
+            "epoch": int(epoch),
+            "porosity_target": float(por),
+            "threshold": thr,
+        }
+        candidates.append(candidate)
+    selected = select_metric_aware_checkpoint(candidates, target=metric_target, weights=weights, gates=gates)
+    return {"checkpoint": checkpoint, "epoch": int(epoch),
+            "gray_stats": gray_validation_stats(gray, gray_reference),
+            "metric_target": dict(metric_target),
+            "threshold_candidates": candidates,
+            "selected": {k: v for k, v in selected.items() if k != "candidates"},
+            "scored_candidates": selected["candidates"]}
+
+
 @torch.no_grad()
 def sample(model, sched, n, size, dev, bs=64, save_continuous=False, mode="binary"):
     """反向扩散采样。
@@ -257,6 +399,46 @@ def save_grid(imgs, path, k=8, mode="binary"):
     plt.tight_layout(); plt.savefig(path, dpi=110); plt.close()
 
 
+def _parse_float_list(text):
+    return [float(x.strip()) for x in str(text).split(",") if x.strip()]
+
+
+def _periodic_eval_ready(a):
+    return int(getattr(a, "eval_every", 0) or 0) > 0
+
+
+def _load_periodic_refs(a):
+    if not _periodic_eval_ready(a):
+        return None, None, None
+    if a.sample_mode != "gray":
+        raise ValueError("periodic validation requires --sample-mode gray")
+    if not a.eval_gray_test or not a.eval_real:
+        raise ValueError("periodic validation requires --eval-gray-test and --eval-real")
+    gray_ref = np.load(a.eval_gray_test)
+    real_pore = np.load(a.eval_real)
+    target = binary_pore_metrics(real_pore, real_pore)
+    target["s2_rmse"] = 0.0
+    return gray_ref, real_pore, target
+
+
+def _run_periodic_validation(model, sched, a, epoch, ckpt_path, size, dev, gray_ref, real_pore, target):
+    gray = sample(model, sched, int(a.eval_n), size, dev, bs=a.bs, mode="gray")
+    summary = periodic_validation_summary(
+        gray,
+        gray_reference=gray_ref,
+        real_pore=real_pore,
+        checkpoint=os.path.basename(ckpt_path),
+        epoch=epoch,
+        porosity_targets=_parse_float_list(a.eval_porosity_targets),
+        metric_target=target,
+    )
+    path = os.path.join(a.out, f"validation_ep{epoch:03d}.json")
+    json.dump(summary, open(path, "w"), indent=2)
+    print(f"[eval ep {epoch:3d}] selected={summary['selected']['porosity_target']:.3f}% "
+          f"score={summary['selected']['score']:.4f} pass={summary['selected']['passed_gate']} -> {path}")
+    return summary
+
+
 def cmd_train(a):
     dev = "cuda" if torch.cuda.is_available() else "cpu"
     torch.manual_seed(a.seed); np.random.seed(a.seed)
@@ -269,6 +451,8 @@ def cmd_train(a):
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr)
     scaler = torch.amp.GradScaler("cuda", enabled=a.amp)
     os.makedirs(a.out, exist_ok=True)
+    gray_ref, real_pore, metric_target = _load_periodic_refs(a)
+    validation_summaries = []
     npar = sum(p.numel() for p in model.parameters()) / 1e6
     print(f"[i] size={size} tiles={len(x)} params={npar:.1f}M bs={a.bs} epochs={a.epochs} dev={dev}")
     best = 1e9
@@ -290,10 +474,25 @@ def cmd_train(a):
         if avg < best:
             best = avg
             torch.save(model.state_dict(), os.path.join(a.out, "best.pt"))
+        ckpt_path = None
+        if int(a.save_every) > 0 and ep % int(a.save_every) == 0:
+            ckpt_path = os.path.join(a.out, f"ckpt_ep{ep:03d}.pt")
+            torch.save(model.state_dict(), ckpt_path)
         if ep % a.sample_every == 0 or ep == a.epochs:
             g = sample(model, sched, 8, size, dev, mode=a.sample_mode)
             save_grid(g, os.path.join(a.out, f"grid_ep{ep:03d}.png"), mode=a.sample_mode)
+        if _periodic_eval_ready(a) and (ep % int(a.eval_every) == 0 or ep == a.epochs):
+            if ckpt_path is None:
+                ckpt_path = os.path.join(a.out, f"ckpt_ep{ep:03d}.pt")
+                torch.save(model.state_dict(), ckpt_path)
+            validation_summaries.append(_run_periodic_validation(
+                model, sched, a, ep, ckpt_path, size, dev, gray_ref, real_pore, metric_target))
     torch.save(model.state_dict(), os.path.join(a.out, "final.pt"))
+    if validation_summaries:
+        selected = select_metric_aware_checkpoint(
+            [v["selected"] for v in validation_summaries], target=metric_target)
+        json.dump({"summaries": validation_summaries, "selected": selected},
+                  open(os.path.join(a.out, "periodic_validation_summary.json"), "w"), indent=2)
     json.dump({"size": size, "n_train": len(x), "epochs": a.epochs, "base": a.base,
                "bs": a.bs, "lr": a.lr, "seed": a.seed, "sample_mode": a.sample_mode,
                "best_Lsimple": round(best, 5), "params_M": round(npar, 2)},
@@ -349,6 +548,20 @@ if __name__ == "__main__":
     p.add_argument("--base", type=int, default=64); p.add_argument("--lr", type=float, default=1e-4)
     p.add_argument("--amp", action="store_true"); p.add_argument("--seed", type=int, default=42)
     p.add_argument("--sample-every", type=int, default=20)
+    p.add_argument("--save-every", type=int, default=0,
+                   help="save periodic ckpt_epXXX.pt checkpoints; B1.1 uses 10")
+    p.add_argument("--eval-every", type=int, default=0,
+                   help="run periodic gray validation every N epochs; B1.1 uses 10")
+    p.add_argument("--eval-n", type=int, default=32,
+                   help="small validation sample count for periodic checkpoint scoring")
+    p.add_argument("--eval-gray-test", default=None,
+                   help="gray reference .npy for mean/std/KS during periodic validation")
+    p.add_argument("--eval-real", default=None,
+                   help="real pore .npy evaluated with the same proxy for S2/Euler/maxCC targets")
+    p.add_argument("--eval-porosity-targets", default="6.0,6.4",
+                   help="comma-separated lower-tail porosity thresholds to evaluate")
+    p.add_argument("--select-metric", choices=["composite"], default="composite",
+                   help="checkpoint selection metric; currently gated composite score")
     p.add_argument("--sample-mode", choices=["binary", "gray"], default="binary",
                    help="checkpoint grid sample representation: binary for pore masks, gray for B1 sus")
     p.set_defaults(func=cmd_train)

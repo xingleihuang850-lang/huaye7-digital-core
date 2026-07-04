@@ -1,0 +1,4 @@
+local_commit=ff6c1bc
+local_sha256=bfb1bd3d28303be06e6f38c6dc6fe1709321254ac380d6d5a3801f2d06a7d51b
+sync_time=2026-07-03T22:37:21+08:00
+bfb1bd3d28303be06e6f38c6dc6fe1709321254ac380d6d5a3801f2d06a7d51b  src/hy7_phase2_ddpm.py

@@ -1,0 +1,126 @@
+[info] 连续值已保存 -> phase2/b1_gray_sus_b11_output_calib_20260703/best_none/samples_continuous.npy  (float32, [-1,1])
+[done] 512 gray samples min=-1.000 max=1.000 mean=-0.432 -> phase2/b1_gray_sus_b11_output_calib_20260703/best_none/samples_gray.npy
+[info] 连续值已保存 -> phase2/b1_gray_sus_b11_output_calib_20260703/best_train_moments/samples_continuous.npy  (float32, [-1,1])
+[info] intensity calibration train-moments -> phase2/b1_gray_sus_b11_output_calib_20260703/best_train_moments/sample_intensity_calibration.json
+[done] 512 gray samples min=-0.662 max=1.000 mean=-0.095 -> phase2/b1_gray_sus_b11_output_calib_20260703/best_train_moments/samples_gray.npy
+[info] 连续值已保存 -> phase2/b1_gray_sus_b11_output_calib_20260703/final_none/samples_continuous.npy  (float32, [-1,1])
+[done] 512 gray samples min=-1.000 max=1.000 mean=-0.134 -> phase2/b1_gray_sus_b11_output_calib_20260703/final_none/samples_gray.npy
+[info] 连续值已保存 -> phase2/b1_gray_sus_b11_output_calib_20260703/final_train_moments/samples_continuous.npy  (float32, [-1,1])
+[info] intensity calibration train-moments -> phase2/b1_gray_sus_b11_output_calib_20260703/final_train_moments/sample_intensity_calibration.json
+[done] 512 gray samples min=-0.776 max=0.803 mean=-0.093 -> phase2/b1_gray_sus_b11_output_calib_20260703/final_train_moments/samples_gray.npy
+{
+  "train": {
+    "mean": -0.09257782250642776,
+    "std": 0.37391185760498047,
+    "min": -1.0,
+    "max": 1.0,
+    "p6p4": -0.6499999761581421,
+    "frac_minus1": 0.011312969161803464,
+    "frac_plus1": 0.01196211849350527
+  },
+  "test512": {
+    "mean": -0.09889258444309235,
+    "std": 0.35368090867996216,
+    "min": -1.0,
+    "max": 1.0,
+    "p6p4": -0.612500011920929,
+    "frac_minus1": 0.00834798812866211,
+    "frac_plus1": 0.009186387062072754
+  },
+  "variants": {
+    "best_none": {
+      "mean": -0.43188536167144775,
+      "std": 0.3733144700527191,
+      "min": -1.0,
+      "max": 1.0,
+      "p6p4": -0.97492915391922,
+      "frac_minus1": 0.02545034885406494,
+      "frac_plus1": 0.001336812973022461,
+      "mean_shift_vs_train": -0.33930753916502,
+      "mean_shift_vs_test512": -0.3329927772283554
+    },
+    "best_train_moments": {
+      "mean": -0.09465719759464264,
+      "std": 0.36700209975242615,
+      "min": -0.6616016030311584,
+      "max": 1.0,
+      "p6p4": -0.6364905834197998,
+      "frac_minus1": 0.0,
+      "frac_plus1": 0.010162115097045898,
+      "mean_shift_vs_train": -0.0020793750882148743,
+      "mean_shift_vs_test512": 0.004235386848449707
+    },
+    "final_none": {
+      "mean": -0.13439339399337769,
+      "std": 0.47378474473953247,
+      "min": -1.0,
+      "max": 1.0,
+      "p6p4": -0.8510869145393372,
+      "frac_minus1": 0.010514378547668457,
+      "frac_plus1": 0.008269786834716797,
+      "mean_shift_vs_train": -0.04181557148694992,
+      "mean_shift_vs_test512": -0.03550080955028534
+    },
+    "final_train_moments": {
+      "mean": -0.09257781505584717,
+      "std": 0.37391185760498047,
+      "min": -0.775716245174408,
+      "max": 0.8026877045631409,
+      "p6p4": -0.6581937670707703,
+      "frac_minus1": 0.0,
+      "frac_plus1": 0.0,
+      "mean_shift_vs_train": 7.450580596923828e-09,
+      "mean_shift_vs_test512": 0.006314769387245178
+    }
+  }
+}
+[done] porosity real=6.40% gen=20.65% naive=6.41%
+       S2 rmse gen=0.0510 naive=0.0049
+       Euler real=127.3 gen=150.6 naive=890.2
+       max-CC-frac real=0.060 gen=0.080 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_output_calib_20260703/eval_nnunet2d_best_none/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=3.78% naive=6.41%
+       S2 rmse gen=0.0058 naive=0.0049
+       Euler real=127.3 gen=115.1 naive=890.2
+       max-CC-frac real=0.060 gen=0.100 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_output_calib_20260703/eval_nnunet2d_best_train_moments/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=10.99% naive=6.41%
+       S2 rmse gen=0.0181 naive=0.0049
+       Euler real=127.3 gen=124.5 naive=890.2
+       max-CC-frac real=0.060 gen=0.068 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_output_calib_20260703/eval_nnunet2d_final_none/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=5.60% naive=6.41%
+       S2 rmse gen=0.0022 naive=0.0049
+       Euler real=127.3 gen=91.2 naive=890.2
+       max-CC-frac real=0.060 gen=0.082 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_output_calib_20260703/eval_nnunet2d_final_train_moments/metrics.json  fig_eval.png
+{
+  "best_none": {
+    "phi": 20.649,
+    "s2": 0.05097,
+    "euler": 150.65,
+    "maxcc": 0.0804
+  },
+  "best_train_moments": {
+    "phi": 3.777,
+    "s2": 0.00584,
+    "euler": 115.14,
+    "maxcc": 0.1003
+  },
+  "final_none": {
+    "phi": 10.989,
+    "s2": 0.01808,
+    "euler": 124.52,
+    "maxcc": 0.068
+  },
+  "final_train_moments": {
+    "phi": 5.601,
+    "s2": 0.0022,
+    "euler": 91.21,
+    "maxcc": 0.0823
+  }
+}

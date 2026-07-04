@@ -1,0 +1,10 @@
+{
+  "mode": "train-moments",
+  "reference_mean": -0.09257782250642776,
+  "reference_std": 0.37391185760498047,
+  "sample_mean_before": -0.43188536167144775,
+  "sample_std_before": 0.3733144700527191,
+  "sample_mean_after": -0.09465719759464264,
+  "sample_std_after": 0.36700209975242615,
+  "calibration_data": "phase2/slices_ct28_gray_128"
+}

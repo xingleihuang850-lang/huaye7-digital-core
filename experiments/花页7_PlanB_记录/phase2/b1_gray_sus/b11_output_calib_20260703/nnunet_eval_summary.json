@@ -1,0 +1,26 @@
+{
+  "best_none": {
+    "phi": 20.649,
+    "s2": 0.05097,
+    "euler": 150.65,
+    "maxcc": 0.0804
+  },
+  "best_train_moments": {
+    "phi": 3.777,
+    "s2": 0.00584,
+    "euler": 115.14,
+    "maxcc": 0.1003
+  },
+  "final_none": {
+    "phi": 10.989,
+    "s2": 0.01808,
+    "euler": 124.52,
+    "maxcc": 0.068
+  },
+  "final_train_moments": {
+    "phi": 5.601,
+    "s2": 0.0022,
+    "euler": 91.21,
+    "maxcc": 0.0823
+  }
+}

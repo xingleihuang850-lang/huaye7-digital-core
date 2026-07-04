@@ -1,0 +1,33 @@
+
+#######################################################################
+Please cite the following paper when using nnU-Net:
+Isensee, F., Jaeger, P. F., Kohl, S. A., Petersen, J., & Maier-Hein, K. H. (2021). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nature methods, 18(2), 203-211.
+#######################################################################
+
+There are 4 cases in the source folder
+I am processing 0 out of 1 (max process ID is 0, we start counting with 0!)
+There are 4 cases that I would like to predict
+
+Predicting BEST_NONE:
+perform_everything_on_device: True
+  0%|          | 0/512 [00:00<?, ?it/s]  0%|          | 1/512 [00:00<02:07,  4.02it/s] 18%|█▊        | 91/512 [00:00<00:01, 330.76it/s] 36%|███▌      | 184/512 [00:00<00:00, 534.77it/s] 55%|█████▍    | 280/512 [00:00<00:00, 672.40it/s] 73%|███████▎  | 375/512 [00:00<00:00, 758.56it/s] 92%|█████████▏| 469/512 [00:00<00:00, 812.71it/s]100%|██████████| 512/512 [00:00<00:00, 641.26it/s]
+sending off prediction to background worker for resampling and export
+done with BEST_NONE
+
+Predicting BEST_TRAIN_MOMENTS:
+perform_everything_on_device: True
+  0%|          | 0/512 [00:00<?, ?it/s] 18%|█▊        | 94/512 [00:00<00:00, 935.47it/s] 37%|███▋      | 190/512 [00:00<00:00, 948.34it/s] 56%|█████▋    | 288/512 [00:00<00:00, 958.91it/s] 75%|███████▌  | 386/512 [00:00<00:00, 963.59it/s] 95%|█████████▍| 484/512 [00:00<00:00, 966.47it/s]100%|██████████| 512/512 [00:00<00:00, 961.68it/s]
+sending off prediction to background worker for resampling and export
+done with BEST_TRAIN_MOMENTS
+
+Predicting FINAL_NONE:
+perform_everything_on_device: True
+  0%|          | 0/512 [00:00<?, ?it/s] 18%|█▊        | 93/512 [00:00<00:00, 926.55it/s] 37%|███▋      | 189/512 [00:00<00:00, 945.42it/s] 56%|█████▌    | 285/512 [00:00<00:00, 950.48it/s] 74%|███████▍  | 381/512 [00:00<00:00, 947.18it/s] 93%|█████████▎| 476/512 [00:00<00:00, 944.80it/s]100%|██████████| 512/512 [00:00<00:00, 944.29it/s]
+sending off prediction to background worker for resampling and export
+done with FINAL_NONE
+
+Predicting FINAL_TRAIN_MOMENTS:
+perform_everything_on_device: True
+  0%|          | 0/512 [00:00<?, ?it/s] 18%|█▊        | 92/512 [00:00<00:00, 918.48it/s] 37%|███▋      | 187/512 [00:00<00:00, 936.05it/s] 55%|█████▌    | 283/512 [00:00<00:00, 945.63it/s] 74%|███████▍  | 380/512 [00:00<00:00, 951.46it/s] 93%|█████████▎| 476/512 [00:00<00:00, 954.34it/s]100%|██████████| 512/512 [00:00<00:00, 949.22it/s]
+sending off prediction to background worker for resampling and export
+done with FINAL_TRAIN_MOMENTS

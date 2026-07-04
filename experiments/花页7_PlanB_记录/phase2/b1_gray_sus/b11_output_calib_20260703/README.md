@@ -48,6 +48,12 @@ Key finding: the final checkpoint naturally has much smaller mean shift than the
 
 Reference real values from the same protocol: φ=6.405%, Euler=127.33, maxCC=0.0597.
 
+## Metric-aware gate probe
+
+A lightweight scoring probe was added in `b11_metric_selection_probe.json` using the pre-registered B1.1 gate from `notes/30`: target φ=6.405%, S₂=0, Euler=127.33, maxCC=0.0597; equal weights; gate `maxCC <= 0.070` and `Euler` within real ±15%.
+
+Diagnostic result on the four output-calib variants: `final_none` is the only candidate passing the gate (`score=2.685`). This does not make `final_none` a production checkpoint because φ/S₂ remain poor; it only confirms the next-step direction: checkpoint selection must be metric-aware and must preserve explicit stop-gates for over-connected topology.
+
 ## Interpretation
 
 1. `best.pt` is bad for raw nnUNet because of strong dark shift. Train-moments calibration fixes mean/std but over-corrects segmentation behavior: φ becomes too low and maxCC worsens.

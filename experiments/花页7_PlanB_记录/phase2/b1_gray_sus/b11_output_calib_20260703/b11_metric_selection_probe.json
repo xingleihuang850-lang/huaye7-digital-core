@@ -1,0 +1,95 @@
+{
+  "purpose": "B1.1 output-calib evidence scored with pre-B1.1 metric-aware gate; diagnostic only, not final checkpoint selection.",
+  "target": {
+    "phi": 6.405,
+    "s2_rmse": 0.0,
+    "euler": 127.33,
+    "maxcc": 0.0597
+  },
+  "weights": {
+    "phi": 1.0,
+    "s2_rmse": 1.0,
+    "euler": 1.0,
+    "maxcc": 1.0
+  },
+  "gates": {
+    "maxcc_max": 0.07,
+    "euler_rel_tol": 0.15
+  },
+  "selected": "final_none",
+  "selected_passed_gate": true,
+  "candidates": {
+    "best_none": {
+      "name": "best_none",
+      "phi": 20.649,
+      "s2_rmse": 0.05097,
+      "euler": 150.65,
+      "maxcc": 0.0804,
+      "terms": {
+        "phi": 2.223887587822014,
+        "s2_rmse": 5.097,
+        "euler": 0.18314615565852516,
+        "maxcc": 0.34673366834170843
+      },
+      "failed_gates": [
+        "maxcc",
+        "euler"
+      ],
+      "passed_gate": false,
+      "score": 207.85076741182226
+    },
+    "best_train_moments": {
+      "name": "best_train_moments",
+      "phi": 3.777,
+      "s2_rmse": 0.00584,
+      "euler": 115.14,
+      "maxcc": 0.1003,
+      "terms": {
+        "phi": 0.41030444964871193,
+        "s2_rmse": 0.584,
+        "euler": 0.09573549045786538,
+        "maxcc": 0.6800670016750417
+      },
+      "failed_gates": [
+        "maxcc"
+      ],
+      "passed_gate": false,
+      "score": 101.77010694178162
+    },
+    "final_none": {
+      "name": "final_none",
+      "phi": 10.989,
+      "s2_rmse": 0.01808,
+      "euler": 124.52,
+      "maxcc": 0.068,
+      "terms": {
+        "phi": 0.7156908665105387,
+        "s2_rmse": 1.8079999999999998,
+        "euler": 0.0220686405403283,
+        "maxcc": 0.1390284757118928
+      },
+      "failed_gates": [],
+      "passed_gate": true,
+      "score": 2.6847879827627597
+    },
+    "final_train_moments": {
+      "name": "final_train_moments",
+      "phi": 5.601,
+      "s2_rmse": 0.0022,
+      "euler": 91.21,
+      "maxcc": 0.0823,
+      "terms": {
+        "phi": 0.12552693208430918,
+        "s2_rmse": 0.22,
+        "euler": 0.2836723474436504,
+        "maxcc": 0.37855946398659956
+      },
+      "failed_gates": [
+        "maxcc",
+        "euler"
+      ],
+      "passed_gate": false,
+      "score": 201.00775874351456
+    }
+  }
+}

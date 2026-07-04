@@ -15,9 +15,46 @@
 """
 import argparse, json, os, time
 import numpy as np
-import torch
-import torch.nn.functional as F
-from torch.utils.data import DataLoader, TensorDataset
+try:
+    import torch
+    import torch.nn.functional as F
+    from torch.utils.data import DataLoader, TensorDataset
+except ModuleNotFoundError:
+    class _NumpyTensor:
+        """Tiny torch.Tensor stand-in for local pure-function tests without torch."""
+        def __init__(self, arr):
+            self._arr = np.asarray(arr, dtype=np.float32)
+            self.shape = self._arr.shape
+            self.dtype = self._arr.dtype
+
+        def __getitem__(self, item):
+            return _NumpyTensor(self._arr[item])
+
+        def __len__(self):
+            return len(self._arr)
+
+        def numpy(self):
+            return self._arr
+
+    class _TorchFallback:
+        def no_grad(self):
+            return lambda fn: fn
+
+        def from_numpy(self, arr):
+            return _NumpyTensor(arr)
+
+        def __getattr__(self, name):
+            raise ModuleNotFoundError(
+                "src/hy7_phase2_ddpm.py train/sample requires torch; pure data/calibration helpers remain importable"
+            )
+
+    def _missing_torch_ctor(*_args, **_kwargs):
+        raise ModuleNotFoundError("DataLoader/TensorDataset require torch")
+
+    torch = _TorchFallback()
+    F = None
+    DataLoader = _missing_torch_ctor
+    TensorDataset = _missing_torch_ctor
 
 
 def require_diffusers():
@@ -124,6 +161,58 @@ def apply_intensity_calibration(samples, calibration):
 def invert_intensity_calibration(samples, calibration):
     """Compatibility hook for future train-space transforms; current modes are output-only."""
     return np.asarray(samples, dtype=np.float32)
+
+
+def _metric_abs_rel(value, target_value, fallback_scale=1.0):
+    """Absolute error normalized by target magnitude, with a fixed fallback scale."""
+    v = float(value)
+    t = float(target_value)
+    scale = abs(t) if abs(t) > 1e-12 else float(fallback_scale)
+    return abs(v - t) / scale
+
+
+def score_checkpoint_metrics(metrics, target, weights=None, gates=None):
+    """Score one B1.1 checkpoint candidate against digital-rock proxy metrics.
+
+    Lower score is better. Inputs are plain dictionaries so this can be used both
+    in lightweight local tests and in remote GPU validation scripts. Default gates
+    encode the current HY7 B1.1 risk boundary from notes/30: avoid over-connected
+    samples (maxCC) and large Euler drift before treating a checkpoint as viable.
+    """
+    weights = dict(weights or {"phi": 1.0, "s2_rmse": 1.0, "euler": 1.0, "maxcc": 1.0})
+    gates = dict(gates or {"maxcc_max": 0.070, "euler_rel_tol": 0.15})
+    target = dict(target)
+    metrics = dict(metrics)
+
+    terms = {}
+    terms["phi"] = _metric_abs_rel(metrics["phi"], target["phi"])
+    terms["s2_rmse"] = _metric_abs_rel(metrics["s2_rmse"], target.get("s2_rmse", 0.0), fallback_scale=0.01)
+    terms["euler"] = _metric_abs_rel(metrics["euler"], target["euler"])
+    terms["maxcc"] = _metric_abs_rel(metrics["maxcc"], target["maxcc"])
+
+    failed = []
+    if "maxcc_max" in gates and float(metrics["maxcc"]) > float(gates["maxcc_max"]):
+        failed.append("maxcc")
+    if "euler_rel_tol" in gates and terms["euler"] > float(gates["euler_rel_tol"]):
+        failed.append("euler")
+
+    score = sum(float(weights.get(k, 0.0)) * v for k, v in terms.items())
+    if failed:
+        score += 100.0 * len(failed)
+    out = dict(metrics)
+    out.update({"terms": terms, "failed_gates": failed, "passed_gate": not failed, "score": float(score)})
+    return out
+
+
+def select_metric_aware_checkpoint(candidates, target, weights=None, gates=None):
+    """Return the best B1.1 checkpoint by gated multi-objective metric score."""
+    scored = [score_checkpoint_metrics(c, target=target, weights=weights, gates=gates) for c in candidates]
+    if not scored:
+        raise ValueError("at least one checkpoint candidate is required")
+    best = min(scored, key=lambda x: (not x["passed_gate"], x["score"], str(x.get("name", ""))))
+    best = dict(best)
+    best["candidates"] = {str(c.get("name", i)): c for i, c in enumerate(scored)}
+    return best
 
 
 @torch.no_grad()

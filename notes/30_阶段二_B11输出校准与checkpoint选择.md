@@ -1551,6 +1551,79 @@ ALLOW_A1_WITH_CONSTRAINTS
 DO_NOT_START_A1
 ```
 
+### 15.18 Stage 3 Branch A A1 toy metric-plumbing gate
+
+已运行 `digital-rock-gate` MoA，对 “是否允许启动 Branch A A1 tiny synthetic metric-plumbing dry-run” 做严格 stage gate。
+
+Gate record：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_a1_toy_gate_moa_output_20260706.md
+```
+
+MoA evidence：
+
+```text
+provider=moa
+preset=digital-rock-gate
+smoke=OK-ROCK
+refs=openai-codex:gpt-5.5, deepseek:deepseek-v4-pro, openrouter:z-ai/glm-5.2, custom:dk-claude:claude-fable-5
+aggregator=custom:dk-claude:claude-opus-4-8
+```
+
+Verdict：
+
+```text
+ALLOW_A1_WITH_CONSTRAINTS
+```
+
+解释：A0 schema 已完整、哈希验证、内部一致，并且预注册了此 gate；A1 是在真实 2D→3D reconstruction 前去除 3D metric code paths 与 artifact package 形状风险的最小步骤。但 reviewer 明确指出，A1 必须是带约束的 toy metric-plumbing，不是“跑通即通过”。
+
+授权范围：
+
+```text
+volume_size <= 64^3
+input_type=synthetic toy/mock volume only
+scientific_status=not_evidence
+purpose=verify 3D metric code paths and artifact package shape only
+no HY7 scientific claim
+no B2-min final-pass claim
+no training
+no new sampling from any model
+no checkpoint
+no actual 2D→3D reconstruction claim
+no large artifacts committed to git
+outputs under dry-run path only
+```
+
+A1 新增强制条件：
+
+- C1 Known-answer phantom suite：必须用 >=2–3 个解析 phantom 验证指标，例如 all-solid/all-pore/single straight through-channel/isolated voxel 或 block；不 crash 不是通过。
+- C2 `connectivity_semantics.md` 必须声明 pore-phase 与 complementary solid 的 6/18/26 connectivity convention。
+- C3 必须显式定义 percolation：同一 pore-phase connected component 同时接触某轴两个 opposing faces。
+- C4 Euler 未实现时必须 fail-closed：`"euler_3d": {"status": "NOT_IMPLEMENTED_FAIL_CLOSED"}`。
+- C5 toy-route label hygiene：所有 A1 JSON 必须有 `input_type=synthetic_toy`、`scientific_status=not_evidence`、独立 toy route label；toy 数值不得携带 `threshold_formal_full_batch` 或 `nnUNet ep015_qmatch` 标签。
+- C6 deterministic：随机 toy volume 必须记录 seed + generator，可复现。
+
+A1 required outputs：
+
+```text
+branch_a_a1_manifest.json
+branch_a_a1_readme.md
+metrics_3d_toy.json
+connectivity_semantics.md
+forbidden_claims.txt
+hashes.txt
+```
+
+可选：`toy_volume_path.txt`，只记录 path/hash/size，不提交体数据。
+
+仍然禁止：real 3D reconstruction、training、new sampling、new checkpoint、科学 voxel export、大体数据或权重入 git、B2-min final pass、B1.1 unconditional pass、ORIG raw pass、qmatch optional/implicit、selected chunk 代表全模型、formal/qmatch 混标、2D penetrate 解释成 3D permeability/connectivity、A2 或任何真实重建无新 gate 启动。
+
+A1 输出绝不能作为 HY7 scientific evidence；所有 A1 artifact 必须包含 `scientific_status=not_evidence`。
+
+下一步：按 gate 约束写 A1 toy metric-plumbing dry-run 的实现/包结构，优先生成 metric code path 与 known-answer phantom tests，但仍不得提交 toy volume 或宣称科学结果。
+
 关键证据 sha256：
 
 ```text

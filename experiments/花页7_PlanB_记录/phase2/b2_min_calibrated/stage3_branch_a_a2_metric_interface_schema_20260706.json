@@ -1,0 +1,212 @@
+{
+  "workflow_node": "HY7-stage3-branch-A-A2-metric-interface-schema",
+  "date": "2026-07-06",
+  "status": "A2_DESIGN_ONLY_SCHEMA_PRE_EXECUTION",
+  "parent_gate_verdict": "A1_COMPLETE_WITH_CONSTRAINTS_ALLOW_A2_DESIGN_ONLY",
+  "execution_authorized": false,
+  "scientific_status": "design_only_not_evidence",
+  "design_card": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_a2_design_only_card_20260706.md",
+  "phantom_suite_design": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_a2_phantom_suite_design_20260706.md",
+  "execution_gate_checklist": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_a2_execution_gate_checklist_20260706.json",
+  "package_contract": {
+    "required_files_for_future_a2_execution_package": [
+      "branch_a_a2_manifest.json",
+      "branch_a_a2_readme.md",
+      "input_2d_slice_manifest.json",
+      "algorithm_config.json",
+      "route_constraints.json",
+      "metrics_2d_inherited.json",
+      "metrics_3d_reconstruction.json",
+      "connectivity_semantics.md",
+      "s2_boundary_semantics.md",
+      "euler_minkowski_semantics.md",
+      "provenance.json",
+      "forbidden_claims.txt",
+      "hashes.txt"
+    ],
+    "large_artifact_policy": {
+      "volumes_in_git": false,
+      "weights_or_checkpoints_in_git": false,
+      "external_artifact_record_required": ["path", "size", "sha256", "command", "environment", "representative_previews"]
+    }
+  },
+  "manifest_required_fields": {
+    "workflow_node": "HY7-stage3-branch-A-A2-execution",
+    "verdict_required_before_execution": true,
+    "scientific_status_allowed_values": ["not_evidence", "diagnostic_only", "candidate_evidence_after_gate"],
+    "must_include": [
+      "algorithm_family",
+      "input_type",
+      "route_labels",
+      "execution_boundary",
+      "volume_size",
+      "voxel_spacing",
+      "data_modality",
+      "random_seed_if_any",
+      "source_hashes",
+      "artifact_hashes",
+      "gate_verdict"
+    ]
+  },
+  "route_constraints_schema": {
+    "formal_route": {
+      "required_label": "threshold_formal_full_batch",
+      "planning_anchor": "ep015_all",
+      "allowed_use": "planning_anchor_only_until_future_gate"
+    },
+    "diagnostic_route": {
+      "required_label": "nnUNet ep015_qmatch",
+      "allowed_use": "diagnostic_calibrated_route_only"
+    },
+    "triage_selected_chunk": {
+      "variant": "ep015_chunk384_447",
+      "policy": "triage_only",
+      "not_acceptance_anchor": true
+    },
+    "failed_risk_chunk": {
+      "variant": "ep015_chunk000_063",
+      "policy": "risk_input",
+      "required_failure_reason": "maxCC>0.070",
+      "must_remain_visible": true
+    },
+    "forbidden": [
+      "unlabelled merge of formal route and nnUNet-qmatch route",
+      "selected chunk represents full model performance",
+      "implicit qmatch"
+    ]
+  },
+  "metrics_2d_inherited_schema": {
+    "required": true,
+    "metrics": [
+      {"name": "porosity_phi", "route_label_required": true},
+      {"name": "s2_two_point_correlation", "route_label_required": true},
+      {"name": "euler_characteristic_2d", "route_label_required": true},
+      {"name": "max_connected_component_fraction_2d", "route_label_required": true},
+      {
+        "name": "x_y_penetrate_2d_tile_level",
+        "route_label_required": true,
+        "allowed_interpretation": "2D tile-level largest-connected-component spanning ratio only",
+        "forbidden_interpretation": "3D permeability or validated 3D connectivity"
+      }
+    ]
+  },
+  "metrics_3d_reconstruction_schema": {
+    "required_before_any_result_claim": true,
+    "metrics": [
+      {
+        "name": "porosity_phi_3d",
+        "status_values": ["implemented", "fail_closed_placeholder"],
+        "axes": ["volume"],
+        "required_for_execution_gate": true
+      },
+      {
+        "name": "s2_two_point_correlation_3d",
+        "status_values": ["implemented", "proxy", "fail_closed_placeholder"],
+        "axes": ["x", "y", "z"],
+        "boundary_convention_required": true,
+        "allowed_boundary_conventions": ["non_periodic_valid_pairs", "periodic_wrap", "both_with_labels"],
+        "asymmetric_boundary_phantom_required": true
+      },
+      {
+        "name": "connected_porosity_ratio_3d",
+        "status_values": ["implemented", "fail_closed_placeholder"],
+        "denominators_required": ["pore_voxel_basis", "total_volume_basis"],
+        "connectivity_convention_required": true
+      },
+      {
+        "name": "percolation_flags_3d",
+        "status_values": ["implemented", "fail_closed_placeholder"],
+        "axes": ["x", "y", "z"],
+        "definition_required": "a single pore-phase connected component touches both opposing faces along axis k"
+      },
+      {
+        "name": "largest_connected_component_fraction_3d",
+        "status_values": ["implemented", "fail_closed_placeholder"],
+        "denominators_required": ["pore_voxel_basis", "total_volume_basis"]
+      },
+      {
+        "name": "euler_characteristic_or_minkowski_3d",
+        "status_values": ["implemented", "NOT_IMPLEMENTED_FAIL_CLOSED", "explicitly_de_scoped_fail_closed"],
+        "execution_rule": "must be implemented and phantom-validated if topology is used for metric, acceptance, or claim; otherwise explicitly de-scoped fail-closed",
+        "phantom_validation_required_if_implemented": true
+      },
+      {
+        "name": "pore_size_distribution_or_granulometry_proxy",
+        "status_values": ["implemented", "proxy", "not_required_for_toy_scaleup"],
+        "required_for_real_reconstruction": true
+      },
+      {
+        "name": "permeability_or_proxy",
+        "status_values": ["not_allowed_before_real_3d_volume", "implemented_after_gate", "explicitly_de_scoped"],
+        "forbidden_before_real_volume": true
+      }
+    ]
+  },
+  "connectivity_semantics_schema": {
+    "pore_phase_default": "6-neighborhood",
+    "complementary_solid_default": "26-neighborhood",
+    "percolation_definition": "a single pore-phase connected component touches both opposing faces along axis k",
+    "axis_mapping_required": true,
+    "convention_change_requires_new_gate": true
+  },
+  "s2_boundary_semantics_schema": {
+    "default_recommendation": "non_periodic_valid_pairs",
+    "must_pin_convention": true,
+    "must_report_with_every_s2_metric": true,
+    "asymmetric_boundary_phantom_required": true,
+    "silent_convention_change_fail_closed": true
+  },
+  "phantom_validation_schema": {
+    "required_families": [
+      "all_solid",
+      "all_pore",
+      "isolated_voxel",
+      "straight_channel_x",
+      "straight_channel_y",
+      "straight_channel_z",
+      "two_disconnected_blobs",
+      "hollow_cube_shell_or_cavity",
+      "torus_like_ring",
+      "asymmetric_s2_boundary",
+      "sparse_random_seeded_toy"
+    ],
+    "scale_sizes": ["8^3", "16^3", "32^3"],
+    "scientific_status": "not_evidence",
+    "deterministic_regeneration_required": true
+  },
+  "provenance_schema": {
+    "must_record": [
+      "input_paths",
+      "source_hashes",
+      "exact_command",
+      "workdir",
+      "environment",
+      "random_seed_if_any",
+      "volume_size",
+      "voxel_spacing",
+      "data_modality",
+      "route_labels",
+      "artifact_hashes",
+      "external_artifact_paths_if_any"
+    ],
+    "deterministic_regeneration_proof": {
+      "required_for_toy_or_generated_artifacts": true,
+      "fields": ["seed", "source_hash", "exact_command", "environment", "metrics_hash_or_declared_reproducible_subset"]
+    }
+  },
+  "fail_closed_conditions": [
+    "execution requested without fresh strict gate",
+    "algorithm family missing",
+    "input_2d_slice_manifest missing",
+    "route labels missing or merged",
+    "failed chunk ep015_chunk000_063 omitted from risk discussion",
+    "S2 boundary convention missing",
+    "asymmetric S2 boundary phantom missing",
+    "Euler/Minkowski used without implementation and phantom validation",
+    "Euler/Minkowski unimplemented but topology acceptance claims made",
+    "deterministic regeneration proof missing",
+    "large volume or model weight committed to git",
+    "scientific_status boundary missing",
+    "A1/A2 design output treated as HY7 scientific evidence"
+  ]
+}

@@ -1815,6 +1815,51 @@ DO_NOT_START_A2_EXECUTION
 
 仍然禁止：A2 execution、real 2D→3D reconstruction、training/fine-tuning、new model sampling、checkpoint、voxel export/git commit、任何 HY7 scientific claim、B2-min final pass、ORIG raw pass、implicit qmatch、formal/qmatch route 混标、2D x/y penetrate 解释成 3D permeability/connectivity。
 
+### 15.22 Stage 3 Branch A A2 phantom suite design 与 metric interface schema
+
+已继续补齐 A2 design-only package 的两个配套文件；本步骤仍是 design only，未执行 A2，不训练、不采样、不生成真实 2D→3D reconstruction、不导出 voxel、不产生 HY7 scientific claim。
+
+新增：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_a2_phantom_suite_design_20260706.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_a2_metric_interface_schema_20260706.json
+```
+
+Phantom suite design 覆盖：
+
+- `all_solid`：zero-pore baseline；
+- `all_pore`：full-pore baseline；
+- `isolated_voxel`：single-component / denominator sanity；
+- `straight_channel_x/y/z`：axis-specific percolation 与 axis mapping；
+- `two_disconnected_blobs`：component count 与 LCC denominator；
+- `hollow_cube_shell_or_cavity`：cavity / foreground-background ambiguity；
+- `torus_like_ring`：handle/genus sensitivity；
+- `asymmetric_s2_boundary`：区分 periodic vs non-periodic S2；
+- `sparse_random_seeded_toy`：deterministic-regeneration proof。
+
+默认 topology/semantics：
+
+```text
+pore phase foreground connectivity=6-neighborhood
+complementary solid/background connectivity=26-neighborhood
+percolation=a single pore-phase connected component touches both opposing faces along axis k
+axis mapping: x/y/z -> ndarray axes 0/1/2
+```
+
+Scale-up matrix：
+
+```text
+8^3: P0-P5 + P8
+16^3: P0-P5 + P8
+32^3: P0-P8 where feasible
+scientific_status=not_evidence
+```
+
+Metric interface schema 固化：future A2 package required files、manifest required fields、route constraints schema、2D inherited metrics schema、3D reconstruction metrics schema、connectivity semantics schema、S2 boundary semantics schema、phantom validation schema、provenance / deterministic regeneration schema、fail-closed conditions。
+
+关键 fail-closed 条件：execution 无 fresh strict gate、algorithm family 缺失、input slice manifest 缺失、route labels 混并、failed chunk 风险消失、S2 boundary convention 缺失、asymmetric S2 phantom 缺失、Euler/Minkowski 未验证却用于 topology claims、deterministic regeneration proof 缺失、大 volume/weights 入 git、scientific_status 边界缺失，均 fail-closed。
+
 关键证据 sha256：
 
 ```text

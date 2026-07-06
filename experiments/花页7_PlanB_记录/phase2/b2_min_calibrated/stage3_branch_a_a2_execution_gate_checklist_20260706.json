@@ -1,0 +1,117 @@
+{
+  "workflow_node": "HY7-stage3-branch-A-A2-execution-gate-checklist",
+  "date": "2026-07-06",
+  "status": "A2_DESIGN_ONLY_EXECUTION_NOT_AUTHORIZED",
+  "parent_gate_verdict": "A1_COMPLETE_WITH_CONSTRAINTS_ALLOW_A2_DESIGN_ONLY",
+  "design_card": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_a2_design_only_card_20260706.md",
+  "execution_authorized": false,
+  "a2_design_allowed": true,
+  "still_forbidden": [
+    "A2 execution",
+    "real 2D-to-3D reconstruction",
+    "training or fine-tuning",
+    "new model sampling",
+    "checkpoint creation or loading",
+    "voxel volume export or git commit",
+    "HY7 scientific claim from A1 or A2 design outputs",
+    "B2-min final pass claim",
+    "B1.1 unconditional pass claim",
+    "ORIG raw pass claim",
+    "implicit qmatch",
+    "selected chunk represents full model performance",
+    "unlabelled merge of formal route and nnUNet-qmatch route",
+    "2D x/y penetrate proves 3D permeability/connectivity"
+  ],
+  "required_before_any_a2_execution_gate": {
+    "algorithm_and_scope": {
+      "required": true,
+      "items": [
+        "algorithm_family_named",
+        "training_or_non_training_path_declared",
+        "model_sampling_scope_declared",
+        "compute_budget_declared",
+        "output_volume_size_declared",
+        "voxel_spacing_and_modality_declared"
+      ]
+    },
+    "inputs_and_route_labels": {
+      "required": true,
+      "items": [
+        "input_2d_slice_manifest",
+        "ep015_all_planning_anchor_label",
+        "formal_route_label_preserved",
+        "nnUNet_qmatch_route_label_preserved",
+        "selected_chunk_triage_only_label",
+        "failed_chunk_ep015_chunk000_063_risk_label"
+      ]
+    },
+    "euler_minkowski": {
+      "design_stage_allowed_status": "NOT_IMPLEMENTED_FAIL_CLOSED",
+      "execution_requirement": "implement_and_phantom_validate_if_topology_used_or_explicitly_de_scope_fail_closed",
+      "must_declare": [
+        "foreground_connectivity",
+        "background_connectivity",
+        "pore_phase_connectivity",
+        "complementary_solid_connectivity",
+        "phantom_expected_values",
+        "implementation_status"
+      ],
+      "candidate_phantoms": [
+        "all_solid",
+        "all_pore",
+        "isolated_voxel",
+        "straight_channel_x",
+        "hollow_cube_shell_or_cavity",
+        "torus_like_ring",
+        "two_disconnected_blobs"
+      ]
+    },
+    "s2_boundary_condition": {
+      "required": true,
+      "must_pin": ["non_periodic_valid_pairs", "periodic_wrap", "or_both_with_labels"],
+      "default_recommendation": "non_periodic_valid_pairs",
+      "must_test_with": "asymmetric_boundary_phantom"
+    },
+    "deterministic_regeneration": {
+      "required": true,
+      "preferred_policy": "do_not_commit_toy_volumes",
+      "must_record": [
+        "seed",
+        "source_hash",
+        "exact_command",
+        "environment",
+        "metrics_hash_or_declared_reproducible_subset"
+      ]
+    },
+    "scale_up_validation_design": {
+      "required": true,
+      "sizes": ["8^3", "16^3", "32^3"],
+      "scientific_status": "not_evidence",
+      "requires_future_gate_to_run": true
+    },
+    "artifact_policy": {
+      "large_volumes_in_git": false,
+      "model_weights_in_git": false,
+      "must_record_external_artifacts": ["path", "size", "sha256", "command", "environment", "representative_previews"]
+    }
+  },
+  "future_a2_execution_gate_question": "May Branch A A2 execution begin under the specified algorithm, data, compute, artifact, and metric constraints?",
+  "future_allowed_verdicts": [
+    "ALLOW_A2_EXECUTION_WITH_CONSTRAINTS",
+    "ALLOW_A2_TOY_SCALEUP_ONLY",
+    "DO_NOT_START_A2_EXECUTION"
+  ],
+  "fail_closed_if_missing": [
+    "algorithm_family_named",
+    "input_2d_slice_manifest",
+    "route_label_separation",
+    "failed_chunk_risk_visibility",
+    "euler_minkowski_status",
+    "s2_boundary_condition",
+    "asymmetric_boundary_phantom",
+    "deterministic_regeneration_proof",
+    "scale_up_validation_design",
+    "artifact_policy",
+    "fresh_strict_gate_before_execution"
+  ]
+}

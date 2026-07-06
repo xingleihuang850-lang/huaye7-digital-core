@@ -1759,6 +1759,62 @@ A2 execution 前新增硬条件：
 
 下一步：写 A2 design-only card，重点是 Euler/Minkowski 设计、S2 boundary convention、deterministic-regeneration proof、扩展 phantom suite 与 A2 execution gate criteria；不得执行 A2。
 
+### 15.21 Stage 3 Branch A A2 design-only card 与 execution gate checklist
+
+已按 A1 completion gate 的 `A1_COMPLETE_WITH_CONSTRAINTS_ALLOW_A2_DESIGN_ONLY` verdict 写入 A2 **design-only** card 与 machine-readable execution gate checklist；本步骤未执行 A2，不训练、不采样、不生成真实 2D→3D reconstruction、不导出 voxel、不产生 HY7 scientific claim。
+
+新增：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_a2_design_only_card_20260706.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_a2_execution_gate_checklist_20260706.json
+```
+
+状态：
+
+```text
+A2_DESIGN_ONLY_PRE_EXECUTION
+execution_authorized=false
+```
+
+A2 design card 固化的设计范围：
+
+- 3D Euler/Minkowski algorithm design；
+- expanded phantom suite design；
+- asymmetric S2 boundary-condition phantom；
+- deterministic-regeneration proof；
+- scale-up validation design beyond 8^3；
+- A2 metric interface schema；
+- future A2 execution gate question。
+
+A2 execution 前 checklist 硬条件：
+
+- algorithm family / training-or-non-training path / compute budget / output volume size / voxel spacing 明确；
+- input 2D slice manifest 与 route labels 明确；
+- `ep015_all` 只作为 planning anchor；formal route 与 nnUNet-qmatch route 保持分离；
+- selected chunk 仍为 triage-only；failed chunk `ep015_chunk000_063` 仍保留 risk label；
+- Euler/Minkowski 若用于 topology metric/acceptance/claim，执行前必须 implement + phantom validate；否则必须 explicit de-scope 且 manifests 保持 fail-closed；
+- S2 boundary condition 必须钉住 periodic/non-periodic，并用 asymmetric phantom 验证；
+- deterministic-regeneration proof 必须记录 seed/source hash/exact command/environment/metrics hash 或 reproducible subset；
+- scale-up validation design 包含 8^3、16^3、32^3，且 scientific_status=not_evidence；
+- large volumes / model weights 不得入 git。
+
+预注册 future A2 execution gate question：
+
+```text
+May Branch A A2 execution begin under the specified algorithm, data, compute, artifact, and metric constraints?
+```
+
+future allowed verdicts：
+
+```text
+ALLOW_A2_EXECUTION_WITH_CONSTRAINTS
+ALLOW_A2_TOY_SCALEUP_ONLY
+DO_NOT_START_A2_EXECUTION
+```
+
+仍然禁止：A2 execution、real 2D→3D reconstruction、training/fine-tuning、new model sampling、checkpoint、voxel export/git commit、任何 HY7 scientific claim、B2-min final pass、ORIG raw pass、implicit qmatch、formal/qmatch route 混标、2D x/y penetrate 解释成 3D permeability/connectivity。
+
 关键证据 sha256：
 
 ```text

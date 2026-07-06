@@ -1132,6 +1132,75 @@ B2-min gate review = PASS_WITH_CONSTRAINTS
 
 仍然禁止：B1.1 unconditional full pass 声称、ORIG raw nnUNet pass 声称、隐式 qmatch、第二次 B1.1 topology rescue、gate relaxation、用 64-slice selected chunk 替代 full-batch formal/nnUNet gate。
 
+### 15.10 digital-rock-gate 多专家 B2-min design-entry 复核
+
+已按用户要求直接进入 “B2-min baseline package + constrained selection smoke 是否足以开启下一阶段设计” 的 rock gate / multi-expert 复核。
+
+MoA 调用口径：
+
+```text
+provider=moa
+preset=digital-rock-gate
+refs=openai-codex:gpt-5.5, deepseek:deepseek-v4-pro,
+     openrouter:z-ai/glm-5.2, custom:dk-claude:claude-fable-5
+aggregator=custom:dk-claude:claude-opus-4-8
+smoke=OK-ROCK
+```
+
+复核输入：
+
+```text
+/Users/hxl/Documents/Hermes工作区/99_临时文件与一次性输出/rock_b2_min_gate_review_20260706.md
+```
+
+复核记录：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/rock_gate_review_20260706.md
+```
+
+聚合判定：
+
+```text
+B2-min design-entry gate = CONDITIONAL_PASS
+```
+
+判定含义：baseline package + full-batch control 的 constrained selection smoke **足以开启 B2-min 设计**，但这只是 design-entry 级别，不是 B2-min 结果验收。有效域限定在 `ep015 + hy7-gray-calibration-qmatch-v1 + no-retraining + explicit qmatch`。
+
+允许行动：
+
+1. 撰写 B2-min design memo，定义目标、组件分解、验收 gate、失败回退路径、forbidden claims。
+2. 继续 no-retraining calibrated selection / packaging 的设计与审计固化，只限现有 artifacts。
+3. 设计下一 B2 component 的最小实验卡 / dry-run，不触发训练。
+4. 将 baseline package 作为 frozen reference，后续可补 pin commit / schema / ordered-view / qmatch explicitness / forbidden-claim lint。
+
+禁止行动：
+
+1. 不得声称 B1.1 unconditional full pass 或 ORIG raw passed。
+2. 不得 implicit qmatch；所有 downstream path 必须显式声明 `hy7-gray-calibration-qmatch-v1`。
+3. 不得第二次 B1.1 topology rescue、gate relaxation、100/200ep scaling、新训练或新 checkpoint。
+4. 不得用 selected chunk (`ep015_chunk384_447`, n=64) 替代 full-batch formal/nnUNet gate；B2-min 阈值必须锚定 full-batch `ep015_all`，不是 selected chunk。
+
+MoA 建议的非阻塞补强中，已立即完成两项：
+
+```text
+BASE_HASH_CHECK
+b2_min_manifest.json: 成功
+b2_min_readme.md: 成功
+
+SELECTION_FAIL_ROWS
+variant=ep015_chunk000_063
+failed=maxCC>0.070
+phi=6.435489654541016
+S2 rmse=0.0005247734726096197
+Euler=123.953125
+maxCC=0.07163110510281959
+```
+
+第三项需在 B2-min design memo 中落位：显式说明 formal-vs-qmatch 系统差异，例如 formal512 `phi=6.4/Euler=120.81` vs nnUNet qmatch `phi≈5.79/Euler≈116.15`；reverse_fail=False 不受影响，但下游若对 φ/Euler 敏感，需要声明容忍区间与适用范围。
+
+一句话结论：**B2-min design-entry gate 判定 CONDITIONAL_PASS：ep015 + hy7-gray-calibration-qmatch-v1 的 full-batch pass、baseline package 与含 full-batch control 的 constrained selection smoke 足以开启 B2-min 设计；边界为 calibrated / no-retraining / explicit qmatch / full-batch 为唯一验收口径，ORIG raw remains known_fail，selected chunk 仅限 triage 不得替代 full-batch gate，100/200ep scaling 与新训练未获授权。**
+
 关键证据 sha256：
 
 ```text

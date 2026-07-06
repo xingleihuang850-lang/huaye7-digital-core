@@ -132,6 +132,42 @@
     "provenance_and_hashes_close",
     "digital_rock_gate_accepts_smoke_as_uncertainty_reducing_not_scientific_acceptance"
   ],
+  "condition_interface_requirements": {
+    "design_file": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_condition_interface_design_20260706.md",
+    "minimum_before_smoke_gate": true,
+    "condition_interface_status_required": "not_yet_condition_response_test",
+    "must_declare": [
+      "condition_channels_used",
+      "condition_channels_held_constant_or_de_scoped",
+      "qmatch_calibration_version",
+      "not_a_generative_digital_well"
+    ],
+    "condition_channels_to_track_for_future": [
+      "depth_or_interval_id",
+      "mineral_phase_or_lithofacies_label",
+      "log_constraints",
+      "electrical_imaging_constraints",
+      "qmatch_calibration_version"
+    ],
+    "smoke_gate_request_payload_must_populate_each_channel": true,
+    "per_channel_status_allowed_values": [
+      "used",
+      "held_constant_for_smoke",
+      "explicitly_de_scoped_until_future_gate",
+      "not_available"
+    ],
+    "per_channel_rationale_required": true,
+    "not_a_generative_digital_well_required": true,
+    "representativeness_audit_required_before_digital_well_claim": true,
+    "conditional_response_gate_required_before_digital_well_claim": true,
+    "fail_closed_if": [
+      "digital_well_claim_without_condition_manifest",
+      "condition_channels_claimed_but_missing",
+      "representativeness_audit_missing_for_wellbore_claim",
+      "conditional_response_claim_without_gate",
+      "local_3D_smoke_used_as_wellbore_scale_evidence"
+    ]
+  },
   "artifact_policy": {
     "large_volumes_in_git": false,
     "weights_or_checkpoints_in_git": false,
@@ -154,6 +190,8 @@
     "physical_response_proxy_contract",
     "negative_evidence_contract",
     "artifact_policy",
+    "condition_interface_design",
+    "condition_channels_declared_or_de_scoped",
     "forbidden_claims"
   ]
 }

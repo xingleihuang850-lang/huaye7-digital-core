@@ -99,6 +99,10 @@ A1/A2 design output is treated as HY7 scientific evidence
 | A2-R40 | Smoke negative evidence suppression | smoke reports only successful axes/candidates and hides failed axes/proxies. | S4 | L2 | missing non-percolating axes, contradictions, failed candidates | negative_evidence.md required | negative evidence absent | risk owner |
 | A2-R41 | Formal-anchor/qmatch disagreement | qmatch-conditioned 3D smoke disagrees with formal anchor expectations but discrepancy is not analyzed. | S3 | L3 | formal vs qmatch route mismatch not discussed | record formal_anchor=ep015_all planning only and qmatch diagnostic route | route disagreement omitted | metric owner |
 | A2-R42 | Non-reproducible smoke volume | candidate volume/proxy cannot be regenerated or resolved. | S3 | L2 | missing path/hash/command/environment; broken external path | candidate_volume_manifest.json + hashes required | volume/proxy cannot be reproduced | provenance owner |
+| A2-R43 | Unconditional local-core trap | 3D smoke succeeds locally but remains an unconditional local digital core, not a wellbore-conditioned generator. | S4 | L3 | no depth/mineral/log/electrical-imaging condition interface | condition_manifest design and explicit `not_a_generative_digital_well` label | local 3D result called digital well | science owner |
+| A2-R44 | Representativeness gap | selected slices/candidates do not represent depth, mineral phase, log range, or electrical-imaging variability. | S4 | L3 | no representativeness audit; only local slice evidence | representativeness_audit.json before wellbore claim | interval/wellbore claim without audit | data owner |
+| A2-R45 | Conditional non-response | generated outputs do not change when conditioning variables change. | S4 | L2 | perturb depth/mineral/log condition but metrics/images stay invariant | conditional_response_plan + conditional_response_gate | conditional generator claim without response | model owner |
+| A2-R46 | Physically inconsistent conditional response | outputs change with conditions but contradict logs/electrical imaging/geology. | S4 | L2 | porosity/connectivity/proxy trend conflicts with conditioning evidence | conditional_response_metrics with expected direction and negative evidence | condition response is uninterpretable or contradictory | science owner |
 
 ## Updated priority after 2D cleanup
 
@@ -106,7 +110,8 @@ The dominant research risk has moved from 2D gate packaging to qmatch-conditione
 
 ```text
 primary uncertainty = qmatch-conditioned 3D connectivity + physical-response consistency
-next risk-reduction step = fresh-gated minimal 3D smoke
+second missing layer = condition interface + representativeness + conditional response gate
+next risk-reduction step = fresh-gated minimal 3D smoke with condition status declared
 not next step = more 2D achievement packaging
 ```
 

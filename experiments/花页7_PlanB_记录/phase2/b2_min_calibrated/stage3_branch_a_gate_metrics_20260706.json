@@ -1,0 +1,226 @@
+{
+  "workflow_node": "HY7-stage3-branch-A-gate-metrics-schema",
+  "date": "2026-07-06",
+  "status": "A0_SCHEMA_PRE_REGISTRATION",
+  "parent_design_card": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_2d_to_3d_reconstruction_design_20260706.md",
+  "source_constraints_matrix": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_planning_constraints_matrix_20260706.json",
+  "gate_scope": {
+    "current_level": "A0 no-generation planning package",
+    "currently_allowed": [
+      "define target volumes",
+      "define metrics",
+      "define candidate algorithms",
+      "define gate levels",
+      "define compute/data budget",
+      "define fail-closed criteria"
+    ],
+    "not_authorized": [
+      "3D voxel generation",
+      "training",
+      "new sampling",
+      "checkpoint creation",
+      "voxel export",
+      "B2-min final-pass claim"
+    ]
+  },
+  "inherited_2d_anchor": {
+    "formal_route": {
+      "required_label": "threshold_formal_full_batch",
+      "anchor_variant": "ep015_all",
+      "n": 512,
+      "phi": 6.442654132843018,
+      "s2_rmse": 0.0002854642510439182,
+      "euler": 121.26953125,
+      "maxcc": 0.06397858477862998,
+      "pass_gate": true,
+      "allowed_use": "planning_anchor_only"
+    },
+    "diagnostic_route": {
+      "required_label": "nnUNet ep015_qmatch",
+      "phi": 5.794930458068848,
+      "s2_rmse": 0.0017214588891168259,
+      "euler": 116.154296875,
+      "maxcc": 0.06510709034871634,
+      "reverse_fail": false,
+      "allowed_use": "diagnostic_calibrated_route_only"
+    },
+    "selected_triage": {
+      "variant": "ep015_chunk384_447",
+      "policy": "triage_only",
+      "not_acceptance_anchor": true
+    },
+    "failed_risk_row": {
+      "variant": "ep015_chunk000_063",
+      "policy": "risk_input",
+      "pass_gate": false,
+      "required_failure_reason": "maxCC>0.070"
+    }
+  },
+  "required_2d_inherited_metrics": [
+    {
+      "name": "porosity_phi",
+      "route_required": true,
+      "required_for": ["formal_route", "diagnostic_route", "triage_rows"],
+      "notes": "Keep formal threshold phi and nnUNet-qmatch phi labelled separately."
+    },
+    {
+      "name": "s2_two_point_correlation",
+      "route_required": true,
+      "required_for": ["formal_route", "diagnostic_route", "triage_rows"]
+    },
+    {
+      "name": "euler_characteristic_2d",
+      "route_required": true,
+      "required_for": ["formal_route", "diagnostic_route", "triage_rows"]
+    },
+    {
+      "name": "max_connected_component_fraction_2d",
+      "route_required": true,
+      "required_for": ["formal_route", "diagnostic_route", "triage_rows"]
+    },
+    {
+      "name": "x_y_penetrate_2d_tile_level",
+      "route_required": true,
+      "allowed_interpretation": "2D tile-level largest-connected-component spanning ratio only",
+      "forbidden_interpretation": "3D permeability or validated 3D connectivity"
+    }
+  ],
+  "required_3d_metrics_before_result_claim": [
+    {
+      "name": "porosity_phi_3d",
+      "axes": ["volume"],
+      "required_for_a1_toy": true,
+      "required_for_a2_real": true
+    },
+    {
+      "name": "s2_two_point_correlation_3d",
+      "axes": ["x", "y", "z"],
+      "required_for_a1_toy": true,
+      "required_for_a2_real": true
+    },
+    {
+      "name": "connected_porosity_ratio_3d",
+      "axes": ["volume"],
+      "required_for_a1_toy": true,
+      "required_for_a2_real": true
+    },
+    {
+      "name": "percolation_flags_3d",
+      "axes": ["x", "y", "z"],
+      "required_for_a1_toy": true,
+      "required_for_a2_real": true
+    },
+    {
+      "name": "largest_connected_component_fraction_3d",
+      "axes": ["volume"],
+      "required_for_a1_toy": true,
+      "required_for_a2_real": true
+    },
+    {
+      "name": "euler_characteristic_or_minkowski_3d",
+      "axes": ["volume"],
+      "required_for_a1_toy": true,
+      "required_for_a2_real": true
+    },
+    {
+      "name": "pore_size_distribution_or_granulometry_proxy",
+      "axes": ["volume"],
+      "required_for_a1_toy": false,
+      "required_for_a2_real": true
+    },
+    {
+      "name": "permeability_or_proxy",
+      "axes": ["x", "y", "z"],
+      "required_for_a1_toy": false,
+      "required_for_a2_real": "only_after_real_3d_volume_exists",
+      "forbidden_before_volume": true
+    }
+  ],
+  "volume_candidate_requirements": [
+    {
+      "level": "A0-table",
+      "size": "none",
+      "scientific_status": "design_only",
+      "authorized_now": true
+    },
+    {
+      "level": "A1-toy",
+      "size": "32^3-64^3",
+      "scientific_status": "metric_plumbing_only_not_evidence",
+      "authorized_now": false,
+      "requires_future_gate": true
+    },
+    {
+      "level": "A2-small",
+      "size": "128^3",
+      "scientific_status": "first_real_reconstruction_candidate",
+      "authorized_now": false,
+      "requires_future_gate": true
+    },
+    {
+      "level": "A2-medium",
+      "size": "256^3",
+      "scientific_status": "higher_fov_planning_target",
+      "authorized_now": false,
+      "requires_future_gate": true
+    }
+  ],
+  "artifact_and_provenance_requirements": {
+    "required_for_any_future_package": [
+      "branch_a_manifest.json",
+      "branch_a_readme.md",
+      "input_slice_manifest.json",
+      "route_constraints.json",
+      "metrics_2d_inherited.json",
+      "metrics_3d_required_schema.json",
+      "connectivity_semantics.md",
+      "forbidden_claims.txt",
+      "hashes.txt"
+    ],
+    "large_artifact_policy": "large volumes/model weights must not be committed to git; record path, size, sha256, command, environment, and representative previews only",
+    "must_record": [
+      "input paths",
+      "source hashes",
+      "volume size",
+      "voxel spacing",
+      "data modality",
+      "route labels",
+      "command",
+      "environment",
+      "random seed if applicable"
+    ]
+  },
+  "fail_closed_conditions": [
+    "no route label for formal vs qmatch",
+    "no full-batch ep015_all anchor in the report",
+    "selected chunk is treated as model-wide acceptance",
+    "failed chunk ep015_chunk000_063 disappears from risk discussion",
+    "2D penetrate is interpreted as 3D percolation",
+    "3D connectivity/percolation metrics are absent",
+    "artifact hashes are missing",
+    "volume size / voxel spacing / modality are not recorded",
+    "large volumes or model weights are committed to git",
+    "A1 or A2 is started without a new explicit gate"
+  ],
+  "forbidden_claims_and_actions": [
+    "B2-min final pass claim",
+    "B1.1 unconditional pass claim",
+    "ORIG raw pass claim",
+    "qmatch optional claim",
+    "selected chunk represents full model performance",
+    "formal route and nnUNet-qmatch route merged without labels",
+    "x/y 2D penetrate proves 3D permeability or 3D connectivity",
+    "Stage 3 planning promotion authorizes actual 3D generation",
+    "training without a new gate",
+    "new sampling without a new gate",
+    "scaling without a new gate",
+    "new checkpoint without a new gate",
+    "voxel export without a new gate"
+  ],
+  "next_gate_question": "May Branch A A1 tiny synthetic metric-plumbing dry-run be started under toy/no-scientific-evidence constraints?",
+  "next_gate_expected_verdicts": [
+    "ALLOW_A1_TOY_METRIC_PLUMBING_ONLY",
+    "ALLOW_A1_WITH_CONSTRAINTS",
+    "DO_NOT_START_A1"
+  ]
+}

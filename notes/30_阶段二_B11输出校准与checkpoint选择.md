@@ -1508,6 +1508,49 @@ A2-medium: 256^3, higher-FOV planning target, future gate required
 experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_gate_metrics_20260706.json
 ```
 
+### 15.17 Stage 3 Branch A gate metrics schema
+
+已写入 machine-readable gate metrics schema：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_gate_metrics_20260706.json
+```
+
+Schema 状态：
+
+```text
+workflow_node=HY7-stage3-branch-A-gate-metrics-schema
+status=A0_SCHEMA_PRE_REGISTRATION
+current_level=A0 no-generation planning package
+```
+
+当前允许：定义 target volumes、metrics、candidate algorithms、gate levels、compute/data budget、fail-closed criteria。
+
+当前仍不授权：3D voxel generation、training、new sampling、checkpoint creation、voxel export、B2-min final-pass claim。
+
+Schema 固化了：
+
+- inherited 2D anchor：formal route `ep015_all`、nnUNet-qmatch diagnostic route、selected triage row、failed risk row。
+- required 2D metrics：phi、S2、2D Euler、2D maxCC、2D x/y penetrate（只能解释为 2D tile-level）。
+- required 3D metrics：3D porosity、3D S2 x/y/z、3D connected porosity ratio、x/y/z percolation flags、3D LCC fraction、3D Euler/Minkowski、pore-size/granulometry proxy，真实 3D volume 后才可谈 permeability/proxy。
+- volume candidate requirements：A0-table allowed now；A1-toy/A2-small/A2-medium 均需要 future gate。
+- artifact/provenance requirements：future package 必须包含 manifest/readme/input slice manifest/route constraints/2D inherited metrics/3D schema/connectivity semantics/forbidden claims/hashes；大体数据和权重不得入 git。
+- fail-closed conditions：route label 缺失、full-batch anchor 缺失、selected chunk 被当全模型、failed chunk 消失、2D penetrate 被解释成 3D percolation、3D connectivity 缺失、hash 缺失、volume size/voxel spacing/modality 未记录、未经 gate 启动 A1/A2 等均 fail-closed。
+
+下一道 gate question 已预注册：
+
+```text
+May Branch A A1 tiny synthetic metric-plumbing dry-run be started under toy/no-scientific-evidence constraints?
+```
+
+候选 verdicts：
+
+```text
+ALLOW_A1_TOY_METRIC_PLUMBING_ONLY
+ALLOW_A1_WITH_CONSTRAINTS
+DO_NOT_START_A1
+```
+
 关键证据 sha256：
 
 ```text

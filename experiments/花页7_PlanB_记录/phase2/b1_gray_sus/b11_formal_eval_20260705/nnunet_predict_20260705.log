@@ -1,0 +1,33 @@
+
+#######################################################################
+Please cite the following paper when using nnU-Net:
+Isensee, F., Jaeger, P. F., Kohl, S. A., Petersen, J., & Maier-Hein, K. H. (2021). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. Nature methods, 18(2), 203-211.
+#######################################################################
+
+There are 4 cases in the source folder
+I am processing 0 out of 1 (max process ID is 0, we start counting with 0!)
+There are 4 cases that I would like to predict
+
+Predicting EP040_ORIG:
+perform_everything_on_device: True
+  0%|          | 0/512 [00:00<?, ?it/s]  0%|          | 1/512 [00:00<02:08,  3.99it/s] 19%|█▉        | 97/512 [00:00<00:01, 351.07it/s] 38%|███▊      | 195/512 [00:00<00:00, 565.85it/s] 57%|█████▋    | 294/512 [00:00<00:00, 703.85it/s] 77%|███████▋  | 393/512 [00:00<00:00, 792.45it/s] 96%|█████████▌| 490/512 [00:00<00:00, 847.76it/s]100%|██████████| 512/512 [00:00<00:00, 660.76it/s]
+sending off prediction to background worker for resampling and export
+done with EP040_ORIG
+
+Predicting EP040_QMATCH:
+perform_everything_on_device: True
+  0%|          | 0/512 [00:00<?, ?it/s] 19%|█▉        | 96/512 [00:00<00:00, 951.39it/s] 38%|███▊      | 195/512 [00:00<00:00, 971.73it/s] 57%|█████▋    | 293/512 [00:00<00:00, 971.29it/s] 77%|███████▋  | 392/512 [00:00<00:00, 975.51it/s] 96%|█████████▌| 492/512 [00:00<00:00, 980.88it/s]100%|██████████| 512/512 [00:00<00:00, 975.96it/s]
+sending off prediction to background worker for resampling and export
+done with EP040_QMATCH
+
+Predicting EP050_ORIG:
+perform_everything_on_device: True
+  0%|          | 0/512 [00:00<?, ?it/s] 19%|█▉        | 96/512 [00:00<00:00, 952.93it/s] 38%|███▊      | 195/512 [00:00<00:00, 973.81it/s] 57%|█████▋    | 294/512 [00:00<00:00, 979.70it/s] 77%|███████▋  | 392/512 [00:00<00:00, 977.36it/s] 96%|█████████▌| 490/512 [00:00<00:00, 975.11it/s]100%|██████████| 512/512 [00:00<00:00, 974.41it/s]
+sending off prediction to background worker for resampling and export
+done with EP050_ORIG
+
+Predicting EP050_QMATCH:
+perform_everything_on_device: True
+  0%|          | 0/512 [00:00<?, ?it/s] 19%|█▊        | 95/512 [00:00<00:00, 944.59it/s] 38%|███▊      | 193/512 [00:00<00:00, 963.17it/s] 57%|█████▋    | 291/512 [00:00<00:00, 969.65it/s] 76%|███████▌  | 390/512 [00:00<00:00, 973.81it/s] 96%|█████████▌| 489/512 [00:00<00:00, 977.11it/s]100%|██████████| 512/512 [00:00<00:00, 972.26it/s]
+sending off prediction to background worker for resampling and export
+done with EP050_QMATCH

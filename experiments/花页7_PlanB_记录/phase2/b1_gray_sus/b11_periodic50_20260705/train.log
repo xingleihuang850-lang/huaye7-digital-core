@@ -1,0 +1,66 @@
+START 2026-07-05T00:23:29+08:00 host=admin
+OUT=/home/user/HXL/HY7_planb/phase2/ddpm_ct28_gray_b11_periodic50_20260705
+DATA=/home/user/HXL/HY7_planb/phase2/slices_ct28_gray_128
+NVIDIA GeForce RTX 5090, 32607 MiB, 202 MiB, 0 %
+torch 2.8.0+cu129 cuda True diffusers 0.38.0
+train.npy (16600, 128, 128) float32 -1.0 1.0
+test.npy (4150, 128, 128) float32 -1.0 1.0
+test_pore.npy (4150, 128, 128) uint8 0.0 1.0
+[i] size=128 tiles=16600 params=63.1M bs=64 epochs=50 dev=cuda
+[ep   1] L_simple=0.0865  76.3s
+[ep   2] L_simple=0.0525  76.1s
+[ep   3] L_simple=0.0488  76.2s
+[ep   4] L_simple=0.0491  76.3s
+[ep   5] L_simple=0.0475  76.2s
+[ep   6] L_simple=0.0484  76.2s
+[ep   7] L_simple=0.0483  76.2s
+[ep   8] L_simple=0.0486  76.3s
+[ep   9] L_simple=0.0480  76.4s
+[ep  10] L_simple=0.0480  76.3s
+[eval ep  10] selected=6.000% score=101.1711 pass=False -> /home/user/HXL/HY7_planb/phase2/ddpm_ct28_gray_b11_periodic50_20260705/validation_ep010.json
+[ep  11] L_simple=0.0467  76.3s
+[ep  12] L_simple=0.0472  76.5s
+[ep  13] L_simple=0.0467  76.3s
+[ep  14] L_simple=0.0469  76.4s
+[ep  15] L_simple=0.0475  76.3s
+[ep  16] L_simple=0.0466  76.3s
+[ep  17] L_simple=0.0450  76.3s
+[ep  18] L_simple=0.0468  76.4s
+[ep  19] L_simple=0.0475  76.5s
+[ep  20] L_simple=0.0459  76.4s
+[eval ep  20] selected=6.000% score=105.4390 pass=False -> /home/user/HXL/HY7_planb/phase2/ddpm_ct28_gray_b11_periodic50_20260705/validation_ep020.json
+[ep  21] L_simple=0.0461  76.3s
+[ep  22] L_simple=0.0462  76.3s
+[ep  23] L_simple=0.0467  76.4s
+[ep  24] L_simple=0.0459  76.5s
+[ep  25] L_simple=0.0473  76.4s
+[ep  26] L_simple=0.0465  76.4s
+[ep  27] L_simple=0.0467  76.4s
+[ep  28] L_simple=0.0463  76.4s
+[ep  29] L_simple=0.0462  76.4s
+[ep  30] L_simple=0.0465  76.5s
+[eval ep  30] selected=6.000% score=102.3396 pass=False -> /home/user/HXL/HY7_planb/phase2/ddpm_ct28_gray_b11_periodic50_20260705/validation_ep030.json
+[ep  31] L_simple=0.0458  76.3s
+[ep  32] L_simple=0.0465  76.4s
+[ep  33] L_simple=0.0470  76.4s
+[ep  34] L_simple=0.0453  76.4s
+[ep  35] L_simple=0.0446  76.4s
+[ep  36] L_simple=0.0460  76.5s
+[ep  37] L_simple=0.0468  76.4s
+[ep  38] L_simple=0.0462  76.4s
+[ep  39] L_simple=0.0468  76.4s
+[ep  40] L_simple=0.0471  76.5s
+[eval ep  40] selected=6.000% score=0.8802 pass=True -> /home/user/HXL/HY7_planb/phase2/ddpm_ct28_gray_b11_periodic50_20260705/validation_ep040.json
+[ep  41] L_simple=0.0466  76.5s
+[ep  42] L_simple=0.0462  76.4s
+[ep  43] L_simple=0.0456  76.4s
+[ep  44] L_simple=0.0467  76.4s
+[ep  45] L_simple=0.0461  76.4s
+[ep  46] L_simple=0.0454  76.4s
+[ep  47] L_simple=0.0457  76.5s
+[ep  48] L_simple=0.0454  76.5s
+[ep  49] L_simple=0.0464  76.4s
+[ep  50] L_simple=0.0457  76.4s
+[eval ep  50] selected=6.400% score=0.2527 pass=True -> /home/user/HXL/HY7_planb/phase2/ddpm_ct28_gray_b11_periodic50_20260705/validation_ep050.json
+[done] best L_simple=0.0446 -> /home/user/HXL/HY7_planb/phase2/ddpm_ct28_gray_b11_periodic50_20260705
+END 2026-07-05T01:34:25+08:00

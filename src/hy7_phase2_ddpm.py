@@ -304,7 +304,13 @@ def _two_point_curve(mask):
 
 
 def binary_pore_metrics(generated, real):
-    """Compute lightweight pore metrics: φ, S2 RMSE, Euler, max connected component."""
+    """Compute lightweight pore metrics: φ, S2 RMSE, Euler, max connected component.
+
+    This is the historical fast proxy used by early B1.1 periodic validation. It is
+    intentionally kept for cheap screening, but formal checkpoint selection should
+    use ``formal_binary_pore_metrics`` because its S₂/connectivity semantics match
+    ``src/hy7_phase2_eval.py``.
+    """
     g = np.asarray(generated, dtype=bool)
     r = np.asarray(real, dtype=bool)
     if g.ndim == 2:
@@ -325,20 +331,114 @@ def binary_pore_metrics(generated, real):
             "euler": float(np.mean(eulers)), "maxcc": float(np.mean(maxccs))}
 
 
-def periodic_validation_summary(gray_samples, gray_reference, real_pore, checkpoint, epoch,
-                                porosity_targets=(6.0, 6.4), metric_target=None,
-                                weights=None, gates=None):
-    """Score one checkpoint's gray samples across pre-registered porosity thresholds."""
-    gray = np.asarray(gray_samples, dtype=np.float32)
-    real = np.asarray(real_pore, dtype=bool)
-    if metric_target is None:
-        rm = binary_pore_metrics(real, real)
-        metric_target = {"phi": rm["phi"], "s2_rmse": 0.0, "euler": rm["euler"], "maxcc": rm["maxcc"]}
+def _formal_s2_radial(stack, rmax):
+    stack = np.asarray(stack, dtype=bool)
+    if stack.ndim == 2:
+        stack = stack[None]
+    n, h, w = stack.shape
+    yy, xx = np.mgrid[0:h, 0:w]
+    rr = np.sqrt(np.minimum(yy, h - yy) ** 2 + np.minimum(xx, w - xx) ** 2)
+    rbin = rr.astype(int)
+    rmax = int(min(rmax, rbin.max()))
+    s2_mean = np.zeros(rmax + 1, dtype=np.float64)
+    mask = rbin <= rmax
+    for i in range(n):
+        f = np.fft.fft2(stack[i].astype(np.float64))
+        ac = np.fft.ifft2(f * np.conj(f)).real / (h * w)
+        acc = np.zeros(rmax + 1, dtype=np.float64)
+        cnt = np.zeros(rmax + 1, dtype=np.float64)
+        np.add.at(acc, rbin[mask], ac[mask])
+        np.add.at(cnt, rbin[mask], 1)
+        s2_mean += acc / np.maximum(cnt, 1)
+    return s2_mean / max(n, 1)
+
+
+def _formal_euler_numbers(stack):
+    stack = np.asarray(stack, dtype=bool)
+    if stack.ndim == 2:
+        stack = stack[None]
+    try:
+        from skimage.measure import euler_number
+        return np.asarray([euler_number(sl, connectivity=1) for sl in stack], dtype=np.float64)
+    except ModuleNotFoundError:
+        return np.asarray([len(_component_sizes(sl, True)) - _hole_count(sl) for sl in stack], dtype=np.float64)
+
+
+def _formal_connectivity_stats(stack):
+    stack = np.asarray(stack, dtype=bool)
+    if stack.ndim == 2:
+        stack = stack[None]
+    try:
+        from skimage.measure import label
+        use_skimage = True
+    except ModuleNotFoundError:
+        label = None
+        use_skimage = False
+    frac, xpen, ypen = [], [], []
+    for img in stack:
+        if use_skimage:
+            lbl = label(img, connectivity=1)
+            if lbl.max() == 0:
+                frac.append(np.nan); xpen.append(0.0); ypen.append(0.0); continue
+            sizes = np.bincount(lbl.ravel()); sizes[0] = 0
+            largest = int(np.argmax(sizes)); cc = (lbl == largest)
+        else:
+            sizes = _component_sizes(img, True)
+            if not sizes:
+                frac.append(np.nan); xpen.append(0.0); ypen.append(0.0); continue
+            largest_size = max(sizes)
+            # Fallback cannot recover labels cheaply; use aggregate size and no penetration.
+            cc = None
+        total_pore = int(img.sum())
+        if use_skimage:
+            frac.append(float(cc.sum()) / max(total_pore, 1))
+            xpen.append(float(cc[:, 0].any() and cc[:, -1].any()))
+            ypen.append(float(cc[0, :].any() and cc[-1, :].any()))
+        else:
+            frac.append(float(largest_size) / max(total_pore, 1))
+            xpen.append(0.0); ypen.append(0.0)
+    return {
+        "maxcc": float(np.nanmean(np.asarray(frac, dtype=np.float64))),
+        "x_penetrate": float(np.mean(xpen)),
+        "y_penetrate": float(np.mean(ypen)),
+    }
+
+
+def formal_binary_pore_metrics(generated, real, rmax=48):
+    """B1 cheap50-compatible pore metrics for formal periodic validation.
+
+    Matches ``src/hy7_phase2_eval.py`` semantics: FFT radial S₂ with rmax,
+    skimage Euler (connectivity=1), and max connected component divided by total
+    pore pixels, not by total image pixels.
+    """
+    g = np.asarray(generated, dtype=bool)
+    r = np.asarray(real, dtype=bool)
+    if g.ndim == 2:
+        g = g[None]
+    if r.ndim == 2:
+        r = r[None]
+    if g.ndim != 3 or r.ndim != 3:
+        raise ValueError("pore arrays must have shape (N,H,W) or (H,W)")
+    s2g, s2r = _formal_s2_radial(g, rmax), _formal_s2_radial(r, rmax)
+    n = min(len(s2g), len(s2r))
+    conn = _formal_connectivity_stats(g)
+    return {
+        "phi": float(g.mean() * 100.0),
+        "s2_rmse": float(np.sqrt(np.mean((s2g[:n] - s2r[:n]) ** 2))) if n else 0.0,
+        "euler": float(_formal_euler_numbers(g).mean()),
+        "maxcc": conn["maxcc"],
+        "x_penetrate": conn["x_penetrate"],
+        "y_penetrate": conn["y_penetrate"],
+    }
+
+
+def _score_threshold_candidates(gray, real, checkpoint, epoch, porosity_targets, metric_target,
+                                weights, gates, metric_fn, proxy_name):
     candidates = []
     for por in porosity_targets:
         thr = threshold_for_porosity(gray, por)
         pore = gray <= thr
-        metrics = binary_pore_metrics(pore, real)
+        metrics = metric_fn(pore, real)
         candidate = {
             **metrics,
             "name": f"{checkpoint}@phi{float(por):.3g}",
@@ -346,15 +446,87 @@ def periodic_validation_summary(gray_samples, gray_reference, real_pore, checkpo
             "epoch": int(epoch),
             "porosity_target": float(por),
             "threshold": thr,
+            "proxy": proxy_name,
         }
         candidates.append(candidate)
     selected = select_metric_aware_checkpoint(candidates, target=metric_target, weights=weights, gates=gates)
-    return {"checkpoint": checkpoint, "epoch": int(epoch),
-            "gray_stats": gray_validation_stats(gray, gray_reference),
+    selected = {k: v for k, v in selected.items() if k != "candidates"}
+    selected["proxy"] = proxy_name
+    return candidates, selected, {str(c.get("name", i)): c for i, c in enumerate(
+        [score_checkpoint_metrics(c, target=metric_target, weights=weights, gates=gates) for c in candidates]
+    )}
+
+
+def _selection_status(fast_selected, formal_selected):
+    if not bool(formal_selected.get("passed_gate", False)):
+        return "rejected"
+    fast_phi = float(fast_selected.get("porosity_target", np.nan))
+    formal_phi = float(formal_selected.get("porosity_target", np.nan))
+    if np.isfinite(fast_phi) and np.isfinite(formal_phi) and abs(fast_phi - formal_phi) < 1e-9:
+        return "accepted"
+    return "needs_formal_resample"
+
+
+def periodic_validation_summary(gray_samples, gray_reference, real_pore, checkpoint, epoch,
+                                porosity_targets=(6.0, 6.4), metric_target=None,
+                                weights=None, gates=None, formal_proxy=False,
+                                formal_rmax=48, formal_metric_target=None):
+    """Score one checkpoint's gray samples across pre-registered porosity thresholds.
+
+    When ``formal_proxy`` is true, the returned top-level ``selected`` candidate is
+    selected with B1 cheap50-compatible formal metrics, while the historical fast
+    proxy remains under ``fast_proxy`` for disagreement diagnostics.
+    """
+    gray = np.asarray(gray_samples, dtype=np.float32)
+    real = np.asarray(real_pore, dtype=bool)
+    if metric_target is None:
+        rm = binary_pore_metrics(real, real)
+        metric_target = {"phi": rm["phi"], "s2_rmse": 0.0, "euler": rm["euler"], "maxcc": rm["maxcc"]}
+    fast_candidates, fast_selected, fast_scored = _score_threshold_candidates(
+        gray, real, checkpoint, epoch, porosity_targets, metric_target, weights, gates,
+        binary_pore_metrics, "fast")
+    summary = {
+        "checkpoint": checkpoint,
+        "epoch": int(epoch),
+        "gray_stats": gray_validation_stats(gray, gray_reference),
+        "metric_target": dict(metric_target),
+        "threshold_candidates": fast_candidates,
+        "selected": fast_selected,
+        "scored_candidates": fast_scored,
+        "fast_proxy": {
             "metric_target": dict(metric_target),
-            "threshold_candidates": candidates,
-            "selected": {k: v for k, v in selected.items() if k != "candidates"},
-            "scored_candidates": selected["candidates"]}
+            "threshold_candidates": fast_candidates,
+            "selected": fast_selected,
+            "scored_candidates": fast_scored,
+        },
+        "selection_status": "accepted" if fast_selected.get("passed_gate", False) else "rejected",
+    }
+    if formal_proxy:
+        if formal_metric_target is None:
+            fm = formal_binary_pore_metrics(real, real, rmax=formal_rmax)
+            formal_metric_target = {"phi": fm["phi"], "s2_rmse": 0.0, "euler": fm["euler"], "maxcc": fm["maxcc"]}
+        formal_metric_fn = lambda pore, ref: formal_binary_pore_metrics(pore, ref, rmax=formal_rmax)
+        formal_candidates, formal_selected, formal_scored = _score_threshold_candidates(
+            gray, real, checkpoint, epoch, porosity_targets, formal_metric_target, weights, gates,
+            formal_metric_fn, "formal")
+        status = _selection_status(fast_selected, formal_selected)
+        summary.update({
+            "metric_target": dict(formal_metric_target),
+            "threshold_candidates": formal_candidates,
+            "selected": formal_selected,
+            "scored_candidates": formal_scored,
+            "formal_proxy": {
+                "rmax": int(formal_rmax),
+                "metric_target": dict(formal_metric_target),
+                "threshold_candidates": formal_candidates,
+                "selected": formal_selected,
+                "scored_candidates": formal_scored,
+            },
+            "selection_status": status,
+            "nnunet_proxy_required": status != "accepted",
+            "selection_reason": "fast/formal metric disagreement" if status == "needs_formal_resample" else status,
+        })
+    return summary
 
 
 @torch.no_grad()
@@ -403,6 +575,165 @@ def _parse_float_list(text):
     return [float(x.strip()) for x in str(text).split(",") if x.strip()]
 
 
+def _estimate_lower_tail_threshold(arr, porosity_percent):
+    """Lower-tail threshold from train split only; used by soft pore proxy."""
+    a = np.asarray(arr, dtype=np.float32).ravel()
+    if len(a) == 0:
+        raise ValueError("threshold reference array must be non-empty")
+    return threshold_for_porosity(a, porosity_percent)
+
+
+def _torch_soft_s2(stack, lags):
+    """Differentiable horizontal/vertical soft two-point stats for (N,1,H,W)."""
+    vals = []
+    for lag in lags:
+        lag = int(lag)
+        if lag <= 0:
+            raise ValueError("soft S2 lags must be positive")
+        vals.append((stack[:, :, :, :-lag] * stack[:, :, :, lag:]).mean())
+        vals.append((stack[:, :, :-lag, :] * stack[:, :, lag:, :]).mean())
+    return torch.stack(vals)
+
+
+def _torch_soft_euler_proxy(p):
+    """Differentiable Euler-like proxy: count soft pore starts not supported by 4-neighbors.
+
+    This is not a formal Euler number. It is a rescue-run topology proxy that
+    explicitly pushes against the observed failure mode (large merged pore blobs):
+    high values require pore probability to appear as separated local components.
+    Formal gate decisions still use ``formal_binary_pore_metrics`` only.
+    """
+    if F is None:
+        raise ModuleNotFoundError("soft Euler proxy requires torch.nn.functional")
+    up = F.pad(p[:, :, :-1, :], (0, 0, 1, 0))
+    down = F.pad(p[:, :, 1:, :], (0, 0, 0, 1))
+    left = F.pad(p[:, :, :, :-1], (1, 0, 0, 0))
+    right = F.pad(p[:, :, :, 1:], (0, 1, 0, 0))
+    neigh = torch.maximum(torch.maximum(up, down), torch.maximum(left, right))
+    starts = p * (1.0 - neigh.clamp(0.0, 1.0))
+    return starts.flatten(1).sum(dim=1).mean()
+
+
+def _torch_soft_maxcc_proxy(p, scales):
+    """Differentiable maxCC-like proxy: largest multiscale soft pore window / total pore.
+
+    It deliberately approximates the formal max connected component bottleneck with a
+    cheap differentiable upper-pressure term: large dense connected pore regions raise
+    the proxy and are penalized. The true maxCC gate remains the formal validation.
+    """
+    if F is None:
+        raise ModuleNotFoundError("soft maxCC proxy requires torch.nn.functional")
+    _n, _c, h, w = p.shape
+    total = p.flatten(1).sum(dim=1).clamp_min(1e-6)
+    vals = []
+    for scale in scales:
+        k = int(scale)
+        if k <= 0:
+            raise ValueError("soft maxCC scales must be positive")
+        if k > h or k > w:
+            continue
+        pooled_mass = F.avg_pool2d(p, kernel_size=k, stride=1) * float(k * k)
+        vals.append(pooled_mass.flatten(1).max(dim=1).values / total)
+    if not vals:
+        raise ValueError("at least one soft maxCC scale must fit the training tile size")
+    return torch.stack(vals, dim=1).max(dim=1).values.mean()
+
+
+def _build_soft_pore_regularizer(train_tensor, args, device):
+    """Prepare train-only targets for weak topology-aware soft pore regularization.
+
+    This is intentionally low-risk: it never uses test gray statistics, it is off by
+    default, and it regularizes train-derived lower-tail pore-probability proxies.
+    ``soft_euler_lambda`` / ``soft_maxcc_lambda`` are the one-off B1.1 rescue
+    proxies; formal pass/fail remains based on held-out formal validation.
+    """
+    phi_lam = float(getattr(args, "soft_phi_lambda", 0.0) or 0.0)
+    s2_lam = float(getattr(args, "soft_s2_lambda", 0.0) or 0.0)
+    euler_lam = float(getattr(args, "soft_euler_lambda", 0.0) or 0.0)
+    maxcc_lam = float(getattr(args, "soft_maxcc_lambda", 0.0) or 0.0)
+    if phi_lam <= 0.0 and s2_lam <= 0.0 and euler_lam <= 0.0 and maxcc_lam <= 0.0:
+        return None
+    if F is None:
+        raise ModuleNotFoundError("soft pore regularization requires torch.nn.functional")
+    tau = float(getattr(args, "soft_pore_tau", 0.08) or 0.08)
+    if tau <= 0:
+        raise ValueError("--soft-pore-tau must be positive")
+    phi_target = float(getattr(args, "soft_pore_phi", 6.4) or 6.4) / 100.0
+    lags = [int(x) for x in _parse_float_list(getattr(args, "soft_s2_lags", "1,2,4,8,16"))]
+    if not lags:
+        raise ValueError("--soft-s2-lags must include at least one lag")
+    maxcc_scales = [int(x) for x in _parse_float_list(getattr(args, "soft_maxcc_scales", "4,8,16,32"))]
+    if maxcc_lam > 0.0 and not maxcc_scales:
+        raise ValueError("--soft-maxcc-scales must include at least one scale")
+    # Use train split only. Limit reference samples to keep GPU memory predictable.
+    ref_n = int(getattr(args, "soft_reg_ref_n", 512) or 512)
+    ref_cpu = train_tensor[:min(ref_n, len(train_tensor))]
+    threshold = _estimate_lower_tail_threshold(ref_cpu.numpy(), float(getattr(args, "soft_pore_phi", 6.4)))
+    ref = ref_cpu.to(device)
+    with torch.no_grad():
+        p_ref = torch.sigmoid((float(threshold) - ref) / tau)
+        s2_target = _torch_soft_s2(p_ref, lags).detach()
+        phi_ref = p_ref.mean().detach()
+        euler_target = _torch_soft_euler_proxy(p_ref).detach()
+        maxcc_target = _torch_soft_maxcc_proxy(p_ref, maxcc_scales).detach()
+    return {
+        "threshold": float(threshold),
+        "tau": tau,
+        "phi_target": torch.tensor(phi_target, dtype=torch.float32, device=device),
+        "phi_ref": phi_ref,
+        "s2_target": s2_target,
+        "euler_target": euler_target,
+        "maxcc_target": maxcc_target,
+        "lags": lags,
+        "maxcc_scales": maxcc_scales,
+        "lambda_phi": phi_lam,
+        "lambda_s2": s2_lam,
+        "lambda_euler": euler_lam,
+        "lambda_maxcc": maxcc_lam,
+        "ref_n": int(ref.shape[0]),
+    }
+
+
+def _x0_from_eps_prediction(xt, pred_noise, timesteps, sched):
+    """Estimate x0 from epsilon-prediction for differentiable regularization."""
+    alphas = sched.alphas_cumprod.to(device=xt.device, dtype=xt.dtype)[timesteps]
+    while alphas.ndim < xt.ndim:
+        alphas = alphas.view(*alphas.shape, 1)
+    return (xt - torch.sqrt(1.0 - alphas) * pred_noise) / torch.sqrt(alphas)
+
+
+def _soft_pore_regularization_loss(x0_pred, reg):
+    if F is None:
+        raise ModuleNotFoundError("soft pore regularization requires torch.nn.functional")
+    p = torch.sigmoid((float(reg["threshold"]) - x0_pred.clamp(-1.0, 1.0)) / float(reg["tau"]))
+    loss = x0_pred.new_tensor(0.0)
+    parts = {}
+    if float(reg["lambda_phi"]) > 0.0:
+        target = reg.get("phi_ref", reg["phi_target"])
+        l_phi = F.mse_loss(p.mean(), target)
+        loss = loss + float(reg["lambda_phi"]) * l_phi
+        parts["soft_phi"] = float(l_phi.detach().cpu())
+    if float(reg["lambda_s2"]) > 0.0:
+        s2 = _torch_soft_s2(p, reg["lags"])
+        l_s2 = F.mse_loss(s2, reg["s2_target"])
+        loss = loss + float(reg["lambda_s2"]) * l_s2
+        parts["soft_s2"] = float(l_s2.detach().cpu())
+    if float(reg.get("lambda_euler", 0.0)) > 0.0:
+        euler = _torch_soft_euler_proxy(p)
+        target = reg["euler_target"]
+        scale = target.abs().clamp_min(1.0)
+        l_euler = ((euler - target) / scale).pow(2)
+        loss = loss + float(reg["lambda_euler"]) * l_euler
+        parts["soft_euler"] = float(l_euler.detach().cpu())
+    if float(reg.get("lambda_maxcc", 0.0)) > 0.0:
+        maxcc = _torch_soft_maxcc_proxy(p, reg["maxcc_scales"])
+        l_maxcc = F.mse_loss(maxcc, reg["maxcc_target"])
+        loss = loss + float(reg["lambda_maxcc"]) * l_maxcc
+        parts["soft_maxcc"] = float(l_maxcc.detach().cpu())
+    parts["weighted"] = float(loss.detach().cpu())
+    return loss, parts
+
+
 def _periodic_eval_ready(a):
     return int(getattr(a, "eval_every", 0) or 0) > 0
 
@@ -431,11 +762,19 @@ def _run_periodic_validation(model, sched, a, epoch, ckpt_path, size, dev, gray_
         epoch=epoch,
         porosity_targets=_parse_float_list(a.eval_porosity_targets),
         metric_target=target,
+        formal_proxy=bool(getattr(a, "eval_formal_proxy", False)),
+        formal_rmax=int(getattr(a, "eval_rmax", 48)),
     )
+    summary["eval_n"] = int(a.eval_n)
+    summary["eval_seed"] = int(a.seed)
     path = os.path.join(a.out, f"validation_ep{epoch:03d}.json")
     json.dump(summary, open(path, "w"), indent=2)
+    extra = f" status={summary.get('selection_status', 'accepted')}"
+    if summary.get("nnunet_proxy_required"):
+        extra += " nnunet_proxy_required=True"
     print(f"[eval ep {epoch:3d}] selected={summary['selected']['porosity_target']:.3f}% "
-          f"score={summary['selected']['score']:.4f} pass={summary['selected']['passed_gate']} -> {path}")
+          f"proxy={summary['selected'].get('proxy', 'fast')} score={summary['selected']['score']:.4f} "
+          f"pass={summary['selected']['passed_gate']}{extra} -> {path}")
     return summary
 
 
@@ -451,10 +790,18 @@ def cmd_train(a):
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr)
     scaler = torch.amp.GradScaler("cuda", enabled=a.amp)
     os.makedirs(a.out, exist_ok=True)
+    soft_reg = _build_soft_pore_regularizer(x, a, dev)
     gray_ref, real_pore, metric_target = _load_periodic_refs(a)
     validation_summaries = []
     npar = sum(p.numel() for p in model.parameters()) / 1e6
     print(f"[i] size={size} tiles={len(x)} params={npar:.1f}M bs={a.bs} epochs={a.epochs} dev={dev}")
+    if soft_reg is not None:
+        print("[i] soft_pore_reg "
+              f"phi_lambda={soft_reg['lambda_phi']} s2_lambda={soft_reg['lambda_s2']} "
+              f"euler_lambda={soft_reg['lambda_euler']} maxcc_lambda={soft_reg['lambda_maxcc']} "
+              f"phi={float(getattr(a, 'soft_pore_phi', 6.4)):.3f}% tau={soft_reg['tau']} "
+              f"threshold={soft_reg['threshold']:.5f} lags={soft_reg['lags']} "
+              f"maxcc_scales={soft_reg['maxcc_scales']} ref_n={soft_reg['ref_n']}")
     best = 1e9
     for ep in range(1, a.epochs + 1):
         model.train(); tot = 0.0; nb = 0; t0 = time.time()
@@ -465,10 +812,15 @@ def cmd_train(a):
             xt = sched.add_noise(x0, noise, t)
             with torch.amp.autocast("cuda", enabled=a.amp):
                 pred = model(xt, t).sample
-                loss = F.mse_loss(pred, noise)          # ε-预测 L_simple
+                l_simple = F.mse_loss(pred, noise)          # ε-预测 L_simple
+                loss = l_simple
+                if soft_reg is not None:
+                    x0_pred = _x0_from_eps_prediction(xt, pred, t, sched)
+                    l_reg, _reg_parts = _soft_pore_regularization_loss(x0_pred, soft_reg)
+                    loss = loss + l_reg
             opt.zero_grad(set_to_none=True)
             scaler.scale(loss).backward(); scaler.step(opt); scaler.update()
-            tot += loss.item(); nb += 1
+            tot += l_simple.item(); nb += 1
         avg = tot / max(nb, 1)
         print(f"[ep {ep:3d}] L_simple={avg:.4f}  {time.time()-t0:.1f}s", flush=True)
         if avg < best:
@@ -489,14 +841,31 @@ def cmd_train(a):
                 model, sched, a, ep, ckpt_path, size, dev, gray_ref, real_pore, metric_target))
     torch.save(model.state_dict(), os.path.join(a.out, "final.pt"))
     if validation_summaries:
+        selection_target = validation_summaries[0].get("metric_target", metric_target)
         selected = select_metric_aware_checkpoint(
-            [v["selected"] for v in validation_summaries], target=metric_target)
-        json.dump({"summaries": validation_summaries, "selected": selected},
+            [v["selected"] for v in validation_summaries], target=selection_target)
+        json.dump({"summaries": validation_summaries, "selected": selected,
+                   "selection_target": selection_target},
                   open(os.path.join(a.out, "periodic_validation_summary.json"), "w"), indent=2)
-    json.dump({"size": size, "n_train": len(x), "epochs": a.epochs, "base": a.base,
-               "bs": a.bs, "lr": a.lr, "seed": a.seed, "sample_mode": a.sample_mode,
-               "best_Lsimple": round(best, 5), "params_M": round(npar, 2)},
-              open(os.path.join(a.out, "train_meta.json"), "w"), indent=2)
+    train_meta = {"size": size, "n_train": len(x), "epochs": a.epochs, "base": a.base,
+                  "bs": a.bs, "lr": a.lr, "seed": a.seed, "sample_mode": a.sample_mode,
+                  "best_Lsimple": round(best, 5), "params_M": round(npar, 2)}
+    if soft_reg is not None:
+        train_meta["soft_pore_regularization"] = {
+            "lambda_phi": float(soft_reg["lambda_phi"]),
+            "lambda_s2": float(soft_reg["lambda_s2"]),
+            "lambda_euler": float(soft_reg["lambda_euler"]),
+            "lambda_maxcc": float(soft_reg["lambda_maxcc"]),
+            "soft_pore_phi": float(getattr(a, "soft_pore_phi", 6.4)),
+            "tau": float(soft_reg["tau"]),
+            "threshold_train_only": float(soft_reg["threshold"]),
+            "lags": list(soft_reg["lags"]),
+            "maxcc_scales": list(soft_reg["maxcc_scales"]),
+            "euler_target": float(soft_reg["euler_target"].detach().cpu()),
+            "maxcc_target": float(soft_reg["maxcc_target"].detach().cpu()),
+            "ref_n": int(soft_reg["ref_n"]),
+        }
+    json.dump(train_meta, open(os.path.join(a.out, "train_meta.json"), "w"), indent=2)
     print(f"[done] best L_simple={best:.4f} -> {a.out}")
 
 
@@ -560,8 +929,30 @@ if __name__ == "__main__":
                    help="real pore .npy evaluated with the same proxy for S2/Euler/maxCC targets")
     p.add_argument("--eval-porosity-targets", default="6.0,6.4",
                    help="comma-separated lower-tail porosity thresholds to evaluate")
+    p.add_argument("--eval-formal-proxy", action="store_true",
+                   help="also run B1 cheap50-compatible S2/Euler/maxCC formal proxy and select checkpoints by it")
+    p.add_argument("--eval-rmax", type=int, default=48,
+                   help="radial S2 rmax for --eval-formal-proxy; B1 cheap50 uses 48")
     p.add_argument("--select-metric", choices=["composite"], default="composite",
                    help="checkpoint selection metric; currently gated composite score")
+    p.add_argument("--soft-phi-lambda", type=float, default=0.0,
+                   help="weak differentiable lower-tail soft porosity regularization weight; off by default")
+    p.add_argument("--soft-s2-lambda", type=float, default=0.0,
+                   help="weak differentiable soft two-point-statistics regularization weight; off by default")
+    p.add_argument("--soft-euler-lambda", type=float, default=0.0,
+                   help="one-off B1.1 rescue: differentiable Euler-like topology proxy weight; off by default")
+    p.add_argument("--soft-maxcc-lambda", type=float, default=0.0,
+                   help="one-off B1.1 rescue: differentiable maxCC-like topology proxy weight; off by default")
+    p.add_argument("--soft-pore-phi", type=float, default=6.4,
+                   help="train-split lower-tail porosity percent used to derive soft pore threshold")
+    p.add_argument("--soft-pore-tau", type=float, default=0.08,
+                   help="sigmoid temperature for soft pore proxy")
+    p.add_argument("--soft-s2-lags", default="1,2,4,8,16",
+                   help="comma-separated lags for differentiable soft S2 regularization")
+    p.add_argument("--soft-maxcc-scales", default="4,8,16,32",
+                   help="comma-separated window sizes for differentiable soft maxCC proxy")
+    p.add_argument("--soft-reg-ref-n", type=int, default=512,
+                   help="number of train slices used to build train-only soft topology targets")
     p.add_argument("--sample-mode", choices=["binary", "gray"], default="binary",
                    help="checkpoint grid sample representation: binary for pore masks, gray for B1 sus")
     p.set_defaults(func=cmd_train)

@@ -1,0 +1,670 @@
+{
+  "summaries": [
+    {
+      "checkpoint": "ckpt_ep010.pt",
+      "epoch": 10,
+      "gray_stats": {
+        "n": 16,
+        "mean": -0.1351301372051239,
+        "std": 0.4439500570297241,
+        "min": -1.0,
+        "max": 1.0,
+        "ks": 0.10547244703913308
+      },
+      "metric_target": {
+        "phi": 6.442654896931475,
+        "s2_rmse": 0.0,
+        "euler": 127.06746987951807,
+        "maxcc": 0.004151949595256024
+      },
+      "threshold_candidates": [
+        {
+          "phi": 6.0001373291015625,
+          "s2_rmse": 0.004881168249994516,
+          "euler": 80.25,
+          "maxcc": 0.0051727294921875,
+          "name": "ckpt_ep010.pt@phi6",
+          "checkpoint": "ckpt_ep010.pt",
+          "epoch": 10,
+          "porosity_target": 6.0,
+          "threshold": -0.8278778791427612
+        },
+        {
+          "phi": 6.400299072265625,
+          "s2_rmse": 0.006297943647950888,
+          "euler": 82.0,
+          "maxcc": 0.005886077880859375,
+          "name": "ckpt_ep010.pt@phi6.4",
+          "checkpoint": "ckpt_ep010.pt",
+          "epoch": 10,
+          "porosity_target": 6.4,
+          "threshold": -0.8148710131645203
+        }
+      ],
+      "selected": {
+        "phi": 6.0001373291015625,
+        "s2_rmse": 0.004881168249994516,
+        "euler": 80.25,
+        "maxcc": 0.0051727294921875,
+        "name": "ckpt_ep010.pt@phi6",
+        "checkpoint": "ckpt_ep010.pt",
+        "epoch": 10,
+        "porosity_target": 6.0,
+        "threshold": -0.8278778791427612,
+        "terms": {
+          "phi": 0.068685592338754,
+          "s2_rmse": 0.48811682499945164,
+          "euler": 0.36844575503005705,
+          "maxcc": 0.245855560987014
+        },
+        "failed_gates": [
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 101.17110373335528
+      },
+      "scored_candidates": {
+        "ckpt_ep010.pt@phi6": {
+          "phi": 6.0001373291015625,
+          "s2_rmse": 0.004881168249994516,
+          "euler": 80.25,
+          "maxcc": 0.0051727294921875,
+          "name": "ckpt_ep010.pt@phi6",
+          "checkpoint": "ckpt_ep010.pt",
+          "epoch": 10,
+          "porosity_target": 6.0,
+          "threshold": -0.8278778791427612,
+          "terms": {
+            "phi": 0.068685592338754,
+            "s2_rmse": 0.48811682499945164,
+            "euler": 0.36844575503005705,
+            "maxcc": 0.245855560987014
+          },
+          "failed_gates": [
+            "euler"
+          ],
+          "passed_gate": false,
+          "score": 101.17110373335528
+        },
+        "ckpt_ep010.pt@phi6.4": {
+          "phi": 6.400299072265625,
+          "s2_rmse": 0.006297943647950888,
+          "euler": 82.0,
+          "maxcc": 0.005886077880859375,
+          "name": "ckpt_ep010.pt@phi6.4",
+          "checkpoint": "ckpt_ep010.pt",
+          "epoch": 10,
+          "porosity_target": 6.4,
+          "threshold": -0.8148710131645203,
+          "terms": {
+            "phi": 0.006574281153259244,
+            "s2_rmse": 0.6297943647950888,
+            "euler": 0.3546735440805568,
+            "maxcc": 0.417666025518409
+          },
+          "failed_gates": [
+            "euler"
+          ],
+          "passed_gate": false,
+          "score": 101.4087082155473
+        }
+      }
+    },
+    {
+      "checkpoint": "ckpt_ep020.pt",
+      "epoch": 20,
+      "gray_stats": {
+        "n": 16,
+        "mean": 0.3097408413887024,
+        "std": 0.48618173599243164,
+        "min": -1.0,
+        "max": 1.0,
+        "ks": 0.4472717377076666
+      },
+      "metric_target": {
+        "phi": 6.442654896931475,
+        "s2_rmse": 0.0,
+        "euler": 127.06746987951807,
+        "maxcc": 0.004151949595256024
+      },
+      "threshold_candidates": [
+        {
+          "phi": 6.0001373291015625,
+          "s2_rmse": 0.012256551533937454,
+          "euler": 67.125,
+          "maxcc": 0.01940155029296875,
+          "name": "ckpt_ep020.pt@phi6",
+          "checkpoint": "ckpt_ep020.pt",
+          "epoch": 20,
+          "porosity_target": 6.0,
+          "threshold": -0.5395935773849487
+        },
+        {
+          "phi": 6.400299072265625,
+          "s2_rmse": 0.01441247295588255,
+          "euler": 67.6875,
+          "maxcc": 0.02056121826171875,
+          "name": "ckpt_ep020.pt@phi6.4",
+          "checkpoint": "ckpt_ep020.pt",
+          "epoch": 20,
+          "porosity_target": 6.4,
+          "threshold": -0.5216236114501953
+        }
+      ],
+      "selected": {
+        "phi": 6.0001373291015625,
+        "s2_rmse": 0.012256551533937454,
+        "euler": 67.125,
+        "maxcc": 0.01940155029296875,
+        "name": "ckpt_ep020.pt@phi6",
+        "checkpoint": "ckpt_ep020.pt",
+        "epoch": 20,
+        "porosity_target": 6.0,
+        "threshold": -0.5395935773849487,
+        "terms": {
+          "phi": 0.068685592338754,
+          "s2_rmse": 1.2256551533937454,
+          "euler": 0.47173733715130944,
+          "maxcc": 3.672877126238904
+        },
+        "failed_gates": [
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 105.43895520912271
+      },
+      "scored_candidates": {
+        "ckpt_ep020.pt@phi6": {
+          "phi": 6.0001373291015625,
+          "s2_rmse": 0.012256551533937454,
+          "euler": 67.125,
+          "maxcc": 0.01940155029296875,
+          "name": "ckpt_ep020.pt@phi6",
+          "checkpoint": "ckpt_ep020.pt",
+          "epoch": 20,
+          "porosity_target": 6.0,
+          "threshold": -0.5395935773849487,
+          "terms": {
+            "phi": 0.068685592338754,
+            "s2_rmse": 1.2256551533937454,
+            "euler": 0.47173733715130944,
+            "maxcc": 3.672877126238904
+          },
+          "failed_gates": [
+            "euler"
+          ],
+          "passed_gate": false,
+          "score": 105.43895520912271
+        },
+        "ckpt_ep020.pt@phi6.4": {
+          "phi": 6.400299072265625,
+          "s2_rmse": 0.01441247295588255,
+          "euler": 67.6875,
+          "maxcc": 0.02056121826171875,
+          "name": "ckpt_ep020.pt@phi6.4",
+          "checkpoint": "ckpt_ep020.pt",
+          "epoch": 20,
+          "porosity_target": 6.4,
+          "threshold": -0.5216236114501953,
+          "terms": {
+            "phi": 0.006574281153259244,
+            "s2_rmse": 1.441247295588255,
+            "euler": 0.4673105550603986,
+            "maxcc": 3.9521839776696206
+          },
+          "failed_gates": [
+            "euler"
+          ],
+          "passed_gate": false,
+          "score": 105.86731610947153
+        }
+      }
+    },
+    {
+      "checkpoint": "ckpt_ep030.pt",
+      "epoch": 30,
+      "gray_stats": {
+        "n": 16,
+        "mean": -0.15444491803646088,
+        "std": 0.4334447681903839,
+        "min": -1.0,
+        "max": 1.0,
+        "ks": 0.10983449545251317
+      },
+      "metric_target": {
+        "phi": 6.442654896931475,
+        "s2_rmse": 0.0,
+        "euler": 127.06746987951807,
+        "maxcc": 0.004151949595256024
+      },
+      "threshold_candidates": [
+        {
+          "phi": 6.0001373291015625,
+          "s2_rmse": 0.007108532357960939,
+          "euler": 76.9375,
+          "maxcc": 0.008991241455078125,
+          "name": "ckpt_ep030.pt@phi6",
+          "checkpoint": "ckpt_ep030.pt",
+          "epoch": 30,
+          "porosity_target": 6.0,
+          "threshold": -0.8303934931755066
+        },
+        {
+          "phi": 6.400299072265625,
+          "s2_rmse": 0.008796191774308681,
+          "euler": 79.0625,
+          "maxcc": 0.00972747802734375,
+          "name": "ckpt_ep030.pt@phi6.4",
+          "checkpoint": "ckpt_ep030.pt",
+          "epoch": 30,
+          "porosity_target": 6.4,
+          "threshold": -0.8161734342575073
+        }
+      ],
+      "selected": {
+        "phi": 6.0001373291015625,
+        "s2_rmse": 0.007108532357960939,
+        "euler": 76.9375,
+        "maxcc": 0.008991241455078125,
+        "name": "ckpt_ep030.pt@phi6",
+        "checkpoint": "ckpt_ep030.pt",
+        "epoch": 30,
+        "porosity_target": 6.0,
+        "threshold": -0.8303934931755066,
+        "terms": {
+          "phi": 0.068685592338754,
+          "s2_rmse": 0.7108532357960939,
+          "euler": 0.3945145828987541,
+          "maxcc": 1.1655468711256578
+        },
+        "failed_gates": [
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 102.33960028215925
+      },
+      "scored_candidates": {
+        "ckpt_ep030.pt@phi6": {
+          "phi": 6.0001373291015625,
+          "s2_rmse": 0.007108532357960939,
+          "euler": 76.9375,
+          "maxcc": 0.008991241455078125,
+          "name": "ckpt_ep030.pt@phi6",
+          "checkpoint": "ckpt_ep030.pt",
+          "epoch": 30,
+          "porosity_target": 6.0,
+          "threshold": -0.8303934931755066,
+          "terms": {
+            "phi": 0.068685592338754,
+            "s2_rmse": 0.7108532357960939,
+            "euler": 0.3945145828987541,
+            "maxcc": 1.1655468711256578
+          },
+          "failed_gates": [
+            "euler"
+          ],
+          "passed_gate": false,
+          "score": 102.33960028215925
+        },
+        "ckpt_ep030.pt@phi6.4": {
+          "phi": 6.400299072265625,
+          "s2_rmse": 0.008796191774308681,
+          "euler": 79.0625,
+          "maxcc": 0.00972747802734375,
+          "name": "ckpt_ep030.pt@phi6.4",
+          "checkpoint": "ckpt_ep030.pt",
+          "epoch": 30,
+          "porosity_target": 6.4,
+          "threshold": -0.8161734342575073,
+          "terms": {
+            "phi": 0.006574281153259244,
+            "s2_rmse": 0.8796191774308681,
+            "euler": 0.3777911838886466,
+            "maxcc": 1.342869970882659
+          },
+          "failed_gates": [
+            "euler"
+          ],
+          "passed_gate": false,
+          "score": 102.60685461335544
+        }
+      }
+    },
+    {
+      "checkpoint": "ckpt_ep040.pt",
+      "epoch": 40,
+      "gray_stats": {
+        "n": 16,
+        "mean": -0.15979012846946716,
+        "std": 0.4075056314468384,
+        "min": -1.0,
+        "max": 1.0,
+        "ks": 0.09726321852350808
+      },
+      "metric_target": {
+        "phi": 6.442654896931475,
+        "s2_rmse": 0.0,
+        "euler": 127.06746987951807,
+        "maxcc": 0.004151949595256024
+      },
+      "threshold_candidates": [
+        {
+          "phi": 6.0001373291015625,
+          "s2_rmse": 0.001905573415569961,
+          "euler": 108.125,
+          "maxcc": 0.00611114501953125,
+          "name": "ckpt_ep040.pt@phi6",
+          "checkpoint": "ckpt_ep040.pt",
+          "epoch": 40,
+          "porosity_target": 6.0,
+          "threshold": -0.8117525577545166
+        },
+        {
+          "phi": 6.400299072265625,
+          "s2_rmse": 0.0028102556243538857,
+          "euler": 111.375,
+          "maxcc": 0.00701141357421875,
+          "name": "ckpt_ep040.pt@phi6.4",
+          "checkpoint": "ckpt_ep040.pt",
+          "epoch": 40,
+          "porosity_target": 6.4,
+          "threshold": -0.796803891658783
+        }
+      ],
+      "selected": {
+        "phi": 6.0001373291015625,
+        "s2_rmse": 0.001905573415569961,
+        "euler": 108.125,
+        "maxcc": 0.00611114501953125,
+        "name": "ckpt_ep040.pt@phi6",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 6.0,
+        "threshold": -0.8117525577545166,
+        "terms": {
+          "phi": 0.068685592338754,
+          "s2_rmse": 0.1905573415569961,
+          "euler": 0.1490741091915878,
+          "maxcc": 0.4718736052368705
+        },
+        "failed_gates": [],
+        "passed_gate": true,
+        "score": 0.8801906483242083
+      },
+      "scored_candidates": {
+        "ckpt_ep040.pt@phi6": {
+          "phi": 6.0001373291015625,
+          "s2_rmse": 0.001905573415569961,
+          "euler": 108.125,
+          "maxcc": 0.00611114501953125,
+          "name": "ckpt_ep040.pt@phi6",
+          "checkpoint": "ckpt_ep040.pt",
+          "epoch": 40,
+          "porosity_target": 6.0,
+          "threshold": -0.8117525577545166,
+          "terms": {
+            "phi": 0.068685592338754,
+            "s2_rmse": 0.1905573415569961,
+            "euler": 0.1490741091915878,
+            "maxcc": 0.4718736052368705
+          },
+          "failed_gates": [],
+          "passed_gate": true,
+          "score": 0.8801906483242083
+        },
+        "ckpt_ep040.pt@phi6.4": {
+          "phi": 6.400299072265625,
+          "s2_rmse": 0.0028102556243538857,
+          "euler": 111.375,
+          "maxcc": 0.00701141357421875,
+          "name": "ckpt_ep040.pt@phi6.4",
+          "checkpoint": "ckpt_ep040.pt",
+          "epoch": 40,
+          "porosity_target": 6.4,
+          "threshold": -0.796803891658783,
+          "terms": {
+            "phi": 0.006574281153259244,
+            "s2_rmse": 0.28102556243538857,
+            "euler": 0.12349714599965865,
+            "maxcc": 0.6887039241107166
+          },
+          "failed_gates": [],
+          "passed_gate": true,
+          "score": 1.099800913699023
+        }
+      }
+    },
+    {
+      "checkpoint": "ckpt_ep050.pt",
+      "epoch": 50,
+      "gray_stats": {
+        "n": 16,
+        "mean": 0.1081250011920929,
+        "std": 0.4303878843784332,
+        "min": -1.0,
+        "max": 1.0,
+        "ks": 0.24154327944100618
+      },
+      "metric_target": {
+        "phi": 6.442654896931475,
+        "s2_rmse": 0.0,
+        "euler": 127.06746987951807,
+        "maxcc": 0.004151949595256024
+      },
+      "threshold_candidates": [
+        {
+          "phi": 6.0001373291015625,
+          "s2_rmse": 0.0009559715399518609,
+          "euler": 119.6875,
+          "maxcc": 0.003692626953125,
+          "name": "ckpt_ep050.pt@phi6",
+          "checkpoint": "ckpt_ep050.pt",
+          "epoch": 50,
+          "porosity_target": 6.0,
+          "threshold": -0.5435764193534851
+        },
+        {
+          "phi": 6.400299072265625,
+          "s2_rmse": 0.0012348366435617208,
+          "euler": 122.5,
+          "maxcc": 0.00379180908203125,
+          "name": "ckpt_ep050.pt@phi6.4",
+          "checkpoint": "ckpt_ep050.pt",
+          "epoch": 50,
+          "porosity_target": 6.4,
+          "threshold": -0.5293521881103516
+        }
+      ],
+      "selected": {
+        "phi": 6.400299072265625,
+        "s2_rmse": 0.0012348366435617208,
+        "euler": 122.5,
+        "maxcc": 0.00379180908203125,
+        "name": "ckpt_ep050.pt@phi6.4",
+        "checkpoint": "ckpt_ep050.pt",
+        "epoch": 50,
+        "porosity_target": 6.4,
+        "threshold": -0.5293521881103516,
+        "terms": {
+          "phi": 0.006574281153259244,
+          "s2_rmse": 0.12348366435617208,
+          "euler": 0.03594523353497809,
+          "maxcc": 0.08674009762456349
+        },
+        "failed_gates": [],
+        "passed_gate": true,
+        "score": 0.2527432766689729
+      },
+      "scored_candidates": {
+        "ckpt_ep050.pt@phi6": {
+          "phi": 6.0001373291015625,
+          "s2_rmse": 0.0009559715399518609,
+          "euler": 119.6875,
+          "maxcc": 0.003692626953125,
+          "name": "ckpt_ep050.pt@phi6",
+          "checkpoint": "ckpt_ep050.pt",
+          "epoch": 50,
+          "porosity_target": 6.0,
+          "threshold": -0.5435764193534851,
+          "terms": {
+            "phi": 0.068685592338754,
+            "s2_rmse": 0.09559715399518609,
+            "euler": 0.058079143989532164,
+            "maxcc": 0.11062818360219061
+          },
+          "failed_gates": [],
+          "passed_gate": true,
+          "score": 0.3329900739256629
+        },
+        "ckpt_ep050.pt@phi6.4": {
+          "phi": 6.400299072265625,
+          "s2_rmse": 0.0012348366435617208,
+          "euler": 122.5,
+          "maxcc": 0.00379180908203125,
+          "name": "ckpt_ep050.pt@phi6.4",
+          "checkpoint": "ckpt_ep050.pt",
+          "epoch": 50,
+          "porosity_target": 6.4,
+          "threshold": -0.5293521881103516,
+          "terms": {
+            "phi": 0.006574281153259244,
+            "s2_rmse": 0.12348366435617208,
+            "euler": 0.03594523353497809,
+            "maxcc": 0.08674009762456349
+          },
+          "failed_gates": [],
+          "passed_gate": true,
+          "score": 0.2527432766689729
+        }
+      }
+    }
+  ],
+  "selected": {
+    "phi": 6.400299072265625,
+    "s2_rmse": 0.0012348366435617208,
+    "euler": 122.5,
+    "maxcc": 0.00379180908203125,
+    "name": "ckpt_ep050.pt@phi6.4",
+    "checkpoint": "ckpt_ep050.pt",
+    "epoch": 50,
+    "porosity_target": 6.4,
+    "threshold": -0.5293521881103516,
+    "terms": {
+      "phi": 0.006574281153259244,
+      "s2_rmse": 0.12348366435617208,
+      "euler": 0.03594523353497809,
+      "maxcc": 0.08674009762456349
+    },
+    "failed_gates": [],
+    "passed_gate": true,
+    "score": 0.2527432766689729,
+    "candidates": {
+      "ckpt_ep010.pt@phi6": {
+        "phi": 6.0001373291015625,
+        "s2_rmse": 0.004881168249994516,
+        "euler": 80.25,
+        "maxcc": 0.0051727294921875,
+        "name": "ckpt_ep010.pt@phi6",
+        "checkpoint": "ckpt_ep010.pt",
+        "epoch": 10,
+        "porosity_target": 6.0,
+        "threshold": -0.8278778791427612,
+        "terms": {
+          "phi": 0.068685592338754,
+          "s2_rmse": 0.48811682499945164,
+          "euler": 0.36844575503005705,
+          "maxcc": 0.245855560987014
+        },
+        "failed_gates": [
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 101.17110373335528
+      },
+      "ckpt_ep020.pt@phi6": {
+        "phi": 6.0001373291015625,
+        "s2_rmse": 0.012256551533937454,
+        "euler": 67.125,
+        "maxcc": 0.01940155029296875,
+        "name": "ckpt_ep020.pt@phi6",
+        "checkpoint": "ckpt_ep020.pt",
+        "epoch": 20,
+        "porosity_target": 6.0,
+        "threshold": -0.5395935773849487,
+        "terms": {
+          "phi": 0.068685592338754,
+          "s2_rmse": 1.2256551533937454,
+          "euler": 0.47173733715130944,
+          "maxcc": 3.672877126238904
+        },
+        "failed_gates": [
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 105.43895520912271
+      },
+      "ckpt_ep030.pt@phi6": {
+        "phi": 6.0001373291015625,
+        "s2_rmse": 0.007108532357960939,
+        "euler": 76.9375,
+        "maxcc": 0.008991241455078125,
+        "name": "ckpt_ep030.pt@phi6",
+        "checkpoint": "ckpt_ep030.pt",
+        "epoch": 30,
+        "porosity_target": 6.0,
+        "threshold": -0.8303934931755066,
+        "terms": {
+          "phi": 0.068685592338754,
+          "s2_rmse": 0.7108532357960939,
+          "euler": 0.3945145828987541,
+          "maxcc": 1.1655468711256578
+        },
+        "failed_gates": [
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 102.33960028215925
+      },
+      "ckpt_ep040.pt@phi6": {
+        "phi": 6.0001373291015625,
+        "s2_rmse": 0.001905573415569961,
+        "euler": 108.125,
+        "maxcc": 0.00611114501953125,
+        "name": "ckpt_ep040.pt@phi6",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 6.0,
+        "threshold": -0.8117525577545166,
+        "terms": {
+          "phi": 0.068685592338754,
+          "s2_rmse": 0.1905573415569961,
+          "euler": 0.1490741091915878,
+          "maxcc": 0.4718736052368705
+        },
+        "failed_gates": [],
+        "passed_gate": true,
+        "score": 0.8801906483242083
+      },
+      "ckpt_ep050.pt@phi6.4": {
+        "phi": 6.400299072265625,
+        "s2_rmse": 0.0012348366435617208,
+        "euler": 122.5,
+        "maxcc": 0.00379180908203125,
+        "name": "ckpt_ep050.pt@phi6.4",
+        "checkpoint": "ckpt_ep050.pt",
+        "epoch": 50,
+        "porosity_target": 6.4,
+        "threshold": -0.5293521881103516,
+        "terms": {
+          "phi": 0.006574281153259244,
+          "s2_rmse": 0.12348366435617208,
+          "euler": 0.03594523353497809,
+          "maxcc": 0.08674009762456349
+        },
+        "failed_gates": [],
+        "passed_gate": true,
+        "score": 0.2527432766689729
+      }
+    }
+  }
+}

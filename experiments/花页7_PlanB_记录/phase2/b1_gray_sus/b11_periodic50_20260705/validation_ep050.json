@@ -1,0 +1,104 @@
+{
+  "checkpoint": "ckpt_ep050.pt",
+  "epoch": 50,
+  "gray_stats": {
+    "n": 16,
+    "mean": 0.1081250011920929,
+    "std": 0.4303878843784332,
+    "min": -1.0,
+    "max": 1.0,
+    "ks": 0.24154327944100618
+  },
+  "metric_target": {
+    "phi": 6.442654896931475,
+    "s2_rmse": 0.0,
+    "euler": 127.06746987951807,
+    "maxcc": 0.004151949595256024
+  },
+  "threshold_candidates": [
+    {
+      "phi": 6.0001373291015625,
+      "s2_rmse": 0.0009559715399518609,
+      "euler": 119.6875,
+      "maxcc": 0.003692626953125,
+      "name": "ckpt_ep050.pt@phi6",
+      "checkpoint": "ckpt_ep050.pt",
+      "epoch": 50,
+      "porosity_target": 6.0,
+      "threshold": -0.5435764193534851
+    },
+    {
+      "phi": 6.400299072265625,
+      "s2_rmse": 0.0012348366435617208,
+      "euler": 122.5,
+      "maxcc": 0.00379180908203125,
+      "name": "ckpt_ep050.pt@phi6.4",
+      "checkpoint": "ckpt_ep050.pt",
+      "epoch": 50,
+      "porosity_target": 6.4,
+      "threshold": -0.5293521881103516
+    }
+  ],
+  "selected": {
+    "phi": 6.400299072265625,
+    "s2_rmse": 0.0012348366435617208,
+    "euler": 122.5,
+    "maxcc": 0.00379180908203125,
+    "name": "ckpt_ep050.pt@phi6.4",
+    "checkpoint": "ckpt_ep050.pt",
+    "epoch": 50,
+    "porosity_target": 6.4,
+    "threshold": -0.5293521881103516,
+    "terms": {
+      "phi": 0.006574281153259244,
+      "s2_rmse": 0.12348366435617208,
+      "euler": 0.03594523353497809,
+      "maxcc": 0.08674009762456349
+    },
+    "failed_gates": [],
+    "passed_gate": true,
+    "score": 0.2527432766689729
+  },
+  "scored_candidates": {
+    "ckpt_ep050.pt@phi6": {
+      "phi": 6.0001373291015625,
+      "s2_rmse": 0.0009559715399518609,
+      "euler": 119.6875,
+      "maxcc": 0.003692626953125,
+      "name": "ckpt_ep050.pt@phi6",
+      "checkpoint": "ckpt_ep050.pt",
+      "epoch": 50,
+      "porosity_target": 6.0,
+      "threshold": -0.5435764193534851,
+      "terms": {
+        "phi": 0.068685592338754,
+        "s2_rmse": 0.09559715399518609,
+        "euler": 0.058079143989532164,
+        "maxcc": 0.11062818360219061
+      },
+      "failed_gates": [],
+      "passed_gate": true,
+      "score": 0.3329900739256629
+    },
+    "ckpt_ep050.pt@phi6.4": {
+      "phi": 6.400299072265625,
+      "s2_rmse": 0.0012348366435617208,
+      "euler": 122.5,
+      "maxcc": 0.00379180908203125,
+      "name": "ckpt_ep050.pt@phi6.4",
+      "checkpoint": "ckpt_ep050.pt",
+      "epoch": 50,
+      "porosity_target": 6.4,
+      "threshold": -0.5293521881103516,
+      "terms": {
+        "phi": 0.006574281153259244,
+        "s2_rmse": 0.12348366435617208,
+        "euler": 0.03594523353497809,
+        "maxcc": 0.08674009762456349
+      },
+      "failed_gates": [],
+      "passed_gate": true,
+      "score": 0.2527432766689729
+    }
+  }
+}

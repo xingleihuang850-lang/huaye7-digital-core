@@ -1,0 +1,932 @@
+{
+  "checkpoint": "ckpt_ep040.pt",
+  "epoch": 40,
+  "gray_stats": {
+    "n": 64,
+    "mean": -0.26257115602493286,
+    "std": 0.4253673255443573,
+    "min": -1.0,
+    "max": 1.0,
+    "ks": 0.21834486168551157
+  },
+  "metric_target": {
+    "phi": 6.442654896931475,
+    "s2_rmse": 0.0,
+    "euler": 127.10650602409639,
+    "maxcc": 0.05830538257050372
+  },
+  "threshold_candidates": [
+    {
+      "phi": 5.000019073486328,
+      "s2_rmse": 0.002474124859637031,
+      "euler": 89.390625,
+      "maxcc": 0.08836712448046857,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "name": "ckpt_ep040.pt@phi5",
+      "checkpoint": "ckpt_ep040.pt",
+      "epoch": 40,
+      "porosity_target": 5.0,
+      "threshold": -0.9505308866500854,
+      "proxy": "formal"
+    },
+    {
+      "phi": 5.500030517578125,
+      "s2_rmse": 0.001497646083967961,
+      "euler": 92.34375,
+      "maxcc": 0.08637015461343933,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "name": "ckpt_ep040.pt@phi5.5",
+      "checkpoint": "ckpt_ep040.pt",
+      "epoch": 40,
+      "porosity_target": 5.5,
+      "threshold": -0.9361714720726013,
+      "proxy": "formal"
+    },
+    {
+      "phi": 6.000041961669922,
+      "s2_rmse": 0.0015581044259629394,
+      "euler": 95.375,
+      "maxcc": 0.08590476013342636,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "name": "ckpt_ep040.pt@phi6",
+      "checkpoint": "ckpt_ep040.pt",
+      "epoch": 40,
+      "porosity_target": 6.0,
+      "threshold": -0.9208910465240479,
+      "proxy": "formal"
+    },
+    {
+      "phi": 6.400012969970703,
+      "s2_rmse": 0.0024202102046769233,
+      "euler": 97.3125,
+      "maxcc": 0.08545437031372728,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "name": "ckpt_ep040.pt@phi6.4",
+      "checkpoint": "ckpt_ep040.pt",
+      "epoch": 40,
+      "porosity_target": 6.4,
+      "threshold": -0.9083827137947083,
+      "proxy": "formal"
+    },
+    {
+      "phi": 7.000064849853516,
+      "s2_rmse": 0.004143015760925303,
+      "euler": 101.109375,
+      "maxcc": 0.0836182787514316,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "name": "ckpt_ep040.pt@phi7",
+      "checkpoint": "ckpt_ep040.pt",
+      "epoch": 40,
+      "porosity_target": 7.0,
+      "threshold": -0.8907769322395325,
+      "proxy": "formal"
+    },
+    {
+      "phi": 7.5000762939453125,
+      "s2_rmse": 0.00572760755841554,
+      "euler": 103.90625,
+      "maxcc": 0.08210258718192562,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "name": "ckpt_ep040.pt@phi7.5",
+      "checkpoint": "ckpt_ep040.pt",
+      "epoch": 40,
+      "porosity_target": 7.5,
+      "threshold": -0.8762932419776917,
+      "proxy": "formal"
+    },
+    {
+      "phi": 8.00008773803711,
+      "s2_rmse": 0.007413360855675146,
+      "euler": 106.234375,
+      "maxcc": 0.08220208945257383,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "name": "ckpt_ep040.pt@phi8",
+      "checkpoint": "ckpt_ep040.pt",
+      "epoch": 40,
+      "porosity_target": 8.0,
+      "threshold": -0.8625797033309937,
+      "proxy": "formal"
+    }
+  ],
+  "selected": {
+    "phi": 6.000041961669922,
+    "s2_rmse": 0.0015581044259629394,
+    "euler": 95.375,
+    "maxcc": 0.08590476013342636,
+    "x_penetrate": 0.0,
+    "y_penetrate": 0.0,
+    "name": "ckpt_ep040.pt@phi6",
+    "checkpoint": "ckpt_ep040.pt",
+    "epoch": 40,
+    "porosity_target": 6.0,
+    "threshold": -0.9208910465240479,
+    "proxy": "formal",
+    "terms": {
+      "phi": 0.06870039484380297,
+      "s2_rmse": 0.15581044259629395,
+      "euler": 0.24964501831307398,
+      "maxcc": 0.4733589995666194
+    },
+    "failed_gates": [
+      "maxcc",
+      "euler"
+    ],
+    "passed_gate": false,
+    "score": 200.94751485531978
+  },
+  "scored_candidates": {
+    "ckpt_ep040.pt@phi5": {
+      "phi": 5.000019073486328,
+      "s2_rmse": 0.002474124859637031,
+      "euler": 89.390625,
+      "maxcc": 0.08836712448046857,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "name": "ckpt_ep040.pt@phi5",
+      "checkpoint": "ckpt_ep040.pt",
+      "epoch": 40,
+      "porosity_target": 5.0,
+      "threshold": -0.9505308866500854,
+      "proxy": "formal",
+      "terms": {
+        "phi": 0.22391946278734398,
+        "s2_rmse": 0.2474124859637031,
+        "euler": 0.29672659727540895,
+        "maxcc": 0.5155911956089776
+      },
+      "failed_gates": [
+        "maxcc",
+        "euler"
+      ],
+      "passed_gate": false,
+      "score": 201.28364974163543
+    },
+    "ckpt_ep040.pt@phi5.5": {
+      "phi": 5.500030517578125,
+      "s2_rmse": 0.001497646083967961,
+      "euler": 92.34375,
+      "maxcc": 0.08637015461343933,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "name": "ckpt_ep040.pt@phi5.5",
+      "checkpoint": "ckpt_ep040.pt",
+      "epoch": 40,
+      "porosity_target": 5.5,
+      "threshold": -0.9361714720726013,
+      "proxy": "formal",
+      "terms": {
+        "phi": 0.14630992881557348,
+        "s2_rmse": 0.14976460839679612,
+        "euler": 0.27349312880574494,
+        "maxcc": 0.4813410152827534
+      },
+      "failed_gates": [
+        "maxcc",
+        "euler"
+      ],
+      "passed_gate": false,
+      "score": 201.05090868130088
+    },
+    "ckpt_ep040.pt@phi6": {
+      "phi": 6.000041961669922,
+      "s2_rmse": 0.0015581044259629394,
+      "euler": 95.375,
+      "maxcc": 0.08590476013342636,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "name": "ckpt_ep040.pt@phi6",
+      "checkpoint": "ckpt_ep040.pt",
+      "epoch": 40,
+      "porosity_target": 6.0,
+      "threshold": -0.9208910465240479,
+      "proxy": "formal",
+      "terms": {
+        "phi": 0.06870039484380297,
+        "s2_rmse": 0.15581044259629395,
+        "euler": 0.24964501831307398,
+        "maxcc": 0.4733589995666194
+      },
+      "failed_gates": [
+        "maxcc",
+        "euler"
+      ],
+      "passed_gate": false,
+      "score": 200.94751485531978
+    },
+    "ckpt_ep040.pt@phi6.4": {
+      "phi": 6.400012969970703,
+      "s2_rmse": 0.0024202102046769233,
+      "euler": 97.3125,
+      "maxcc": 0.08545437031372728,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "name": "ckpt_ep040.pt@phi6.4",
+      "checkpoint": "ckpt_ep040.pt",
+      "epoch": 40,
+      "porosity_target": 6.4,
+      "threshold": -0.9083827137947083,
+      "proxy": "formal",
+      "terms": {
+        "phi": 0.006618688668406166,
+        "s2_rmse": 0.24202102046769233,
+        "euler": 0.23440189614250076,
+        "maxcc": 0.46563432990761383
+      },
+      "failed_gates": [
+        "maxcc",
+        "euler"
+      ],
+      "passed_gate": false,
+      "score": 200.9486759351862
+    },
+    "ckpt_ep040.pt@phi7": {
+      "phi": 7.000064849853516,
+      "s2_rmse": 0.004143015760925303,
+      "euler": 101.109375,
+      "maxcc": 0.0836182787514316,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "name": "ckpt_ep040.pt@phi7",
+      "checkpoint": "ckpt_ep040.pt",
+      "epoch": 40,
+      "porosity_target": 7.0,
+      "threshold": -0.8907769322395325,
+      "proxy": "formal",
+      "terms": {
+        "phi": 0.08651867309973803,
+        "s2_rmse": 0.41430157609253027,
+        "euler": 0.20453029382436136,
+        "maxcc": 0.4341433854810774
+      },
+      "failed_gates": [
+        "maxcc",
+        "euler"
+      ],
+      "passed_gate": false,
+      "score": 201.1394939284977
+    },
+    "ckpt_ep040.pt@phi7.5": {
+      "phi": 7.5000762939453125,
+      "s2_rmse": 0.00572760755841554,
+      "euler": 103.90625,
+      "maxcc": 0.08210258718192562,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "name": "ckpt_ep040.pt@phi7.5",
+      "checkpoint": "ckpt_ep040.pt",
+      "epoch": 40,
+      "porosity_target": 7.5,
+      "threshold": -0.8762932419776917,
+      "proxy": "formal",
+      "terms": {
+        "phi": 0.16412820707150852,
+        "s2_rmse": 0.5727607558415541,
+        "euler": 0.18252610940071132,
+        "maxcc": 0.4081476454192883
+      },
+      "failed_gates": [
+        "maxcc",
+        "euler"
+      ],
+      "passed_gate": false,
+      "score": 201.32756271773306
+    },
+    "ckpt_ep040.pt@phi8": {
+      "phi": 8.00008773803711,
+      "s2_rmse": 0.007413360855675146,
+      "euler": 106.234375,
+      "maxcc": 0.08220208945257383,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "name": "ckpt_ep040.pt@phi8",
+      "checkpoint": "ckpt_ep040.pt",
+      "epoch": 40,
+      "porosity_target": 8.0,
+      "threshold": -0.8625797033309937,
+      "proxy": "formal",
+      "terms": {
+        "phi": 0.24173774104327903,
+        "s2_rmse": 0.7413360855675146,
+        "euler": 0.1642097771151032,
+        "maxcc": 0.4098542163439862
+      },
+      "failed_gates": [
+        "maxcc",
+        "euler"
+      ],
+      "passed_gate": false,
+      "score": 201.5571378200699
+    }
+  },
+  "fast_proxy": {
+    "metric_target": {
+      "phi": 6.442654896931475,
+      "s2_rmse": 0.0,
+      "euler": 127.06746987951807,
+      "maxcc": 0.004151949595256024
+    },
+    "threshold_candidates": [
+      {
+        "phi": 5.000019073486328,
+        "s2_rmse": 0.0025712475180625916,
+        "euler": 89.328125,
+        "maxcc": 0.003887176513671875,
+        "name": "ckpt_ep040.pt@phi5",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 5.0,
+        "threshold": -0.9505308866500854,
+        "proxy": "fast"
+      },
+      {
+        "phi": 5.500030517578125,
+        "s2_rmse": 0.0013231387129053473,
+        "euler": 92.328125,
+        "maxcc": 0.0042858123779296875,
+        "name": "ckpt_ep040.pt@phi5.5",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 5.5,
+        "threshold": -0.9361714720726013,
+        "proxy": "fast"
+      },
+      {
+        "phi": 6.000041961669922,
+        "s2_rmse": 0.0015834677033126354,
+        "euler": 95.328125,
+        "maxcc": 0.0047855377197265625,
+        "name": "ckpt_ep040.pt@phi6",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 6.0,
+        "threshold": -0.9208910465240479,
+        "proxy": "fast"
+      },
+      {
+        "phi": 6.400012969970703,
+        "s2_rmse": 0.0027408660389482975,
+        "euler": 97.265625,
+        "maxcc": 0.0052471160888671875,
+        "name": "ckpt_ep040.pt@phi6.4",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 6.4,
+        "threshold": -0.9083827137947083,
+        "proxy": "fast"
+      },
+      {
+        "phi": 7.000064849853516,
+        "s2_rmse": 0.004812409169971943,
+        "euler": 100.953125,
+        "maxcc": 0.005854606628417969,
+        "name": "ckpt_ep040.pt@phi7",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 7.0,
+        "threshold": -0.8907769322395325,
+        "proxy": "fast"
+      },
+      {
+        "phi": 7.5000762939453125,
+        "s2_rmse": 0.006660847458988428,
+        "euler": 103.859375,
+        "maxcc": 0.006327629089355469,
+        "name": "ckpt_ep040.pt@phi7.5",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 7.5,
+        "threshold": -0.8762932419776917,
+        "proxy": "fast"
+      },
+      {
+        "phi": 8.00008773803711,
+        "s2_rmse": 0.008587474934756756,
+        "euler": 106.140625,
+        "maxcc": 0.0070095062255859375,
+        "name": "ckpt_ep040.pt@phi8",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 8.0,
+        "threshold": -0.8625797033309937,
+        "proxy": "fast"
+      }
+    ],
+    "selected": {
+      "phi": 5.500030517578125,
+      "s2_rmse": 0.0013231387129053473,
+      "euler": 92.328125,
+      "maxcc": 0.0042858123779296875,
+      "name": "ckpt_ep040.pt@phi5.5",
+      "checkpoint": "ckpt_ep040.pt",
+      "epoch": 40,
+      "porosity_target": 5.5,
+      "threshold": -0.9361714720726013,
+      "proxy": "fast",
+      "terms": {
+        "phi": 0.14630992881557348,
+        "s2_rmse": 0.13231387129053473,
+        "euler": 0.2733929062446665,
+        "maxcc": 0.03224094599477155
+      },
+      "failed_gates": [
+        "euler"
+      ],
+      "passed_gate": false,
+      "score": 100.58425765234554
+    },
+    "scored_candidates": {
+      "ckpt_ep040.pt@phi5": {
+        "phi": 5.000019073486328,
+        "s2_rmse": 0.0025712475180625916,
+        "euler": 89.328125,
+        "maxcc": 0.003887176513671875,
+        "name": "ckpt_ep040.pt@phi5",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 5.0,
+        "threshold": -0.9505308866500854,
+        "proxy": "fast",
+        "terms": {
+          "phi": 0.22391946278734398,
+          "s2_rmse": 0.25712475180625916,
+          "euler": 0.2970024107295242,
+          "maxcc": 0.06377078418453742
+        },
+        "failed_gates": [
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 100.84181740950767
+      },
+      "ckpt_ep040.pt@phi5.5": {
+        "phi": 5.500030517578125,
+        "s2_rmse": 0.0013231387129053473,
+        "euler": 92.328125,
+        "maxcc": 0.0042858123779296875,
+        "name": "ckpt_ep040.pt@phi5.5",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 5.5,
+        "threshold": -0.9361714720726013,
+        "proxy": "fast",
+        "terms": {
+          "phi": 0.14630992881557348,
+          "s2_rmse": 0.13231387129053473,
+          "euler": 0.2733929062446665,
+          "maxcc": 0.03224094599477155
+        },
+        "failed_gates": [
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 100.58425765234554
+      },
+      "ckpt_ep040.pt@phi6": {
+        "phi": 6.000041961669922,
+        "s2_rmse": 0.0015834677033126354,
+        "euler": 95.328125,
+        "maxcc": 0.0047855377197265625,
+        "name": "ckpt_ep040.pt@phi6",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 6.0,
+        "threshold": -0.9208910465240479,
+        "proxy": "fast",
+        "terms": {
+          "phi": 0.06870039484380297,
+          "s2_rmse": 0.15834677033126354,
+          "euler": 0.24978340175980884,
+          "maxcc": 0.15260014842050815
+        },
+        "failed_gates": [
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 100.62943071535538
+      },
+      "ckpt_ep040.pt@phi6.4": {
+        "phi": 6.400012969970703,
+        "s2_rmse": 0.0027408660389482975,
+        "euler": 97.265625,
+        "maxcc": 0.0052471160888671875,
+        "name": "ckpt_ep040.pt@phi6.4",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 6.4,
+        "threshold": -0.9083827137947083,
+        "proxy": "fast",
+        "terms": {
+          "phi": 0.006618688668406166,
+          "s2_rmse": 0.27408660389482975,
+          "euler": 0.23453559678000493,
+          "maxcc": 0.2637716254702343
+        },
+        "failed_gates": [
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 100.77901251481347
+      },
+      "ckpt_ep040.pt@phi7": {
+        "phi": 7.000064849853516,
+        "s2_rmse": 0.004812409169971943,
+        "euler": 100.953125,
+        "maxcc": 0.005854606628417969,
+        "name": "ckpt_ep040.pt@phi7",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 7.0,
+        "threshold": -0.8907769322395325,
+        "proxy": "fast",
+        "terms": {
+          "phi": 0.08651867309973803,
+          "s2_rmse": 0.4812409169971943,
+          "euler": 0.2055155808507007,
+          "maxcc": 0.4100861520832004
+        },
+        "failed_gates": [
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 101.18336132303084
+      },
+      "ckpt_ep040.pt@phi7.5": {
+        "phi": 7.5000762939453125,
+        "s2_rmse": 0.006660847458988428,
+        "euler": 103.859375,
+        "maxcc": 0.006327629089355469,
+        "name": "ckpt_ep040.pt@phi7.5",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 7.5,
+        "threshold": -0.8762932419776917,
+        "proxy": "fast",
+        "terms": {
+          "phi": 0.16412820707150852,
+          "s2_rmse": 0.6660847458988428,
+          "euler": 0.18264387338099483,
+          "maxcc": 0.5240139467457297
+        },
+        "failed_gates": [
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 101.53687077309708
+      },
+      "ckpt_ep040.pt@phi8": {
+        "phi": 8.00008773803711,
+        "s2_rmse": 0.008587474934756756,
+        "euler": 106.140625,
+        "maxcc": 0.0070095062255859375,
+        "name": "ckpt_ep040.pt@phi8",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 8.0,
+        "threshold": -0.8625797033309937,
+        "proxy": "fast",
+        "terms": {
+          "phi": 0.24173774104327903,
+          "s2_rmse": 0.8587474934756756,
+          "euler": 0.16469081267896762,
+          "maxcc": 0.6882445378419161
+        },
+        "failed_gates": [
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 101.95342058503984
+      }
+    }
+  },
+  "selection_status": "rejected",
+  "formal_proxy": {
+    "rmax": 48,
+    "metric_target": {
+      "phi": 6.442654896931475,
+      "s2_rmse": 0.0,
+      "euler": 127.10650602409639,
+      "maxcc": 0.05830538257050372
+    },
+    "threshold_candidates": [
+      {
+        "phi": 5.000019073486328,
+        "s2_rmse": 0.002474124859637031,
+        "euler": 89.390625,
+        "maxcc": 0.08836712448046857,
+        "x_penetrate": 0.0,
+        "y_penetrate": 0.0,
+        "name": "ckpt_ep040.pt@phi5",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 5.0,
+        "threshold": -0.9505308866500854,
+        "proxy": "formal"
+      },
+      {
+        "phi": 5.500030517578125,
+        "s2_rmse": 0.001497646083967961,
+        "euler": 92.34375,
+        "maxcc": 0.08637015461343933,
+        "x_penetrate": 0.0,
+        "y_penetrate": 0.0,
+        "name": "ckpt_ep040.pt@phi5.5",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 5.5,
+        "threshold": -0.9361714720726013,
+        "proxy": "formal"
+      },
+      {
+        "phi": 6.000041961669922,
+        "s2_rmse": 0.0015581044259629394,
+        "euler": 95.375,
+        "maxcc": 0.08590476013342636,
+        "x_penetrate": 0.0,
+        "y_penetrate": 0.0,
+        "name": "ckpt_ep040.pt@phi6",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 6.0,
+        "threshold": -0.9208910465240479,
+        "proxy": "formal"
+      },
+      {
+        "phi": 6.400012969970703,
+        "s2_rmse": 0.0024202102046769233,
+        "euler": 97.3125,
+        "maxcc": 0.08545437031372728,
+        "x_penetrate": 0.0,
+        "y_penetrate": 0.0,
+        "name": "ckpt_ep040.pt@phi6.4",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 6.4,
+        "threshold": -0.9083827137947083,
+        "proxy": "formal"
+      },
+      {
+        "phi": 7.000064849853516,
+        "s2_rmse": 0.004143015760925303,
+        "euler": 101.109375,
+        "maxcc": 0.0836182787514316,
+        "x_penetrate": 0.0,
+        "y_penetrate": 0.0,
+        "name": "ckpt_ep040.pt@phi7",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 7.0,
+        "threshold": -0.8907769322395325,
+        "proxy": "formal"
+      },
+      {
+        "phi": 7.5000762939453125,
+        "s2_rmse": 0.00572760755841554,
+        "euler": 103.90625,
+        "maxcc": 0.08210258718192562,
+        "x_penetrate": 0.0,
+        "y_penetrate": 0.0,
+        "name": "ckpt_ep040.pt@phi7.5",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 7.5,
+        "threshold": -0.8762932419776917,
+        "proxy": "formal"
+      },
+      {
+        "phi": 8.00008773803711,
+        "s2_rmse": 0.007413360855675146,
+        "euler": 106.234375,
+        "maxcc": 0.08220208945257383,
+        "x_penetrate": 0.0,
+        "y_penetrate": 0.0,
+        "name": "ckpt_ep040.pt@phi8",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 8.0,
+        "threshold": -0.8625797033309937,
+        "proxy": "formal"
+      }
+    ],
+    "selected": {
+      "phi": 6.000041961669922,
+      "s2_rmse": 0.0015581044259629394,
+      "euler": 95.375,
+      "maxcc": 0.08590476013342636,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "name": "ckpt_ep040.pt@phi6",
+      "checkpoint": "ckpt_ep040.pt",
+      "epoch": 40,
+      "porosity_target": 6.0,
+      "threshold": -0.9208910465240479,
+      "proxy": "formal",
+      "terms": {
+        "phi": 0.06870039484380297,
+        "s2_rmse": 0.15581044259629395,
+        "euler": 0.24964501831307398,
+        "maxcc": 0.4733589995666194
+      },
+      "failed_gates": [
+        "maxcc",
+        "euler"
+      ],
+      "passed_gate": false,
+      "score": 200.94751485531978
+    },
+    "scored_candidates": {
+      "ckpt_ep040.pt@phi5": {
+        "phi": 5.000019073486328,
+        "s2_rmse": 0.002474124859637031,
+        "euler": 89.390625,
+        "maxcc": 0.08836712448046857,
+        "x_penetrate": 0.0,
+        "y_penetrate": 0.0,
+        "name": "ckpt_ep040.pt@phi5",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 5.0,
+        "threshold": -0.9505308866500854,
+        "proxy": "formal",
+        "terms": {
+          "phi": 0.22391946278734398,
+          "s2_rmse": 0.2474124859637031,
+          "euler": 0.29672659727540895,
+          "maxcc": 0.5155911956089776
+        },
+        "failed_gates": [
+          "maxcc",
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 201.28364974163543
+      },
+      "ckpt_ep040.pt@phi5.5": {
+        "phi": 5.500030517578125,
+        "s2_rmse": 0.001497646083967961,
+        "euler": 92.34375,
+        "maxcc": 0.08637015461343933,
+        "x_penetrate": 0.0,
+        "y_penetrate": 0.0,
+        "name": "ckpt_ep040.pt@phi5.5",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 5.5,
+        "threshold": -0.9361714720726013,
+        "proxy": "formal",
+        "terms": {
+          "phi": 0.14630992881557348,
+          "s2_rmse": 0.14976460839679612,
+          "euler": 0.27349312880574494,
+          "maxcc": 0.4813410152827534
+        },
+        "failed_gates": [
+          "maxcc",
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 201.05090868130088
+      },
+      "ckpt_ep040.pt@phi6": {
+        "phi": 6.000041961669922,
+        "s2_rmse": 0.0015581044259629394,
+        "euler": 95.375,
+        "maxcc": 0.08590476013342636,
+        "x_penetrate": 0.0,
+        "y_penetrate": 0.0,
+        "name": "ckpt_ep040.pt@phi6",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 6.0,
+        "threshold": -0.9208910465240479,
+        "proxy": "formal",
+        "terms": {
+          "phi": 0.06870039484380297,
+          "s2_rmse": 0.15581044259629395,
+          "euler": 0.24964501831307398,
+          "maxcc": 0.4733589995666194
+        },
+        "failed_gates": [
+          "maxcc",
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 200.94751485531978
+      },
+      "ckpt_ep040.pt@phi6.4": {
+        "phi": 6.400012969970703,
+        "s2_rmse": 0.0024202102046769233,
+        "euler": 97.3125,
+        "maxcc": 0.08545437031372728,
+        "x_penetrate": 0.0,
+        "y_penetrate": 0.0,
+        "name": "ckpt_ep040.pt@phi6.4",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 6.4,
+        "threshold": -0.9083827137947083,
+        "proxy": "formal",
+        "terms": {
+          "phi": 0.006618688668406166,
+          "s2_rmse": 0.24202102046769233,
+          "euler": 0.23440189614250076,
+          "maxcc": 0.46563432990761383
+        },
+        "failed_gates": [
+          "maxcc",
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 200.9486759351862
+      },
+      "ckpt_ep040.pt@phi7": {
+        "phi": 7.000064849853516,
+        "s2_rmse": 0.004143015760925303,
+        "euler": 101.109375,
+        "maxcc": 0.0836182787514316,
+        "x_penetrate": 0.0,
+        "y_penetrate": 0.0,
+        "name": "ckpt_ep040.pt@phi7",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 7.0,
+        "threshold": -0.8907769322395325,
+        "proxy": "formal",
+        "terms": {
+          "phi": 0.08651867309973803,
+          "s2_rmse": 0.41430157609253027,
+          "euler": 0.20453029382436136,
+          "maxcc": 0.4341433854810774
+        },
+        "failed_gates": [
+          "maxcc",
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 201.1394939284977
+      },
+      "ckpt_ep040.pt@phi7.5": {
+        "phi": 7.5000762939453125,
+        "s2_rmse": 0.00572760755841554,
+        "euler": 103.90625,
+        "maxcc": 0.08210258718192562,
+        "x_penetrate": 0.0,
+        "y_penetrate": 0.0,
+        "name": "ckpt_ep040.pt@phi7.5",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 7.5,
+        "threshold": -0.8762932419776917,
+        "proxy": "formal",
+        "terms": {
+          "phi": 0.16412820707150852,
+          "s2_rmse": 0.5727607558415541,
+          "euler": 0.18252610940071132,
+          "maxcc": 0.4081476454192883
+        },
+        "failed_gates": [
+          "maxcc",
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 201.32756271773306
+      },
+      "ckpt_ep040.pt@phi8": {
+        "phi": 8.00008773803711,
+        "s2_rmse": 0.007413360855675146,
+        "euler": 106.234375,
+        "maxcc": 0.08220208945257383,
+        "x_penetrate": 0.0,
+        "y_penetrate": 0.0,
+        "name": "ckpt_ep040.pt@phi8",
+        "checkpoint": "ckpt_ep040.pt",
+        "epoch": 40,
+        "porosity_target": 8.0,
+        "threshold": -0.8625797033309937,
+        "proxy": "formal",
+        "terms": {
+          "phi": 0.24173774104327903,
+          "s2_rmse": 0.7413360855675146,
+          "euler": 0.1642097771151032,
+          "maxcc": 0.4098542163439862
+        },
+        "failed_gates": [
+          "maxcc",
+          "euler"
+        ],
+        "passed_gate": false,
+        "score": 201.5571378200699
+      }
+    }
+  },
+  "nnunet_proxy_required": true,
+  "selection_reason": "rejected",
+  "eval_n": 64,
+  "eval_seed": 42
+}

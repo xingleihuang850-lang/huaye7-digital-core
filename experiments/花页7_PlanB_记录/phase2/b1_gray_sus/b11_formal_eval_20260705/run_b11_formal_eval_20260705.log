@@ -1,0 +1,250 @@
+START 2026-07-05T10:46:39+08:00 host=admin
+OUT=/home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705
+DATA=/home/user/HXL/HY7_planb/phase2/slices_ct28_gray_128
+NVIDIA GeForce RTX 5090, 32607 MiB, 202 MiB, 0 %
+torch 2.8.0+cu129 cuda True diffusers 0.38.0
+test.npy (4150, 128, 128) float32 -1.0 1.0
+test_pore.npy (4150, 128, 128) uint8 0.0 1.0
+[sample] ep040 n=512
+[info] 连续值已保存 -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/ep040/samples_continuous.npy  (float32, [-1,1])
+[done] 512 gray samples min=-1.000 max=1.000 mean=-0.162 -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/ep040/samples_gray.npy
+[sample] ep050 n=512
+[info] 连续值已保存 -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/ep050/samples_continuous.npy  (float32, [-1,1])
+[done] 512 gray samples min=-1.000 max=1.000 mean=0.083 -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/ep050/samples_gray.npy
+[analysis] qmatch threshold sensitivity structure and nnunet input
+[done] porosity real=6.40% gen=5.00% naive=6.41%
+       S2 rmse gen=0.0023 naive=0.0049
+       Euler real=127.3 gen=95.3 naive=890.2
+       max-CC-frac real=0.060 gen=0.075 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep040_orig_threshold_phi5p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=5.50% naive=6.41%
+       S2 rmse gen=0.0019 naive=0.0049
+       Euler real=127.3 gen=99.4 naive=890.2
+       max-CC-frac real=0.060 gen=0.074 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep040_orig_threshold_phi5p5/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=6.00% naive=6.41%
+       S2 rmse gen=0.0024 naive=0.0049
+       Euler real=127.3 gen=103.3 naive=890.2
+       max-CC-frac real=0.060 gen=0.073 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep040_orig_threshold_phi6p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=6.40% naive=6.41%
+       S2 rmse gen=0.0033 naive=0.0049
+       Euler real=127.3 gen=106.4 naive=890.2
+       max-CC-frac real=0.060 gen=0.073 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep040_orig_threshold_phi6p4/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=7.00% naive=6.41%
+       S2 rmse gen=0.0051 naive=0.0049
+       Euler real=127.3 gen=110.7 naive=890.2
+       max-CC-frac real=0.060 gen=0.073 naive=0.005
+       x-penetrate real=0.000 gen=0.002 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep040_orig_threshold_phi7p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=7.50% naive=6.41%
+       S2 rmse gen=0.0067 naive=0.0049
+       Euler real=127.3 gen=113.8 naive=890.2
+       max-CC-frac real=0.060 gen=0.074 naive=0.005
+       x-penetrate real=0.000 gen=0.004 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep040_orig_threshold_phi7p5/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=8.00% naive=6.41%
+       S2 rmse gen=0.0083 naive=0.0049
+       Euler real=127.3 gen=116.9 naive=890.2
+       max-CC-frac real=0.060 gen=0.075 naive=0.005
+       x-penetrate real=0.000 gen=0.006 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep040_orig_threshold_phi8p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=5.18% naive=6.41%
+       S2 rmse gen=0.0021 naive=0.0049
+       Euler real=127.3 gen=96.8 naive=890.2
+       max-CC-frac real=0.060 gen=0.075 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep040_qmatch_threshold_phi5p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=5.57% naive=6.41%
+       S2 rmse gen=0.0019 naive=0.0049
+       Euler real=127.3 gen=99.9 naive=890.2
+       max-CC-frac real=0.060 gen=0.074 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep040_qmatch_threshold_phi5p5/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=6.30% naive=6.41%
+       S2 rmse gen=0.0031 naive=0.0049
+       Euler real=127.3 gen=105.7 naive=890.2
+       max-CC-frac real=0.060 gen=0.073 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep040_qmatch_threshold_phi6p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=6.74% naive=6.41%
+       S2 rmse gen=0.0043 naive=0.0049
+       Euler real=127.3 gen=109.0 naive=890.2
+       max-CC-frac real=0.060 gen=0.073 naive=0.005
+       x-penetrate real=0.000 gen=0.002 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep040_qmatch_threshold_phi6p4/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=7.18% naive=6.41%
+       S2 rmse gen=0.0056 naive=0.0049
+       Euler real=127.3 gen=111.8 naive=890.2
+       max-CC-frac real=0.060 gen=0.073 naive=0.005
+       x-penetrate real=0.000 gen=0.002 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep040_qmatch_threshold_phi7p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=7.62% naive=6.41%
+       S2 rmse gen=0.0070 naive=0.0049
+       Euler real=127.3 gen=114.4 naive=890.2
+       max-CC-frac real=0.060 gen=0.074 naive=0.005
+       x-penetrate real=0.000 gen=0.004 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep040_qmatch_threshold_phi7p5/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=8.11% naive=6.41%
+       S2 rmse gen=0.0087 naive=0.0049
+       Euler real=127.3 gen=117.5 naive=890.2
+       max-CC-frac real=0.060 gen=0.076 naive=0.005
+       x-penetrate real=0.000 gen=0.006 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep040_qmatch_threshold_phi8p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=5.00% naive=6.41%
+       S2 rmse gen=0.0034 naive=0.0049
+       Euler real=127.3 gen=91.8 naive=890.2
+       max-CC-frac real=0.060 gen=0.071 naive=0.005
+       x-penetrate real=0.000 gen=0.006 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep050_orig_threshold_phi5p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=5.50% naive=6.41%
+       S2 rmse gen=0.0041 naive=0.0049
+       Euler real=127.3 gen=96.7 naive=890.2
+       max-CC-frac real=0.060 gen=0.071 naive=0.005
+       x-penetrate real=0.000 gen=0.008 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep050_orig_threshold_phi5p5/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=6.00% naive=6.41%
+       S2 rmse gen=0.0052 naive=0.0049
+       Euler real=127.3 gen=101.3 naive=890.2
+       max-CC-frac real=0.060 gen=0.070 naive=0.005
+       x-penetrate real=0.000 gen=0.008 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep050_orig_threshold_phi6p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=6.40% naive=6.41%
+       S2 rmse gen=0.0064 naive=0.0049
+       Euler real=127.3 gen=104.7 naive=890.2
+       max-CC-frac real=0.060 gen=0.070 naive=0.005
+       x-penetrate real=0.000 gen=0.008 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep050_orig_threshold_phi6p4/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=7.00% naive=6.41%
+       S2 rmse gen=0.0082 naive=0.0049
+       Euler real=127.3 gen=109.6 naive=890.2
+       max-CC-frac real=0.060 gen=0.070 naive=0.005
+       x-penetrate real=0.000 gen=0.012 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep050_orig_threshold_phi7p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=7.50% naive=6.41%
+       S2 rmse gen=0.0099 naive=0.0049
+       Euler real=127.3 gen=113.4 naive=890.2
+       max-CC-frac real=0.060 gen=0.070 naive=0.005
+       x-penetrate real=0.000 gen=0.014 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep050_orig_threshold_phi7p5/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=8.00% naive=6.41%
+       S2 rmse gen=0.0117 naive=0.0049
+       Euler real=127.3 gen=116.9 naive=890.2
+       max-CC-frac real=0.060 gen=0.070 naive=0.005
+       x-penetrate real=0.000 gen=0.014 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep050_orig_threshold_phi8p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=5.18% naive=6.41%
+       S2 rmse gen=0.0035 naive=0.0049
+       Euler real=127.3 gen=93.6 naive=890.2
+       max-CC-frac real=0.060 gen=0.071 naive=0.005
+       x-penetrate real=0.000 gen=0.006 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep050_qmatch_threshold_phi5p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=5.57% naive=6.41%
+       S2 rmse gen=0.0042 naive=0.0049
+       Euler real=127.3 gen=97.4 naive=890.2
+       max-CC-frac real=0.060 gen=0.072 naive=0.005
+       x-penetrate real=0.000 gen=0.008 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep050_qmatch_threshold_phi5p5/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=6.30% naive=6.41%
+       S2 rmse gen=0.0061 naive=0.0049
+       Euler real=127.3 gen=103.9 naive=890.2
+       max-CC-frac real=0.060 gen=0.070 naive=0.005
+       x-penetrate real=0.000 gen=0.008 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep050_qmatch_threshold_phi6p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=6.74% naive=6.41%
+       S2 rmse gen=0.0074 naive=0.0049
+       Euler real=127.3 gen=107.4 naive=890.2
+       max-CC-frac real=0.060 gen=0.070 naive=0.005
+       x-penetrate real=0.000 gen=0.010 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep050_qmatch_threshold_phi6p4/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=7.18% naive=6.41%
+       S2 rmse gen=0.0088 naive=0.0049
+       Euler real=127.3 gen=111.0 naive=890.2
+       max-CC-frac real=0.060 gen=0.070 naive=0.005
+       x-penetrate real=0.000 gen=0.014 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep050_qmatch_threshold_phi7p0/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=7.62% naive=6.41%
+       S2 rmse gen=0.0103 naive=0.0049
+       Euler real=127.3 gen=114.2 naive=890.2
+       max-CC-frac real=0.060 gen=0.070 naive=0.005
+       x-penetrate real=0.000 gen=0.014 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep050_qmatch_threshold_phi7p5/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=8.11% naive=6.41%
+       S2 rmse gen=0.0121 naive=0.0049
+       Euler real=127.3 gen=117.6 naive=890.2
+       max-CC-frac real=0.060 gen=0.071 naive=0.005
+       x-penetrate real=0.000 gen=0.014 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_ep050_qmatch_threshold_phi8p0/metrics.json  fig_eval.png
+{
+  "pre_nnunet_done": true,
+  "out": "/home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705",
+  "variants": [
+    "ep040_orig",
+    "ep040_qmatch",
+    "ep050_orig",
+    "ep050_qmatch"
+  ]
+}
+[nnunet] predict 4 variants
+[nnunet] evaluate outputs
+[done] porosity real=6.40% gen=11.49% naive=6.41%
+       S2 rmse gen=0.0165 naive=0.0049
+       Euler real=127.3 gen=145.6 naive=890.2
+       max-CC-frac real=0.060 gen=0.065 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_nnunet2d_ep040_orig/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=5.40% naive=6.41%
+       S2 rmse gen=0.0016 naive=0.0049
+       Euler real=127.3 gen=101.9 naive=890.2
+       max-CC-frac real=0.060 gen=0.072 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_nnunet2d_ep040_qmatch/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=4.70% naive=6.41%
+       S2 rmse gen=0.0029 naive=0.0049
+       Euler real=127.3 gen=95.1 naive=890.2
+       max-CC-frac real=0.060 gen=0.063 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_nnunet2d_ep050_orig/metrics.json  fig_eval.png
+[done] porosity real=6.40% gen=5.11% naive=6.41%
+       S2 rmse gen=0.0022 naive=0.0049
+       Euler real=127.3 gen=102.3 naive=890.2
+       max-CC-frac real=0.060 gen=0.061 naive=0.005
+       x-penetrate real=0.000 gen=0.000 naive=0.000
+       -> /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_nnunet2d_ep050_qmatch/metrics.json  fig_eval.png
+{
+  "ep040_orig": {
+    "phi": 11.493,
+    "s2": 0.01652,
+    "euler": 145.57,
+    "maxcc": 0.0647
+  },
+  "ep040_qmatch": {
+    "phi": 5.404,
+    "s2": 0.00165,
+    "euler": 101.95,
+    "maxcc": 0.0725
+  },
+  "ep050_orig": {
+    "phi": 4.704,
+    "s2": 0.00293,
+    "euler": 95.07,
+    "maxcc": 0.063
+  },
+  "ep050_qmatch": {
+    "phi": 5.111,
+    "s2": 0.00223,
+    "euler": 102.25,
+    "maxcc": 0.0609
+  }
+}
+[summary] build formal summary
+{
+  "summary": "/home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/formal_eval_summary.json",
+  "summary_md": "/home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/formal_eval_summary.md"
+}
+END 2026-07-05T11:40:15+08:00

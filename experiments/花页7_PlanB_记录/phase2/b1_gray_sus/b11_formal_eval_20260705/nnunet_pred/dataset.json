@@ -1,0 +1,13 @@
+{
+    "channel_names": {
+        "0": "CT"
+    },
+    "labels": {
+        "background": 0,
+        "pore": 1
+    },
+    "numTraining": 20,
+    "file_ending": ".nii.gz",
+    "name": "HY7_CT2p8um_2phase_samegrid",
+    "reference": "HY7 ct28 same-grid sus(image)+pore==0(label); \u5bf9\u7167 codex 2024^3\u88c1\u526aDataset712; Plan B \u540c\u7f51\u683c\u514d\u88c1\u526a\u3002"
+}

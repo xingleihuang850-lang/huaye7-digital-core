@@ -1,0 +1,37 @@
+{
+  "command": "/home/user/HXL/HY7_planb/src/hy7_phase2_eval.py --real /home/user/HXL/HY7_planb/phase2/slices_ct28_gray_128/test_pore.npy --gen /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/ep050_qmatch_pore_nnunet2d.npy --out /home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_formal_eval_20260705/eval_nnunet2d_ep050_qmatch --n 512 --rmax 48 --seed 0",
+  "n_real": 512,
+  "n_gen": 512,
+  "porosity_pct": {
+    "real_mean": 6.405,
+    "gen_mean": 5.111,
+    "naive_mean": 6.408,
+    "KS_stat": 0.4219,
+    "KS_p": 0.0,
+    "wasserstein": 2.3686
+  },
+  "euler_chi": {
+    "real_mean": 127.33,
+    "gen_mean": 102.25,
+    "naive_mean": 890.16,
+    "KS_stat": 0.4121,
+    "wasserstein": 26.713
+  },
+  "S2_radial": {
+    "phi_at_0_real": 0.064,
+    "phi_at_0_gen": 0.0511,
+    "rmse_gen": 0.00223,
+    "rmse_naive": 0.00493
+  },
+  "connectivity": {
+    "max_cc_frac_real": 0.0597,
+    "max_cc_frac_gen": 0.0609,
+    "max_cc_frac_naive": 0.0048,
+    "x_penetrate_real": 0.0,
+    "x_penetrate_gen": 0.0,
+    "x_penetrate_naive": 0.0,
+    "y_penetrate_real": 0.0,
+    "y_penetrate_gen": 0.0,
+    "y_penetrate_naive": 0.0
+  }
+}

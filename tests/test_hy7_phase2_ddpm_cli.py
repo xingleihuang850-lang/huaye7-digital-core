@@ -23,5 +23,8 @@ def test_train_help_exposes_periodic_validation_controls():
         "--eval-real",
         "--eval-porosity-targets",
         "--select-metric",
+        "--soft-euler-lambda",
+        "--soft-maxcc-lambda",
+        "--soft-maxcc-scales",
     ):
         assert flag in help_text

@@ -1,0 +1,43 @@
+{
+  "workflow_node": "HY7-stage3-branch-A-A1-toy-metric-plumbing",
+  "date": "2026-07-06",
+  "verdict": "ALLOW_A1_WITH_CONSTRAINTS",
+  "input_type": "synthetic_toy",
+  "scientific_status": "not_evidence",
+  "route_label": "synthetic_toy_plumbing",
+  "purpose": "verify 3D metric code paths and artifact package shape only",
+  "volume_size": [
+    8,
+    8,
+    8
+  ],
+  "voxel_spacing": "synthetic_no_physical_spacing",
+  "seed": 20260706,
+  "toy_generator": "deterministic_known_answer_phantoms",
+  "volume_committed_to_git": false,
+  "toy_volume_path": null,
+  "execution_boundary": {
+    "no_training": true,
+    "no_new_sampling_from_model": true,
+    "no_checkpoint": true,
+    "no_actual_2d_to_3d_reconstruction": true,
+    "no_hy7_scientific_claim": true
+  },
+  "source": {
+    "git_commit": "1983805",
+    "command": "src/hy7_stage3_branch_a_a1_toy.py --out experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_a1_toy_metric_plumbing_20260706 --size 8 --seed 20260706",
+    "environment": {
+      "python": "3.9.6",
+      "platform": "macOS-26.5.1-arm64-arm-64bit",
+      "numpy": "2.0.2"
+    }
+  },
+  "required_outputs": [
+    "branch_a_a1_manifest.json",
+    "branch_a_a1_readme.md",
+    "metrics_3d_toy.json",
+    "connectivity_semantics.md",
+    "forbidden_claims.txt",
+    "hashes.txt"
+  ]
+}

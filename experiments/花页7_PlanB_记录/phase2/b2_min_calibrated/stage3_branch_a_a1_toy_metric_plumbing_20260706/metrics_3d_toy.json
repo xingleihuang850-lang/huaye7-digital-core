@@ -1,0 +1,235 @@
+{
+  "workflow_node": "HY7-stage3-branch-A-A1-toy-metric-plumbing",
+  "date": "2026-07-06",
+  "verdict": "ALLOW_A1_WITH_CONSTRAINTS",
+  "input_type": "synthetic_toy",
+  "scientific_status": "not_evidence",
+  "route_label": "synthetic_toy_plumbing",
+  "volume_size": [
+    8,
+    8,
+    8
+  ],
+  "voxel_spacing": "synthetic_no_physical_spacing",
+  "seed": 20260706,
+  "toy_generator": "deterministic_known_answer_phantoms",
+  "known_answer_phantom_suite": {
+    "passed": true,
+    "errors": [],
+    "phantom_count": 4
+  },
+  "toy_metrics": {
+    "all_solid": {
+      "porosity_phi_3d": {
+        "status": "implemented",
+        "value": 0.0
+      },
+      "s2_two_point_correlation_3d": {
+        "status": "proxy",
+        "proxy_name": "lag_1_valid_pairs_no_wrap",
+        "axes": [
+          "x",
+          "y",
+          "z"
+        ],
+        "normalization": "valid adjacent voxel pairs per axis; no periodic wrap",
+        "value": {
+          "lag_1_valid_pairs": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        }
+      },
+      "connected_porosity_ratio_3d": {
+        "status": "implemented",
+        "connectivity": "pore-phase 6-neighborhood",
+        "value": {
+          "pore_voxel_basis": 0.0,
+          "total_volume_basis": 0.0
+        }
+      },
+      "percolation_flags_3d": {
+        "status": "implemented",
+        "definition": "a single pore-phase connected component touches both opposing faces along axis k",
+        "connectivity": "pore-phase 6-neighborhood",
+        "value": {
+          "x": false,
+          "y": false,
+          "z": false
+        }
+      },
+      "largest_connected_component_fraction_3d": {
+        "status": "implemented",
+        "connectivity": "pore-phase 6-neighborhood",
+        "value": {
+          "pore_voxel_basis": 0.0,
+          "total_volume_basis": 0.0
+        }
+      },
+      "euler_characteristic_or_minkowski_3d": {
+        "status": "NOT_IMPLEMENTED_FAIL_CLOSED",
+        "reason": "3D Euler/Minkowski implementation is intentionally not claimed in A1; future implementation must add known-answer tests."
+      }
+    },
+    "all_pore": {
+      "porosity_phi_3d": {
+        "status": "implemented",
+        "value": 1.0
+      },
+      "s2_two_point_correlation_3d": {
+        "status": "proxy",
+        "proxy_name": "lag_1_valid_pairs_no_wrap",
+        "axes": [
+          "x",
+          "y",
+          "z"
+        ],
+        "normalization": "valid adjacent voxel pairs per axis; no periodic wrap",
+        "value": {
+          "lag_1_valid_pairs": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          }
+        }
+      },
+      "connected_porosity_ratio_3d": {
+        "status": "implemented",
+        "connectivity": "pore-phase 6-neighborhood",
+        "value": {
+          "pore_voxel_basis": 1.0,
+          "total_volume_basis": 1.0
+        }
+      },
+      "percolation_flags_3d": {
+        "status": "implemented",
+        "definition": "a single pore-phase connected component touches both opposing faces along axis k",
+        "connectivity": "pore-phase 6-neighborhood",
+        "value": {
+          "x": true,
+          "y": true,
+          "z": true
+        }
+      },
+      "largest_connected_component_fraction_3d": {
+        "status": "implemented",
+        "connectivity": "pore-phase 6-neighborhood",
+        "value": {
+          "pore_voxel_basis": 1.0,
+          "total_volume_basis": 1.0
+        }
+      },
+      "euler_characteristic_or_minkowski_3d": {
+        "status": "NOT_IMPLEMENTED_FAIL_CLOSED",
+        "reason": "3D Euler/Minkowski implementation is intentionally not claimed in A1; future implementation must add known-answer tests."
+      }
+    },
+    "x_channel": {
+      "porosity_phi_3d": {
+        "status": "implemented",
+        "value": 0.015625
+      },
+      "s2_two_point_correlation_3d": {
+        "status": "proxy",
+        "proxy_name": "lag_1_valid_pairs_no_wrap",
+        "axes": [
+          "x",
+          "y",
+          "z"
+        ],
+        "normalization": "valid adjacent voxel pairs per axis; no periodic wrap",
+        "value": {
+          "lag_1_valid_pairs": {
+            "x": 0.015625,
+            "y": 0.0,
+            "z": 0.0
+          }
+        }
+      },
+      "connected_porosity_ratio_3d": {
+        "status": "implemented",
+        "connectivity": "pore-phase 6-neighborhood",
+        "value": {
+          "pore_voxel_basis": 1.0,
+          "total_volume_basis": 0.015625
+        }
+      },
+      "percolation_flags_3d": {
+        "status": "implemented",
+        "definition": "a single pore-phase connected component touches both opposing faces along axis k",
+        "connectivity": "pore-phase 6-neighborhood",
+        "value": {
+          "x": true,
+          "y": false,
+          "z": false
+        }
+      },
+      "largest_connected_component_fraction_3d": {
+        "status": "implemented",
+        "connectivity": "pore-phase 6-neighborhood",
+        "value": {
+          "pore_voxel_basis": 1.0,
+          "total_volume_basis": 0.015625
+        }
+      },
+      "euler_characteristic_or_minkowski_3d": {
+        "status": "NOT_IMPLEMENTED_FAIL_CLOSED",
+        "reason": "3D Euler/Minkowski implementation is intentionally not claimed in A1; future implementation must add known-answer tests."
+      }
+    },
+    "isolated_voxel": {
+      "porosity_phi_3d": {
+        "status": "implemented",
+        "value": 0.001953125
+      },
+      "s2_two_point_correlation_3d": {
+        "status": "proxy",
+        "proxy_name": "lag_1_valid_pairs_no_wrap",
+        "axes": [
+          "x",
+          "y",
+          "z"
+        ],
+        "normalization": "valid adjacent voxel pairs per axis; no periodic wrap",
+        "value": {
+          "lag_1_valid_pairs": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          }
+        }
+      },
+      "connected_porosity_ratio_3d": {
+        "status": "implemented",
+        "connectivity": "pore-phase 6-neighborhood",
+        "value": {
+          "pore_voxel_basis": 1.0,
+          "total_volume_basis": 0.001953125
+        }
+      },
+      "percolation_flags_3d": {
+        "status": "implemented",
+        "definition": "a single pore-phase connected component touches both opposing faces along axis k",
+        "connectivity": "pore-phase 6-neighborhood",
+        "value": {
+          "x": false,
+          "y": false,
+          "z": false
+        }
+      },
+      "largest_connected_component_fraction_3d": {
+        "status": "implemented",
+        "connectivity": "pore-phase 6-neighborhood",
+        "value": {
+          "pore_voxel_basis": 1.0,
+          "total_volume_basis": 0.001953125
+        }
+      },
+      "euler_characteristic_or_minkowski_3d": {
+        "status": "NOT_IMPLEMENTED_FAIL_CLOSED",
+        "reason": "3D Euler/Minkowski implementation is intentionally not claimed in A1; future implementation must add known-answer tests."
+      }
+    }
+  }
+}

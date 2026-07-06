@@ -1,0 +1,36 @@
+{
+  "status": "b2_min_design_entry_audit_pass",
+  "date": "2026-07-06",
+  "scope": "baseline manifest + constrained selection summary + design memo",
+  "command": "python3 src/hy7_b2_min_audit.py --manifest <remote b2_min_manifest.json> --selection-summary <remote selection_summary.json> --design-text experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/design_memo_20260706.md",
+  "remote_manifest": "hy7-linux:/home/user/HXL/HY7_planb/phase2/00_ORDERED_VIEW/05_b2_min_calibrated/00_baseline_package_ep015/b2_min_manifest.json",
+  "remote_selection_summary": "hy7-linux:/home/user/HXL/HY7_planb/phase2/00_ORDERED_VIEW/05_b2_min_calibrated/01_constrained_selection_smoke_ep015/selection_summary.json",
+  "design_text": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/design_memo_20260706.md",
+  "passed": true,
+  "errors": [],
+  "checks": [
+    "main_checkpoint_ep015",
+    "calibration_version_explicit",
+    "orig_raw_known_fail",
+    "manifest_forbidden_constraints_present",
+    "selection_calibration_explicit",
+    "selection_forbidden_constraints_present",
+    "full_batch_anchor_present",
+    "failed_selection_rows_visible",
+    "selected_chunk_is_separate_from_full_batch",
+    "conditional_pass_boundary",
+    "qmatch_explicit",
+    "full_batch_anchor",
+    "triage_only",
+    "orig_raw_known_fail",
+    "failed_row_visible",
+    "formal_route_visible",
+    "nnunet_route_visible",
+    "no_new_training_boundary"
+  ],
+  "test_evidence": {
+    "focused": "python3 -m pytest tests/test_hy7_b2_min_audit.py -q -> 5 passed",
+    "suite": "python3 -m pytest tests -q -> 36 passed"
+  },
+  "execution_boundary": "no_retraining_no_new_sampling_no_scaling_no_new_checkpoint"
+}

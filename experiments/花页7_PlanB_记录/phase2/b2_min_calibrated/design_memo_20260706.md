@@ -28,7 +28,7 @@ B2-min should answer only:
 main_checkpoint=ep015
 required_calibration=hy7-gray-calibration-qmatch-v1
 orig_raw_status=known_fail
-execution_boundary=no new training / no scaling / no new checkpoint
+execution_boundary=no new training / no retraining / no scaling / no new checkpoint
 ```
 
 Only the explicit calibrated path is allowed for design-entry claims. Any downstream path must declare `hy7-gray-calibration-qmatch-v1` in its manifest, README, and report text.

@@ -1226,6 +1226,65 @@ calibrated pore-mask / gray-pore handoff bundle for downstream multiscale 3D fus
 
 理由：它仍是 no-retraining、artifact/manifest based，可为阶段三多尺度 3D digital core 入口准备校准后的孔隙/灰度交接包，而不提前引入 `[sus,pore]` 联合生成训练或新模型复杂度。
 
+### 15.12 B2-min design-entry audit checklist 与 Component C design card
+
+已将 §15.10–15.11 的 design-entry 约束转成可机器检查的 audit checklist，并完成 Component C handoff bundle design card。
+
+新增代码与测试：
+
+```text
+src/hy7_b2_min_audit.py
+tests/test_hy7_b2_min_audit.py
+```
+
+audit checklist 覆盖：
+
+1. `main_checkpoint=ep015`。
+2. `calibration_version=hy7-gray-calibration-qmatch-v1` 显式存在。
+3. `orig_raw_status=known_fail`。
+4. selection summary 必须包含 full-batch `ep015_all`。
+5. failed/rejected row 必须可见。
+6. selected chunk 与 full-batch 必须分离，selected chunk 只能作为 triage。
+7. design/report text 中必须出现 `CONDITIONAL_PASS`、`triage_only`、formal route、nnUNet qmatch route、no-new-training boundary。
+8. 禁止将 unsafe claims 写成正向结论；允许它们出现在 “Forbidden / do not write” 列表中。
+
+已用远程 ordered-view 中真实 `b2_min_manifest.json` 与 `selection_summary.json` 加本地 `design_memo_20260706.md` 跑 audit：
+
+```text
+passed=true
+errors=[]
+checks=18 items
+```
+
+审计记录：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/audit_report_20260706.json
+```
+
+测试证据：
+
+```text
+python3 -m pytest tests/test_hy7_b2_min_audit.py -q -> 5 passed
+python3 -m pytest tests -q -> 36 passed
+```
+
+Component C design card：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/component_c_handoff_bundle_design_20260706.md
+```
+
+Component C 定义：
+
+```text
+calibrated pore-mask / gray-pore handoff bundle for downstream multiscale 3D fusion
+```
+
+该 design card 仍只授权 design，不授权 dry-run package；其 dry-run 若后续获准，必须输出 `handoff_manifest.json`、`handoff_readme.md`、`formal_vs_qmatch_metrics.json`、`candidate_rows.json`、`forbidden_claims.txt`、`hashes.txt`，并通过 `hy7_b2_min_audit.py`。
+
+当前状态：no-retraining calibrated handoff 已具备可审计设计入口；下一步可由用户决定是否批准执行 handoff bundle dry-run package。
+
 关键证据 sha256：
 
 ```text

@@ -1,0 +1,100 @@
+{
+  "workflow_node": "HY7-B2-to-Stage3-planning-constraints-matrix",
+  "date": "2026-07-06",
+  "status": "planning_constraints_active",
+  "source_gate": {
+    "verdict": "PROMOTE_WITH_CONSTRAINTS",
+    "gate_level": "stage-3-planning-input only",
+    "record": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/handoff_stage_entry_gate_20260706.md"
+  },
+  "planning_input_bundle": {
+    "path": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/handoff_bundle_ep015_20260706",
+    "status": "calibrated_b2_min_handoff_design_dry_run",
+    "main_checkpoint": "ep015",
+    "calibration_version": "hy7-gray-calibration-qmatch-v1",
+    "orig_raw_status": "known_fail",
+    "execution_boundary": "no_retraining_no_new_sampling_no_scaling_no_new_checkpoint",
+    "acceptance_anchor": "ep015_all"
+  },
+  "route_constraints": {
+    "formal_route": {
+      "label": "threshold_formal_full_batch",
+      "anchor_variant": "ep015_all",
+      "n": 512,
+      "phi": 6.442654132843018,
+      "s2_rmse": 0.0002854642510439182,
+      "euler": 121.26953125,
+      "maxcc": 0.06397858477862998,
+      "pass_gate": true,
+      "allowed_use": "planning_anchor_only"
+    },
+    "formal512_reference": {
+      "label": "formal512 ep015@phi6.4",
+      "s2_rmse": 0.00034034164909631633,
+      "euler": 120.810546875,
+      "maxcc": 0.06408827658203413,
+      "passed_gate": true
+    },
+    "nnunet_qmatch_route": {
+      "label": "nnUNet ep015_qmatch",
+      "phi": 5.794930458068848,
+      "s2_rmse": 0.0017214588891168259,
+      "euler": 116.154296875,
+      "maxcc": 0.06510709034871634,
+      "reverse_fail": false,
+      "allowed_use": "diagnostic_calibrated_route_only"
+    },
+    "triage_selected_chunk": {
+      "variant": "ep015_chunk384_447",
+      "policy": "triage_only",
+      "not_acceptance_anchor": true,
+      "phi": 6.462860107421875,
+      "s2_rmse": 0.0002106706336130071,
+      "euler": 121.171875,
+      "maxcc": 0.06431804952279352
+    },
+    "failed_risk_chunk": {
+      "variant": "ep015_chunk000_063",
+      "policy": "risk_input",
+      "pass_gate": false,
+      "failure_reasons": ["maxCC>0.070"],
+      "phi": 6.435489654541016,
+      "s2_rmse": 0.0005247734726096197,
+      "euler": 123.953125,
+      "maxcc": 0.07163110510281959
+    }
+  },
+  "stage3_connectivity_semantics": {
+    "x_penetrate_y_penetrate_current_meaning": "2D tile-level largest-connected-component spanning ratio in x/y under the current threshold route",
+    "current_values": {"x_penetrate": 0.0, "y_penetrate": 0.0},
+    "allowed_interpretation": "no detected 2D tile-level largest-CC x/y spanning in current route",
+    "forbidden_interpretation": "not evidence of 3D permeability, z-direction percolation, or validated 3D connectivity",
+    "required_stage3_additions": [
+      "3D connected porosity ratio",
+      "x/y/z percolation flags",
+      "largest connected component fraction in 3D",
+      "Euler characteristic / Minkowski functional on 3D volume",
+      "permeability or proxy only after 3D volume exists"
+    ]
+  },
+  "forbidden_claims_and_actions": [
+    "B2-min final pass claim",
+    "B1.1 unconditional pass claim",
+    "ORIG raw pass claim",
+    "implicit qmatch",
+    "second B1.1 topology rescue",
+    "gate relaxation",
+    "new training without a new explicit gate",
+    "new sampling without a new explicit gate",
+    "100/200ep scaling without a new explicit gate",
+    "new checkpoint without a new explicit gate",
+    "actual 3D generation / voxel export / production acceptance before stage3 design gate",
+    "selected 64-slice chunk represents full model performance",
+    "unlabelled merge of formal route and nnUNet-qmatch route"
+  ],
+  "bold_exploration_policy": {
+    "allowed_in_design": true,
+    "condition": "must be supported by HY7 data, physical/geological theory, and public authoritative literature",
+    "not_allowed_without_gate": ["long training", "large remote compute", "result-stage promotion", "final scientific claims"]
+  }
+}

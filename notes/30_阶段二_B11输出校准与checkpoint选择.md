@@ -1410,6 +1410,56 @@ GATE_LEVEL=stage-3-planning-input only
 - Stage 3 design 定稿前必须澄清 connectivity/percolation 语义。`src/hy7_phase2_eval.py` 定义 `x_penetrate/y_penetrate` 为最大连通簇同时接触左右/上下边界的 tile 比例；因此当前 `0.0/0.0` 只能解释为当前 2D tile-level largest-CC 没有 x/y spanning，不能解释为 3D 渗流或 3D connectivity 证据。
 - Stage 3 planning memo 必须记录 chunk threshold drift、formal vs qmatch porosity difference、candidate_rows 8 chunk + 1 full-batch 的结构性重叠、失败 chunk `ep015_chunk000_063` 风险、selection hash 指向 `.json` 而非 `.md`、以及 `hy7-gray-calibration-qmatch-v1` 的来源/阈值说明。
 
+### 15.15 B2 continuation: Stage 3 planning memo 与约束矩阵
+
+按“继续 B2 实验”的指令，已将 handoff promotion gate 转化为下一步 B2→Stage3 桥接实验设计，而不是直接启动训练或 3D 生成。
+
+新增：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/b2_continuation_stage3_planning_memo_20260706.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_planning_constraints_matrix_20260706.json
+```
+
+当前决策：继续 B2 的 immediate next experiment 是 **B2-D1 constraints and connectivity semantics closure**：
+
+```text
+APPROVED_TO_DESIGN
+NOT_APPROVED_TO_TRAIN
+NOT_APPROVED_TO_GENERATE_3D
+```
+
+目的：把 Stage 3 planning gate 的补强要求转成可审计设计输入，包括 formal/qmatch/triage/failed/forbidden/3D-connectivity 五类约束矩阵。
+
+关键矩阵约束：
+
+```text
+formal route anchor=ep015_all, n=512, pass_gate=True, allowed_use=planning_anchor_only
+nnUNet-qmatch route=diagnostic_calibrated_route_only
+selected_chunk=ep015_chunk384_447, policy=triage_only
+failed_risk_chunk=ep015_chunk000_063, failure=maxCC>0.070
+x/y penetrate current meaning=2D tile-level largest-CC spanning ratio, not 3D permeability/connectivity evidence
+```
+
+文献/理论支撑已挂到 memo：
+
+- 2D→3D reconstruction / GAN / SliceGAN：`Mosser2017_3D_porous_media_GAN.pdf`, `Kench2021_SliceGAN_2D_to_3D.pdf`。
+- digital rock validation：`Andra2013` Part I/II, `Blunt2013`，以及 S2、Euler/Minkowski、connectivity/percolation、permeability 指标族。
+- 3D porous diffusion / controlled latent diffusion / multiphase pore images：`Liu2025_Controlled_Latent_Diffusion_3D_porous.pdf`, `Zhu2025_diffusion_3D_multiphase_poreImages.pdf`, `Hou2026_limited_core_multimodal_diffusion_3D.pdf`。
+- shale/multimineral context：`Loucks2012_mudrock_pore_types.pdf`，并明确页岩/多矿物 2D→3D 不能直接套砂岩假设。
+
+大胆探索分支已预注册但分级：
+
+1. **Branch A — 2D-to-3D statistical reconstruction planning from calibrated B2 handoff**：`PRIMARY_NEXT_DESIGN`，下一步写 Stage 3 Branch A design card。
+2. **Branch B — conditional [gray,pore]/[sus,pore] generation**：有理论支撑，但需要新训练 gate。
+3. **Branch C — topology/percolation-controlled generative sampling**：有潜力，但须先定义 3D connectivity/percolation 指标。
+
+下一步文件建议：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_2d_to_3d_reconstruction_design_20260706.md
+```
+
 关键证据 sha256：
 
 ```text

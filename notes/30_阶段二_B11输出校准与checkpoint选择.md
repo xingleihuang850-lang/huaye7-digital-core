@@ -1201,6 +1201,31 @@ maxCC=0.07163110510281959
 
 一句话结论：**B2-min design-entry gate 判定 CONDITIONAL_PASS：ep015 + hy7-gray-calibration-qmatch-v1 的 full-batch pass、baseline package 与含 full-batch control 的 constrained selection smoke 足以开启 B2-min 设计；边界为 calibrated / no-retraining / explicit qmatch / full-batch 为唯一验收口径，ORIG raw remains known_fail，selected chunk 仅限 triage 不得替代 full-batch gate，100/200ep scaling 与新训练未获授权。**
 
+### 15.11 B2-min design memo 已落地
+
+承接 §15.10 的 `CONDITIONAL_PASS` design-entry gate，已撰写 B2-min design memo：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/design_memo_20260706.md
+```
+
+memo 将下一步限定为 **design / dry-run planning**，不是 B2-min 结果验收或训练启动。核心边界：
+
+1. frozen checkpoint 仍为 `ep015`。
+2. required calibration 仍为 `hy7-gray-calibration-qmatch-v1`，所有 downstream path 必须显式声明。
+3. 验收锚点必须是 full-batch `ep015_all`，不是 selected chunk。
+4. selected chunk 只能作为 triage-only；`ep015_chunk000_063` 的失败原因 `maxCC>0.070` 已作为负样本记录。
+5. formal route 与 nnUNet-qmatch route 的系统差异已写入风险项：formal512 `phi=6.4/Euler=120.81` vs nnUNet qmatch `phi≈5.79/Euler≈116.15`。
+6. memo 明确禁止新训练、100/200ep scaling、新 checkpoint、第二次 topology rescue、gate relaxation、ORIG raw pass claim。
+
+建议的第一个 B2-min design component 方向：
+
+```text
+calibrated pore-mask / gray-pore handoff bundle for downstream multiscale 3D fusion
+```
+
+理由：它仍是 no-retraining、artifact/manifest based，可为阶段三多尺度 3D digital core 入口准备校准后的孔隙/灰度交接包，而不提前引入 `[sus,pore]` 联合生成训练或新模型复杂度。
+
 关键证据 sha256：
 
 ```text

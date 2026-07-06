@@ -1,6 +1,8 @@
 # 符号链接指向的外盘数据不入库（数据是源，git 只管代码）
 /GJ5-15data
 /nnunet_pipeline
+/archive_external_links/GJ5-15/GJ5-15data
+/archive_external_links/GJ5-15/nnunet_pipeline
 /data/raw_stats
 /data/hy7_raw/
 # Amics 局部核查原始/半原始材料（正式证据入 experiments/花页7_PlanB_记录/）

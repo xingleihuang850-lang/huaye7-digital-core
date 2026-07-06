@@ -53,6 +53,9 @@ Important files:
 - `.hermes/plans/2026-07-06_141348-calibrated-b2-min.md`  
   Calibrated B2-min implementation plan.
 
+- `docs/workspace_cleanup_20260706.md`  
+  Local symlink/empty-directory cleanup record and remote `00_ORDERED_VIEW` index description.
+
 ## Scientific gates and wording rules
 
 Use these wording rules when citing repository results:

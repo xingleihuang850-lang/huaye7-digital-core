@@ -1980,6 +1980,34 @@ MoA 明确要求未来 smoke gate request payload 必须携带以下约束：
 
 同步更新 smoke checklist：增加 `condition_interface_requirements`，要求 smoke gate 前声明 condition channels used / held / de-scoped、qmatch calibration、`not_a_generative_digital_well`，并规定 representativeness audit 与 conditional response gate 是未来 digital-well claim 前的硬条件。
 
+### 15.26 minimal 3D smoke gate request 与 verdict
+
+按 §15.25 的 next allowed step，已写入并运行 fresh minimal 3D smoke gate request。Gate question：
+
+```text
+May HY7 Stage 3 Branch A run one minimal qmatch-conditioned 3D smoke, under the specified constraints, to test whether dimensional lifting preserves 3D connectivity and diagnostic physical-response consistency?
+```
+
+新增：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_minimal_3d_smoke_gate_request_20260706.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_minimal_3d_smoke_gate_moa_output_20260706.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_minimal_3d_smoke_gate_record_20260706.md
+```
+
+MoA verdict：
+
+```text
+ALLOW_MINIMAL_3D_SMOKE_ONLY
+```
+
+该 verdict 只授权 one diagnostic smoke execution / launcher，不授权 A2-small、A2-medium、full 2D→3D campaign、training、checkpoint、large volume scientific export、HY7 scientific acceptance、generative digital-well claim 或 qmatch formal acceptance。
+
+Gate 允许后续写 minimal smoke implementation/launcher，并允许触碰 real HY7-derived / qmatch-conditioned candidate paths，但只限 frozen diagnostic route：`nnUNet ep015_qmatch`、`hy7-gray-calibration-qmatch-v1`、formal `ep015_all` 仅 planning anchor、failed chunk `ep015_chunk000_063` 必须 visible negative evidence。不是 toy-only，但仍 diagnostic-only。
+
+Launcher/package 约束：one run；candidate_count_max=3；volume <=64^3 preferred，<=128^3 hard cap；rerun 仅限 labelled reproducibility verification；必须 code-level enforce route/calibration/no-A2/no-training/no-checkpoint/volume bound；运行前 verify qmatch calibration artifact 与 `ep015_chunk000_063` failure record，缺失时生成 fail-closed package 而非 partial success；percolation flags must precede proxy；positive flow proxy on non-percolating axis => fail closed；Euler/Minkowski 默认为 explicitly_de_scoped_fail_closed，除非 actual phantom validation exists。
+
 关键证据 sha256：
 
 ```text

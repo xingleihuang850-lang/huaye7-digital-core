@@ -1037,6 +1037,74 @@ package hashes：
 
 当前状态：calibrated B2-min baseline reproducibility package 已完成；尚未启动任何 B2 新训练。下一步若继续推进，应先做 constrained selection smoke 设计/执行，仍然禁止 retraining 与 ORIG raw 通过声称。
 
+### 15.8 calibrated constrained selection smoke 完成
+
+已实现并运行 B2-min constrained selection smoke。该步骤不做 retraining，只对 frozen `ep015` 的 n=512 gray samples 应用 `hy7-gray-calibration-qmatch-v1`，再按 64-slice chunks + full batch 做 formal metrics 选择。
+
+脚本与测试：
+
+```text
+local script=/Users/hxl/Documents/Hermes工作区/01_Claude接管剩余工作/claude/src/hy7_b2_min_select.py
+remote script=/home/user/HXL/HY7_planb/phase2/hy7_b2_min_select.py
+local test=/Users/hxl/Documents/Hermes工作区/01_Claude接管剩余工作/claude/tests/test_hy7_b2_min_select.py
+```
+
+验证：
+
+```text
+python3 -m pytest tests/test_hy7_b2_min_select.py -q
+3 passed in 0.02s
+python3 -m pytest tests -q
+31 passed in 0.09s
+
+/var/folders/l6/qjrw5dps6s96b9ddgnmlbh8m0000gn/T/hermes-verify-*.py
+ADHOC_VERIFY_OK b2_min_select
+3 passed in 0.02s
+```
+
+远程输出：
+
+```text
+/home/user/HXL/HY7_planb/phase2/b2_min_constrained_selection_smoke_ep015_20260706
+```
+
+selection 规则：先要求 `pass_gate=True`，再按 `S₂ rmse`、`abs(Euler-120)`、`maxCC`、`abs(φ-6.4)` 排序；禁止 retraining、二次 topology rescue、gate relaxation、ORIG raw pass claim、implicit qmatch。
+
+候选结果：
+
+| variant | n | φ | S₂ rmse | Euler | maxCC | pass |
+|---|---:|---:|---:|---:|---:|:---:|
+| ep015_chunk000_063 | 64 | 6.435 | 0.00052 | 123.95 | 0.0716 | False |
+| ep015_chunk064_127 | 64 | 6.405 | 0.00033 | 122.09 | 0.0629 | True |
+| ep015_chunk128_191 | 64 | 6.458 | 0.00071 | 121.00 | 0.0639 | True |
+| ep015_chunk192_255 | 64 | 6.755 | 0.00111 | 120.81 | 0.0647 | True |
+| ep015_chunk256_319 | 64 | 6.562 | 0.00179 | 123.59 | 0.0600 | True |
+| ep015_chunk320_383 | 64 | 6.598 | 0.00073 | 121.97 | 0.0626 | True |
+| ep015_chunk384_447 | 64 | 6.463 | 0.00021 | 121.17 | 0.0643 | True |
+| ep015_chunk448_511 | 64 | 6.642 | 0.00059 | 123.61 | 0.0611 | True |
+| ep015_all | 512 | 6.443 | 0.00029 | 121.27 | 0.0640 | True |
+
+selected=`ep015_chunk384_447`，理由：通过 gate 且 selection score 最低。
+
+```text
+selected phi=6.4629
+selected S₂=0.0002107
+selected Euler=121.17
+selected maxCC=0.0643
+```
+
+注意：`ep015_all` 也稳定通过，说明 constrained selection smoke 没有破坏 full-batch 证据；但 chunk 选择只可作为 B2-min smoke / candidate triage，不能替代 full-batch formal/nnUNet gate。
+
+证据 sha256：
+
+```text
+40f51bdc04da5c5a373a948f5a874cdda134447f88a257392b0ac8bc96eebae4  selection_summary.json
+839851afbc29f2dab8b523f784b89aad9e7e753ad9b054ff9c3e52825d0e764f  selection_summary.md
+dc6303f99902e9717f086718397afc4d96e3e495ac8f7f549dabfa617fb071e7  qmatch_manifest.json
+```
+
+当前状态：calibrated constrained selection smoke 通过；B2-min 仍未启动任何新训练。下一步如果推进 B2，应先用 rock gate 复核“B2-min baseline package + constrained selection smoke”是否足以进入下一阶段设计。
+
 关键证据 sha256：
 
 ```text

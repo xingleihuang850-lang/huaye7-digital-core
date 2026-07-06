@@ -1,0 +1,57 @@
+{
+  "status": "calibrated_b2_min_candidate",
+  "main_checkpoint": "ep015",
+  "calibration_version": "hy7-gray-calibration-qmatch-v1",
+  "orig_raw_status": "known_fail",
+  "allowed_next_step": "calibrated_b2_min_baseline_or_constrained_selection",
+  "forbidden": [
+    "unconditional_b1_1_pass_claim",
+    "orig_raw_pass_claim",
+    "second_b1_1_topology_rescue",
+    "gate_relaxation",
+    "implicit_qmatch"
+  ],
+  "files": {
+    "checkpoint": {
+      "path": "ddpm_ct28_gray_b11_eulermaxcc_rescue20_formal64_20260706/ckpt_ep015.pt",
+      "sha256": "83995e66ac25be69b8d71aade0d125d43f6f0d35ef66476ff0cb32327d3d7c0d"
+    },
+    "formal512": {
+      "path": "b1_gray_sus_b11_rescue20_formal512_20260706/formal512_ep015.json",
+      "sha256": "45c565aaa4e7adfee2ddc0e04c882320e03b2d4adf6139d01614fb4073285737"
+    },
+    "nnunet": {
+      "path": "b1_gray_sus_b11_rescue20_nnunet_review_20260706/nnunet_disagreement_summary.json",
+      "sha256": "5b4251322b0f5665ffc881e751d4f973c66ec60214136940606d19c4d8f1e061"
+    },
+    "qmatch_generalization": {
+      "path": "b1_gray_sus_b11_qmatch_generalization_20260706/qmatch_generalization_summary.json",
+      "sha256": "4044881ebdd1ad1c3b2a7c4807ddba579ef60e764b12cd44a0c0a48807df1f27"
+    },
+    "calibration_module": {
+      "path": "hy7_gray_calibration.py",
+      "sha256": "e245c10ec22e297f948fd015c8b06a84228c6aef21de8537deacc58c7864779a"
+    }
+  },
+  "evidence_summary": {
+    "formal512_ep015_phi64": {
+      "s2_rmse": 0.00034034164909631633,
+      "euler": 120.810546875,
+      "maxcc": 0.06408827658203413,
+      "passed_gate": true
+    },
+    "nnunet_ep015_qmatch": {
+      "phi": 5.794930458068848,
+      "s2_rmse": 0.0017214588891168259,
+      "euler": 116.154296875,
+      "maxcc": 0.06510709034871634,
+      "reverse_fail": false
+    },
+    "qmatch_generalization_ep015": {
+      "even_pass": true,
+      "odd_pass": true,
+      "even_euler": 116.13671875,
+      "odd_euler": 116.16796875
+    }
+  }
+}

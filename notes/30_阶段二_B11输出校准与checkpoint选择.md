@@ -1248,7 +1248,15 @@ audit checklist 覆盖：
 7. design/report text 中必须出现 `CONDITIONAL_PASS`、`triage_only`、formal route、nnUNet qmatch route、no-new-training boundary。
 8. 禁止将 unsafe claims 写成正向结论；允许它们出现在 “Forbidden / do not write” 列表中。
 
-已用远程 ordered-view 中真实 `b2_min_manifest.json` 与 `selection_summary.json` 加本地 `design_memo_20260706.md` 跑 audit：
+已用远程 ordered-view 中真实 `b2_min_manifest.json` 与 `selection_summary.json` 加本地 `design_memo_20260706.md` 跑 audit；远程小 JSON/MD/hash 证据也已镜像到本地：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/baseline_package_ep015/
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/constrained_selection_smoke_ep015/
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/MIRRORED_REMOTE_EVIDENCE.md
+```
+
+audit 结果：
 
 ```text
 passed=true

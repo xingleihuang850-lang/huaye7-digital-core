@@ -1,10 +1,12 @@
 {
   "status": "b2_min_design_entry_audit_pass",
   "date": "2026-07-06",
-  "scope": "baseline manifest + constrained selection summary + design memo",
-  "command": "python3 src/hy7_b2_min_audit.py --manifest <remote b2_min_manifest.json> --selection-summary <remote selection_summary.json> --design-text experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/design_memo_20260706.md",
-  "remote_manifest": "hy7-linux:/home/user/HXL/HY7_planb/phase2/00_ORDERED_VIEW/05_b2_min_calibrated/00_baseline_package_ep015/b2_min_manifest.json",
-  "remote_selection_summary": "hy7-linux:/home/user/HXL/HY7_planb/phase2/00_ORDERED_VIEW/05_b2_min_calibrated/01_constrained_selection_smoke_ep015/selection_summary.json",
+  "scope": "local mirrored baseline manifest + local mirrored constrained selection summary + design memo",
+  "command": "python3 src/hy7_b2_min_audit.py --manifest experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/baseline_package_ep015/b2_min_manifest.json --selection-summary experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/constrained_selection_smoke_ep015/selection_summary.json --design-text experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/design_memo_20260706.md",
+  "local_manifest": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/baseline_package_ep015/b2_min_manifest.json",
+  "local_selection_summary": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/constrained_selection_smoke_ep015/selection_summary.json",
+  "remote_source_manifest": "hy7-linux:/home/user/HXL/HY7_planb/phase2/00_ORDERED_VIEW/05_b2_min_calibrated/00_baseline_package_ep015/b2_min_manifest.json",
+  "remote_source_selection_summary": "hy7-linux:/home/user/HXL/HY7_planb/phase2/00_ORDERED_VIEW/05_b2_min_calibrated/01_constrained_selection_smoke_ep015/selection_summary.json",
   "design_text": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/design_memo_20260706.md",
   "passed": true,
   "errors": [],
@@ -28,9 +30,10 @@
     "nnunet_route_visible",
     "no_new_training_boundary"
   ],
+  "hash_check": "baseline_package_ep015/hashes.txt -> b2_min_manifest.json: OK; b2_min_readme.md: OK",
   "test_evidence": {
-    "focused": "python3 -m pytest tests/test_hy7_b2_min_audit.py -q -> 5 passed",
-    "suite": "python3 -m pytest tests -q -> 36 passed"
+    "focused": "python3 -m pytest tests/test_hy7_b2_min_audit.py -q -> 6 passed",
+    "suite": "python3 -m pytest tests -q -> 37 passed"
   },
   "execution_boundary": "no_retraining_no_new_sampling_no_scaling_no_new_checkpoint"
 }

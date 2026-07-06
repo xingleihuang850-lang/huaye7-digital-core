@@ -99,6 +99,18 @@ def test_forbidden_claim_lint_catches_unsafe_wording():
     assert any("selected chunk represents full model performance" in e for e in result["errors"])
 
 
+def test_forbidden_claim_lint_catches_chinese_unsafe_wording():
+    bad = "B1.1 已经无条件通过；ORIG raw 通过；qmatch 可选；B2-min 通过；新训练已批准；selected chunk 可以代表整体模型表现"
+    result = mod.audit_design_text(bad)
+    assert result["passed"] is False
+    assert any("无条件通过" in e for e in result["errors"])
+    assert any("ORIG raw 通过" in e for e in result["errors"])
+    assert any("qmatch 可选" in e for e in result["errors"])
+    assert any("B2-min 通过" in e for e in result["errors"])
+    assert any("新训练已批准" in e for e in result["errors"])
+    assert any("selected chunk 可以代表整体模型表现" in e for e in result["errors"])
+
+
 def test_forbidden_claim_lint_allows_explicit_prohibited_claim_lists():
     text = """
     B2-min design-entry gate = CONDITIONAL_PASS.

@@ -22,6 +22,12 @@ FORBIDDEN_CLAIMS = [
     "ORIG raw passed",
     "qmatch optional",
     "selected chunk represents full model performance",
+    "无条件通过",
+    "ORIG raw 通过",
+    "qmatch 可选",
+    "B2-min 通过",
+    "新训练已批准",
+    "selected chunk 可以代表整体模型表现",
 ]
 
 REQUIRED_MANIFEST_FORBIDDEN = {

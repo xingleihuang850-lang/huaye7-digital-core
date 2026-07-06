@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "errors": [],
+  "checks": [
+    "main_checkpoint_ep015",
+    "calibration_version_explicit",
+    "orig_raw_known_fail",
+    "manifest_forbidden_constraints_present",
+    "selection_calibration_explicit",
+    "selection_forbidden_constraints_present",
+    "full_batch_anchor_present",
+    "failed_selection_rows_visible",
+    "selected_chunk_is_separate_from_full_batch",
+    "conditional_pass_boundary",
+    "qmatch_explicit",
+    "full_batch_anchor",
+    "triage_only",
+    "orig_raw_known_fail",
+    "failed_row_visible",
+    "formal_route_visible",
+    "nnunet_route_visible",
+    "no_new_training_boundary"
+  ]
+}

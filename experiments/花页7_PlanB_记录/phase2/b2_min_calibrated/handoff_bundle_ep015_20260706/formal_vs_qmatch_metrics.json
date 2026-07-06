@@ -1,0 +1,37 @@
+{
+  "formal_full_batch_ep015_all": {
+    "variant": "ep015_all",
+    "start": 0,
+    "stop": 512,
+    "n": 512,
+    "phi_target": 6.4,
+    "threshold": -0.625,
+    "phi": 6.442654132843018,
+    "s2_rmse": 0.0002854642510439182,
+    "euler": 121.26953125,
+    "maxcc": 0.06397858477862998,
+    "x_penetrate": 0.0,
+    "y_penetrate": 0.0,
+    "pass_gate": true
+  },
+  "formal512_ep015_phi64": {
+    "s2_rmse": 0.00034034164909631633,
+    "euler": 120.810546875,
+    "maxcc": 0.06408827658203413,
+    "passed_gate": true
+  },
+  "nnunet_ep015_qmatch": {
+    "phi": 5.794930458068848,
+    "s2_rmse": 0.0017214588891168259,
+    "euler": 116.154296875,
+    "maxcc": 0.06510709034871634,
+    "reverse_fail": false
+  },
+  "qmatch_generalization_ep015": {
+    "even_pass": true,
+    "odd_pass": true,
+    "even_euler": 116.13671875,
+    "odd_euler": 116.16796875
+  },
+  "interpretation": "formal threshold and nnUNet-qmatch routes are both supportive but numerically distinct; do not merge them into one unlabeled metric."
+}

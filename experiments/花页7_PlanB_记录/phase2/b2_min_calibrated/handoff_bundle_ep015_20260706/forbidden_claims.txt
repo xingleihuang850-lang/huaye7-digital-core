@@ -1,0 +1,7 @@
+B1.1 unconditional pass
+ORIG raw passed
+qmatch optional
+selected chunk represents full model performance
+B2-min passed
+100/200ep scaling approved
+new training approved

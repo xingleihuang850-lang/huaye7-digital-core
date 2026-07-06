@@ -96,7 +96,7 @@ python3 -m pytest tests -q
 At the latest sync point this returned:
 
 ```text
-37 passed in 0.10s
+39 passed in 0.10s
 ```
 
 For guard-triggered changes, additional focused ad-hoc verification scripts were created under the macOS temp directory with the `hermes-verify-` prefix and then cleaned up. Those ad-hoc checks should not be described as canonical suite green.

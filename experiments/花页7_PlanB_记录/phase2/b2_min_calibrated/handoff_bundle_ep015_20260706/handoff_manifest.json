@@ -1,0 +1,33 @@
+{
+  "status": "calibrated_b2_min_handoff_design_dry_run",
+  "main_checkpoint": "ep015",
+  "calibration_version": "hy7-gray-calibration-qmatch-v1",
+  "orig_raw_status": "known_fail",
+  "execution_boundary": "no_retraining_no_new_sampling_no_scaling_no_new_checkpoint",
+  "acceptance_anchor": "ep015_all",
+  "selected_chunk_policy": "triage_only",
+  "selected_chunk": "ep015_chunk384_447",
+  "formal_route": "threshold_formal_full_batch",
+  "nnunet_route": "qmatch_nnunet_diagnostic",
+  "downstream_target": "multiscale_3d_digital_core_planning",
+  "forbidden": [
+    "unconditional_b1_1_pass_claim",
+    "orig_raw_pass_claim",
+    "second_b1_1_topology_rescue",
+    "gate_relaxation",
+    "implicit_qmatch"
+  ],
+  "source_paths": {
+    "baseline_manifest": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/baseline_package_ep015/b2_min_manifest.json",
+    "selection_summary": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/constrained_selection_smoke_ep015/selection_summary.json",
+    "qmatch_manifest": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/constrained_selection_smoke_ep015/qmatch_manifest.json",
+    "design_text": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/design_memo_20260706.md"
+  },
+  "source_sha256": {
+    "baseline_manifest": "27c2cf40476f78e69480ba364011bb86a394a01d99750c8cc3037ec4d04439df",
+    "selection_summary": "40f51bdc04da5c5a373a948f5a874cdda134447f88a257392b0ac8bc96eebae4",
+    "qmatch_manifest": "dc6303f99902e9717f086718397afc4d96e3e495ac8f7f549dabfa617fb071e7"
+  },
+  "baseline_status": "calibrated_b2_min_candidate",
+  "selection_status": "calibrated_constrained_selection_smoke"
+}

@@ -1293,6 +1293,78 @@ calibrated pore-mask / gray-pore handoff bundle for downstream multiscale 3D fus
 
 当前状态：no-retraining calibrated handoff 已具备可审计设计入口；下一步可由用户决定是否批准执行 handoff bundle dry-run package。
 
+### 15.13 Component C no-retraining handoff bundle dry-run 已执行
+
+用户批准继续后，已按 Component C design card 执行 **no-retraining handoff bundle dry-run package**。本步骤只打包既有本地镜像证据与设计文本，不训练、不采样、不引入新 checkpoint。
+
+新增脚本与测试：
+
+```text
+src/hy7_b2_min_handoff.py
+tests/test_hy7_b2_min_handoff.py
+```
+
+本地 dry-run 输出目录：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/handoff_bundle_ep015_20260706/
+```
+
+输出文件：
+
+```text
+handoff_manifest.json
+handoff_readme.md
+formal_vs_qmatch_metrics.json
+candidate_rows.json
+forbidden_claims.txt
+audit_report.json
+ordered_view_links.txt
+hashes.txt
+```
+
+核心 manifest 字段：
+
+```text
+status=calibrated_b2_min_handoff_design_dry_run
+main_checkpoint=ep015
+calibration_version=hy7-gray-calibration-qmatch-v1
+orig_raw_status=known_fail
+execution_boundary=no_retraining_no_new_sampling_no_scaling_no_new_checkpoint
+acceptance_anchor=ep015_all
+selected_chunk_policy=triage_only
+formal_route=threshold_formal_full_batch
+nnunet_route=qmatch_nnunet_diagnostic
+downstream_target=multiscale_3d_digital_core_planning
+```
+
+审计结果：
+
+```text
+python3 src/hy7_b2_min_audit.py \
+  --manifest handoff_bundle_ep015_20260706/handoff_manifest.json \
+  --selection-summary constrained_selection_smoke_ep015/selection_summary.json \
+  --design-text handoff_bundle_ep015_20260706/handoff_readme.md
+
+passed=true
+errors=[]
+checks=18 items
+```
+
+hashes 内部校验：
+
+```text
+handoff_manifest.json: OK
+handoff_readme.md: OK
+formal_vs_qmatch_metrics.json: OK
+candidate_rows.json: OK
+forbidden_claims.txt: OK
+audit_report.json: OK
+ordered_view_links.txt: OK
+```
+
+当前判定：Component C handoff bundle dry-run 已完成且通过 audit。它仍是 **design/dry-run handoff package**，不是 B2-min 结果验收；下一步若要将其升级为阶段三多尺度 3D digital core planning 输入，应再做一次 promotion / stage-entry gate，确认 full-batch anchor、qmatch 显式、formal-vs-qmatch 差异、forbidden claims 仍被保留。
+
 关键证据 sha256：
 
 ```text

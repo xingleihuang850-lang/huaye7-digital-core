@@ -1700,6 +1700,65 @@ sha256sum -c hashes.txt  # package files OK
 
 下一步如果继续，应对 A1 package 做一次 A1 completion review/gate：确认它是否只完成 toy metric-plumbing，可否进入 A2 设计（不是执行 A2），并明确 3D Euler/Minkowski 是否必须先实现还是可继续作为 fail-closed placeholder。
 
+### 15.20 Stage 3 Branch A A1 completion review/gate
+
+已对 A1 package 做 `digital-rock-gate` MoA completion review，确认是否满足 “toy metric-plumbing only”，以及是否允许进入 A2 **design only** 阶段。
+
+Gate record：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_a1_completion_gate_moa_output_20260706.md
+```
+
+MoA evidence：
+
+```text
+provider=moa
+preset=digital-rock-gate
+smoke=OK-ROCK
+refs=openai-codex:gpt-5.5, deepseek:deepseek-v4-pro, openrouter:z-ai/glm-5.2, custom:dk-claude:claude-fable-5
+aggregator=custom:dk-claude:claude-opus-4-8
+```
+
+Verdict：
+
+```text
+A1_COMPLETE_WITH_CONSTRAINTS_ALLOW_A2_DESIGN_ONLY
+```
+
+判定：A1 满足 toy metric-plumbing only。证据包括：8³ synthetic volume、`synthetic_no_physical_spacing`、`route_label=synthetic_toy_plumbing`、`scientific_status=not_evidence`、known-answer phantoms 正确、3/3 focused tests 与 42/42 suite 通过、5/5 package hashes OK、无 `.npy`/toy volume 提交。
+
+A1 outputs 不能作为 HY7 scientific evidence；它们只验证 synthetic phantom 上的 3D metric code paths 与 artifact package shape。
+
+允许进入：
+
+```text
+A2 DESIGN ONLY
+```
+
+A2 design 可包含：
+
+- design docs / interface / schema specs；
+- 3D Euler/Minkowski algorithm design；
+- 扩展 phantom suite 设计，包含 sphere / torus / hollow cube 等有解析 Euler 的 phantoms；
+- asymmetric phantom，用于区分 periodic vs non-periodic S2；
+- metric acceptance criteria；
+- real 2D→3D reconstruction pipeline architecture（design only）；
+- provenance/hash/manifest conventions；
+- test plan / risk register / A2 execution gate criteria。
+
+仍然禁止：A2 execution、real 2D→3D reconstruction、training/fine-tuning、new sampling、checkpoint、voxel volume export 或 git commit、基于 A1 或 A2 design 的 HY7 scientific claims。
+
+A2 execution 前新增硬条件：
+
+1. 3D Euler/Minkowski 可在 A2 design 阶段保持 fail-closed，但若 A2 execution 的 metric/acceptance/claim 依赖 topology，执行前必须实现并用 phantom 验证；否则必须在 A2 design 中明确 de-scope，并在 manifests 里保持 fail-closed。
+2. Toy-volume reproducibility 需要二选一：提交 toy volume（当前不推荐）或提供 deterministic-regeneration proof（seed + source-hash round-trip test）。
+3. S2 boundary condition 必须钉住 periodic vs non-periodic，并用 asymmetric phantom 验证。
+4. 需要超过 8³ 的 scale-up validation 设计。
+5. A2 execution 前必须另做 fresh strict gate。
+
+下一步：写 A2 design-only card，重点是 Euler/Minkowski 设计、S2 boundary convention、deterministic-regeneration proof、扩展 phantom suite 与 A2 execution gate criteria；不得执行 A2。
+
 关键证据 sha256：
 
 ```text

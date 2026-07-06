@@ -174,6 +174,43 @@
     "scientific_status": "not_evidence",
     "deterministic_regeneration_required": true
   },
+  "minimal_3d_smoke_extension_schema": {
+    "status": "design_only_execution_not_authorized",
+    "primary_uncertainty": "qmatch-conditioned 3D connectivity and physical-response consistency",
+    "future_gate_required": true,
+    "allowed_future_verdicts": [
+      "ALLOW_MINIMAL_3D_SMOKE_ONLY",
+      "ALLOW_TOY_OR_SYNTHETIC_3D_SMOKE_ONLY",
+      "DO_NOT_START_3D_SMOKE"
+    ],
+    "required_route_label": "nnUNet ep015_qmatch",
+    "calibration_version_required": "hy7-gray-calibration-qmatch-v1",
+    "scientific_status_required": "diagnostic_smoke_not_evidence",
+    "required_files": [
+      "branch_a_3d_smoke_manifest.json",
+      "input_route_manifest.json",
+      "candidate_volume_manifest.json",
+      "metrics_3d_smoke.json",
+      "physical_response_proxy.json",
+      "negative_evidence.md",
+      "hashes.txt"
+    ],
+    "physical_response_proxy_fields": [
+      "percolation_supported_flow_proxy",
+      "connected_porosity_proxy",
+      "axis_anisotropy_proxy",
+      "resistivity_or_conductivity_proxy_if_available",
+      "formation_factor_proxy_if_available"
+    ],
+    "fail_closed_if": [
+      "positive_flow_proxy_on_non_percolating_axis",
+      "qmatch_route_label_missing_or_merged",
+      "3D_connectivity_metrics_absent_or_uninterpretable",
+      "physical_response_proxy_method_or_assumptions_missing",
+      "negative_evidence_missing",
+      "candidate_volume_or_metrics_unreproducible"
+    ]
+  },
   "provenance_schema": {
     "must_record": [
       "input_paths",

@@ -96,6 +96,17 @@
     }
   },
   "future_a2_execution_gate_question": "May Branch A A2 execution begin under the specified algorithm, data, compute, artifact, and metric constraints?",
+  "minimal_3d_smoke_gate_precedes_a2_execution": {
+    "required": true,
+    "question": "May a qmatch-conditioned minimal 3D smoke be run to test 3D connectivity and diagnostic physical-response consistency before A2-small?",
+    "allowed_verdicts": [
+      "ALLOW_MINIMAL_3D_SMOKE_ONLY",
+      "ALLOW_TOY_OR_SYNTHETIC_3D_SMOKE_ONLY",
+      "DO_NOT_START_3D_SMOKE"
+    ],
+    "not_authorized_by_this_checklist": true,
+    "scientific_status": "diagnostic_smoke_not_evidence"
+  },
   "future_allowed_verdicts": [
     "ALLOW_A2_EXECUTION_WITH_CONSTRAINTS",
     "ALLOW_A2_TOY_SCALEUP_ONLY",

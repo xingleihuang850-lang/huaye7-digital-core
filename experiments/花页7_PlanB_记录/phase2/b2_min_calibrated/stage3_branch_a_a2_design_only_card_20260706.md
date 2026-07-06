@@ -269,10 +269,13 @@ Do not write or imply:
 
 ## Immediate next work item
 
-Write the machine-readable A2 execution gate checklist:
+The next work item is no longer more 2D-score packaging. The next design/gate target is a qmatch-conditioned minimal 3D smoke that tests the biggest remaining uncertainty: whether dimensional lifting under the qmatch diagnostic route preserves 3D connectivity and produces a qualitatively consistent physical-response proxy.
+
+Write / maintain:
 
 ```text
-experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_a2_execution_gate_checklist_20260706.json
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_qmatch_conditioned_minimal_3d_smoke_design_20260706.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_minimal_3d_smoke_gate_checklist_20260706.json
 ```
 
-The checklist should encode the blocking requirements above so a future A2 execution request can be audited mechanically before MoA review.
+This smoke design must still require a future fresh strict gate before any 3D smoke execution. It does not authorize A2 execution.

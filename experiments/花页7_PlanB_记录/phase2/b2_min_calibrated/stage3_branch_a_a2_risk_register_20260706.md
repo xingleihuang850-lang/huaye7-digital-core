@@ -92,6 +92,25 @@ A1/A2 design output is treated as HY7 scientific evidence
 | A2-R33 | External artifact rot | external volumes/previews are referenced but later unavailable. | S2 | L2 | path broken; hash unavailable | record path, size, sha256, storage location, representative previews | external artifact not resolvable | repo owner |
 | A2-R34 | Design package incompleteness | A2 design package lacks one of card/checklist/phantom/schema/risk files. | S3 | L2 | required design file missing | design package completion gate | required file missing | documentation owner |
 | A2-R35 | MoA routing risk | future gate uses wrong provider/preset or a non-strict review. | S3 | L2 | review not `digital-rock-gate`; no refs/aggregator recorded | require `provider=moa`, `preset=digital-rock-gate`, raw output saved | gate review not strict or not saved | gate owner |
+| A2-R36 | Core uncertainty | qmatch-conditioned dimensional lifting preserves 2D metrics but fails 3D connectivity. | S4 | L3 | porosity/S2 plausible but percolation/LCC/connected porosity fail | fresh-gated minimal 3D smoke before A2-small | 3D connectivity absent or uninterpretable | science owner |
+| A2-R37 | Physical-response invalidity | qmatch-conditioned 3D connectivity appears plausible but physical-response proxy contradicts it. | S4 | L3 | positive proxy on non-percolating axis; proxy inconsistent with connected porosity | physical_response_proxy.json with per-axis consistency checks | connectivity/response contradiction hidden or unresolved | science owner |
+| A2-R38 | Smoke scope creep | minimal 3D smoke becomes de facto A2 execution or scientific acceptance. | S4 | L2 | smoke output described as final reconstruction/evidence | separate smoke verdict and scientific_status=diagnostic_smoke_not_evidence | smoke used as A2-small/A2-medium acceptance | gate owner |
+| A2-R39 | qmatch-conditioned overclaim | qmatch-conditioned physical response is described as validated permeability. | S4 | L2 | permeability language without validated solver/gate | require proxy-only labels and method assumptions | validated permeability claim without gate | science owner |
+| A2-R40 | Smoke negative evidence suppression | smoke reports only successful axes/candidates and hides failed axes/proxies. | S4 | L2 | missing non-percolating axes, contradictions, failed candidates | negative_evidence.md required | negative evidence absent | risk owner |
+| A2-R41 | Formal-anchor/qmatch disagreement | qmatch-conditioned 3D smoke disagrees with formal anchor expectations but discrepancy is not analyzed. | S3 | L3 | formal vs qmatch route mismatch not discussed | record formal_anchor=ep015_all planning only and qmatch diagnostic route | route disagreement omitted | metric owner |
+| A2-R42 | Non-reproducible smoke volume | candidate volume/proxy cannot be regenerated or resolved. | S3 | L2 | missing path/hash/command/environment; broken external path | candidate_volume_manifest.json + hashes required | volume/proxy cannot be reproduced | provenance owner |
+
+## Updated priority after 2D cleanup
+
+The dominant research risk has moved from 2D gate packaging to qmatch-conditioned 3D validity:
+
+```text
+primary uncertainty = qmatch-conditioned 3D connectivity + physical-response consistency
+next risk-reduction step = fresh-gated minimal 3D smoke
+not next step = more 2D achievement packaging
+```
+
+This changes the next design gate target. The immediate future gate should ask whether to run a **minimal 3D smoke only**, not whether to launch full A2 execution.
 
 ## Stage-specific risk controls
 

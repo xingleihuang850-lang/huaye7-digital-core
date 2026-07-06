@@ -1365,6 +1365,51 @@ ordered_view_links.txt: OK
 
 当前判定：Component C handoff bundle dry-run 已完成且通过 audit。它仍是 **design/dry-run handoff package**，不是 B2-min 结果验收；下一步若要将其升级为阶段三多尺度 3D digital core planning 输入，应再做一次 promotion / stage-entry gate，确认 full-batch anchor、qmatch 显式、formal-vs-qmatch 差异、forbidden claims 仍被保留。
 
+### 15.14 Handoff bundle → Stage 3 planning promotion gate
+
+已对 `handoff_bundle_ep015_20260706/` 执行 digital-rock-gate MoA promotion / stage-entry 复核，问题为：该 bundle 是否可作为 Stage 3 `multiscale 3D digital core planning` 输入。
+
+MoA evidence：
+
+```text
+provider=moa
+preset=digital-rock-gate
+refs=openai-codex:gpt-5.5, deepseek:deepseek-v4-pro, openrouter:z-ai/glm-5.2, custom:dk-claude:claude-fable-5
+aggregator=custom:dk-claude:claude-opus-4-8
+smoke=OK-ROCK
+```
+
+完整 gate 记录：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/handoff_stage_entry_gate_20260706.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/handoff_stage_entry_gate_moa_output_20260706.md
+```
+
+Gate verdict：
+
+```text
+PROMOTE_WITH_CONSTRAINTS
+GATE_LEVEL=stage-3-planning-input only
+```
+
+一句话结论：HY7 B2-min 校准无重训交接束哈希与上游溯源全验通过、审计 18/18、双路线分离且负证据可见，经 digital-rock-gate 判定 `PROMOTE_WITH_CONSTRAINTS`，批准升级为 Stage 3 多尺度 3D 数字岩心**规划输入**（仅规划级，带全部禁令与 2D/3D connectivity 语义补强约束），不授权 3D 生成、训练/扩量或最终科学验收。
+
+允许下一步：
+
+- 注册 handoff bundle 为 Stage 3 planning input。
+- 撰写 Stage 3 planning memo / requirements / design card。
+- 建立 formal route、qmatch route、triage chunks、failed row、forbidden claims 的约束矩阵。
+- 定义 Stage 3 gate 草案与指标口径。
+- 仅以 `ep015_all` 作为 planning anchor；qmatch 结果必须保持 diagnostic/calibrated 路线标签。
+
+仍然禁止：B2-min final pass claim、B1.1 unconditional pass claim、ORIG raw pass claim、implicit qmatch、second B1.1 topology rescue、gate relaxation、新训练、新采样、100/200ep 扩量、新 checkpoint、实际 3D 生成/voxel export/生产或科学验收签字、selected 64-slice chunk 代表全模型性能、formal route 与 nnUNet-qmatch route 无标签合并。
+
+必须补强：
+
+- Stage 3 design 定稿前必须澄清 connectivity/percolation 语义。`src/hy7_phase2_eval.py` 定义 `x_penetrate/y_penetrate` 为最大连通簇同时接触左右/上下边界的 tile 比例；因此当前 `0.0/0.0` 只能解释为当前 2D tile-level largest-CC 没有 x/y spanning，不能解释为 3D 渗流或 3D connectivity 证据。
+- Stage 3 planning memo 必须记录 chunk threshold drift、formal vs qmatch porosity difference、candidate_rows 8 chunk + 1 full-batch 的结构性重叠、失败 chunk `ep015_chunk000_063` 风险、selection hash 指向 `.json` 而非 `.md`、以及 `hy7-gray-calibration-qmatch-v1` 的来源/阈值说明。
+
 关键证据 sha256：
 
 ```text

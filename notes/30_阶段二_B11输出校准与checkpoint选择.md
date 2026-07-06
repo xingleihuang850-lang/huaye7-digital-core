@@ -1105,6 +1105,33 @@ dc6303f99902e9717f086718397afc4d96e3e495ac8f7f549dabfa617fb071e7  qmatch_manifes
 
 当前状态：calibrated constrained selection smoke 通过；B2-min 仍未启动任何新训练。下一步如果推进 B2，应先用 rock gate 复核“B2-min baseline package + constrained selection smoke”是否足以进入下一阶段设计。
 
+### 15.9 B2-min gate 复核（remote ordered view 起点）
+
+承接本地清理与远程 `00_ORDERED_VIEW` 建立后的下一步，已从 ordered view 重新复核 B2-min gate。
+
+复核记录：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/gate_review_20260706.md
+```
+
+复核范围：
+
+1. 远程 ordered view 完整性：`LINK_COUNT=42`、`BROKEN_COUNT=0`；`05_b2_min_calibrated/00_baseline_package_ep015` 与 `01_constrained_selection_smoke_ep015` 均可解析到原始远程目录。
+2. baseline package：`status=calibrated_b2_min_candidate`、`main_checkpoint=ep015`、`calibration_version=hy7-gray-calibration-qmatch-v1`、`orig_raw_status=known_fail`，证据摘要与已记录 formal512 / nnUNet qmatch / qmatch split 泛化一致。
+3. constrained selection smoke：`status=calibrated_constrained_selection_smoke`，9 行候选中 8 行通过 gate；selected=`ep015_chunk384_447`，full-batch `ep015_all` 也通过 gate。
+4. 本地测试：`python3 -m pytest tests -q -> 31 passed in 0.12s`。
+
+复核结论：
+
+```text
+B2-min gate review = PASS_WITH_CONSTRAINTS
+```
+
+允许下一步：用 baseline package + constrained selection smoke 作为证据进入正式 B2-min design / rock gate 复核。若获准，下一阶段仍应以 calibrated/qmatch pipeline 为硬依赖，且默认 no-retraining，除非新的 gate 明确授权训练。
+
+仍然禁止：B1.1 unconditional full pass 声称、ORIG raw nnUNet pass 声称、隐式 qmatch、第二次 B1.1 topology rescue、gate relaxation、用 64-slice selected chunk 替代 full-batch formal/nnUNet gate。
+
 关键证据 sha256：
 
 ```text

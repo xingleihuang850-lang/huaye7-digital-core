@@ -1460,6 +1460,54 @@ x/y penetrate current meaning=2D tile-level largest-CC spanning ratio, not 3D pe
 experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_2d_to_3d_reconstruction_design_20260706.md
 ```
 
+### 15.16 Stage 3 Branch A 2D→3D reconstruction 正式设计卡
+
+已按指令直接写入 Branch A 正式设计卡：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_2d_to_3d_reconstruction_design_20260706.md
+```
+
+设计卡状态：
+
+```text
+DESIGN_CARD_PRE_REGISTRATION
+Execution boundary=design only; no training, no new sampling, no actual 3D generation, no voxel export, no new checkpoint
+```
+
+Branch A 一句话决策：使用已批准的 calibrated B2 handoff bundle 作为受约束规划输入，为 2D→3D digital-rock reconstruction 实验预注册体尺寸、route label、morphology/topology/percolation 指标和 fail-closed gate；在 Stage 3 design gate 通过前不启动任何生成或训练。
+
+设计卡将 Branch A 分成三级：
+
+```text
+A0 no-generation planning package: CURRENTLY_ALLOWED
+A1 tiny synthetic dry-run: NOT_YET_APPROVED, future gate required
+A2 real 2D→3D reconstruction experiment: NOT_YET_APPROVED, future gate required
+```
+
+候选算法族：
+
+- SliceGAN-style dimensionality expansion；
+- MPS / statistic-constrained reconstruction planning；
+- controlled latent diffusion / statistic-conditioned 3D diffusion。
+
+已预注册 target volume candidates：
+
+```text
+A0-table: no volume, allowed now
+A1-toy: 32^3–64^3, metric plumbing only, future gate required
+A2-small: 128^3, first real 3D reconstruction candidate, future gate required
+A2-medium: 256^3, higher-FOV planning target, future gate required
+```
+
+3D 必加指标：3D porosity、3D S2 x/y/z、3D connected porosity ratio、x/y/z percolation flags、3D LCC fraction、3D Euler/Minkowski、pore-size distribution / granulometry proxy；permeability/proxy 只能在真实 3D volume 存在后讨论。
+
+下一步工作项：写 machine-readable Branch A gate metrics schema：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_gate_metrics_20260706.json
+```
+
 关键证据 sha256：
 
 ```text

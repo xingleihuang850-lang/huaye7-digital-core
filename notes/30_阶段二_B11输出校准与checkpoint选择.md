@@ -1860,6 +1860,49 @@ Metric interface schema 固化：future A2 package required files、manifest req
 
 关键 fail-closed 条件：execution 无 fresh strict gate、algorithm family 缺失、input slice manifest 缺失、route labels 混并、failed chunk 风险消失、S2 boundary convention 缺失、asymmetric S2 phantom 缺失、Euler/Minkowski 未验证却用于 topology claims、deterministic regeneration proof 缺失、大 volume/weights 入 git、scientific_status 边界缺失，均 fail-closed。
 
+### 15.23 Stage 3 Branch A A2 risk register
+
+已写入 A2 design-only risk register；本步骤仍不执行 A2，不训练、不采样、不生成真实 2D→3D reconstruction、不导出 voxel、不产生 HY7 scientific claim。
+
+新增：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_branch_a_a2_risk_register_20260706.md
+```
+
+Risk register 状态：
+
+```text
+A2_DESIGN_ONLY_RISK_PRE_REGISTRATION
+execution_authorized=false
+ready_for_A2_execution=false
+eligible_next_step=A2 design package completion gate review
+```
+
+登记范围覆盖：
+
+- gate authorization / scope creep；
+- algorithm ambiguity；
+- input manifest / route contamination；
+- selected chunk triage misuse；
+- failed chunk `ep015_chunk000_063` negative evidence loss；
+- 2D/3D semantic overreach；
+- S2 boundary drift / axis omission；
+- connectivity/percolation convention ambiguity；
+- Euler/Minkowski placeholder misuse and convention error；
+- phantom insufficiency and scale hard-coding；
+- deterministic-regeneration gap；
+- large artifact / hash / provenance / environment risks；
+- permeability overclaim；
+- A2-small and A2-medium premature execution；
+- claim-language drift；
+- missing negative-result handling；
+- MoA routing risk。
+
+Stage-specific controls：A1 toy metric-plumbing 只继承为 controls，不作为 HY7 evidence；A2-small 必须 fresh A2 execution gate + algorithm/input/route/metric/provenance/negative-evidence package；A2-medium 不得绕过 A2-small review，必须新增 strict gate。
+
+关键 fail-closed 条件：fresh strict gate 缺失、algorithm/input manifest 缺失、formal/qmatch route 混并、failed chunk 风险消失、S2 boundary convention 或 asymmetric phantom 缺失、Euler/Minkowski placeholder 被用作 topology claim、deterministic regeneration proof 缺失、大 volume/weights 入 git、scientific_status 边界缺失、A1/A2 design 输出被当成 HY7 evidence。
+
 关键证据 sha256：
 
 ```text

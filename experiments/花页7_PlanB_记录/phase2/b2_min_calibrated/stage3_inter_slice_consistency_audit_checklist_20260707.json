@@ -1,0 +1,119 @@
+{
+  "workflow_node": "HY7-stage3-branch-A-inter-slice-consistency-audit-plan",
+  "date": "2026-07-07",
+  "status": "PLANNING_ONLY_EXECUTION_NOT_AUTHORIZED",
+  "parent_verdict": "REDESIGN_BEFORE_ANY_A2_SMALL_GATE",
+  "scientific_status": "planning_only_not_evidence",
+  "execution_authorized": false,
+  "ready_for_second_smoke": false,
+  "ready_for_a2_small_gate": false,
+  "parent_artifacts": {
+    "smoke_package": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_minimal_3d_smoke_package_20260707_run01_qmatch_candidate/",
+    "post_run_review_record": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_minimal_3d_smoke_post_run_review_record_20260707.md",
+    "rca_redesign_plan": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_smoke_rca_redesign_plan_20260707_run01.json"
+  },
+  "route_constraints": {
+    "route_label": "nnUNet ep015_qmatch",
+    "route_status": "diagnostic_calibrated_route_only",
+    "calibration_version": "hy7-gray-calibration-qmatch-v1",
+    "formal_anchor": "ep015_all planning_anchor_only",
+    "failed_chunk_visible_negative_evidence": "ep015_chunk000_063",
+    "not_a_generative_digital_well": true
+  },
+  "parent_candidate_provenance": {
+    "source_path": "hy7-linux:/home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_rescue20_nnunet_review_20260706/ep015_qmatch_pore_nnunet2d.npy",
+    "source_sha256": "24655b96b3f50ad14f8c60548afa9e0169babb76c24b605efa870e741502b7b2",
+    "slice_range": {"start": 384, "stop": 448},
+    "candidate_shape": [64, 128, 128],
+    "candidate_arrays_written": false
+  },
+  "audit_question": "Can the parent smoke all-axis non-percolation and x-axis S2 collapse be explained or bounded by inter-slice 2D-inference / 2D-to-3D assembly inconsistency before any future second smoke is requested?",
+  "not_questions": [
+    "Can A2-small start?",
+    "Can qmatch be accepted as formal route?",
+    "Can the diagnostic proxy be treated as permeability?",
+    "Can a new candidate be generated or cherry-picked?"
+  ],
+  "required_future_audit_inputs": [
+    "qmatch candidate array path and sha256",
+    "pre-registered slice range(s)",
+    "axis mapping declaration x/y/z -> ndarray axes 0/1/2",
+    "route label and calibration version",
+    "failed chunk ep015_chunk000_063 record",
+    "parent smoke package hashes"
+  ],
+  "planned_metrics": [
+    "per_slice_porosity_mean_std_min_max",
+    "adjacent_slice_jaccard_distribution_along_x",
+    "adjacent_slice_dice_distribution_along_x",
+    "adjacent_slice_overlap_drop_flags",
+    "component_persistence_across_adjacent_slices_proxy",
+    "run_length_of_connected_foreground_across_x_proxy",
+    "s2_lag1_x_y_z_with_boundary_label",
+    "s2_anisotropy_ratios_x_over_y_and_x_over_z",
+    "per_slice_pore_count_outlier_flags"
+  ],
+  "metric_labels_required": {
+    "status": "diagnostic_metadata_only",
+    "not_permeability": true,
+    "not_scientific_acceptance": true,
+    "not_formal_qmatch_acceptance": true
+  },
+  "controls_required": [
+    "axis_convention_control",
+    "boundary_convention_control",
+    "failed_chunk_visibility_control",
+    "no_cherry_pick_control",
+    "no_formal_route_merge_control",
+    "no_artifact_leakage_control"
+  ],
+  "future_audit_package_files_if_authorized": [
+    "inter_slice_audit_manifest.json",
+    "inter_slice_audit_readme.md",
+    "input_route_manifest.json",
+    "candidate_source_manifest.json",
+    "inter_slice_metrics.json",
+    "axis_boundary_semantics.md",
+    "negative_evidence.md",
+    "forbidden_claims.txt",
+    "hashes.txt"
+  ],
+  "decision_criteria": {
+    "still_redesign_if": [
+      "x-axis adjacent-slice Jaccard/Dice much lower than y/z continuity proxies",
+      "S2 x/y or x/z ratio confirms severe slice-stacking decorrelation",
+      "component persistence across x is unstable or near zero",
+      "per-slice porosity has strong outlier/dropout bands"
+    ],
+    "second_smoke_request_candidate_only_if": [
+      "axis mapping verified",
+      "inter-slice consistency not obviously broken",
+      "subvolume-selection/minimum-REV plan exists",
+      "failed chunk remains visible",
+      "route labels remain clean",
+      "no new scientific acceptance or permeability claims"
+    ],
+    "stop_or_route_redesign_if": [
+      "inter-slice consistency failure is severe and systematic across pre-registered windows",
+      "qmatch diagnostic route cannot preserve 3D continuity without new model design",
+      "route remediation would require training/checkpoint selection/non-authorized inference"
+    ]
+  },
+  "still_forbidden": [
+    "second smoke execution without new strict gate",
+    "A2-small execution",
+    "A2-medium execution",
+    "full 2D-to-3D reconstruction campaign",
+    "training or fine-tuning",
+    "checkpoint creation or selection",
+    "large volume export as scientific output",
+    "HY7 scientific acceptance claim",
+    "B2-min final pass claim",
+    "qmatch formal acceptance claim",
+    "validated permeability claim",
+    "generative digital-well claim",
+    "cherry-picked rerun to find percolation",
+    "hiding failed chunk ep015_chunk000_063",
+    "committing .npy/.npz/.pt/weights/checkpoints/voxel arrays"
+  ]
+}

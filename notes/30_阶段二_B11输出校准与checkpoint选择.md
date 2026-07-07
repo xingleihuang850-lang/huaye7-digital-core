@@ -2137,3 +2137,31 @@ REDESIGN_BEFORE_ANY_A2_SMALL_GATE
 解释：本次 smoke 是干净的 negative diagnostic，不是成功。三轴均不 percolate，connected porosity 极低；physical proxy 只因所有轴非贯通而全为 0，不是 positive flow evidence。x-axis lag-1 S2 约比 y/z 低一个数量级，提示可能存在 2D nnUNet inter-slice inconsistency / 2D→3D assembly artifact，也可能是 sub-REV 或 route/calibration fragmentation；不能从单个 subvolume 直接下 scientific success/failure 结论。
 
 下一步边界：只允许 metadata-only root-cause / redesign package；不得 A2-small，不得 rerun/cherry-pick 找 percolation，不得训练/微调/checkpoint，不得 scientific acceptance、B2-min final pass、qmatch formal acceptance、validated permeability 或 generative digital-well claim。未来若要第二次 smoke，必须先有 inter-slice consistency audit、minimum-REV/subvolume-selection plan，并重新 strict gate。
+
+### 15.29 inter-slice consistency audit plan（planning only）
+
+按 §15.28 的 post-run verdict，继续推进的是 metadata-only redesign artifact，不执行新 smoke、不读出新的科学结论、不训练、不 checkpoint、不导出体积。
+
+新增：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_inter_slice_consistency_audit_plan_20260707.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_inter_slice_consistency_audit_checklist_20260707.json
+```
+
+状态：
+
+```text
+workflow_node=HY7-stage3-branch-A-inter-slice-consistency-audit-plan
+parent_verdict=REDESIGN_BEFORE_ANY_A2_SMALL_GATE
+scientific_status=planning_only_not_evidence
+execution_authorized=false
+ready_for_second_smoke=false
+ready_for_a2_small_gate=false
+```
+
+Audit question：在请求任何 future second smoke 前，先判定 run01 的三轴非贯通和 x-axis S2 collapse 是否可能由 inter-slice 2D inference inconsistency / 2D→3D assembly artifact 解释或约束。
+
+未来若另行授权 metadata-only audit execution，预注册指标包括：per-slice porosity、adjacent-slice Jaccard/Dice along x、adjacent overlap drop flags、component persistence proxy、run-length proxy、boundary-labelled S2 x/y/z、S2 anisotropy ratios、per-slice pore-count outliers。所有输出必须标注 diagnostic_metadata_only / not_permeability / not_scientific_acceptance / not_formal_qmatch_acceptance。
+
+控制项：axis convention、boundary convention、failed chunk visibility、no cherry-pick、no formal-route merge、no artifact leakage。未来 audit package 若被 gate 授权，限定为 9-file metadata package，不提交 `.npy/.npz/.pt/weights/checkpoints/voxel arrays`。

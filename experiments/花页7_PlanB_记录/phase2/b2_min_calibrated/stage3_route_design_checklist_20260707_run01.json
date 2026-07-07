@@ -1,0 +1,75 @@
+{
+  "workflow_node": "HY7-stage3-branch-A-route-design-feasibility-checklist",
+  "date": "2026-07-07",
+  "status": "CHECKLIST_ONLY_EXECUTION_NOT_AUTHORIZED",
+  "parent_smoke_verdict": "REDESIGN_BEFORE_ANY_A2_SMALL_GATE",
+  "route_design_card": "stage3_route_design_card_20260707_run01.md",
+  "hard_guards": {
+    "execution_authorized": false,
+    "second_smoke_authorized": false,
+    "A2_small_authorized": false,
+    "A2_medium_authorized": false,
+    "training_authorized": false,
+    "checkpoint_authorized": false,
+    "scientific_acceptance_claim_authorized": false,
+    "validated_permeability_claim_authorized": false,
+    "generative_digital_well_claim_authorized": false
+  },
+  "must_preserve": {
+    "route_label": "nnUNet ep015_qmatch",
+    "calibration_version": "hy7-gray-calibration-qmatch-v1",
+    "formal_anchor": "ep015_all planning_anchor_only",
+    "failed_chunk_visible_negative_evidence": "ep015_chunk000_063",
+    "source_sha256_verified": "24655b96b3f50ad14f8c60548afa9e0169babb76c24b605efa870e741502b7b2",
+    "axis_0_to_slice_stacking_mapping": "verified"
+  },
+  "route_family_readiness_checks": {
+    "R1_2_5D_slab_context_inference_design": [
+      "slab_width_candidates_pre_registered",
+      "qmatch_semantics_versioning_plan_present",
+      "axis_stack_provenance_manifest_required",
+      "failed_chunk_visibility_plan_present",
+      "no_training_or_inference_execution"
+    ],
+    "R3_calibration_route_redesign": [
+      "new_calibration_version_required_before_execution",
+      "formal_anchor_not_relabelled_as_acceptance",
+      "raw_failure_and_qmatch_diagnostic_results_remain_paired",
+      "no_hidden_checkpoint_selection"
+    ],
+    "R2_inter_slice_consistency_regularization_design": [
+      "separate_training_gate_required",
+      "anti_over_smoothing_controls_required",
+      "connectivity_fabrication_guard_required",
+      "diagnostic_continuity_only_label_required"
+    ],
+    "R4_metadata_only_post_processing_design_review": [
+      "forbidden_operations_list_required",
+      "raw_vs_processed_pairing_required",
+      "no_connectivity_or_permeability_claim",
+      "last_resort_design_review_only"
+    ]
+  },
+  "future_metric_target_placeholders": {
+    "s2_x_over_min_yz_target_ge": 0.25,
+    "component_persistence_pairwise_median_target_ge": 0.10,
+    "per_slice_pore_count_robust_z_abs_target_le": 3.5,
+    "adjacent_slice_jaccard_x_median_target_ge": 0.05,
+    "adjacent_slice_dice_x_median_target_ge": 0.10,
+    "zero_or_near_zero_pore_slice_run_target_lt": 3,
+    "target_status": "planning_placeholders_re_register_before_any_execution"
+  },
+  "fail_closed_if": [
+    "any_authorization_boolean_true",
+    "second_smoke_or_A2_language_implies_execution",
+    "qmatch_route_relabelled_as_formal_acceptance",
+    "failed_chunk_negative_evidence_removed",
+    "axis_stack_mapping_omitted_or_ambiguous",
+    "training_checkpoint_or_inference_step_added",
+    "permeability_or_scientific_acceptance_claim_added",
+    "forbidden_artifact_extension_present"
+  ],
+  "forbidden_artifacts": [".npy", ".npz", ".pt", "weights", "checkpoints", "voxel_arrays", "processed_volume_exports"],
+  "does_not_alter_parent_gate": true,
+  "does_not_authorize_route_feasibility_review": true
+}

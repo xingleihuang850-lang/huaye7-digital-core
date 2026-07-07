@@ -2320,3 +2320,42 @@ checkpoint_authorized=false
 Route-remediation hypotheses：independent 2D-slice inference lacks cross-slice context；缺少 explicit 3D consistency regularization/post-processing；qmatch calibration 可能 slice-wise fragmentation；checkpoint/ensemble route 可能 2D-good but 3D-incoherent；stacking/preprocessing convention 仍需 independent review。
 
 Non-execution remediation directions：2.5D/slab-context inference design、inter-slice consistency regularization design、metadata-only post-processing design review、calibration-route redesign、route feasibility decision framework。全部只是 planning，不授权 implementation/training/checkpoint/second smoke/A2。
+
+### 15.33 route design card（planning only）
+
+基于 route-remediation plan，新增 no-execution route design card 与 checklist：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_route_design_card_20260707_run01.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_route_design_card_20260707_run01.json
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_route_design_checklist_20260707_run01.json
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_route_design_20260707_run01.hashes.txt
+```
+
+状态：
+
+```text
+workflow_node=HY7-stage3-branch-A-route-design-card-after-remediation-plan
+status=DESIGN_PLANNING_ONLY_EXECUTION_NOT_AUTHORIZED
+parent_smoke_verdict=REDESIGN_BEFORE_ANY_A2_SMALL_GATE
+post_audit_verdict=KEEP_REDESIGN_AND_WRITE_ROUTE_REMEDIATION_PLAN
+scientific_status=diagnostic_metadata_only_not_evidence
+execution_authorized=false
+second_smoke_authorized=false
+A2_small_authorized=false
+training_authorized=false
+checkpoint_authorized=false
+```
+
+当前 design preference：
+
+```text
+primary=R1_2.5D_slab_context_inference_design
+secondary=R3_calibration_route_redesign
+tertiary=R2_inter_slice_consistency_regularization_design
+last_resort=R4_metadata_only_post_processing_design_review
+```
+
+设计逻辑：R1 直接针对 leading root cause（independent 2D-slice inference lacks cross-slice context），R3 处理 qmatch calibration semantics/versioning，R2 只有在 future training gate 下才可能讨论，R4 仅作为高风险 post-processing design review，不能用于 connectivity/permeability/scientific claim。
+
+硬边界：该 card/checklist 不授权 route-feasibility review、execution、training、checkpoint、second smoke、A2-small，也不改变 parent gate；任何未来动作仍需 separate strict gate。

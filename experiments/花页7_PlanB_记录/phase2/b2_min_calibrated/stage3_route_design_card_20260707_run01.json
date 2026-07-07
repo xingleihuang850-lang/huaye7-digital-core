@@ -1,0 +1,91 @@
+{
+  "workflow_node": "HY7-stage3-branch-A-route-design-card-after-remediation-plan",
+  "date": "2026-07-07",
+  "status": "DESIGN_PLANNING_ONLY_EXECUTION_NOT_AUTHORIZED",
+  "parent_smoke_verdict": "REDESIGN_BEFORE_ANY_A2_SMALL_GATE",
+  "post_audit_verdict": "KEEP_REDESIGN_AND_WRITE_ROUTE_REMEDIATION_PLAN",
+  "scientific_status": "diagnostic_metadata_only_not_evidence",
+  "authorization_status": {
+    "execution_authorized": false,
+    "second_smoke_authorized": false,
+    "A2_small_authorized": false,
+    "A2_medium_authorized": false,
+    "full_2d_to_3d_campaign_authorized": false,
+    "training_authorized": false,
+    "checkpoint_authorized": false,
+    "qmatch_formal_acceptance_claim_authorized": false,
+    "validated_permeability_claim_authorized": false,
+    "generative_digital_well_claim_authorized": false
+  },
+  "frozen_route": {
+    "route_label": "nnUNet ep015_qmatch",
+    "route_status": "diagnostic_calibrated_route_only",
+    "calibration_version": "hy7-gray-calibration-qmatch-v1",
+    "formal_anchor": "ep015_all planning_anchor_only",
+    "failed_chunk": "ep015_chunk000_063 visible negative evidence",
+    "source_sha256_verified": "24655b96b3f50ad14f8c60548afa9e0169babb76c24b605efa870e741502b7b2",
+    "slice_range": {"start": 384, "stop": 448},
+    "audit_volume_shape": [64, 128, 128],
+    "axis_0_to_slice_stacking_mapping": "verified"
+  },
+  "design_problem_metrics": {
+    "s2_x_over_min_yz": 0.09496368732593648,
+    "adjacent_slice_jaccard_x_median": 0.028101802757158005,
+    "adjacent_slice_dice_x_median": 0.05466735430634347,
+    "component_persistence_pairwise_median": 0.028101802757158005,
+    "per_slice_pore_count_robust_z_abs_max": 4.3526328125000004
+  },
+  "candidate_route_families": {
+    "R1_2_5D_slab_context_inference_design": {
+      "rank": 1,
+      "execution_authorized": false,
+      "addresses": ["independent_2d_slice_inference_lacks_cross_slice_context"],
+      "required_controls": ["slab_width_pre_registered", "axis_stack_provenance_manifest", "failed_chunk_visible", "qmatch_semantics_versioned"]
+    },
+    "R3_calibration_route_redesign": {
+      "rank": 2,
+      "execution_authorized": false,
+      "addresses": ["qmatch_calibration_may_fragment_continuity_across_slices"],
+      "required_controls": ["new_calibration_version_before_execution", "formal_anchor_separated", "raw_failure_visible"]
+    },
+    "R2_inter_slice_consistency_regularization_design": {
+      "rank": 3,
+      "execution_authorized": false,
+      "addresses": ["no_explicit_3d_consistency_regularization_or_post_processing"],
+      "required_controls": ["separate_training_gate", "anti_over_smoothing_controls", "diagnostic_continuity_only_label"]
+    },
+    "R4_metadata_only_post_processing_design_review": {
+      "rank": 4,
+      "execution_authorized": false,
+      "addresses": ["post_processing_sensitivity_review_only"],
+      "required_controls": ["connectivity_fabrication_guard", "raw_vs_processed_pairing", "forbidden_operations_list"]
+    }
+  },
+  "current_design_preference": [
+    "R1_2_5D_slab_context_inference_design",
+    "R3_calibration_route_redesign",
+    "R2_inter_slice_consistency_regularization_design",
+    "R4_metadata_only_post_processing_design_review"
+  ],
+  "future_route_feasibility_review_questions": [
+    "can_R1_preserve_qmatch_calibration_semantics_without_formal_acceptance_merge",
+    "can_axis_stack_provenance_be_unambiguous_before_any_future_run",
+    "can_failed_chunk_ep015_chunk000_063_remain_visible_negative_control",
+    "can_future_audit_targets_be_declared_without_cherry_picking",
+    "can_future_outputs_remain_diagnostic_metadata_only_until_scientific_gate"
+  ],
+  "proposed_future_non_execution_package_files": [
+    "route_design_card.md",
+    "route_design_checklist.json",
+    "axis_stack_provenance_manifest.md",
+    "qmatch_semantics_separation.md",
+    "failed_chunk_visibility_plan.md",
+    "future_metric_thresholds.json",
+    "forbidden_claims.txt",
+    "hashes.txt"
+  ],
+  "forbidden_artifacts": [".npy", ".npz", ".pt", "weights", "checkpoints", "voxel_arrays", "processed_volume_exports"],
+  "does_not_alter_parent_gate": true,
+  "does_not_reopen_parent_smoke_gate": true,
+  "does_not_authorize_future_gate_request": true
+}

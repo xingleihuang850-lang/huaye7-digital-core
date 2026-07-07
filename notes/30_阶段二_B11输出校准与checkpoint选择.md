@@ -2018,3 +2018,57 @@ Launcher/package 约束：one run；candidate_count_max=3；volume <=64^3 prefer
 df45f58be5ce10d20a06921b6b60369fe81e908518e85db94880ff98a42ce40f  periodic_validation_summary.json
 df15782df4d67704c3837c3f18e0bdb93bcd331e8f11da595af8a4deff37ea25  train_meta.json
 ```
+
+### 15.27 minimal 3D smoke launcher 与 fail-closed package skeleton
+
+按 `ALLOW_MINIMAL_3D_SMOKE_ONLY` 的 next allowed step，已先落地 conservative launcher/package contract，而不是直接生成好看的 3D 结果。
+
+新增代码与测试：
+
+```text
+src/hy7_stage3_minimal_3d_smoke.py
+tests/test_hy7_stage3_minimal_3d_smoke.py
+```
+
+Launcher code-level enforce：
+
+```text
+route_label=nnUNet ep015_qmatch
+calibration_version=hy7-gray-calibration-qmatch-v1
+candidate_count_max=3
+volume axis hard cap <=128
+no_a2=true
+no_training=true
+no_checkpoint=true
+percolation computed before physical proxy
+positive_flow_proxy_on_non_percolating_axis => fail closed
+Euler/Minkowski default explicitly_de_scoped_fail_closed
+```
+
+已写 12-file package skeleton：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_minimal_3d_smoke_package_20260707/
+```
+
+本次包状态为：
+
+```text
+package_status=FAIL_CLOSED_NO_CANDIDATE_SOURCE
+smoke_executed=false
+candidate_count=0
+```
+
+原因：qmatch calibration artifact 与 failed chunk visibility 均能验证，但当前没有解析到 gated real qmatch-conditioned 3D candidate source；launcher 没有合成或编造 HY7 candidate data，而是按约束生成 fail-closed package。
+
+验证：
+
+```text
+python3 -m pytest tests/test_hy7_stage3_minimal_3d_smoke.py -q -> 7 passed in 0.08s
+python3 -m pytest tests -q -> 49 passed in 0.17s
+shasum -a 256 -c hashes.txt -> 11 package files OK
+package FILE_COUNT=12
+FORBIDDEN_VOLUME_WEIGHT_FILES=[]
+```
+
+边界保持：该 package 是 diagnostic smoke contract / negative evidence，不是 A2-small，不是 A2-medium，不是 scientific acceptance，不是 B2-min final pass，不是 qmatch formal acceptance，也不是 generative digital-well claim。

@@ -1,0 +1,11 @@
+{
+  "workflow_node": "HY7-stage3-branch-A-minimal-3d-smoke-launcher",
+  "scientific_status": "diagnostic_smoke_not_evidence",
+  "package_status": "FAIL_CLOSED_NO_CANDIDATE_SOURCE",
+  "route_label": "nnUNet ep015_qmatch",
+  "calibration_version": "hy7-gray-calibration-qmatch-v1",
+  "percolation_computed_before_physical_proxy": false,
+  "candidate_metrics": [],
+  "selected_candidate_index_for_diagnostic_proxy": null,
+  "euler_minkowski_default": "explicitly_de_scoped_fail_closed"
+}

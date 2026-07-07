@@ -1,0 +1,24 @@
+{
+  "status": "NOT_EXECUTED_FAIL_CLOSED",
+  "method_name": "percolation_supported_flow_proxy",
+  "qualitative_only_flag": true,
+  "units_or_unitless_status": "unitless diagnostic proxy only",
+  "assumptions": [
+    "No candidate metrics available; no physical proxy computed."
+  ],
+  "axis_labels": [
+    "x",
+    "y",
+    "z"
+  ],
+  "consistency_with_percolation": "not_evaluated",
+  "per_axis_flow_proxy": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+  },
+  "forbidden_claims": [
+    "validated permeability",
+    "scientific physical response"
+  ]
+}

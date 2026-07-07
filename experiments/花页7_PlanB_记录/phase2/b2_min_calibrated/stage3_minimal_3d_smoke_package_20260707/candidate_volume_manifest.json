@@ -1,0 +1,9 @@
+{
+  "candidate_count": 0,
+  "candidate_count_max": 3,
+  "candidate_arrays_written": false,
+  "volume_files_written": [],
+  "forbidden_extensions_written": [],
+  "candidate_records": [],
+  "unresolved_candidate_source_fail_closed": true
+}

@@ -1,0 +1,13 @@
+{
+  "route_label": "nnUNet ep015_qmatch",
+  "route_status": "diagnostic_calibrated_route_only",
+  "calibration_version": "hy7-gray-calibration-qmatch-v1",
+  "calibration_artifact": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/constrained_selection_smoke_ep015/qmatch_manifest.json",
+  "calibration_artifact_exists": true,
+  "formal_anchor": "ep015_all planning_anchor_only",
+  "formal_anchor_use": "planning_anchor_only",
+  "failed_chunk": "ep015_chunk000_063",
+  "failed_chunk_record": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_minimal_3d_smoke_gate_record_20260706.md",
+  "failed_chunk_visible": true,
+  "qmatch_not_formal_acceptance": true
+}

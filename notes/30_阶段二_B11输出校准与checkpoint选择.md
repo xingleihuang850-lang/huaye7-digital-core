@@ -2277,3 +2277,46 @@ zero_or_near_zero_pore_slice_run_ge_3=false
 ```
 
 解释边界：audit 支持 run01 qmatch 2D-stack 存在严重 slice-stacking decorrelation / inter-slice inconsistency 风险，但仍只是 metadata-only diagnostic；不改变 `REDESIGN_BEFORE_ANY_A2_SMALL_GATE`，不 reopen parent gate，不构成 downstream execution authorization。
+
+### 15.32 inter-slice audit post-review 与 route-remediation plan
+
+对 run01 metadata-only inter-slice audit 结果发起 post-review：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_inter_slice_audit_post_review_request_20260707.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_inter_slice_audit_post_review_moa_output_20260707.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_inter_slice_audit_post_review_record_20260707.md
+```
+
+Verdict：
+
+```text
+KEEP_REDESIGN_AND_WRITE_ROUTE_REMEDIATION_PLAN
+```
+
+理由：3/5 pre-registered negative flags fired；其中 `s2_x_over_min_yz_lt_0.25=true`、`component_persistence_pairwise_median_lt_0.10=true`、`per_slice_pore_count_robust_z_abs_gt_3.5=true`。Jaccard/Dice x-axis absolute medians 很低（Jaccard≈0.0281, Dice≈0.0547），说明 individual slices 有孔隙但 stacking-axis continuity 严重不足。该结果支持 route/reconstruction redesign，而不是 second smoke 或 stop-branch。
+
+新增 route-remediation planning artifacts：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_route_remediation_plan_20260707_run01.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_route_remediation_plan_20260707_run01.json
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_route_remediation_plan_20260707_run01.hashes.txt
+```
+
+状态保持：
+
+```text
+parent_smoke_verdict=REDESIGN_BEFORE_ANY_A2_SMALL_GATE
+post_audit_verdict=KEEP_REDESIGN_AND_WRITE_ROUTE_REMEDIATION_PLAN
+scientific_status=diagnostic_metadata_only_not_evidence
+second_smoke_authorized=false
+A2_small_authorized=false
+A2_medium_authorized=false
+training_authorized=false
+checkpoint_authorized=false
+```
+
+Route-remediation hypotheses：independent 2D-slice inference lacks cross-slice context；缺少 explicit 3D consistency regularization/post-processing；qmatch calibration 可能 slice-wise fragmentation；checkpoint/ensemble route 可能 2D-good but 3D-incoherent；stacking/preprocessing convention 仍需 independent review。
+
+Non-execution remediation directions：2.5D/slab-context inference design、inter-slice consistency regularization design、metadata-only post-processing design review、calibration-route redesign、route feasibility decision framework。全部只是 planning，不授权 implementation/training/checkpoint/second smoke/A2。

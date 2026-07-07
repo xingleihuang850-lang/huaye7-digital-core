@@ -1,0 +1,80 @@
+{
+  "workflow_node": "HY7-stage3-branch-A-route-remediation-plan-after-inter-slice-audit",
+  "date": "2026-07-07",
+  "parent_smoke_verdict": "REDESIGN_BEFORE_ANY_A2_SMALL_GATE",
+  "post_audit_verdict": "KEEP_REDESIGN_AND_WRITE_ROUTE_REMEDIATION_PLAN",
+  "scientific_status": "diagnostic_metadata_only_not_evidence",
+  "authorization_status": {
+    "second_smoke_authorized": false,
+    "A2_small_authorized": false,
+    "A2_medium_authorized": false,
+    "full_2d_to_3d_campaign_authorized": false,
+    "training_authorized": false,
+    "checkpoint_authorized": false,
+    "scientific_acceptance_claim_authorized": false,
+    "qmatch_formal_acceptance_claim_authorized": false,
+    "validated_permeability_claim_authorized": false,
+    "generative_digital_well_claim_authorized": false
+  },
+  "evidence_base": {
+    "inter_slice_audit_package": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_inter_slice_audit_package_20260707_run01/",
+    "source_sha256_verified": "24655b96b3f50ad14f8c60548afa9e0169babb76c24b605efa870e741502b7b2",
+    "route_label": "nnUNet ep015_qmatch",
+    "calibration_version": "hy7-gray-calibration-qmatch-v1",
+    "slice_range": {"start": 384, "stop": 448},
+    "audit_volume_shape": [64, 128, 128],
+    "axis_0_to_slice_stacking_mapping": "verified"
+  },
+  "diagnostic_drivers": {
+    "s2_x_over_min_yz": 0.09496368732593648,
+    "adjacent_slice_jaccard_x_median": 0.028101802757158005,
+    "adjacent_slice_dice_x_median": 0.05466735430634347,
+    "component_persistence_pairwise_median": 0.028101802757158005,
+    "per_slice_pore_count_robust_z_abs_max": 4.3526328125000004,
+    "zero_or_near_zero_pore_slice_runs_longest": 0
+  },
+  "fired_negative_evidence_flags": [
+    "s2_x_over_min_yz_lt_0.25",
+    "component_persistence_pairwise_median_lt_0.10",
+    "per_slice_pore_count_robust_z_abs_gt_3.5"
+  ],
+  "non_fired_negative_evidence_flags": [
+    "jaccard_x_median_over_yz_median_lt_0.25",
+    "zero_or_near_zero_pore_slice_run_ge_3"
+  ],
+  "ranked_route_hypotheses": [
+    "independent_2d_slice_inference_lacks_cross_slice_context",
+    "no_explicit_3d_consistency_regularization_or_post_processing",
+    "qmatch_calibration_may_fragment_continuity_across_slices",
+    "checkpoint_or_ensemble_route_may_be_2d_good_but_3d_incoherent",
+    "stacking_or_preprocessing_convention_requires_independent_review"
+  ],
+  "non_execution_remediation_directions": [
+    "2.5D_or_slab_context_inference_design",
+    "explicit_inter_slice_consistency_regularization_design",
+    "metadata_only_post_processing_design_review",
+    "calibration_route_redesign",
+    "route_feasibility_decision_framework"
+  ],
+  "future_threshold_targets_before_any_later_gate_discussion": {
+    "s2_x_over_min_yz_target_ge": 0.25,
+    "component_persistence_pairwise_median_target_ge": 0.10,
+    "per_slice_pore_count_robust_z_abs_target_le": 3.5,
+    "adjacent_slice_jaccard_x_median_target_ge": 0.05,
+    "adjacent_slice_dice_x_median_target_ge": 0.10,
+    "zero_or_near_zero_pore_slice_run_target_lt": 3
+  },
+  "future_gate_prerequisites": [
+    "separate_strict_gate_required",
+    "route_design_card_with_no_hidden_A2_execution",
+    "axis_stacking_provenance_manifest",
+    "failed_chunk_ep015_chunk000_063_preserved_as_negative_evidence",
+    "qmatch_formal_anchor_semantics_separated",
+    "no_checkpoint_creation_or_selection_without_explicit_gate",
+    "no_training_or_fine_tuning_without_explicit_gate",
+    "no_volume_arrays_committed",
+    "outputs_labelled_diagnostic_metadata_only_until_future_scientific_gate"
+  ],
+  "does_not_alter_parent_gate": true,
+  "does_not_reopen_parent_smoke_gate": true
+}

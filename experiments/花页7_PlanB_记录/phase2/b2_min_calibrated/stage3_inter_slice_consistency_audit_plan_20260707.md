@@ -90,19 +90,31 @@ qmatch generalization summaries if formally copied into evidence package
 
 ## Planned metrics: inter-slice consistency
 
-For a future audit run, compute only lightweight metadata/statistics, not new scientific volumes:
+For a future audit run, compute only lightweight metadata/statistics, not new scientific volumes. Axis mapping must be verified first; no other metric may be interpreted if axis 0 cannot be tied to the 384:448 slice-stacking range.
 
 ```text
 per_slice_porosity_mean_std_min_max
 adjacent_slice_jaccard_distribution along x
 adjacent_slice_dice_distribution along x
 adjacent_slice_overlap_drop_flags
-component_persistence_across_adjacent_slices proxy
-run_length_of_connected_foreground_across_x proxy
+component_persistence_across_adjacent_slices 2D-pairwise proxy, not 3D percolation
+run_length_of_connected_foreground_across_x 2D-pairwise proxy, not 3D percolation
 S2 lag-1 x/y/z recomputed with boundary label
 S2 anisotropy ratios: x/y and x/z
 per-slice pore-count outlier flags
 ```
+
+Pre-registered diagnostic thresholds for flagging negative evidence only:
+
+```text
+jaccard_x_median_over_yz_median_lt_0.25
+s2_x_over_min_yz_lt_0.25
+component_persistence_pairwise_median_lt_0.10
+per_slice_pore_count_robust_z_abs_gt_3.5
+zero_or_near_zero_pore_slice_run_ge_3
+```
+
+These thresholds are not pass/fail scientific acceptance criteria and do not authorize downstream execution.
 
 All metrics must be labelled:
 
@@ -111,46 +123,43 @@ status=diagnostic_metadata_only
 not_permeability=true
 not_scientific_acceptance=true
 not_formal_qmatch_acceptance=true
+no_second_smoke_implication=true
+no_a2_small_implication=true
+low_n_caveat=64 slices / 63 adjacent pairs; descriptive, not confirmatory
 ```
 
 ## Planned controls
 
 Minimum controls before interpreting any future audit:
 
-1. **Axis convention control** — prove x in the package is the slice-stacking axis before calling x-S2 an inter-slice signal.
+1. **Axis convention control** — first prove axis 0 in the package is the slice-stacking axis for the pre-registered 384:448 range before calling x-S2 an inter-slice signal; fail closed on ambiguity.
 2. **Boundary convention control** — keep `lag_1_valid_pairs_no_wrap_no_periodic_boundary`; no periodic wrapping.
 3. **Failed chunk visibility control** — include ep015_chunk000_063 in the audit record, even if not re-read.
 4. **No cherry-pick control** — any additional slice windows must be pre-registered before reading results.
 5. **No formal-route merge control** — formal threshold anchor and qmatch diagnostic route must remain separate.
 6. **No artifact leakage control** — no `.npy`, `.npz`, `.pt`, weights, checkpoints, or voxel exports in git.
+7. **No heavy inference import control** — future implementation must not import torch, tensorflow, nnunet, or training/checkpoint libraries.
 
-## Decision criteria after a future audit
+## Diagnostic interpretation limits after a future audit
 
-### Still redesign
-
-Keep `REDESIGN_BEFORE_ANY_A2_SMALL_GATE` if:
-
-```text
-x-axis adjacent-slice Jaccard/Dice is much lower than y/z continuity proxies
-S2 x/y or x/z ratio confirms severe slice-stacking decorrelation
-component persistence across x is unstable or near zero
-per-slice porosity has strong outlier/dropout bands
-```
-
-### Candidate for second-smoke request only after new gate
-
-A future second-smoke request may be considered only if the audit shows:
+The audit result may only refine root-cause interpretation and implementation risk. It must not authorize or imply downstream execution:
 
 ```text
-axis mapping verified
-inter-slice consistency not obviously broken
-subvolume-selection/minimum-REV plan exists
-failed chunk remains visible
-route labels remain clean
-no new scientific acceptance or permeability claims are made
+post_audit_downstream_status=out_of_scope
+audit_result_does_not_authorize_or_imply_second_smoke=true
+audit_result_does_not_authorize_or_imply_A2_small=true
+any_future_execution_gate_is_separate_and_not_discussed_here=true
 ```
 
-Even then, the next action is only a new strict smoke gate request, not execution.
+Keep `REDESIGN_BEFORE_ANY_A2_SMALL_GATE` if any pre-registered diagnostic threshold flags route/assembly risk:
+
+```text
+jaccard_x_median_over_yz_median_lt_0.25
+s2_x_over_min_yz_lt_0.25
+component_persistence_pairwise_median_lt_0.10
+per_slice_pore_count_robust_z_abs_gt_3.5
+zero_or_near_zero_pore_slice_run_ge_3
+```
 
 ### Stop / route redesign
 

@@ -1,0 +1,8 @@
+{
+  "route_label": "nnUNet ep015_qmatch",
+  "route_status": "diagnostic_calibrated_route_only",
+  "calibration_version": "hy7-gray-calibration-qmatch-v1",
+  "formal_anchor": "ep015_all planning_anchor_only",
+  "failed_chunk_visible_negative_evidence": "ep015_chunk000_063",
+  "not_a_generative_digital_well": true
+}

@@ -1,0 +1,15 @@
+second smoke execution without a later strict gate
+A2-small execution
+A2-medium execution
+full 2D-to-3D reconstruction campaign
+training or fine-tuning
+checkpoint creation or selection
+large volume export as scientific output
+HY7 scientific acceptance claim
+B2-min final pass claim
+qmatch formal acceptance claim
+validated permeability claim
+generative digital-well claim
+committing .npy/.npz/.pt/weights/checkpoints/voxel arrays
+Audit outcome, pass or fail, has no bearing on parent_smoke_verdict=REDESIGN_BEFORE_ANY_A2_SMALL_GATE and does not reopen or modify that gate.
+Imports of torch/tensorflow/nnunet are forbidden for this audit.

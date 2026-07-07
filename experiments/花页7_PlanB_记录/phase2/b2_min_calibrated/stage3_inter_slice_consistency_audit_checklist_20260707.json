@@ -23,8 +23,15 @@
   "parent_candidate_provenance": {
     "source_path": "hy7-linux:/home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_rescue20_nnunet_review_20260706/ep015_qmatch_pore_nnunet2d.npy",
     "source_sha256": "24655b96b3f50ad14f8c60548afa9e0169babb76c24b605efa870e741502b7b2",
-    "slice_range": {"start": 384, "stop": 448},
-    "candidate_shape": [64, 128, 128],
+    "slice_range": {
+      "start": 384,
+      "stop": 448
+    },
+    "candidate_shape": [
+      64,
+      128,
+      128
+    ],
     "candidate_arrays_written": false
   },
   "audit_question": "Can the parent smoke all-axis non-percolation and x-axis S2 collapse be explained or bounded by inter-slice 2D-inference / 2D-to-3D assembly inconsistency before any future second smoke is requested?",
@@ -47,8 +54,8 @@
     "adjacent_slice_jaccard_distribution_along_x",
     "adjacent_slice_dice_distribution_along_x",
     "adjacent_slice_overlap_drop_flags",
-    "component_persistence_across_adjacent_slices_proxy",
-    "run_length_of_connected_foreground_across_x_proxy",
+    "component_persistence_across_adjacent_slices_2d_pairwise_proxy_not_3d_percolation",
+    "run_length_of_connected_foreground_across_x_2d_pairwise_proxy_not_3d_percolation",
     "s2_lag1_x_y_z_with_boundary_label",
     "s2_anisotropy_ratios_x_over_y_and_x_over_z",
     "per_slice_pore_count_outlier_flags"
@@ -57,7 +64,10 @@
     "status": "diagnostic_metadata_only",
     "not_permeability": true,
     "not_scientific_acceptance": true,
-    "not_formal_qmatch_acceptance": true
+    "not_formal_qmatch_acceptance": true,
+    "no_second_smoke_implication": true,
+    "no_a2_small_implication": true,
+    "low_n_caveat": "64 slices / 63 adjacent pairs; descriptive, not confirmatory"
   },
   "controls_required": [
     "axis_convention_control",
@@ -65,7 +75,8 @@
     "failed_chunk_visibility_control",
     "no_cherry_pick_control",
     "no_formal_route_merge_control",
-    "no_artifact_leakage_control"
+    "no_artifact_leakage_control",
+    "no_heavy_inference_import_control"
   ],
   "future_audit_package_files_if_authorized": [
     "inter_slice_audit_manifest.json",
@@ -80,24 +91,23 @@
   ],
   "decision_criteria": {
     "still_redesign_if": [
-      "x-axis adjacent-slice Jaccard/Dice much lower than y/z continuity proxies",
-      "S2 x/y or x/z ratio confirms severe slice-stacking decorrelation",
-      "component persistence across x is unstable or near zero",
-      "per-slice porosity has strong outlier/dropout bands"
-    ],
-    "second_smoke_request_candidate_only_if": [
-      "axis mapping verified",
-      "inter-slice consistency not obviously broken",
-      "subvolume-selection/minimum-REV plan exists",
-      "failed chunk remains visible",
-      "route labels remain clean",
-      "no new scientific acceptance or permeability claims"
+      "jaccard_x_median_over_yz_median_lt_0.25",
+      "s2_x_over_min_yz_lt_0.25",
+      "component_persistence_pairwise_median_lt_0.10",
+      "per_slice_pore_count_robust_z_abs_gt_3.5",
+      "zero_or_near_zero_pore_slice_run_ge_3"
     ],
     "stop_or_route_redesign_if": [
       "inter-slice consistency failure is severe and systematic across pre-registered windows",
       "qmatch diagnostic route cannot preserve 3D continuity without new model design",
       "route remediation would require training/checkpoint selection/non-authorized inference"
-    ]
+    ],
+    "diagnostic_interpretation_limits": {
+      "post_audit_downstream_status": "out_of_scope",
+      "audit_result_does_not_authorize_or_imply_second_smoke": true,
+      "audit_result_does_not_authorize_or_imply_a2_small": true,
+      "any_future_execution_gate_is_separate_and_not_discussed_here": true
+    }
   },
   "still_forbidden": [
     "second smoke execution without new strict gate",
@@ -114,6 +124,35 @@
     "generative digital-well claim",
     "cherry-picked rerun to find percolation",
     "hiding failed chunk ep015_chunk000_063",
-    "committing .npy/.npz/.pt/weights/checkpoints/voxel arrays"
-  ]
+    "committing .npy/.npz/.pt/weights/checkpoints/voxel arrays",
+    "any audit result implication of second smoke or A2-small",
+    "torch/tensorflow/nnunet import in future audit implementation"
+  ],
+  "pre_registered_diagnostic_thresholds": {
+    "jaccard_x_median_over_yz_median_lt": 0.25,
+    "s2_x_over_min_yz_lt": 0.25,
+    "component_persistence_pairwise_median_lt": 0.1,
+    "per_slice_pore_count_robust_z_abs_gt": 3.5,
+    "zero_or_near_zero_pore_slice_run_ge": 3,
+    "threshold_use": "negative_evidence_flagging_only_not_scientific_acceptance"
+  },
+  "first_check_fail_closed": "axis_0_to_slice_stacking_mapping_for_384_448_range_must_be_verified_before_any_metric",
+  "implementation_constraints_if_future_gate_allows": {
+    "sha256_reverify_before_metrics": "24655b96b3f50ad14f8c60548afa9e0169babb76c24b605efa870e741502b7b2",
+    "candidate_source_must_be_remote_verified_or_verified_local_copy": true,
+    "no_intermediate_array_persistence_except_deleted_scratch_outside_repo": true,
+    "forbidden_imports": [
+      "torch",
+      "tensorflow",
+      "nnunet"
+    ],
+    "allowed_core_imports": [
+      "numpy",
+      "json",
+      "hashlib",
+      "pathlib"
+    ],
+    "fail_closed_on_hash_mismatch": true,
+    "fail_closed_on_axis_mapping_ambiguity": true
+  }
 }

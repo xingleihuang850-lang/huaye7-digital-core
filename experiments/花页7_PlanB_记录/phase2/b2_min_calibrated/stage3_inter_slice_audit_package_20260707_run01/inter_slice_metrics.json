@@ -1,0 +1,101 @@
+{
+  "metric_labels_required": {
+    "status": "diagnostic_metadata_only",
+    "not_permeability": true,
+    "not_scientific_acceptance": true,
+    "not_formal_qmatch_acceptance": true,
+    "no_second_smoke_implication": true,
+    "no_a2_small_implication": true,
+    "low_n_caveat": "64 slices / 63 adjacent pairs for parent run01; descriptive, not confirmatory"
+  },
+  "boundary_semantics": "lag_1_valid_pairs_no_wrap_no_periodic_boundary",
+  "summary_metrics": {
+    "per_slice_porosity": {
+      "count": 64,
+      "min": 0.01995849609375,
+      "p05": 0.029986572265625,
+      "median": 0.056884765625,
+      "mean": 0.05811595916748047,
+      "p95": 0.09374084472656248,
+      "max": 0.13250732421875
+    },
+    "per_slice_pore_count": {
+      "count": 64,
+      "min": 327.0,
+      "p05": 491.3,
+      "median": 932.0,
+      "mean": 952.171875,
+      "p95": 1535.8499999999997,
+      "max": 2171.0
+    },
+    "adjacent_slice_jaccard_distribution_along_x": {
+      "count": 63,
+      "min": 0.010652463382157125,
+      "p05": 0.015346777881830259,
+      "median": 0.028101802757158005,
+      "mean": 0.0287528764812011,
+      "p95": 0.04344235213870932,
+      "max": 0.05558524853019776
+    },
+    "adjacent_slice_dice_distribution_along_x": {
+      "count": 63,
+      "min": 0.021080368906455864,
+      "p05": 0.030229605413213716,
+      "median": 0.05466735430634347,
+      "mean": 0.055722613710794996,
+      "p95": 0.08326711439927911,
+      "max": 0.10531645569620253
+    },
+    "component_persistence_across_adjacent_slices_2d_pairwise_proxy_not_3d_percolation": {
+      "count": 63,
+      "min": 0.010652463382157125,
+      "p05": 0.015346777881830259,
+      "median": 0.028101802757158005,
+      "mean": 0.0287528764812011,
+      "p95": 0.04344235213870932,
+      "max": 0.05558524853019776
+    },
+    "run_length_of_connected_foreground_across_x_2d_pairwise_proxy_not_3d_percolation": {
+      "longest_overlap_nonzero_run": 63
+    },
+    "s2_lag1_x_y_z_with_boundary_label": {
+      "x": 0.0033976236979166665,
+      "y": 0.0357781357652559,
+      "z": 0.037223755843996065
+    },
+    "s2_anisotropy_ratios": {
+      "x_over_y": 0.09496368732593648,
+      "x_over_z": 0.09127568191012299,
+      "x_over_min_yz": 0.09496368732593648
+    },
+    "per_slice_pore_count_robust_z_abs": {
+      "count": 64,
+      "min": 0.028104166666666666,
+      "p05": 0.09098723958333335,
+      "median": 0.6745,
+      "mean": 0.8691982014973959,
+      "p95": 2.1492661458333333,
+      "max": 4.3526328125000004
+    },
+    "zero_or_near_zero_pore_slice_runs": {
+      "longest_run": 0
+    }
+  },
+  "pre_registered_diagnostic_thresholds": {
+    "jaccard_x_median_over_yz_median_lt": 0.25,
+    "s2_x_over_min_yz_lt": 0.25,
+    "component_persistence_pairwise_median_lt": 0.1,
+    "per_slice_pore_count_robust_z_abs_gt": 3.5,
+    "zero_or_near_zero_pore_slice_run_ge": 3,
+    "threshold_use": "negative_evidence_flagging_only_not_scientific_acceptance"
+  },
+  "negative_evidence_flags": {
+    "jaccard_x_median_over_yz_median_lt_0.25": false,
+    "s2_x_over_min_yz_lt_0.25": true,
+    "component_persistence_pairwise_median_lt_0.10": true,
+    "per_slice_pore_count_robust_z_abs_gt_3.5": true,
+    "zero_or_near_zero_pore_slice_run_ge_3": false
+  },
+  "raw_pair_values_written": false,
+  "raw_per_slice_values_written": false
+}

@@ -1,0 +1,8 @@
+# Axis and boundary semantics
+
+axis_0_to_slice_stacking_mapping=verified
+slice_range=384:448
+expected_slice_count=64
+audit_volume_shape=[64, 128, 128]
+boundary_semantics=lag_1_valid_pairs_no_wrap_no_periodic_boundary
+fail_closed_on_axis_mapping_ambiguity=true

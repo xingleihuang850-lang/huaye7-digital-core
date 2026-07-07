@@ -1,0 +1,21 @@
+{
+  "package_status": "METADATA_ONLY_INTER_SLICE_AUDIT",
+  "execution_authorized_by_gate": "ALLOW_METADATA_ONLY_INTER_SLICE_AUDIT_WITH_CONSTRAINTS",
+  "scientific_status": "diagnostic_metadata_only_not_evidence",
+  "parent_smoke_verdict": "REDESIGN_BEFORE_ANY_A2_SMALL_GATE",
+  "no_second_smoke_implication": true,
+  "no_a2_small_implication": true,
+  "candidate_arrays_written": false,
+  "raw_metric_arrays_written": false,
+  "required_package_files": [
+    "inter_slice_audit_manifest.json",
+    "inter_slice_audit_readme.md",
+    "input_route_manifest.json",
+    "candidate_source_manifest.json",
+    "inter_slice_metrics.json",
+    "axis_boundary_semantics.md",
+    "negative_evidence.md",
+    "forbidden_claims.txt",
+    "hashes.txt"
+  ]
+}

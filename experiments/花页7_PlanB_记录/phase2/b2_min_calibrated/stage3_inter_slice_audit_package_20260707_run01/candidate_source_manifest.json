@@ -1,0 +1,21 @@
+{
+  "source_path": "hy7-linux:/home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_rescue20_nnunet_review_20260706/ep015_qmatch_pore_nnunet2d.npy",
+  "local_materialized_path": "/var/folders/l6/qjrw5dps6s96b9ddgnmlbh8m0000gn/T/hy7-inter-slice-audit-cWO5bS/ep015_qmatch_pore_nnunet2d.npy",
+  "source_sha256_verified": "24655b96b3f50ad14f8c60548afa9e0169babb76c24b605efa870e741502b7b2",
+  "expected_sha256": "24655b96b3f50ad14f8c60548afa9e0169babb76c24b605efa870e741502b7b2",
+  "slice_range": {
+    "start": 384,
+    "stop": 448
+  },
+  "full_array_shape": [
+    512,
+    128,
+    128
+  ],
+  "audit_volume_shape": [
+    64,
+    128,
+    128
+  ],
+  "candidate_arrays_written": false
+}

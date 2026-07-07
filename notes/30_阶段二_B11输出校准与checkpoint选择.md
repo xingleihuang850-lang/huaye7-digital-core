@@ -2359,3 +2359,40 @@ last_resort=R4_metadata_only_post_processing_design_review
 设计逻辑：R1 直接针对 leading root cause（independent 2D-slice inference lacks cross-slice context），R3 处理 qmatch calibration semantics/versioning，R2 只有在 future training gate 下才可能讨论，R4 仅作为高风险 post-processing design review，不能用于 connectivity/permeability/scientific claim。
 
 硬边界：该 card/checklist 不授权 route-feasibility review、execution、training、checkpoint、second smoke、A2-small，也不改变 parent gate；任何未来动作仍需 separate strict gate。
+
+### 15.34 route design card completion gate
+
+对 no-execution route design card/checklist 发起 completion gate：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_route_design_completion_gate_request_20260707.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_route_design_completion_gate_request_concise_20260707.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_route_design_completion_gate_moa_output_concise_retry_20260707.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_route_design_completion_gate_record_20260707.md
+```
+
+Foreground full request 和 foreground concise request 均 600s timeout，记为 non-evidence；background concise retry 成功，作为 gate evidence。
+
+Verdict：
+
+```text
+READY_TO_REQUEST_ROUTE_FEASIBILITY_REVIEW_WITH_CONSTRAINTS
+```
+
+状态保持：
+
+```text
+route_design_card_status=DESIGN_PLANNING_ONLY_EXECUTION_NOT_AUTHORIZED
+scientific_status=diagnostic_metadata_only_not_evidence
+execution_authorized=false
+second_smoke_authorized=false
+A2_small_authorized=false
+training_authorized=false
+checkpoint_authorized=false
+```
+
+Gate 结论：card/checklist 足够完整，可以请求一个 route-feasibility review package；但这不是 route-feasibility review execution authorization，也不授权 second smoke/A2/training/checkpoint/inference/post-processing。
+
+Non-blocking hardening before send-off：补充 duplicate-value provenance note；强化 `formal_anchor=ep015_all — planning anchor only, NOT formal acceptance`；未来 8-file request package 中完整写 `future_metric_thresholds.json` 与 `forbidden_claims.txt`。
+
+Next allowed artifact：组装并 hash 8-file non-execution route-feasibility review request package：`route_design_card.md`、`route_design_checklist.json`、`axis_stack_provenance_manifest.md`、`qmatch_semantics_separation.md`、`failed_chunk_visibility_plan.md`、`future_metric_thresholds.json`、`forbidden_claims.txt`、`hashes.txt`。Stop at request submission。

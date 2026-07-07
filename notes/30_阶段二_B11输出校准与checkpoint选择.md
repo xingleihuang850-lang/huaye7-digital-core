@@ -2396,3 +2396,25 @@ Gate 结论：card/checklist 足够完整，可以请求一个 route-feasibility
 Non-blocking hardening before send-off：补充 duplicate-value provenance note；强化 `formal_anchor=ep015_all — planning anchor only, NOT formal acceptance`；未来 8-file request package 中完整写 `future_metric_thresholds.json` 与 `forbidden_claims.txt`。
 
 Next allowed artifact：组装并 hash 8-file non-execution route-feasibility review request package：`route_design_card.md`、`route_design_checklist.json`、`axis_stack_provenance_manifest.md`、`qmatch_semantics_separation.md`、`failed_chunk_visibility_plan.md`、`future_metric_thresholds.json`、`forbidden_claims.txt`、`hashes.txt`。Stop at request submission。
+
+### 15.35 OpenCode 代码线交接与首轮只读审计
+
+按用户要求，代码整理/规范化/解释线交给 OpenCode；Hermes 继续负责 research/gate/interpretation 线。已写入 handoff：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/opencode_code_handoff_20260707.md
+```
+
+OpenCode 首轮任务限定为 read-only audit：不改源码、不训练/推理、不 checkpoint、不 second smoke/A2，仅新增代码来源/理论/数据 provenance 审计文档：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/opencode_code_audit_report_20260707.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/opencode_code_audit_inventory_20260707.json
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/opencode_code_cleanup_plan_20260707.md
+```
+
+OpenCode 审计覆盖 5 个代码簇：Stage3 downstream-validity、B2-min calibrated handoff、Phase2 DDPM/calibration、PlanB data/segmentation、reporting/productivity。报告明确标注每个簇/重要文件的 workflow role、inputs/outputs、git evolution、evidence/provenance、theory categories、tests、claim boundaries 和 cleanup recommendations。
+
+验证：OpenCode 运行 `python3 -m pytest tests -q` 得到 54 passed；Hermes 随后复验 inventory JSON、全量 tests、b2_min_calibrated 禁止 `.npy/.npz/.pt` artifact，均通过。
+
+边界保持：OpenCode 本轮只读审计不是 route-feasibility review，不授权 execution/training/checkpoint/second smoke/A2/scientific acceptance/qmatch formal acceptance/validated permeability/digital-well claim。

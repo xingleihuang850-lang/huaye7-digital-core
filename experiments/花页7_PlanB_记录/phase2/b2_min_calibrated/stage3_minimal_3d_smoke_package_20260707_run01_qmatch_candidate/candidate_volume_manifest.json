@@ -1,0 +1,35 @@
+{
+  "candidate_count": 1,
+  "candidate_count_max": 3,
+  "candidate_arrays_written": false,
+  "volume_files_written": [],
+  "forbidden_extensions_written": [],
+  "candidate_records": [
+    {
+      "source_path": "hy7-linux:/home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_rescue20_nnunet_review_20260706/ep015_qmatch_pore_nnunet2d.npy",
+      "local_materialized_path": "/var/folders/l6/qjrw5dps6s96b9ddgnmlbh8m0000gn/T/hy7-smoke-candidate-hBB4Y0/ep015_qmatch_pore_nnunet2d.npy",
+      "source_size_bytes": 8388736,
+      "source_sha256": "24655b96b3f50ad14f8c60548afa9e0169babb76c24b605efa870e741502b7b2",
+      "source_shape": [
+        512,
+        128,
+        128
+      ],
+      "source_dtype": "uint8",
+      "slice_range": {
+        "start": 384,
+        "stop": 448
+      },
+      "shape": [
+        64,
+        128,
+        128
+      ],
+      "volume_axis_hard_cap_128_satisfied": true,
+      "array_serialized": false,
+      "preview_downsample_sha256": "8b3a997d08def6fac409dc78235fa74deca4ffbfd683bc044f65f2d6ee2a5ab4",
+      "candidate_index": 0
+    }
+  ],
+  "unresolved_candidate_source_fail_closed": false
+}

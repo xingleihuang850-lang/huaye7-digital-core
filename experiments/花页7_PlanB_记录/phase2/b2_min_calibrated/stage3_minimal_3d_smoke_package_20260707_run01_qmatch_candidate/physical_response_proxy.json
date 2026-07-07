@@ -1,0 +1,26 @@
+{
+  "status": "DIAGNOSTIC_PROXY_CONSISTENT_WITH_PERCOLATION",
+  "method_name": "percolation_supported_flow_proxy",
+  "qualitative_only_flag": true,
+  "units_or_unitless_status": "unitless diagnostic proxy only; not permeability",
+  "assumptions": [
+    "Per-axis flow proxy can be positive only when the same axis percolates under 6-neighborhood pore connectivity.",
+    "Connected porosity is a topology diagnostic, not validated permeability."
+  ],
+  "axis_labels": [
+    "x",
+    "y",
+    "z"
+  ],
+  "per_axis_flow_proxy": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+  },
+  "consistency_with_percolation": "consistent_by_construction",
+  "fail_closed_reasons": [],
+  "forbidden_claims": [
+    "validated permeability",
+    "scientific physical response"
+  ]
+}

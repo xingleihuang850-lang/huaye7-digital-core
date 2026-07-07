@@ -1,0 +1,66 @@
+{
+  "workflow_node": "HY7-stage3-branch-A-minimal-3d-smoke-launcher",
+  "scientific_status": "diagnostic_smoke_not_evidence",
+  "package_status": "DIAGNOSTIC_SMOKE_METADATA_ONLY",
+  "route_label": "nnUNet ep015_qmatch",
+  "calibration_version": "hy7-gray-calibration-qmatch-v1",
+  "percolation_computed_before_physical_proxy": true,
+  "candidate_metrics": [
+    {
+      "shape": [
+        64,
+        128,
+        128
+      ],
+      "porosity_phi_3d": {
+        "status": "implemented",
+        "value": 0.05811595916748047
+      },
+      "connected_porosity_ratio_3d": {
+        "status": "implemented",
+        "connectivity": "pore-phase 6-neighborhood",
+        "value": {
+          "pore_voxel_basis": 0.005316792202038104,
+          "total_volume_basis": 0.000308990478515625
+        }
+      },
+      "percolation_flags_3d": {
+        "status": "implemented",
+        "computed_before_physical_proxy": true,
+        "definition": "one pore-phase connected component touches both opposing faces along axis k",
+        "connectivity": "pore-phase 6-neighborhood",
+        "value": {
+          "x": false,
+          "y": false,
+          "z": false
+        }
+      },
+      "largest_connected_component_fraction_3d": {
+        "status": "implemented",
+        "connectivity": "pore-phase 6-neighborhood",
+        "value": {
+          "pore_voxel_basis": 0.005316792202038104,
+          "total_volume_basis": 0.000308990478515625
+        }
+      },
+      "s2_two_point_correlation_3d": {
+        "status": "diagnostic_proxy",
+        "boundary_convention": "lag_1_valid_pairs_no_wrap_no_periodic_boundary",
+        "axis_mapping": "x/y/z -> ndarray axes 0/1/2",
+        "value": {
+          "lag_1_valid_pairs": {
+            "x": 0.0033976236979166665,
+            "y": 0.0357781357652559,
+            "z": 0.037223755843996065
+          }
+        }
+      },
+      "euler_characteristic_or_minkowski_3d": {
+        "status": "explicitly_de_scoped_fail_closed",
+        "reason": "No real 3D Euler/Minkowski phantom validation is present in this launcher."
+      }
+    }
+  ],
+  "selected_candidate_index_for_diagnostic_proxy": 0,
+  "euler_minkowski_default": "explicitly_de_scoped_fail_closed"
+}

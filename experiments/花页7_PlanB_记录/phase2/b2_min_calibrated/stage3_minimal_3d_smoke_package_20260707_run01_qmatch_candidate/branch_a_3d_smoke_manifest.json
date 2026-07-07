@@ -1,0 +1,53 @@
+{
+  "workflow_node": "HY7-stage3-branch-A-minimal-3d-smoke-launcher",
+  "date": "2026-07-07",
+  "gate_verdict": "ALLOW_MINIMAL_3D_SMOKE_ONLY",
+  "package_status": "DIAGNOSTIC_SMOKE_METADATA_ONLY",
+  "smoke_executed": true,
+  "one_run_only": true,
+  "candidate_count": 1,
+  "candidate_count_max": 3,
+  "volume_preferred": "<=64^3",
+  "volume_hard_cap_without_further_gate": "<=128^3",
+  "route_label": "nnUNet ep015_qmatch",
+  "route_status": "diagnostic_calibrated_route_only",
+  "calibration_version": "hy7-gray-calibration-qmatch-v1",
+  "formal_anchor": "ep015_all planning_anchor_only",
+  "failed_chunk_required": "ep015_chunk000_063",
+  "scientific_status": "diagnostic_smoke_not_evidence",
+  "not_a_generative_digital_well": true,
+  "condition_interface_status": "not_yet_condition_response_test",
+  "fail_closed_reasons": [],
+  "execution_boundary": {
+    "no_a2": true,
+    "no_training": true,
+    "no_fine_tuning": true,
+    "no_checkpoint": true,
+    "no_checkpoint_selection": true,
+    "no_large_volume_export_as_scientific_output": true,
+    "no_hy7_scientific_acceptance_claim": true
+  },
+  "source": {
+    "git_commit": "1c7f2f9",
+    "command": "src/hy7_stage3_minimal_3d_smoke.py --out experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_minimal_3d_smoke_package_20260707_run01_qmatch_candidate --calibration-artifact experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/constrained_selection_smoke_ep015/qmatch_manifest.json --failed-chunk-record experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_minimal_3d_smoke_gate_record_20260706.md --candidate-npy /var/folders/l6/qjrw5dps6s96b9ddgnmlbh8m0000gn/T/hy7-smoke-candidate-hBB4Y0/ep015_qmatch_pore_nnunet2d.npy --candidate-origin hy7-linux:/home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_rescue20_nnunet_review_20260706/ep015_qmatch_pore_nnunet2d.npy --candidate-slice 384:448",
+    "environment": {
+      "python": "3.9.6",
+      "platform": "macOS-26.5.1-arm64-arm-64bit",
+      "numpy": "2.0.2"
+    }
+  },
+  "required_outputs": [
+    "branch_a_3d_smoke_manifest.json",
+    "branch_a_3d_smoke_readme.md",
+    "input_route_manifest.json",
+    "candidate_volume_manifest.json",
+    "metrics_3d_smoke.json",
+    "physical_response_proxy.json",
+    "connectivity_semantics.md",
+    "s2_boundary_semantics.md",
+    "euler_minkowski_status.md",
+    "negative_evidence.md",
+    "forbidden_claims.txt",
+    "hashes.txt"
+  ]
+}

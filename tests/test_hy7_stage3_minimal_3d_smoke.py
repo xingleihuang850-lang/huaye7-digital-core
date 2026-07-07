@@ -152,3 +152,42 @@ def test_positive_flow_proxy_on_non_percolating_axis_fails_closed(tmp_path):
     assert manifest["package_status"] == "FAIL_CLOSED_PHYSICAL_PROXY_CONTRADICTION"
     negative = (tmp_path / "pkg" / "negative_evidence.md").read_text()
     assert "positive_flow_proxy_on_non_percolating_axis:x" in negative
+
+
+def test_load_candidate_npy_slice_records_external_source_without_serializing_volume(tmp_path):
+    volume = np.zeros((12, 8, 8), dtype=np.uint8)
+    volume[2:10, 3, 3] = 1
+    source = tmp_path / "ep015_qmatch_pore_nnunet2d.npy"
+    np.save(source, volume)
+
+    candidate = mod.load_candidate_npy(source, start=2, stop=10, source_path="remote:/canonical/ep015_qmatch_pore_nnunet2d.npy")
+    assert candidate.volume.shape == (8, 8, 8)
+    assert candidate.record["source_path"] == "remote:/canonical/ep015_qmatch_pore_nnunet2d.npy"
+    assert candidate.record["local_materialized_path"] == str(source)
+    assert candidate.record["slice_range"] == {"start": 2, "stop": 10}
+    assert candidate.record["source_sha256"]
+    assert candidate.record["array_serialized"] is False
+
+    calibration, failed_chunk = _write_preflight_artifacts(tmp_path)
+    outputs = mod.write_smoke_package(
+        out_dir=tmp_path / "pkg",
+        calibration_artifact=calibration,
+        failed_chunk_record=failed_chunk,
+        candidate_volumes=[candidate.volume],
+        candidate_source_records=[candidate.record],
+    )
+
+    assert set(Path(path).name for path in outputs.values()) == set(mod.REQUIRED_PACKAGE_FILES)
+    manifest = json.loads((tmp_path / "pkg" / "branch_a_3d_smoke_manifest.json").read_text())
+    assert manifest["package_status"] == "DIAGNOSTIC_SMOKE_METADATA_ONLY"
+    assert manifest["smoke_executed"] is True
+
+    candidate_manifest = json.loads((tmp_path / "pkg" / "candidate_volume_manifest.json").read_text())
+    assert candidate_manifest["candidate_count"] == 1
+    assert candidate_manifest["candidate_records"][0]["source_path"] == "remote:/canonical/ep015_qmatch_pore_nnunet2d.npy"
+    assert candidate_manifest["candidate_records"][0]["local_materialized_path"] == str(source)
+    assert candidate_manifest["candidate_records"][0]["source_sha256"] == candidate.record["source_sha256"]
+    assert candidate_manifest["candidate_records"][0]["array_serialized"] is False
+    assert not list((tmp_path / "pkg").glob("*.npy"))
+    assert not list((tmp_path / "pkg").glob("*.npz"))
+    assert not list((tmp_path / "pkg").glob("*.pt"))

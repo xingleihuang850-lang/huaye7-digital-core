@@ -1,0 +1,13 @@
+A2-small scientific execution
+A2-medium execution
+full 2D-to-3D reconstruction campaign
+training or fine-tuning
+checkpoint creation or selection
+large volume export as scientific output
+HY7 scientific acceptance claim
+generative digital-well claim
+B2-min final pass claim
+qmatch as formal acceptance route
+2D x/y penetration interpreted as 3D permeability/connectivity
+validated permeability claim from diagnostic proxy fields
+condition-response or representativeness claim without future condition gate

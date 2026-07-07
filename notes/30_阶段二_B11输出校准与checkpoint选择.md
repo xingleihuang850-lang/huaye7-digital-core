@@ -2072,3 +2072,68 @@ FORBIDDEN_VOLUME_WEIGHT_FILES=[]
 ```
 
 边界保持：该 package 是 diagnostic smoke contract / negative evidence，不是 A2-small，不是 A2-medium，不是 scientific acceptance，不是 B2-min final pass，不是 qmatch formal acceptance，也不是 generative digital-well claim。
+
+### 15.28 minimal 3D smoke run01 与 post-run redesign verdict
+
+按 §15.27 的 launcher/package contract，补充了外部 candidate `.npy` 读取能力，但仍只记录 metadata/provenance，不把 volume 写入 package 或 git。新增测试覆盖 external source record、slice load、no serialization。
+
+外部候选源：
+
+```text
+hy7-linux:/home/user/HXL/HY7_planb/phase2/b1_gray_sus_b11_rescue20_nnunet_review_20260706/ep015_qmatch_pore_nnunet2d.npy
+source_sha256=24655b96b3f50ad14f8c60548afa9e0169babb76c24b605efa870e741502b7b2
+slice_range=384:448
+candidate_shape=64x128x128
+```
+
+生成 one-run diagnostic smoke package：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_minimal_3d_smoke_package_20260707_run01_qmatch_candidate/
+```
+
+Package 状态：
+
+```text
+package_status=DIAGNOSTIC_SMOKE_METADATA_ONLY
+smoke_executed=true
+candidate_count=1
+candidate_arrays_written=false
+volume_files_written=[]
+forbidden_extensions_written=[]
+```
+
+核心 smoke metrics：
+
+```text
+porosity_phi_3d=0.05811595916748047
+connected_porosity_ratio_3d.pore_voxel_basis=0.005316792202038104
+connected_porosity_ratio_3d.total_volume_basis=0.000308990478515625
+percolation_flags_3d={x:false,y:false,z:false}
+S2_lag1_valid_no_wrap={x:0.0033976236979166665,y:0.0357781357652559,z:0.037223755843996065}
+physical_proxy_flow={x:0.0,y:0.0,z:0.0}
+Euler/Minkowski=explicitly_de_scoped_fail_closed
+```
+
+Post-run strict `digital-rock-gate` review：首次完整 prompt timeout，未作为 evidence；随后用 concise self-contained prompt 成功运行并保存 raw output。
+
+新增：
+
+```text
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_minimal_3d_smoke_post_run_review_request_20260707.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_minimal_3d_smoke_post_run_review_request_concise_20260707.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_minimal_3d_smoke_post_run_review_moa_output_20260707.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_minimal_3d_smoke_post_run_review_record_20260707.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_smoke_rca_redesign_plan_20260707_run01.md
+experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_smoke_rca_redesign_plan_20260707_run01.json
+```
+
+MoA verdict：
+
+```text
+REDESIGN_BEFORE_ANY_A2_SMALL_GATE
+```
+
+解释：本次 smoke 是干净的 negative diagnostic，不是成功。三轴均不 percolate，connected porosity 极低；physical proxy 只因所有轴非贯通而全为 0，不是 positive flow evidence。x-axis lag-1 S2 约比 y/z 低一个数量级，提示可能存在 2D nnUNet inter-slice inconsistency / 2D→3D assembly artifact，也可能是 sub-REV 或 route/calibration fragmentation；不能从单个 subvolume 直接下 scientific success/failure 结论。
+
+下一步边界：只允许 metadata-only root-cause / redesign package；不得 A2-small，不得 rerun/cherry-pick 找 percolation，不得训练/微调/checkpoint，不得 scientific acceptance、B2-min final pass、qmatch formal acceptance、validated permeability 或 generative digital-well claim。未来若要第二次 smoke，必须先有 inter-slice consistency audit、minimum-REV/subvolume-selection plan，并重新 strict gate。

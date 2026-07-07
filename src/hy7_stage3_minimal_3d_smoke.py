@@ -22,7 +22,7 @@ import subprocess
 import sys
 from collections import deque
 from pathlib import Path
-from typing import Any
+from typing import Any, NamedTuple
 
 import numpy as np
 
@@ -70,6 +70,11 @@ FORBIDDEN_CLAIMS = [
 
 class SmokeContractError(ValueError):
     """Raised before package writing when launcher scope constraints are violated."""
+
+
+class CandidateVolume(NamedTuple):
+    volume: np.ndarray
+    record: dict[str, Any]
 
 
 def _as_binary_volume(volume: np.ndarray) -> np.ndarray:
@@ -178,6 +183,45 @@ def _sha256(path: Path) -> str:
         for chunk in iter(lambda: f.read(1024 * 1024), b""):
             h.update(chunk)
     return h.hexdigest()
+
+
+def _downsample_preview_hash(volume: np.ndarray) -> str:
+    arr = _as_binary_volume(volume)
+    strides = tuple(max(1, dim // 16) for dim in arr.shape)
+    preview = arr[:: strides[0], :: strides[1], :: strides[2]]
+    return hashlib.sha256(preview.tobytes()).hexdigest()
+
+
+def load_candidate_npy(path: Path, start: int | None = None, stop: int | None = None, source_path: str | None = None) -> CandidateVolume:
+    path = Path(path)
+    if not path.exists():
+        raise SmokeContractError(f"candidate npy missing: {path}")
+    arr = np.load(path, mmap_mode="r")
+    if arr.ndim != 3:
+        raise SmokeContractError(f"expected 3D candidate npy, got shape {arr.shape}")
+    if start is None and stop is None:
+        sliced = np.asarray(arr)
+        slice_range = None
+    else:
+        if start is None or stop is None or not (0 <= start < stop <= arr.shape[0]):
+            raise SmokeContractError(f"invalid slice range start={start}, stop={stop}, shape={arr.shape}")
+        sliced = np.asarray(arr[start:stop])
+        slice_range = {"start": int(start), "stop": int(stop)}
+    volume = _as_binary_volume(sliced)
+    record = {
+        "source_path": source_path or str(path),
+        "local_materialized_path": str(path),
+        "source_size_bytes": path.stat().st_size,
+        "source_sha256": _sha256(path),
+        "source_shape": list(arr.shape),
+        "source_dtype": str(arr.dtype),
+        "slice_range": slice_range,
+        "shape": list(volume.shape),
+        "volume_axis_hard_cap_128_satisfied": True,
+        "array_serialized": False,
+        "preview_downsample_sha256": _downsample_preview_hash(volume),
+    }
+    return CandidateVolume(volume=volume, record=record)
 
 
 def _write_json(path: Path, data: Any) -> None:
@@ -355,6 +399,7 @@ def write_smoke_package(
     calibration_artifact: Path,
     failed_chunk_record: Path,
     candidate_volumes: list[np.ndarray] | None = None,
+    candidate_source_records: list[dict[str, Any]] | None = None,
     route_label: str = ROUTE_LABEL,
     calibration_version: str = CALIBRATION_VERSION,
     physical_flow_proxy: dict[str, float] | None = None,
@@ -367,6 +412,8 @@ def write_smoke_package(
     The launcher never serializes those arrays.
     """
     candidate_count = len(candidate_volumes) if candidate_volumes is not None else 0
+    if candidate_source_records is not None and len(candidate_source_records) != candidate_count:
+        raise SmokeContractError("candidate_source_records length must match candidate_count")
     _validate_static_scope(route_label=route_label, calibration_version=calibration_version, candidate_count=candidate_count)
 
     arrays = [] if candidate_volumes is None else [_as_binary_volume(vol) for vol in candidate_volumes]
@@ -441,16 +488,23 @@ def write_smoke_package(
         "qmatch_not_formal_acceptance": True,
     }
 
+    records = candidate_source_records or [
+        {"candidate_index": idx, "shape": list(arr.shape), "volume_axis_hard_cap_128_satisfied": True, "array_serialized": False}
+        for idx, arr in enumerate(arrays)
+    ]
+    for idx, record in enumerate(records):
+        record.setdefault("candidate_index", idx)
+        record.setdefault("shape", list(arrays[idx].shape))
+        record.setdefault("volume_axis_hard_cap_128_satisfied", True)
+        record.setdefault("array_serialized", False)
+
     candidate_manifest = {
         "candidate_count": candidate_count,
         "candidate_count_max": 3,
         "candidate_arrays_written": False,
         "volume_files_written": [],
         "forbidden_extensions_written": [],
-        "candidate_records": [
-            {"candidate_index": idx, "shape": list(arr.shape), "volume_axis_hard_cap_128_satisfied": True, "array_serialized": False}
-            for idx, arr in enumerate(arrays)
-        ],
+        "candidate_records": records,
         "unresolved_candidate_source_fail_closed": candidate_volumes is None or candidate_count == 0,
     }
 
@@ -495,12 +549,30 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--failed-chunk-record", required=True, type=Path)
     parser.add_argument("--route-label", default=ROUTE_LABEL)
     parser.add_argument("--calibration-version", default=CALIBRATION_VERSION)
+    parser.add_argument("--candidate-npy", action="append", type=Path, default=[])
+    parser.add_argument("--candidate-origin", action="append", default=[], help="Canonical source path/URI for the matching --candidate-npy")
+    parser.add_argument("--candidate-slice", action="append", default=[], help="Slice as start:stop for the matching --candidate-npy")
     args = parser.parse_args(argv)
+    if args.candidate_slice and len(args.candidate_slice) != len(args.candidate_npy):
+        raise SmokeContractError("--candidate-slice count must match --candidate-npy count")
+    if args.candidate_origin and len(args.candidate_origin) != len(args.candidate_npy):
+        raise SmokeContractError("--candidate-origin count must match --candidate-npy count")
+    candidates: list[CandidateVolume] | None = None
+    if args.candidate_npy:
+        candidates = []
+        for idx, path in enumerate(args.candidate_npy):
+            start = stop = None
+            if args.candidate_slice:
+                raw_start, raw_stop = args.candidate_slice[idx].split(":", 1)
+                start, stop = int(raw_start), int(raw_stop)
+            source_path = args.candidate_origin[idx] if args.candidate_origin else None
+            candidates.append(load_candidate_npy(path, start=start, stop=stop, source_path=source_path))
     outputs = write_smoke_package(
         out_dir=args.out,
         calibration_artifact=args.calibration_artifact,
         failed_chunk_record=args.failed_chunk_record,
-        candidate_volumes=None,
+        candidate_volumes=[c.volume for c in candidates] if candidates is not None else None,
+        candidate_source_records=[c.record for c in candidates] if candidates is not None else None,
         route_label=args.route_label,
         calibration_version=args.calibration_version,
     )

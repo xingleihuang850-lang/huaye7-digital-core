@@ -1,0 +1,78 @@
+{
+  "workflow_node": "HY7-stage3-branch-A-minimal-3d-smoke-rca-redesign-plan",
+  "date": "2026-07-07",
+  "parent_smoke_package": "experiments/花页7_PlanB_记录/phase2/b2_min_calibrated/stage3_minimal_3d_smoke_package_20260707_run01_qmatch_candidate/",
+  "post_run_review_verdict": "REDESIGN_BEFORE_ANY_A2_SMALL_GATE",
+  "scientific_status": "diagnostic_smoke_not_evidence",
+  "execution_authorized": false,
+  "ready_for_a2_small_gate": false,
+  "route_constraints": {
+    "route_label": "nnUNet ep015_qmatch",
+    "route_status": "diagnostic_calibrated_route_only",
+    "calibration_version": "hy7-gray-calibration-qmatch-v1",
+    "formal_anchor": "ep015_all planning_anchor_only",
+    "failed_chunk_visible_negative_evidence": "ep015_chunk000_063",
+    "not_a_generative_digital_well": true
+  },
+  "observed_negative_evidence": {
+    "percolation_flags_3d": {"x": false, "y": false, "z": false},
+    "porosity_phi_3d": 0.05811595916748047,
+    "connected_porosity_pore_voxel_basis": 0.005316792202038104,
+    "connected_porosity_total_volume_basis": 0.000308990478515625,
+    "s2_lag1_valid_no_wrap": {
+      "x": 0.0033976236979166665,
+      "y": 0.0357781357652559,
+      "z": 0.037223755843996065
+    },
+    "physical_proxy_flow": {"x": 0.0, "y": 0.0, "z": 0.0},
+    "euler_minkowski_status": "explicitly_de_scoped_fail_closed"
+  },
+  "ranked_hypotheses": [
+    {
+      "rank": 1,
+      "hypothesis": "inter_slice_2d_inference_inconsistency_or_2d_to_3d_assembly_artifact",
+      "support": "S2 lag-1 along x is about one order of magnitude lower than y/z; x maps to slice-stacking axis in current ndarray convention.",
+      "discriminating_check_next_gate_only": "Compute metadata-only inter-slice consistency diagnostics on existing external candidate and/or require a future gated route with explicit cross-slice continuity controls."
+    },
+    {
+      "rank": 2,
+      "hypothesis": "sub_REV_subvolume_or_unrepresentative_selected_chunk",
+      "support": "Only one 64x128x128 subvolume was examined; connected porosity is extremely low and no axis percolates.",
+      "discriminating_check_next_gate_only": "Pre-register minimum-REV and subvolume-selection criteria before any second smoke."
+    },
+    {
+      "rank": 3,
+      "hypothesis": "qmatch_calibration_threshold_or_binary_route_fragmentation",
+      "support": "Candidate is qmatch-conditioned nnUNet 2D pore output; qmatch remains diagnostic, not formal acceptance.",
+      "discriminating_check_next_gate_only": "Compare route-labelled metadata across formal threshold anchor and qmatch diagnostics without merging acceptance semantics."
+    },
+    {
+      "rank": 4,
+      "hypothesis": "genuinely_tight_or_disconnected_rock_at_this_scale",
+      "support": "All-axis non-percolation and zero flow proxy are compatible with tight/disconnected pore space, but cannot be separated from route/REV artifacts yet.",
+      "discriminating_check_next_gate_only": "Requires future gated REV/condition-aware evidence; not claimable from current smoke alone."
+    }
+  ],
+  "future_second_smoke_prerequisites_before_request": [
+    "metadata-only inter-slice consistency audit plan",
+    "minimum-REV/subvolume-selection plan",
+    "explicit decision whether x-axis low S2 is route artifact or expected anisotropy hypothesis",
+    "preserve failed chunk ep015_chunk000_063 as negative evidence",
+    "no cherry-picking rerun to find percolation",
+    "new strict gate before any second smoke or A2-small discussion"
+  ],
+  "still_forbidden": [
+    "A2-small execution",
+    "A2-medium execution",
+    "full 2D-to-3D reconstruction campaign",
+    "training or fine-tuning",
+    "checkpoint creation or selection",
+    "HY7 scientific acceptance claim",
+    "B2-min final pass claim",
+    "qmatch formal acceptance claim",
+    "validated permeability claim",
+    "generative digital-well claim",
+    "cherry-picked rerun to find percolation",
+    "hiding failed chunk ep015_chunk000_063"
+  ]
+}

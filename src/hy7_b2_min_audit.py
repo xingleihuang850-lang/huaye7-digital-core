@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 from pathlib import Path
 from typing import Any
 
@@ -16,6 +17,7 @@ CALIBRATION_VERSION = "hy7-gray-calibration-qmatch-v1"
 MAIN_CHECKPOINT = "ep015"
 ORIG_RAW_STATUS = "known_fail"
 FULL_BATCH_VARIANT = "ep015_all"
+HANDOFF_STATUS = "calibrated_b2_min_handoff_design_dry_run"
 
 FORBIDDEN_CLAIMS = [
     "B1.1 unconditional pass",
@@ -54,6 +56,10 @@ def _result(errors: list[str], checks: list[str]) -> dict[str, Any]:
 def audit_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
     errors: list[str] = []
     checks: list[str] = []
+    if manifest.get("status") not in ("calibrated_b2_min_candidate", HANDOFF_STATUS):
+        errors.append("manifest.status must be calibrated_b2_min_candidate or calibrated_b2_min_handoff_design_dry_run")
+    else:
+        checks.append("manifest_status_candidate")
     if manifest.get("main_checkpoint") != MAIN_CHECKPOINT:
         errors.append("manifest.main_checkpoint must be ep015")
     else:
@@ -78,6 +84,10 @@ def audit_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
 def audit_selection_summary(summary: dict[str, Any]) -> dict[str, Any]:
     errors: list[str] = []
     checks: list[str] = []
+    if summary.get("status") != "calibrated_constrained_selection_smoke":
+        errors.append("selection.status must be calibrated_constrained_selection_smoke")
+    else:
+        checks.append("selection_status_smoke")
     if summary.get("calibration_version") != CALIBRATION_VERSION:
         errors.append("selection.calibration_version must be hy7-gray-calibration-qmatch-v1")
     else:
@@ -88,22 +98,57 @@ def audit_selection_summary(summary: dict[str, Any]) -> dict[str, Any]:
         errors.append("selection.forbidden missing: " + ", ".join(missing))
     else:
         checks.append("selection_forbidden_constraints_present")
-    rows = list(summary.get("rows") or [])
-    variants = {row.get("variant") for row in rows}
-    if FULL_BATCH_VARIANT not in variants:
+    rows_data = summary.get("rows")
+    rows = rows_data if isinstance(rows_data, list) and all(isinstance(row, dict) for row in rows_data) else []
+    if not rows:
+        errors.append("selection.rows must be a non-empty list of objects")
+    variants = [row.get("variant") for row in rows]
+    if any(not isinstance(variant, str) or not variant for variant in variants):
+        errors.append("selection.rows variants must be non-empty strings")
+    if len(set(variants)) != len(variants):
+        errors.append("selection.rows variants must be unique")
+    required_metrics = ("phi", "s2_rmse", "euler", "maxcc")
+    for row in rows:
+        for field in ("start", "stop", "n"):
+            if not isinstance(row.get(field), int):
+                errors.append(f"selection row {row.get('variant')}: {field} must be an integer")
+        if isinstance(row.get("start"), int) and isinstance(row.get("stop"), int) and isinstance(row.get("n"), int):
+            if row["start"] < 0 or row["stop"] <= row["start"] or row["n"] != row["stop"] - row["start"]:
+                errors.append(f"selection row {row.get('variant')}: n must equal stop - start")
+        if not isinstance(row.get("pass_gate"), bool):
+            errors.append(f"selection row {row.get('variant')}: pass_gate must be a boolean")
+        for field in required_metrics:
+            value = row.get(field)
+            if not isinstance(value, (int, float)) or not math.isfinite(value):
+                errors.append(f"selection row {row.get('variant')}: {field} must be a finite number")
+    variant_set = set(variants)
+    if FULL_BATCH_VARIANT not in variant_set:
         errors.append("selection.rows must include full-batch ep015_all")
     else:
-        checks.append("full_batch_anchor_present")
+        full = next(row for row in rows if row["variant"] == FULL_BATCH_VARIANT)
+        max_stop = max((row.get("stop", -1) for row in rows if isinstance(row.get("stop"), int)), default=-1)
+        if full.get("start") != 0 or full.get("stop") != max_stop or full.get("n") != max_stop:
+            errors.append("selection ep015_all must span [0, max_stop) as the full-batch anchor")
+        else:
+            checks.append("full_batch_anchor_present")
     failed = [row for row in rows if not row.get("pass_gate")]
     if not failed:
         errors.append("selection.rows must include at least one failed/rejected row")
     else:
         checks.append("failed_selection_rows_visible")
-    selected = summary.get("selected") or {}
+    selected = summary.get("selected") if isinstance(summary.get("selected"), dict) else {}
     if selected.get("variant") == FULL_BATCH_VARIANT:
         errors.append("selection.selected must not use ep015_all as selected chunk triage row")
     elif selected.get("variant"):
-        checks.append("selected_chunk_is_separate_from_full_batch")
+        selected_row = next((row for row in rows if row.get("variant") == selected["variant"]), None)
+        if selected_row is None:
+            errors.append("selection.selected.variant must exist in selection.rows")
+        else:
+            inconsistent = [field for field in ("start", "stop", "n", "phi", "s2_rmse", "euler", "maxcc", "pass_gate") if field in selected and selected[field] != selected_row.get(field)]
+            if inconsistent:
+                errors.append("selection.selected disagrees with its row: " + ", ".join(inconsistent))
+            else:
+                checks.append("selected_chunk_is_separate_from_full_batch")
     else:
         errors.append("selection.selected.variant is required")
     return _result(errors, checks)

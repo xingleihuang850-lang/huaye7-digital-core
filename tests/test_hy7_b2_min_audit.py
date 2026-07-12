@@ -36,11 +36,11 @@ def _valid_selection():
             "orig_raw_pass_claim",
             "explicit_qmatch_required",
         ],
-        "selected": {"variant": "ep015_chunk384_447", "n": 64, "pass_gate": True},
+        "selected": {"variant": "ep015_chunk384_447", "start": 384, "stop": 448, "n": 64, "phi": 6.46, "s2_rmse": 0.00021, "euler": 121.17, "maxcc": 0.0643, "pass_gate": True},
         "rows": [
-            {"variant": "ep015_chunk384_447", "n": 64, "pass_gate": True, "maxcc": 0.0643},
-            {"variant": "ep015_all", "n": 512, "pass_gate": True, "maxcc": 0.0640},
-            {"variant": "ep015_chunk000_063", "n": 64, "pass_gate": False, "maxcc": 0.07163110510281959},
+            {"variant": "ep015_chunk384_447", "start": 384, "stop": 448, "n": 64, "phi": 6.46, "s2_rmse": 0.00021, "euler": 121.17, "pass_gate": True, "maxcc": 0.0643},
+            {"variant": "ep015_all", "start": 0, "stop": 512, "n": 512, "phi": 6.44, "s2_rmse": 0.00029, "euler": 121.27, "pass_gate": True, "maxcc": 0.0640},
+            {"variant": "ep015_chunk000_063", "start": 0, "stop": 64, "n": 64, "phi": 6.44, "s2_rmse": 0.00052, "euler": 123.95, "pass_gate": False, "maxcc": 0.07163110510281959},
         ],
     }
 
@@ -87,6 +87,20 @@ def test_selection_requires_full_batch_anchor_and_failed_rows_visible():
     result = mod.audit_selection_summary(selection)
     assert result["passed"] is False
     assert "selection.rows must include at least one failed/rejected row" in result["errors"]
+
+
+def test_selection_rejects_duplicate_rows_or_selected_metric_drift():
+    selection = _valid_selection()
+    selection["rows"].append(dict(selection["rows"][0]))
+    result = mod.audit_selection_summary(selection)
+    assert result["passed"] is False
+    assert "selection.rows variants must be unique" in result["errors"]
+
+    selection = _valid_selection()
+    selection["selected"]["euler"] = 119.0
+    result = mod.audit_selection_summary(selection)
+    assert result["passed"] is False
+    assert any("selection.selected disagrees" in error for error in result["errors"])
 
 
 def test_forbidden_claim_lint_catches_unsafe_wording():

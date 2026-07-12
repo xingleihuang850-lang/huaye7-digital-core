@@ -1,6 +1,9 @@
 import importlib.util
 from pathlib import Path
 
+import numpy as np
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("hy7_b2_min_select", ROOT / "src" / "hy7_b2_min_select.py")
 assert SPEC is not None
@@ -41,3 +44,16 @@ def test_build_summary_marks_best_candidate_and_forbidden_policy():
     assert summary["selected"]["variant"] == "b"
     assert "no_retraining" in summary["forbidden"]
     assert "orig_raw_pass_claim" in summary["forbidden"]
+
+
+def test_evaluation_inputs_reject_unaligned_nonfinite_or_invalid_controls():
+    gray = np.zeros((2, 4, 4), dtype=np.float32)
+    pore = np.zeros((2, 4, 4), dtype=bool)
+    mod.validate_evaluation_inputs(gray, pore, chunk_size=1, phi_target=6.4, rmax=4)
+    with pytest.raises(ValueError, match="shapes must match"):
+        mod.validate_evaluation_inputs(gray, pore[:1], chunk_size=1, phi_target=6.4, rmax=4)
+    gray[0, 0, 0] = np.nan
+    with pytest.raises(ValueError, match="non-finite"):
+        mod.validate_evaluation_inputs(gray, pore, chunk_size=1, phi_target=6.4, rmax=4)
+    with pytest.raises(ValueError, match="positive"):
+        mod.validate_evaluation_inputs(np.zeros((2, 4, 4)), pore, chunk_size=0, phi_target=6.4, rmax=4)

@@ -37,6 +37,8 @@ SCALE_COMPONENTS = {
 
 def phase_value(mm, target_pct, sample_z):
     """取若干切片，找占比最接近已知孔隙度的取值 → 该相的标记值。"""
+    if len(sample_z) == 0:
+        raise ValueError("alignment phase-value decoding requires at least one sampled z slice")
     sl = np.stack([np.asarray(mm[z]) for z in sample_z])
     vals, counts = np.unique(sl, return_counts=True)
     frac = counts / counts.sum() * 100

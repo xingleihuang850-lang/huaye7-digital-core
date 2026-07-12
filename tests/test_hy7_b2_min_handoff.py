@@ -57,10 +57,12 @@ def _selection_summary():
             "orig_raw_pass_claim",
             "explicit_qmatch_required",
         ],
-        "selected": {"variant": "ep015_chunk384_447", "n": 64, "pass_gate": True},
+        "selected": {"variant": "ep015_chunk384_447", "start": 384, "stop": 448, "n": 64, "phi": 6.462860107421875, "s2_rmse": 0.0002106706336130071, "euler": 121.171875, "maxcc": 0.06431804952279352, "pass_gate": True},
         "rows": [
             {
                 "variant": "ep015_chunk384_447",
+                "start": 384,
+                "stop": 448,
                 "n": 64,
                 "phi": 6.462860107421875,
                 "s2_rmse": 0.0002106706336130071,
@@ -70,6 +72,8 @@ def _selection_summary():
             },
             {
                 "variant": "ep015_all",
+                "start": 0,
+                "stop": 512,
                 "n": 512,
                 "phi": 6.442654132843018,
                 "s2_rmse": 0.0002854642510439182,
@@ -79,6 +83,8 @@ def _selection_summary():
             },
             {
                 "variant": "ep015_chunk000_063",
+                "start": 0,
+                "stop": 64,
                 "n": 64,
                 "phi": 6.435489654541016,
                 "s2_rmse": 0.0005247734726096197,
@@ -156,6 +162,7 @@ def test_build_handoff_bundle_writes_required_files_and_audit_passes(tmp_path):
     assert "ep015_all" in readme
     hashes = Path(outputs["hashes"]).read_text()
     assert "handoff_manifest.json" in hashes
+    assert "design_text" in manifest["source_sha256"]
 
 
 def test_handoff_bundle_rejects_missing_full_batch(tmp_path):
@@ -174,5 +181,22 @@ def test_handoff_bundle_rejects_missing_full_batch(tmp_path):
         mod.write_handoff_bundle(baseline, selection, qmatch, design, tmp_path / "out")
     except ValueError as exc:
         assert "selection.rows must include full-batch ep015_all" in str(exc)
+    else:
+        raise AssertionError("expected ValueError")
+
+
+def test_handoff_bundle_rejects_wrong_qmatch_manifest_version(tmp_path):
+    baseline = tmp_path / "b2_min_manifest.json"
+    selection = tmp_path / "selection_summary.json"
+    qmatch = tmp_path / "qmatch_manifest.json"
+    design = tmp_path / "design.md"
+    _write_json(baseline, _baseline_manifest())
+    _write_json(selection, _selection_summary())
+    _write_json(qmatch, {"version": "wrong"})
+    design.write_text("no new training", encoding="utf-8")
+    try:
+        mod.write_handoff_bundle(baseline, selection, qmatch, design, tmp_path / "out")
+    except ValueError as exc:
+        assert "qmatch manifest version" in str(exc)
     else:
         raise AssertionError("expected ValueError")

@@ -63,14 +63,18 @@ def _find_row(rows: list[dict[str, Any]], variant: str) -> dict[str, Any]:
 
 
 def failure_reasons(row: dict[str, Any]) -> list[str]:
+    required = ("s2_rmse", "euler", "maxcc", "phi")
+    missing = [field for field in required if field not in row]
+    if missing:
+        raise ValueError("rejected selection row missing metrics: " + ", ".join(missing))
     reasons: list[str] = []
-    if float(row.get("s2_rmse", 0.0)) > 0.003:
+    if float(row["s2_rmse"]) > 0.003:
         reasons.append("S2>0.003")
-    if float(row.get("euler", 999.0)) < 115:
+    if float(row["euler"]) < 115:
         reasons.append("Euler<115")
-    if float(row.get("maxcc", 0.0)) > 0.070:
+    if float(row["maxcc"]) > 0.070:
         reasons.append("maxCC>0.070")
-    phi = float(row.get("phi", 6.4))
+    phi = float(row["phi"])
     if not (5.5 <= phi <= 6.8):
         reasons.append("phi_out_of_range")
     return reasons
@@ -102,6 +106,7 @@ def build_handoff_manifest(
             "baseline_manifest": sha256_file(source_paths["baseline_manifest"]),
             "selection_summary": sha256_file(source_paths["selection_summary"]),
             "qmatch_manifest": sha256_file(qmatch_manifest_path),
+            "design_text": sha256_file(source_paths["design_text"]),
         },
         "baseline_status": baseline_manifest.get("status"),
         "selection_status": selection_summary.get("status"),
@@ -207,6 +212,9 @@ def write_handoff_bundle(
 
     baseline_manifest = _load_json(baseline_manifest_path)
     selection_summary = _load_json(selection_summary_path)
+    qmatch_manifest = _load_json(qmatch_manifest_path)
+    if not isinstance(qmatch_manifest, dict) or qmatch_manifest.get("version") != CALIBRATION_VERSION:
+        raise ValueError(f"qmatch manifest version must be {CALIBRATION_VERSION}")
     design_text = design_text_path.read_text(encoding="utf-8")
 
     preflight = audit.audit_design_entry(baseline_manifest, selection_summary, design_text)

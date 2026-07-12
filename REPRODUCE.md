@@ -1,9 +1,10 @@
-# 复现指南：花页7阶段二 M7-v2/M7-v3
+# 历史复现指南：花页7阶段二 M7-v2/M7-v3
 
 > 约束：本草稿依据只读检查 `CLAUDE.md`、`notes/22_阶段二_M7v2_阈值标定诊断.md`、`notes/24_阶段二_M7v3_连通性迭代设计.md`、`experiments/花页7_PlanB_记录/phase2/README.md`、`src/hy7_phase2_*.py`、`.gitignore`、`requirements.txt`。未在仓库中找到的具体历史运行命令不编造。
 > 2026-07-01 更新：已通过 `hy7-linux` 做只读远程核验，原始 stdout 保存在 `experiments/花页7_PlanB_记录/phase2/remote_provenance_20260701/`。已核实 M7 主链使用 `slices_ct28_128`（tile=128, z_step=6, axes=z），50ep/200ep 训练 meta 与关键 `.pt/.npy` sha256；仍未从 train_meta 中核到训练 seed，seed=42 暂来自既有命令模板/记录。
+> **范围提醒（2026-07-12）**：本文件只复现 M7-v2/M7-v3 历史二值 DDPM 诊断链，不是当前 B1.1/B2-min 执行授权。当前状态和冻结约束以根 `README.md`、`CLAUDE.md` 的“当前受控状态”、`notes/30_阶段二_B11输出校准与checkpoint选择.md` 及其轻量 evidence 为准。
 
-## 1. 主线与当前阶段
+## 1. 主线与本文件的历史范围
 
 唯一主线：硕士论文《基于融合多尺度数据的页岩数字岩心-井筒建模》。四阶段为：
 
@@ -12,7 +13,7 @@
 3. 多模态 3D 数字岩心
 4. 数字井筒
 
-当前复现目标是阶段二 M7-v2：先固化 DDPM 二值孔隙生成的阈值标定诊断链条，再进入 M7-v3 连通性迭代。
+本文件的历史复现目标是阶段二 M7-v2：固化 DDPM 二值孔隙生成的阈值标定诊断链条，再理解 M7-v3 连通性迭代为何转向 B1 灰度生成。
 
 M7-v2 已确认结论：
 

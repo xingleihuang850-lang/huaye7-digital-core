@@ -102,11 +102,15 @@ def open_memmap(key, mode="r", root=None, layout=None):
 
 
 def sample_zsel(nz, n=6):
+    if nz <= 0 or n <= 0:
+        raise ValueError(f"nz and n must be positive, got nz={nz}, n={n}")
     return np.linspace(nz * 0.15, nz * 0.85, n).astype(int)
 
 
 def decode_phase_value(mm, target_pct, zsel):
     """取若干切片，找占比最接近已知孔隙度的取值 → 该相的标记值（不写死）。"""
+    if len(zsel) == 0:
+        raise ValueError("phase-value decoding requires at least one sampled z slice")
     sl = np.stack([np.asarray(mm[z]) for z in zsel])
     vals, counts = np.unique(sl, return_counts=True)
     frac = counts / counts.sum() * 100
@@ -115,12 +119,27 @@ def decode_phase_value(mm, target_pct, zsel):
 
 def build_label(img_c, pore_c, pore_val, frac_c=None, frac_val=None):
     """合成 3 相标签：0 基质 / 1 孔隙 / 2 裂缝 / 255 ignore（柱塞外，孔隙裂缝覆盖之）。"""
+    if img_c.shape != pore_c.shape:
+        raise ValueError(f"shape mismatch: image={img_c.shape}, pore={pore_c.shape}")
+    if frac_c is not None and frac_c.shape != img_c.shape:
+        raise ValueError(f"shape mismatch: image={img_c.shape}, fracture={frac_c.shape}")
+    if frac_c is not None and frac_val is None:
+        raise ValueError("fracture labels require a decoded fracture phase value")
     lbl = np.zeros(img_c.shape, np.uint8)
     lbl[img_c == 0] = IGNORE                 # 圆柱塞外方角(空气)→忽略
     lbl[pore_c == pore_val] = 1              # 真孔隙覆盖 ignore（即便暗）
     if frac_c is not None:
         lbl[frac_c == frac_val] = 2
     return lbl
+
+
+def validate_patch_size(patch, dims):
+    """Reject patches that cannot be sampled without crossing a registered volume boundary."""
+    if int(patch) != patch or patch <= 0:
+        raise ValueError(f"patch must be a positive integer, got {patch}")
+    if len(dims) != 3 or min(dims) <= patch:
+        raise ValueError(f"patch={patch} must be smaller than every source dimension {tuple(dims)}")
+    return int(patch)
 
 
 class ScaleVolumes:
@@ -154,6 +173,7 @@ class ScaleVolumes:
 
     def _one(self, P, rng, min_fg, bg_keep):
         nz, ny, nx = self.dims
+        P = validate_patch_size(P, self.dims)
         z = int(rng.integers(0, nz - P)); y = int(rng.integers(0, ny - P)); x = int(rng.integers(0, nx - P))
         ic = np.asarray(self.img[z:z+P, y:y+P, x:x+P]).copy()
         pc = np.asarray(self.pore[z:z+P, y:y+P, x:x+P])

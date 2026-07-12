@@ -10,6 +10,8 @@ tags: [花页7, 实验, E3, nnU-Netv2, 配准, 交叉核验, 中期汇报]
 > E3 **复刻 codex 的 nnU-Netv2 协议（同工具、同配置、同子块规格），只把图像源从 2024³裁剪换成同网格 sus** →
 > 看 nnU-Netv2 是否也从 dice≈0 翻身。**翻身即证明：病根是配准、不是模型/工具。**
 > 用独立 nnUNet 工程目录 `~/HXL/HY7_planb/nnunet/`，**不碰 codex 的 `nnUNet_data`**。
+>
+> **P4 边界补记（2026-07-12）**：Dataset722 的 20 个 192³ block 都从同一 ct28 体随机采样，未保存坐标、buffer、`splits_final.json` 或 case-to-coordinate manifest；fold_0 的 4 例验证可能与训练 block 空间重叠。因此 0.9189/0.9660 是同体 sampled-block internal validation，不是空间独立或跨井泛化。
 
 ## 决定性对照表（同工具 nnU-Netv2，唯一变量=图像是否同网格）
 
@@ -21,11 +23,11 @@ tags: [花页7, 实验, E3, nnU-Netv2, 配准, 交叉核验, 中期汇报]
 | **nnU-Netv2（E3, 我, Dataset722）** | 2d 50ep | **同网格 sus** | 共配准 | **0.9660**（IoU 0.9342） |
 | （参考）自写 UNet（E2） | 100ep | 同网格 sus | 共配准 | 0.939 |
 
-## 结论（airtight）
+## 结论（同体 internal-validation 口径）
 
-- **同一个工具(nnU-Netv2)、同一个配置(3d_fullres 5ep)，只改"图像-标签是否同网格"，dice 从 0.0 → 0.919。**
-- 这把"是不是因为我换了自写 UNet 才好"的**模型混淆变量彻底排除**：nnU-Netv2 本身在对齐数据上也得 0.92。
-- → **病根是配准（2024→1500 裁剪错位），不是数据、不是任务、不是模型/工具。** Plan B 同网格直接根治。
+- **同一个工具(nnU-Netv2)、相近配置下，改为同网格 sus 后，内部 fold_0 Dice 从早期裁剪路线近零提升到 0.919。**
+- 这显著降低了“仅因自写 UNet 才好”的解释空间：nnU-Netv2 在同网格 sampled blocks 上也得到高内部 Dice。
+- → **配准错位是早期失败的强证据和关键病因。** 但因 block 构建、空间 split 和训练设置未完全受控，不能把该结果写成唯一因果变量、空间泛化或外部泛化证明。
 - 与 E2（自写 UNet 0.939）相互印证：两种模型在同网格上都得高 dice，量级一致。
 
 ## 协作意义（非竞赛）

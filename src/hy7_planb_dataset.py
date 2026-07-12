@@ -4,11 +4,15 @@
 花页7 Plan B —— 分割训练集构建（numpy-only，不依赖 torch）。
 
 从同尺度、同网格的「灰度体 + 相掩膜」采 3D patch，按前景占比筛选，
-落成 .npz shards + manifest.json —— 这就是要 rsync 到 hy7-linux 训练的产物。
+落成 .npz shards + manifest.json。它是可选的预烤路径；默认 PlanB 训练直接
+在线读取体素，不依赖这些 shard。
 标签方案（3 相）：0=基质(matrix) / 1=孔隙(pore) / 2=裂缝(fracture)。
 相标记值用已核校总孔隙度自动反推（见 hy7_planb_io），不靠猜。
 
 逐 patch 惰性读 memmap 子立方，全程不把 4GB 体素读进内存。
+
+该构建器不创建空间 train/val/test split，也不能证明空间独立性。manifest 仅
+记录同体采样坐标、seed 和 shard 对应关系，供未来复核或受控重跑使用。
 
 用法：
   .venv/bin/python src/hy7_planb_dataset.py --scale ct14 --patch 128 --n 400
@@ -17,7 +21,7 @@
 import os, json, argparse
 import numpy as np
 
-from hy7_planb_io import open_memmap, exists, VOLUMES, KNOWN_POROSITY_PCT
+from hy7_planb_io import open_memmap, exists, VOLUMES, KNOWN_POROSITY_PCT, validate_patch_size
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTROOT = os.path.join(ROOT, "data", "hy7_planb")
@@ -27,6 +31,24 @@ SCALE_SRC = {
     "ct14": {"image": "ct14_sus", "pore": "ct14_pore", "frac": "ct14_feng"},
     "ct28": {"image": "ct28_sus", "pore": "ct28_pore"},
 }
+
+IGNORE = 255
+
+
+def validate_dataset_args(n, min_fg, bg_keep, shard):
+    """Reject invalid sampling controls before opening multi-GB source volumes."""
+    if n <= 0 or shard <= 0:
+        raise ValueError("--n and --shard must be positive")
+    if not 0.0 <= bg_keep <= 1.0 or min_fg < 0.0:
+        raise ValueError("--bg-keep must be in [0,1] and --min-fg must be non-negative")
+
+
+def foreground_fraction(label):
+    """Measure pore/fracture fraction over valid voxels, excluding ignore voxels."""
+    valid = label != IGNORE
+    if not valid.any():
+        raise ValueError("cannot measure foreground fraction without valid voxels")
+    return float(((label == 1) | (label == 2))[valid].mean())
 
 
 def decode_phase_value(mm, target_pct, zsel):
@@ -47,6 +69,10 @@ def main():
     ap.add_argument("--shard", type=int, default=50, help="每个 .npz 存多少 patch")
     ap.add_argument("--seed", type=int, default=42)
     a = ap.parse_args()
+    try:
+        validate_dataset_args(a.n, a.min_fg, a.bg_keep, a.shard)
+    except ValueError as exc:
+        raise SystemExit(f"[x] {exc}") from exc
 
     src = SCALE_SRC[a.scale]
     miss = [k for k in src.values() if not exists(k)]
@@ -57,7 +83,7 @@ def main():
     pore = open_memmap(src["pore"])
     frac = open_memmap(src["frac"]) if "frac" in src else None
     nz, ny, nx = img.shape
-    P = a.patch
+    P = validate_patch_size(a.patch, (nz, ny, nx))
     rng = np.random.default_rng(a.seed)
 
     zsel = np.linspace(nz * 0.15, nz * 0.85, 6).astype(int)
@@ -69,14 +95,14 @@ def main():
     outdir = os.path.join(OUTROOT, a.scale)
     os.makedirs(outdir, exist_ok=True)
 
-    IGNORE = 255
     kept, shard_imgs, shard_lbls, shard_id = 0, [], [], 0
+    shard_provenance, shard_coordinates = [], []
     fg_hist, valid_hist = [], []
     img_sum = img_sum2 = img_n = 0.0
     tries, max_tries = 0, a.n * 80
     while kept < a.n and tries < max_tries:
         tries += 1
-        z = int(rng.integers(0, nz - P)); y = int(rng.integers(0, ny - P)); x = int(rng.integers(0, nx - P))
+        z = int(rng.integers(0, nz - P + 1)); y = int(rng.integers(0, ny - P + 1)); x = int(rng.integers(0, nx - P + 1))
         ic = np.asarray(img[z:z+P, y:y+P, x:x+P]).copy()
         pc = np.asarray(pore[z:z+P, y:y+P, x:x+P])
         lbl = np.zeros((P, P, P), np.uint8)             # 0=matrix
@@ -89,21 +115,27 @@ def main():
         valfrac = float(valid.mean())
         if valfrac < 0.5:                               # 主体在圆外的 patch 丢弃
             continue
-        fg = float(((lbl == 1) | (lbl == 2)).mean())    # 前景=孔隙+裂缝（不含 ignore）
+        fg = foreground_fraction(lbl)                    # 前景=孔隙+裂缝，分母只含有效体素
         if fg < a.min_fg and rng.random() > a.bg_keep:
             continue
-        shard_imgs.append(ic); shard_lbls.append(lbl.copy())
+        shard_imgs.append(ic); shard_lbls.append(lbl.copy()); shard_coordinates.append([z, y, x])
         fg_hist.append(round(fg, 5)); valid_hist.append(round(valfrac, 4))
         v = ic[valid].astype(np.float64)                # 归一化统计只在有效区
         img_sum += v.sum(); img_sum2 += (v*v).sum(); img_n += v.size
         kept += 1
         if len(shard_imgs) >= a.shard:
-            np.savez_compressed(os.path.join(outdir, f"patches_{shard_id:04d}.npz"),
-                                image=np.stack(shard_imgs), label=np.stack(shard_lbls))
-            shard_id += 1; shard_imgs, shard_lbls = [], []
+            filename = f"patches_{shard_id:04d}.npz"
+            np.savez_compressed(os.path.join(outdir, filename),
+                                 image=np.stack(shard_imgs), label=np.stack(shard_lbls))
+            shard_provenance.append({"file": filename, "count": len(shard_imgs), "coordinates_zyx": shard_coordinates})
+            shard_id += 1; shard_imgs, shard_lbls, shard_coordinates = [], [], []
+    if kept != a.n:
+        raise SystemExit(f"[x] accepted only {kept}/{a.n} patches after {tries} attempts; no manifest was written")
     if shard_imgs:
-        np.savez_compressed(os.path.join(outdir, f"patches_{shard_id:04d}.npz"),
+        filename = f"patches_{shard_id:04d}.npz"
+        np.savez_compressed(os.path.join(outdir, filename),
                             image=np.stack(shard_imgs), label=np.stack(shard_lbls))
+        shard_provenance.append({"file": filename, "count": len(shard_imgs), "coordinates_zyx": shard_coordinates})
         shard_id += 1
 
     mean = img_sum / img_n; std = (img_sum2 / img_n - mean * mean) ** 0.5
@@ -119,8 +151,14 @@ def main():
         "fg_fraction": {"min": min(fg_hist) if fg_hist else 0, "max": max(fg_hist) if fg_hist else 0,
                         "mean": round(float(np.mean(fg_hist)), 5) if fg_hist else 0},
         "valid_fraction": {"min": min(valid_hist) if valid_hist else 0,
-                           "mean": round(float(np.mean(valid_hist)), 4) if valid_hist else 0},
+                            "mean": round(float(np.mean(valid_hist)), 4) if valid_hist else 0},
         "dims_src_zyx": list(img.shape), "tries": tries,
+        "sampling": {
+            "seed": a.seed, "min_fg": a.min_fg, "bg_keep": a.bg_keep,
+            "foreground_denominator": "valid_voxels_only_excluding_ignore",
+            "spatial_split_status": "same_volume_sampling_not_a_spatially_independent_split",
+        },
+        "shard_provenance": shard_provenance,
         "provenance": "服务商处理图像同网格组件体（天然共配准，Plan B）",
         "note_image": ("sus 为灰度体，可直接做 灰度→3相 分割" if img_is_grayscale else
                        "⚠ image 源取值≤8，疑为掩膜而非灰度——Plan B 灰度输入前提需复核"),

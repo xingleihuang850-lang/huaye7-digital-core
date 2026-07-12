@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 from typing import Any
 
@@ -38,13 +39,48 @@ def _find_row(rows: list[dict[str, Any]], variant: str) -> dict[str, Any] | None
     return None
 
 
+def _require_number(value: Any, name: str) -> float:
+    if not isinstance(value, (int, float)) or not math.isfinite(value):
+        raise ValueError(f"{name} must be a finite number")
+    return float(value)
+
+
+def _require_bool(value: Any, name: str) -> bool:
+    if not isinstance(value, bool):
+        raise ValueError(f"{name} must be a boolean")
+    return value
+
+
+def _require_row(rows: Any, variant: str, fields: tuple[str, ...]) -> dict[str, Any]:
+    if not isinstance(rows, list) or not all(isinstance(row, dict) for row in rows):
+        raise ValueError("evidence rows must be a list of objects")
+    row = _find_row(rows, variant)
+    if row is None:
+        raise ValueError(f"evidence rows missing required variant: {variant}")
+    for field in fields:
+        if field not in row:
+            raise ValueError(f"evidence row {variant} missing: {field}")
+    return row
+
+
 def summarize_evidence(formal512: dict[str, Any], nnunet: dict[str, Any], qmatch_generalization: dict[str, Any]) -> dict[str, Any]:
-    formal_phi64 = formal512.get("phi64") or {}
-    nn_rows = nnunet.get("rows", [])
-    gen_rows = qmatch_generalization.get("rows", [])
-    nn_ep015 = _find_row(nn_rows, "ep015_qmatch") or _find_row(nn_rows, "EP015_QMATCH") or {}
-    gen_even = _find_row(gen_rows, "ep015_qmatch_even") or {}
-    gen_odd = _find_row(gen_rows, "ep015_qmatch_odd") or {}
+    if not all(isinstance(data, dict) for data in (formal512, nnunet, qmatch_generalization)):
+        raise ValueError("formal512, nnunet, and qmatch generalization evidence must be JSON objects")
+    formal_phi64 = formal512.get("phi64")
+    if not isinstance(formal_phi64, dict):
+        raise ValueError("formal512 missing required object: phi64")
+    for field in ("s2_rmse", "euler", "maxcc"):
+        _require_number(formal_phi64.get(field), f"formal512.phi64.{field}")
+    _require_bool(formal_phi64.get("passed_gate"), "formal512.phi64.passed_gate")
+    nn_ep015 = _require_row(nnunet.get("rows"), "ep015_qmatch", ("phi", "s2_rmse", "euler", "maxcc", "reverse_fail"))
+    for field in ("phi", "s2_rmse", "euler", "maxcc"):
+        _require_number(nn_ep015[field], f"nnunet.ep015_qmatch.{field}")
+    _require_bool(nn_ep015["reverse_fail"], "nnunet.ep015_qmatch.reverse_fail")
+    gen_even = _require_row(qmatch_generalization.get("rows"), "ep015_qmatch_even", ("pass_gate", "euler"))
+    gen_odd = _require_row(qmatch_generalization.get("rows"), "ep015_qmatch_odd", ("pass_gate", "euler"))
+    for row, variant in ((gen_even, "even"), (gen_odd, "odd")):
+        _require_bool(row["pass_gate"], f"qmatch_generalization.{variant}.pass_gate")
+        _require_number(row["euler"], f"qmatch_generalization.{variant}.euler")
     return {
         "formal512_ep015_phi64": {
             "s2_rmse": formal_phi64.get("s2_rmse"),

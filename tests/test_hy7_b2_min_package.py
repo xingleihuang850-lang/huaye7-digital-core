@@ -3,6 +3,8 @@ import importlib.util
 import json
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("hy7_b2_min_package", ROOT / "src" / "hy7_b2_min_package.py")
 assert SPEC is not None
@@ -67,3 +69,15 @@ def test_write_package_outputs_manifest_readme_and_hashes(tmp_path):
     hashes = Path(outputs["hashes"]).read_text()
     assert "b2_min_manifest.json" in hashes
     assert "b2_min_readme.md" in hashes
+
+
+def test_summarize_evidence_rejects_missing_or_nonfinite_required_metrics():
+    formal = {"phi64": {"s2_rmse": 0.1, "euler": 120.0, "maxcc": 0.06, "passed_gate": True}}
+    nn = {"rows": [{"variant": "ep015_qmatch", "phi": 6.0, "s2_rmse": 0.1, "euler": 120.0, "maxcc": 0.06, "reverse_fail": False}]}
+    qgen = {"rows": [{"variant": "ep015_qmatch_even", "pass_gate": True, "euler": 120.0}]}
+    with pytest.raises(ValueError, match="ep015_qmatch_odd"):
+        mod.summarize_evidence(formal, nn, qgen)
+
+    qgen["rows"].append({"variant": "ep015_qmatch_odd", "pass_gate": True, "euler": float("nan")})
+    with pytest.raises(ValueError, match="finite number"):
+        mod.summarize_evidence(formal, nn, qgen)

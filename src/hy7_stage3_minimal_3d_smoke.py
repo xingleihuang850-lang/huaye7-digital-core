@@ -78,9 +78,14 @@ class CandidateVolume(NamedTuple):
 
 
 def _as_binary_volume(volume: np.ndarray) -> np.ndarray:
-    arr = np.asarray(volume, dtype=np.uint8)
+    raw = np.asarray(volume)
+    if not np.issubdtype(raw.dtype, np.number) or not np.isfinite(raw).all():
+        raise SmokeContractError("candidate volume must contain only finite numeric values")
+    arr = raw.astype(np.uint8)
     if arr.ndim != 3:
         raise SmokeContractError(f"expected 3D candidate volume, got shape {arr.shape}")
+    if any(dim <= 0 for dim in arr.shape):
+        raise SmokeContractError(f"candidate volume dimensions must be non-empty: shape={arr.shape}")
     if any(dim > 128 for dim in arr.shape):
         raise SmokeContractError(f"volume axis hard cap 128 exceeded: shape={arr.shape}")
     return (arr > 0).astype(np.uint8)
@@ -265,6 +270,26 @@ def _preflight(calibration_artifact: Path, failed_chunk_record: Path) -> list[st
     return reasons
 
 
+def _validate_candidate_source_records(records: list[dict[str, Any]], arrays: list[np.ndarray]) -> None:
+    if len(records) != len(arrays):
+        raise SmokeContractError("candidate_source_records length must match candidate_count")
+    required = ("source_path", "source_size_bytes", "source_sha256", "source_shape", "source_dtype", "shape", "array_serialized")
+    for index, (record, array) in enumerate(zip(records, arrays)):
+        if not isinstance(record, dict):
+            raise SmokeContractError(f"candidate source record {index} must be an object")
+        missing = [field for field in required if field not in record]
+        if missing:
+            raise SmokeContractError(f"candidate source record {index} missing: {', '.join(missing)}")
+        if record["shape"] != list(array.shape):
+            raise SmokeContractError(f"candidate source record {index} shape does not match candidate volume")
+        if not isinstance(record["source_size_bytes"], int) or record["source_size_bytes"] <= 0:
+            raise SmokeContractError(f"candidate source record {index} source_size_bytes must be positive")
+        if not isinstance(record["source_sha256"], str) or len(record["source_sha256"]) != 64 or any(char not in "0123456789abcdef" for char in record["source_sha256"].lower()):
+            raise SmokeContractError(f"candidate source record {index} source_sha256 must be a SHA-256 hex digest")
+        if record["array_serialized"] is not False:
+            raise SmokeContractError(f"candidate source record {index} array_serialized must be false")
+
+
 def _validate_static_scope(route_label: str, calibration_version: str, candidate_count: int) -> None:
     if route_label != ROUTE_LABEL:
         raise SmokeContractError(f"route_label must be {ROUTE_LABEL}, got {route_label!r}")
@@ -417,6 +442,10 @@ def write_smoke_package(
     _validate_static_scope(route_label=route_label, calibration_version=calibration_version, candidate_count=candidate_count)
 
     arrays = [] if candidate_volumes is None else [_as_binary_volume(vol) for vol in candidate_volumes]
+    if arrays:
+        if candidate_source_records is None:
+            raise SmokeContractError("candidate_source_records are required when candidate volumes are supplied")
+        _validate_candidate_source_records(candidate_source_records, arrays)
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -480,18 +509,17 @@ def write_smoke_package(
         "calibration_version": calibration_version,
         "calibration_artifact": str(calibration_artifact),
         "calibration_artifact_exists": Path(calibration_artifact).exists(),
+        "calibration_artifact_sha256": _sha256(Path(calibration_artifact)) if Path(calibration_artifact).exists() else None,
         "formal_anchor": FORMAL_ANCHOR,
         "formal_anchor_use": "planning_anchor_only",
         "failed_chunk": FAILED_CHUNK_ID,
         "failed_chunk_record": str(failed_chunk_record),
+        "failed_chunk_record_sha256": _sha256(Path(failed_chunk_record)) if Path(failed_chunk_record).exists() else None,
         "failed_chunk_visible": Path(failed_chunk_record).exists() and FAILED_CHUNK_ID in Path(failed_chunk_record).read_text(encoding="utf-8", errors="replace"),
         "qmatch_not_formal_acceptance": True,
     }
 
-    records = candidate_source_records or [
-        {"candidate_index": idx, "shape": list(arr.shape), "volume_axis_hard_cap_128_satisfied": True, "array_serialized": False}
-        for idx, arr in enumerate(arrays)
-    ]
+    records = [] if candidate_source_records is None else [dict(record) for record in candidate_source_records]
     for idx, record in enumerate(records):
         record.setdefault("candidate_index", idx)
         record.setdefault("shape", list(arrays[idx].shape))

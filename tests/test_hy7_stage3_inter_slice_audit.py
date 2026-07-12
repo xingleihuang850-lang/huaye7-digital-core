@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 
 import numpy as np
+import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location(
@@ -75,6 +76,15 @@ def test_inter_slice_audit_fails_closed_on_hash_mismatch(tmp_path):
         assert "sha256 mismatch" in str(exc)
     else:
         raise AssertionError("hash mismatch accepted")
+
+
+def test_inter_slice_audit_rejects_malformed_expected_hash_and_nonfinite_input(tmp_path):
+    src = _source(tmp_path)
+    with pytest.raises(mod.AuditContractError, match="64-character"):
+        mod.write_inter_slice_audit_package(tmp_path / "bad", src, "not-a-hash", 2, 8, expected_slice_count=6)
+    arr = np.full((6, 3, 3), np.nan)
+    with pytest.raises(mod.AuditContractError, match="finite numeric"):
+        mod.compute_inter_slice_metrics(arr)
 
 
 def test_inter_slice_audit_fails_closed_on_axis_ambiguity(tmp_path):

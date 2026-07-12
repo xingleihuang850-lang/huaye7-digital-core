@@ -76,6 +76,24 @@ def pass_gate(metrics: dict[str, Any]) -> bool:
     )
 
 
+def validate_evaluation_inputs(gray: np.ndarray, real_pore: np.ndarray, *, chunk_size: int, phi_target: float, rmax: int) -> None:
+    """Fail before calibration when an array cannot represent aligned 2-D batches."""
+    if gray.ndim != 3 or real_pore.ndim != 3:
+        raise ValueError("gray and real_pore must both be 3-D [n, y, x] arrays")
+    if not gray.shape[0] or not gray.shape[1] or not gray.shape[2]:
+        raise ValueError("gray and real_pore dimensions must be non-empty")
+    if gray.shape != real_pore.shape:
+        raise ValueError(f"gray and real_pore shapes must match, got {gray.shape} vs {real_pore.shape}")
+    if not np.isfinite(gray).all():
+        raise ValueError("gray contains non-finite values")
+    if not np.isfinite(real_pore).all():
+        raise ValueError("real_pore contains non-finite values")
+    if chunk_size <= 0 or rmax <= 0:
+        raise ValueError("chunk_size and rmax must be positive")
+    if not 0.0 <= phi_target <= 100.0:
+        raise ValueError("phi_target must be in [0, 100]")
+
+
 def evaluate_candidates(
     gray: np.ndarray,
     reference_gray_path: str | Path,
@@ -86,6 +104,7 @@ def evaluate_candidates(
     phi_target: float,
     rmax: int,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    validate_evaluation_inputs(gray, real_pore, chunk_size=chunk_size, phi_target=phi_target, rmax=rmax)
     qmatch, manifest = cal.calibrate_array(gray.astype(np.float32), reference_gray_path, split=reference_split)
     rows: list[dict[str, Any]] = []
     for cand in make_chunk_candidates(qmatch.shape[0], chunk_size, "ep015"):

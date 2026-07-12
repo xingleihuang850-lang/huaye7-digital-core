@@ -3,6 +3,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
@@ -46,3 +47,14 @@ def test_tiles_from_gray_preserves_pairing_and_filters_invalid_tiles():
     assert paired[0, 0, 0] == 1
     assert np.all(gray >= -1.0)
     assert np.all(gray <= 1.0)
+
+
+def test_source_probe_provenance_requires_explicit_safe_relative_reference():
+    assert mod.source_probe_provenance(None) == {"status": "undeclared", "reference": None}
+    assert mod.source_probe_provenance("experiments/probe/20260703") == {
+        "status": "declared", "reference": "experiments/probe/20260703"
+    }
+    with pytest.raises(ValueError, match="repository-relative"):
+        mod.source_probe_provenance("/tmp/probe")
+    with pytest.raises(ValueError, match="without '..'"):
+        mod.source_probe_provenance("experiments/../probe")

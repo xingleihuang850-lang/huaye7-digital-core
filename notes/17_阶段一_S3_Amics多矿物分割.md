@@ -27,7 +27,7 @@ tags: [花页7, 实验, S3, Amics, 多矿物, nnU-Netv2, 尺度, 中期汇报]
 | 金属重矿 metallic (0.9–2.8%) | 0.021 / 0.013 | 0.166 / 0.113 |
 | **前景均值 Dice** | **0.258** | **0.445** |
 
-**(b) 空间留出测试区（Ts，最右 20% 列，与训练区物理分开 → 防泄漏的诚实泛化数）** `[测]`
+**(b) 无缓冲空间留出测试区（Ts，最右 20% 列；训练/测试 tile 不重叠，但仍来自同一图像）** `[测]`
 
 | 类 | 25μm Ts Dice | 1μm Ts Dice |
 |---|---|---|
@@ -37,7 +37,7 @@ tags: [花页7, 实验, S3, Amics, 多矿物, nnU-Netv2, 尺度, 中期汇报]
 | 金属重矿 | 0.041 | 0.127 |
 | **前景均值** | **0.242** | **0.411** |
 
-> fold0(0.79/0.72) 与 Ts(0.73/0.67) 差距小 → 基本无过拟合/无明显空间泄漏，结果可信。
+> fold0 与 Ts 差距小，支持该同图像右侧留出上的表现稳定；但 Ts 无空间 buffer，不能排除邻近区域相关性，也不是独立井模型泛化。
 
 ## 2. 科学判读（含诚实局限）
 
@@ -53,7 +53,7 @@ tags: [花页7, 实验, S3, Amics, 多矿物, nnU-Netv2, 尺度, 中期汇报]
 - 数据集：`hy7-linux:~/HXL/HY7_planb/nnunet/nnUNet_raw/`
   - `Dataset730_HY7_Amics25um_5min`（tile256，train 825 / Ts 118）
   - `Dataset731_HY7_Amics1um_5min`（tile128，train 132 / Ts 22）
-- 构建脚本：`src/hy7_amics_make_nnunet.py`（加 `--prefix` 支持任意尺度；列向空间留出防泄漏，固定 seed=42）
+- 构建脚本：`src/hy7_amics_make_nnunet.py`（加 `--prefix` 支持任意尺度；列向无缓冲空间留出。当前 split 由图像宽度/tile 网格确定，`--seed` 尚未参与 tile 构建。）
 - 配置：`nnUNetv2_train <id> 2d 0 -tr nnUNetTrainer_50epochs`，CTNormalization→NaturalImage2DIO
 - 模型 sha256（checkpoint_final.pth）：
   - 730: `ffe866e51322d013e5b8cd2502e420f9b9c9068f77d2c709213f998b4b3f90d6`

@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -61,6 +62,10 @@ def _json_dump(path: Path, data: dict[str, Any]) -> None:
 def _binary(arr: np.ndarray) -> np.ndarray:
     if arr.ndim != 3:
         raise AuditContractError(f"candidate must be 3D, got shape={arr.shape}")
+    if any(dim <= 0 for dim in arr.shape):
+        raise AuditContractError(f"candidate dimensions must be non-empty, got shape={arr.shape}")
+    if not np.issubdtype(arr.dtype, np.number) or not np.isfinite(arr).all():
+        raise AuditContractError("candidate must contain only finite numeric values")
     return (arr > 0).astype(np.uint8, copy=False)
 
 
@@ -148,11 +153,11 @@ def compute_inter_slice_metrics(volume: np.ndarray) -> dict[str, Any]:
     jaccard_ratio = _safe_ratio(float(np.median(jaccard)) if jaccard.size else 0.0, yz_median)
 
     flags = {
-        "jaccard_x_median_over_yz_median_lt_0.25": jaccard_ratio is not None and jaccard_ratio < 0.25,
-        "s2_x_over_min_yz_lt_0.25": s2_x_over_min_yz is not None and s2_x_over_min_yz < 0.25,
-        "component_persistence_pairwise_median_lt_0.10": bool(np.median(jaccard) < 0.10) if jaccard.size else True,
-        "per_slice_pore_count_robust_z_abs_gt_3.5": bool(np.max(np.abs(robust)) > 3.5) if robust.size else False,
-        "zero_or_near_zero_pore_slice_run_ge_3": _longest_true_run(near_zero) >= 3,
+        f"jaccard_x_median_over_yz_median_lt_{THRESHOLDS['jaccard_x_median_over_yz_median_lt']}": jaccard_ratio is not None and jaccard_ratio < THRESHOLDS["jaccard_x_median_over_yz_median_lt"],
+        f"s2_x_over_min_yz_lt_{THRESHOLDS['s2_x_over_min_yz_lt']}": s2_x_over_min_yz is not None and s2_x_over_min_yz < THRESHOLDS["s2_x_over_min_yz_lt"],
+        f"component_persistence_pairwise_median_lt_{THRESHOLDS['component_persistence_pairwise_median_lt']}": bool(np.median(jaccard) < THRESHOLDS["component_persistence_pairwise_median_lt"]) if jaccard.size else True,
+        f"per_slice_pore_count_robust_z_abs_gt_{THRESHOLDS['per_slice_pore_count_robust_z_abs_gt']}": bool(np.max(np.abs(robust)) > THRESHOLDS["per_slice_pore_count_robust_z_abs_gt"]) if robust.size else False,
+        f"zero_or_near_zero_pore_slice_run_ge_{THRESHOLDS['zero_or_near_zero_pore_slice_run_ge']}": _longest_true_run(near_zero) >= THRESHOLDS["zero_or_near_zero_pore_slice_run_ge"],
     }
     return {
         "metric_labels_required": {
@@ -200,6 +205,8 @@ def write_inter_slice_audit_package(
     candidate_npy = Path(candidate_npy)
     if not candidate_npy.exists():
         raise AuditContractError(f"candidate source missing: {candidate_npy}")
+    if not isinstance(expected_sha256, str) or not re.fullmatch(r"[0-9a-fA-F]{64}", expected_sha256):
+        raise AuditContractError("expected_sha256 must be a 64-character SHA-256 hex digest")
     actual_sha = sha256_file(candidate_npy)
     if actual_sha != expected_sha256:
         raise AuditContractError(f"sha256 mismatch: expected {expected_sha256}, got {actual_sha}")

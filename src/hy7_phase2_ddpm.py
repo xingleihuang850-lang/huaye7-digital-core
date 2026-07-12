@@ -176,11 +176,11 @@ def score_checkpoint_metrics(metrics, target, weights=None, gates=None):
 
     Lower score is better. Inputs are plain dictionaries so this can be used both
     in lightweight local tests and in remote GPU validation scripts. Default gates
-    encode the current HY7 B1.1 risk boundary from notes/30: avoid over-connected
-    samples (maxCC) and large Euler drift before treating a checkpoint as viable.
+    encode the research-approved formal B1.1 boundary: S2, phi, Euler, and maxCC
+    must all pass. Historical runs are not reclassified by this future-use default.
     """
     weights = dict(weights or {"phi": 1.0, "s2_rmse": 1.0, "euler": 1.0, "maxcc": 1.0})
-    gates = dict(gates or {"maxcc_max": 0.070, "euler_rel_tol": 0.15})
+    gates = dict(gates or {"s2_rmse_max": 0.003, "phi_min": 5.5, "phi_max": 6.8, "euler_min": 115.0, "maxcc_max": 0.070})
     target = dict(target)
     metrics = dict(metrics)
 
@@ -191,6 +191,14 @@ def score_checkpoint_metrics(metrics, target, weights=None, gates=None):
     terms["maxcc"] = _metric_abs_rel(metrics["maxcc"], target["maxcc"])
 
     failed = []
+    if "s2_rmse_max" in gates and float(metrics["s2_rmse"]) > float(gates["s2_rmse_max"]):
+        failed.append("s2_rmse")
+    if "phi_min" in gates and float(metrics["phi"]) < float(gates["phi_min"]):
+        failed.append("phi")
+    if "phi_max" in gates and float(metrics["phi"]) > float(gates["phi_max"]):
+        failed.append("phi")
+    if "euler_min" in gates and float(metrics["euler"]) < float(gates["euler_min"]):
+        failed.append("euler")
     if "maxcc_max" in gates and float(metrics["maxcc"]) > float(gates["maxcc_max"]):
         failed.append("maxcc")
     if "euler_rel_tol" in gates and terms["euler"] > float(gates["euler_rel_tol"]):
@@ -709,7 +717,9 @@ def _soft_pore_regularization_loss(x0_pred, reg):
     loss = x0_pred.new_tensor(0.0)
     parts = {}
     if float(reg["lambda_phi"]) > 0.0:
-        target = reg.get("phi_ref", reg["phi_target"])
+        # Do not use dict.get(..., reg["phi_target"]): Python evaluates that
+        # fallback even when periodic validation supplies only phi_ref.
+        target = reg["phi_ref"] if "phi_ref" in reg else reg["phi_target"]
         l_phi = F.mse_loss(p.mean(), target)
         loss = loss + float(reg["lambda_phi"]) * l_phi
         parts["soft_phi"] = float(l_phi.detach().cpu())

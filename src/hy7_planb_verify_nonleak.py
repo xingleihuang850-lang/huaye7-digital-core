@@ -16,6 +16,8 @@ from hy7_planb_io import open_memmap, SCALE_COMPONENTS, KNOWN_POROSITY_PCT, samp
 
 
 def check(scale, nslices=5):
+    if nslices <= 0:
+        raise ValueError(f"nslices must be positive, got {nslices}")
     comp = SCALE_COMPONENTS[scale]
     sus = open_memmap(comp["image"]); pore = open_memmap(comp["pore"])
     z0 = sample_zsel(sus.shape[0], 6)
@@ -27,6 +29,8 @@ def check(scale, nslices=5):
         inside = s > 0
         pore_g.append(s[(p == pv) & inside]); non_g.append(s[(p != pv) & inside])
     pg = np.concatenate(pore_g); ng = np.concatenate(non_g)
+    if pg.size == 0 or ng.size == 0:
+        raise ValueError(f"{scale}: no valid pore/nonpore gray pixels inside sus > 0")
     return {
         "scale": scale, "pore_value": pv, "slices": zsel.tolist(),
         "pore_gray_mean": round(float(pg.mean()), 1), "nonpore_gray_mean": round(float(ng.mean()), 1),

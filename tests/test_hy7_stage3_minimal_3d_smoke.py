@@ -23,6 +23,14 @@ def _write_preflight_artifacts(tmp_path: Path):
     return calibration, failed_chunk
 
 
+def _record_for(volume: np.ndarray):
+    return {
+        "source_path": "test:/candidate.npy", "source_size_bytes": 1, "source_sha256": "a" * 64,
+        "source_shape": list(volume.shape), "source_dtype": str(volume.dtype), "shape": list(volume.shape),
+        "array_serialized": False,
+    }
+
+
 def test_fail_closed_when_calibration_artifact_missing(tmp_path):
     missing_calibration = tmp_path / "missing_qmatch_manifest.json"
     failed_chunk = tmp_path / "failed_chunk_record.md"
@@ -142,6 +150,7 @@ def test_positive_flow_proxy_on_non_percolating_axis_fails_closed(tmp_path):
         calibration_artifact=calibration,
         failed_chunk_record=failed_chunk,
         candidate_volumes=[isolated],
+        candidate_source_records=[_record_for(isolated)],
         physical_flow_proxy={"x": 0.1, "y": 0.0, "z": 0.0},
     )
 
@@ -191,3 +200,16 @@ def test_load_candidate_npy_slice_records_external_source_without_serializing_vo
     assert not list((tmp_path / "pkg").glob("*.npy"))
     assert not list((tmp_path / "pkg").glob("*.npz"))
     assert not list((tmp_path / "pkg").glob("*.pt"))
+
+
+def test_rejects_nonfinite_or_unprovenanced_candidate_volumes(tmp_path):
+    calibration, failed_chunk = _write_preflight_artifacts(tmp_path)
+    with pytest.raises(ValueError, match="finite numeric"):
+        mod.write_smoke_package(tmp_path / "bad", calibration, failed_chunk, candidate_volumes=[np.full((2, 2, 2), np.nan)])
+    volume = np.zeros((2, 2, 2), dtype=np.uint8)
+    with pytest.raises(ValueError, match="candidate_source_records are required"):
+        mod.write_smoke_package(tmp_path / "bad", calibration, failed_chunk, candidate_volumes=[volume])
+    record = _record_for(volume)
+    record["shape"] = [1, 2, 2]
+    with pytest.raises(ValueError, match="shape does not match"):
+        mod.write_smoke_package(tmp_path / "bad", calibration, failed_chunk, candidate_volumes=[volume], candidate_source_records=[record])

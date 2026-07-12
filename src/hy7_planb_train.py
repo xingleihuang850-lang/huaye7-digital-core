@@ -13,10 +13,25 @@ ignore=255（柱塞外）。相值由已核校孔隙度自动反推（见 hy7_pl
       --epochs 60 --steps 400 --bs 2 --patch 128 --amp
 
 本机(Mac, 无 torch/GPU)只写脚本、用 io.py 的 numpy 工具自检；不在本机训练。
+
+历史证据边界：E0/E1/E2 的已归档指标来自较早的脚本快照，不能由当前脚本
+版本追认。`build_val()` 在一次运行内用固定 seed=12345 复用同一体内 patch，
+但历史运行未保存训练/验证坐标或空间 buffer；因此这些 Dice 只表示同体固定
+patch 验证，不能表述为空间独立、无泄漏或跨体/跨井泛化。`--seed` 只固定
+在线采样的 NumPy 序列，不承诺完整 PyTorch/CUDA 确定性。未来空间独立重跑
+必须另行记录受验证的 crop manifest、坐标和 buffer，不能回填历史证据。
 """
 import os, sys, json, argparse, time
 
 IGNORE = 255
+
+
+def validate_training_args(patch, frac_oversample):
+    """Validate architecture and sampling assumptions before opening multi-GB volumes."""
+    if int(patch) != patch or patch < 8 or patch % 8:
+        raise ValueError(f"patch must be an integer divisible by 8 and >= 8 for this 3-pool U-Net, got {patch}")
+    if not 0.0 <= frac_oversample <= 1.0:
+        raise ValueError(f"frac_oversample must be in [0, 1], got {frac_oversample}")
 
 
 def _need_torch():
@@ -104,7 +119,11 @@ def dice_ce_loss(logits, target, n_cls, ce_weight=None):
 
 
 def build_val(scale, root, layout, patch, n, mean, std):
-    """固定一组验证 patch（一次采样，跨 epoch 不变），稳定评估。"""
+    """Use fixed same-volume patches for within-run stability, not spatial independence.
+
+    Their coordinates are not persisted by this historical baseline path, so the
+    resulting validation Dice must not be used as a spatial holdout claim.
+    """
     import numpy as np, torch
     from hy7_planb_io import ScaleVolumes
     sv = ScaleVolumes(scale, root=root, layout=layout, norm_samples=0)
@@ -120,7 +139,7 @@ def main():
     _need_torch()
     import numpy as np, torch
     from torch.utils.data import DataLoader
-    from hy7_planb_io import ScaleVolumes, SCALE_COMPONENTS
+    from hy7_planb_io import ScaleVolumes, SCALE_COMPONENTS, validate_patch_size
 
     ap = argparse.ArgumentParser()
     ap.add_argument("--scale", required=True, choices=list(SCALE_COMPONENTS))
@@ -141,11 +160,13 @@ def main():
     ap.add_argument("--frac-weight", type=float, default=1.0, help="裂缝类(2) CE 权重")
     ap.add_argument("--frac-oversample", type=float, default=0.0, help="训练强制含裂缝 patch 的比例[0,1]")
     a = ap.parse_args()
+    validate_training_args(a.patch, a.frac_oversample)
 
     dev = "cuda" if torch.cuda.is_available() else "cpu"
     if a.seed is not None:
         torch.manual_seed(a.seed); np.random.seed(a.seed)
     sv0 = ScaleVolumes(a.scale, root=a.root, layout=a.layout)   # 主进程：拿 norm / n_cls / 相值
+    validate_patch_size(a.patch, sv0.dims)
     n_cls, mean, std = sv0.n_cls, sv0.mean, sv0.std
     ce_weight = None
     if n_cls == 3 and a.frac_weight != 1.0:

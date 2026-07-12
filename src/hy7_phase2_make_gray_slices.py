@@ -111,6 +111,16 @@ def stack_summary_pore(stack):
     }
 
 
+def source_probe_provenance(reference):
+    """Record only an explicit repository-relative normalization probe reference."""
+    if reference is None:
+        return {"status": "undeclared", "reference": None}
+    path = Path(reference)
+    if not reference or path.is_absolute() or ".." in path.parts:
+        raise ValueError("source_probe must be a non-empty repository-relative path without '..'")
+    return {"status": "declared", "reference": path.as_posix()}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--scale", default="ct28", choices=["ct28"])
@@ -126,6 +136,8 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--hash-prefix-mib", type=int, default=256)
+    ap.add_argument("--source-probe", default=None,
+                    help="explicit repository-relative normalization probe provenance; omitted means undeclared")
     a = ap.parse_args()
 
     t0 = time.time()
@@ -197,7 +209,7 @@ def main():
             "policy": "clip then linear map to [-1,1]",
             "clip_low": a.clip_low,
             "clip_high": a.clip_high,
-            "source_probe": "experiments/花页7_PlanB_记录/phase2/b1_gray_sus/probe_20260703/",
+            "source_probe": source_probe_provenance(a.source_probe),
         },
         "outputs": {
             "train": {"path": str(out / "train.npy"), "shape": list(tr.shape), "dtype": str(tr.dtype)},

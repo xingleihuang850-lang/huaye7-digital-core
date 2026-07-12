@@ -36,7 +36,7 @@ def test_metric_score_prefers_checkpoint_with_balanced_phi_s2_topology():
     target = {"phi": 6.405, "s2_rmse": 0.0, "euler": 127.33, "maxcc": 0.0597}
     weights = {"phi": 1.0, "s2_rmse": 1.0, "euler": 1.0, "maxcc": 1.0}
 
-    final_none = {"name": "final_none", "phi": 10.989, "s2_rmse": 0.01808, "euler": 124.52, "maxcc": 0.0680}
+    final_none = {"name": "final_none", "phi": 6.405, "s2_rmse": 0.002, "euler": 124.52, "maxcc": 0.0680}
     bad_topology = {"name": "best_train_moments", "phi": 3.777, "s2_rmse": 0.00584, "euler": 115.14, "maxcc": 0.1003}
 
     chosen = mod.select_metric_aware_checkpoint([final_none, bad_topology], target=target, weights=weights)
@@ -57,3 +57,14 @@ def test_metric_gate_marks_overconnected_checkpoint_as_failed_even_when_score_ex
     assert scored["passed_gate"] is False
     assert "maxcc" in scored["failed_gates"]
     assert "euler" in scored["failed_gates"]
+
+
+def test_default_gate_requires_s2_phi_euler_and_maxcc_together():
+    mod = load_mod_with_torch_stub()
+    target = {"phi": 6.405, "s2_rmse": 0.0, "euler": 127.33, "maxcc": 0.0597}
+    metrics = {"name": "s2_and_phi_fail", "phi": 7.0, "s2_rmse": 0.004, "euler": 120.0, "maxcc": 0.06}
+
+    scored = mod.score_checkpoint_metrics(metrics, target=target)
+
+    assert scored["passed_gate"] is False
+    assert {"s2_rmse", "phi"}.issubset(scored["failed_gates"])

@@ -50,6 +50,9 @@ Important files:
 - `src/hy7_b2_min_package.py`  
   Packages the calibrated B2-min baseline evidence into manifest/readme/hash records.
 
+- `src/hy7_remote_sync_audit.py`
+  Read-only local/remote SHA audit. It maps Phase-1 PlanB to remote `src/`, Phase-2 runtime to remote `phase2/`, and blocks undeclared/local-only deployment.
+
 - `.hermes/plans/2026-07-06_141348-calibrated-b2-min.md`  
   Calibrated B2-min implementation plan.
 
@@ -93,10 +96,10 @@ The current lightweight test suite can be run with:
 python3 -m pytest tests -q
 ```
 
-At the latest sync point this returned:
+At the latest local verification (2026-07-12) this returned:
 
 ```text
-42 passed in 0.12s
+84 passed in 1.46s
 ```
 
 For guard-triggered changes, additional focused ad-hoc verification scripts were created under the macOS temp directory with the `hermes-verify-` prefix and then cleaned up. Those ad-hoc checks should not be described as canonical suite green.

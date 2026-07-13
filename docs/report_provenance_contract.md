@@ -2,6 +2,8 @@
 
 Status: `DRAFT_NOT_ACTIVE`. This contract does not authorize report generation or change existing report wording.
 
+`src/hy7_report_provenance.py` validates a lightweight declaration before any future activation. A passing declaration returns `READY_FOR_CONTRACT_REVIEW_ONLY` and keeps `render_authorized=false`; it neither reads report inputs nor renders outputs.
+
 ## Required Input Manifest
 
 Every Word, PPT, or Excel run must declare a JSON manifest before rendering:

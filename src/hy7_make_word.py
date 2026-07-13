@@ -183,7 +183,7 @@ def build():
     bullet(doc,"钙质长英质页岩：长英质55%+碳酸盐41%+黏土3%；FIB-SEM 7.6万孔/6.2万喉道。")
     para(doc,"第二步：能讲出每个尺度看什么（对外答辩）",size=12,bold=True,color=BLUE,before=6,after=3)
     bullet(doc,"Amics=矿物；微米CT=骨架孔/裂缝；纳米CT/Maps/FIB-SEM=纳米孔与有机孔。")
-    bullet(doc,"一句话定位贡献：数据现成、判别式分割已完成；下一跳是多尺度对齐+生成式融合。")
+    bullet(doc,"一句话定位贡献：数据现成、阶段一同体内部基线已建立；空间独立验证待未来重跑，下一跳是多尺度对齐+生成式融合。")
     para(doc,"第三步：能用于实验（做研究）",size=12,bold=True,color=BLUE,before=6,after=3)
     bullet(doc,"先跑 Plan B（sus.raw+pore.raw 天然对齐）做三维分割 baseline。")
     bullet(doc,"用矿物图(Amics)做矿物分割标签，注意粗/精扫基准。")

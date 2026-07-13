@@ -40,6 +40,8 @@
 | 28 | [B1 理论文献支撑](28_阶段二_B1理论文献支撑.md) | S₂不充分、拓扑/连通指标、domain shift/qmatch、B1.1 决策的文献支撑与写作边界。 |
 | 29 | [B1.1 P0审计与花页7DLIS盘点](29_阶段二_B11_P0审计与花页7DLIS盘点.md) | 归一化链条审计、灰度功率谱/自相关诊断、花页7 DLIS 电成像覆盖确认与 B1.1 cheap50 设计。 |
 | 30 | [B1.1 输出校准与 checkpoint 选择](30_阶段二_B11输出校准与checkpoint选择.md) | train-moments 输出校准、best/final checkpoint 对比、nnUNet 复测、metric-aware checkpoint selection 与 periodic validation sampling 框架。 |
+| 31 | [B1.1 受控验证预注册卡](31_阶段二_B11受控验证预注册卡.md) | 冻结 ep015/qmatch 的单次无训练验证协议；未获执行授权。 |
+| 32 | [阶段三 A2-small 前置证据清单](32_阶段三_A2前置证据清单.md) | A2 设计门槛、phantom、配准与条件变量清单；未获执行授权。 |
 
 ## 9x · 工程 / 杂项
 | 编号 | 笔记 | 一句话 |

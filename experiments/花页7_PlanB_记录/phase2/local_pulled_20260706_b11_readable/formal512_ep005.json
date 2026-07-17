@@ -1,0 +1,129 @@
+{
+  "gray_stats": {
+    "n": 512,
+    "mean": 0.19290360808372498,
+    "std": 0.39098235964775085,
+    "min": -1.0,
+    "max": 1.0,
+    "ks": 0.34735574526959156
+  },
+  "candidates": [
+    {
+      "variant": "ep005_orig",
+      "epoch": 5,
+      "phi_target": 5.0,
+      "threshold": -0.4651432931423187,
+      "phi": 5.000007152557373,
+      "s2_rmse": 0.0032063150073297145,
+      "euler": 103.900390625,
+      "maxcc": 0.06606598822023003,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "passed_gate": false
+    },
+    {
+      "variant": "ep005_orig",
+      "epoch": 5,
+      "phi_target": 5.5,
+      "threshold": -0.4449305832386017,
+      "phi": 5.500006675720215,
+      "s2_rmse": 0.0021089336796998853,
+      "euler": 109.603515625,
+      "maxcc": 0.06388233595600748,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "passed_gate": false
+    },
+    {
+      "variant": "ep005_orig",
+      "epoch": 5,
+      "phi_target": 6.0,
+      "threshold": -0.42614421248435974,
+      "phi": 6.000006198883057,
+      "s2_rmse": 0.0009769945521414809,
+      "euler": 115.107421875,
+      "maxcc": 0.062401698455079285,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "passed_gate": true
+    },
+    {
+      "variant": "ep005_orig",
+      "epoch": 5,
+      "phi_target": 6.4,
+      "threshold": -0.41192469000816345,
+      "phi": 6.400001049041748,
+      "s2_rmse": 0.0001542227455791037,
+      "euler": 119.419921875,
+      "maxcc": 0.06115277698451785,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "passed_gate": true
+    },
+    {
+      "variant": "ep005_orig",
+      "epoch": 5,
+      "phi_target": 7.0,
+      "threshold": -0.39197713136672974,
+      "phi": 7.00000524520874,
+      "s2_rmse": 0.0014339422801417537,
+      "euler": 124.990234375,
+      "maxcc": 0.06049763754151586,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "passed_gate": false
+    },
+    {
+      "variant": "ep005_orig",
+      "epoch": 5,
+      "phi_target": 7.5,
+      "threshold": -0.3765241801738739,
+      "phi": 7.500004768371582,
+      "s2_rmse": 0.00268742253153567,
+      "euler": 129.498046875,
+      "maxcc": 0.06007167206897046,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "passed_gate": false
+    },
+    {
+      "variant": "ep005_orig",
+      "epoch": 5,
+      "phi_target": 8.0,
+      "threshold": -0.36190053820610046,
+      "phi": 8.000004291534424,
+      "s2_rmse": 0.003980889359492518,
+      "euler": 133.57421875,
+      "maxcc": 0.05927385884553641,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "passed_gate": false
+    }
+  ],
+  "phi64": {
+    "variant": "ep005_orig",
+    "epoch": 5,
+    "phi_target": 6.4,
+    "threshold": -0.41192469000816345,
+    "phi": 6.400001049041748,
+    "s2_rmse": 0.0001542227455791037,
+    "euler": 119.419921875,
+    "maxcc": 0.06115277698451785,
+    "x_penetrate": 0.0,
+    "y_penetrate": 0.0,
+    "passed_gate": true
+  },
+  "best_s2": {
+    "variant": "ep005_orig",
+    "epoch": 5,
+    "phi_target": 6.4,
+    "threshold": -0.41192469000816345,
+    "phi": 6.400001049041748,
+    "s2_rmse": 0.0001542227455791037,
+    "euler": 119.419921875,
+    "maxcc": 0.06115277698451785,
+    "x_penetrate": 0.0,
+    "y_penetrate": 0.0,
+    "passed_gate": true
+  }
+}

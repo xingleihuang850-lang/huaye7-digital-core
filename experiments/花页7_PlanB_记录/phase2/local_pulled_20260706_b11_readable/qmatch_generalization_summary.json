@@ -1,0 +1,44 @@
+{
+  "rows": [
+    {
+      "variant": "ep005_qmatch_even",
+      "phi": 5.785083770751953,
+      "s2_rmse": 0.0015931185127165256,
+      "euler": 113.744140625,
+      "maxcc": 0.062061277730975486,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "pass_gate": false
+    },
+    {
+      "variant": "ep005_qmatch_odd",
+      "phi": 5.788910388946533,
+      "s2_rmse": 0.001585397941042774,
+      "euler": 113.841796875,
+      "maxcc": 0.06203541240067331,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "pass_gate": false
+    },
+    {
+      "variant": "ep015_qmatch_even",
+      "phi": 5.792832374572754,
+      "s2_rmse": 0.0017259419863361236,
+      "euler": 116.13671875,
+      "maxcc": 0.06512003333948249,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "pass_gate": true
+    },
+    {
+      "variant": "ep015_qmatch_odd",
+      "phi": 5.797088146209717,
+      "s2_rmse": 0.0017170226103190402,
+      "euler": 116.16796875,
+      "maxcc": 0.06507675557506591,
+      "x_penetrate": 0.0,
+      "y_penetrate": 0.0,
+      "pass_gate": true
+    }
+  ]
+}

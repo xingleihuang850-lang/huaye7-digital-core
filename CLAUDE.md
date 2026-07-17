@@ -28,7 +28,7 @@
 
 ## 0. 环境与数据位置（**先读这条**）
 
-- **工程根（本地 SSD，持久，git 管理）**：`/Users/hxl/Documents/claude/`
+- **工程根（本地 SSD，持久，git 管理）**：`/Users/hxl/Documents/Hermes工作区/01_Claude接管剩余工作/claude/`（唯一正式路径；顶层 `claude` 别名已于 2026-07-17 清理）
 - **原始数据（可移动外置盘，18G）**：`/Volumes/Untitled/GJ5-15data/`
   - ⚠️ 这是可移动盘，**卸载/拔盘后下面的符号链接会失效**。DuckDB 仓库里已入库的结构化数据不受影响，但重新跑导入脚本前要确认盘已挂载。
 - **数据引用方式**：软链接，不拷贝（用户决策 2026-06-15）。
@@ -105,7 +105,7 @@
 ## 4. 目录与工程约定
 
 ```
-/Users/hxl/Documents/claude/        # 工程根（本地，git）
+/Users/hxl/Documents/Hermes工作区/01_Claude接管剩余工作/claude/  # 工程根（本地，git）
 ├── CLAUDE.md                       # 本文件
 ├── .claudeignore  .gitignore
 ├── data/
